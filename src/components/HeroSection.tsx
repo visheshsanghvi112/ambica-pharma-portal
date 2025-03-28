@@ -1,7 +1,6 @@
 
 import React from "react";
 import { Button } from "./ui/button";
-import { motion } from "framer-motion";
 
 const HeroSection = () => {
   return (
