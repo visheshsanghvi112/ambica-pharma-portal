@@ -56,6 +56,26 @@ const AboutSection = () => {
             </Button>
           </div>
         </div>
+        
+        <div className="mt-16 pt-8 border-t border-gray-100">
+          <h3 className="text-2xl md:text-3xl font-display font-bold text-primary mb-6">
+            Who We Are
+          </h3>
+          <p className="text-gray-600 mb-4 max-w-4xl">
+            Incepted in the year 2005, Ambica Pharma is an eminent entity indulged in manufacturing, trading, 
+            exporting, wholesaling and retailing a huge compilation of Pharmaceutical Tablets, Capsules, injectables, 
+            Drops, Ointments, etc. Manufactured making use of supreme in class material and progressive tools and 
+            technology; these are in conformism with the norms and guidelines defined by the market.
+          </p>
+          <p className="text-gray-600 max-w-4xl">
+            With a motive to stand high on the visions of our patrons, we are indulged in providing a huge array 
+            of products to our patrons, which are in tandem with the comprehensively accredited standards of quality. 
+            Along with this, all our departments are managed by their respective executives to ensure that all the 
+            responsibilities are getting finished effectively within the assured time. Since our inception, we are 
+            working under the supervision of our skilled mentor His enormous knowledge and information in this domain 
+            have directed us in becoming one of the well-known suppliers of the industry.
+          </p>
+        </div>
       </div>
     </section>
   );
