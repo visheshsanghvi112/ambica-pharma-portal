@@ -1,7 +1,7 @@
 
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import { Menu, X, Phone, Mail, MapPin } from "lucide-react";
+import { Menu, X, Phone, Mail } from "lucide-react";
 import { Button } from "./ui/button";
 import { cn } from "@/lib/utils";
 import { ThemeToggle } from "./ThemeToggle";
@@ -35,8 +35,9 @@ const Header = () => {
       {/* Main navigation */}
       <nav 
         className={cn(
-          "py-4 transition-all duration-300", 
-          scrolled ? "bg-background shadow-md" : "bg-background"
+          "py-4 transition-all duration-300 border-b", 
+          scrolled ? "bg-background/90 backdrop-blur-md shadow-sm" : "bg-background border-transparent",
+          "dark:bg-background/95"
         )}
       >
         <div className="container flex justify-between items-center">
@@ -53,11 +54,14 @@ const Header = () => {
             <Link to="/about" className="font-medium text-primary hover:text-secondary transition-colors">
               About Us
             </Link>
-            <Link to="/products" className="font-medium text-primary hover:text-secondary transition-colors">
-              Products
+            <Link to="/blog" className="font-medium text-primary hover:text-secondary transition-colors">
+              Blog
             </Link>
-            <Link to="/global-reach" className="font-medium text-primary hover:text-secondary transition-colors">
-              Global Reach
+            <Link to="/careers" className="font-medium text-primary hover:text-secondary transition-colors">
+              Careers
+            </Link>
+            <Link to="/csr" className="font-medium text-primary hover:text-secondary transition-colors">
+              CSR
             </Link>
             <Link to="/faq" className="font-medium text-primary hover:text-secondary transition-colors">
               FAQ
@@ -69,7 +73,7 @@ const Header = () => {
               Contact Us
             </Link>
             <ThemeToggle />
-            <Button size="sm" className="bg-secondary hover:bg-secondary-light">
+            <Button size="sm" className="bg-secondary hover:bg-secondary-light animate-pulse">
               Emergency Order
             </Button>
           </div>
@@ -89,7 +93,7 @@ const Header = () => {
         {/* Mobile Navigation Menu */}
         <div 
           className={cn(
-            "fixed inset-y-0 right-0 bg-background shadow-xl p-6 w-64 transform transition-transform z-50",
+            "fixed inset-y-0 right-0 bg-background/95 backdrop-blur-sm shadow-xl p-6 w-64 transform transition-transform z-50",
             isOpen ? "translate-x-0" : "translate-x-full"
           )}
         >
@@ -100,11 +104,14 @@ const Header = () => {
             <Link to="/about" className="font-medium text-primary hover:text-secondary py-2 border-b" onClick={toggleMenu}>
               About Us
             </Link>
-            <Link to="/products" className="font-medium text-primary hover:text-secondary py-2 border-b" onClick={toggleMenu}>
-              Products
+            <Link to="/blog" className="font-medium text-primary hover:text-secondary py-2 border-b" onClick={toggleMenu}>
+              Blog
             </Link>
-            <Link to="/global-reach" className="font-medium text-primary hover:text-secondary py-2 border-b" onClick={toggleMenu}>
-              Global Reach
+            <Link to="/careers" className="font-medium text-primary hover:text-secondary py-2 border-b" onClick={toggleMenu}>
+              Careers
+            </Link>
+            <Link to="/csr" className="font-medium text-primary hover:text-secondary py-2 border-b" onClick={toggleMenu}>
+              CSR
             </Link>
             <Link to="/faq" className="font-medium text-primary hover:text-secondary py-2 border-b" onClick={toggleMenu}>
               FAQ
@@ -115,7 +122,7 @@ const Header = () => {
             <Link to="/contact" className="font-medium text-primary hover:text-secondary py-2 border-b" onClick={toggleMenu}>
               Contact Us
             </Link>
-            <Button className="bg-secondary hover:bg-secondary-light w-full mt-4">
+            <Button className="bg-secondary hover:bg-secondary-light w-full mt-4 animate-pulse">
               Emergency Order
             </Button>
           </div>

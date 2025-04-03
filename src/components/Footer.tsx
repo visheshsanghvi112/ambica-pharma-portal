@@ -7,67 +7,70 @@ import { Phone, Mail, MapPin, Send, Facebook, Twitter, Linkedin, Instagram } fro
 
 const Footer = () => {
   return (
-    <footer className="bg-primary text-white">
+    <footer className="bg-primary text-white dark:bg-primary/90">
       <div className="container py-12">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {/* About Section */}
-          <div className="space-y-4">
+          <div className="space-y-4 animate-fade-in">
             <h3 className="text-xl font-display font-semibold">About Us</h3>
-            <p className="text-sm text-gray-200">
+            <p className="text-sm text-gray-200 dark:text-gray-300">
               Discover excellence in pharmaceutical manufacturing and distribution at Ambica Pharma, 
               where quality meets commitment since 2005.
             </p>
             <div className="flex space-x-3">
-              <a href="https://facebook.com" className="p-2 rounded-full bg-white/10 hover:bg-white/20 transition-colors" aria-label="Facebook">
+              <a href="https://facebook.com" className="p-2 rounded-full bg-white/10 hover:bg-white/20 transition-colors hover:scale-110" aria-label="Facebook">
                 <Facebook className="h-4 w-4" />
               </a>
-              <a href="https://twitter.com" className="p-2 rounded-full bg-white/10 hover:bg-white/20 transition-colors" aria-label="Twitter">
+              <a href="https://twitter.com" className="p-2 rounded-full bg-white/10 hover:bg-white/20 transition-colors hover:scale-110" aria-label="Twitter">
                 <Twitter className="h-4 w-4" />
               </a>
-              <a href="https://linkedin.com" className="p-2 rounded-full bg-white/10 hover:bg-white/20 transition-colors" aria-label="LinkedIn">
+              <a href="https://linkedin.com" className="p-2 rounded-full bg-white/10 hover:bg-white/20 transition-colors hover:scale-110" aria-label="LinkedIn">
                 <Linkedin className="h-4 w-4" />
               </a>
-              <a href="https://instagram.com" className="p-2 rounded-full bg-white/10 hover:bg-white/20 transition-colors" aria-label="Instagram">
+              <a href="https://instagram.com" className="p-2 rounded-full bg-white/10 hover:bg-white/20 transition-colors hover:scale-110" aria-label="Instagram">
                 <Instagram className="h-4 w-4" />
               </a>
             </div>
           </div>
           
           {/* Quick Links */}
-          <div className="space-y-4">
+          <div className="space-y-4 animate-fade-in" style={{ animationDelay: "100ms" }}>
             <h3 className="text-xl font-display font-semibold">Quick Links</h3>
             <ul className="space-y-2">
               <li>
-                <Link to="/" className="text-sm text-gray-200 hover:text-white transition-colors">Home</Link>
+                <Link to="/" className="text-sm text-gray-200 dark:text-gray-300 hover:text-white transition-colors hover:translate-x-1 inline-block">Home</Link>
               </li>
               <li>
-                <Link to="/about" className="text-sm text-gray-200 hover:text-white transition-colors">About Us</Link>
+                <Link to="/about" className="text-sm text-gray-200 dark:text-gray-300 hover:text-white transition-colors hover:translate-x-1 inline-block">About Us</Link>
               </li>
               <li>
-                <Link to="/products" className="text-sm text-gray-200 hover:text-white transition-colors">Products</Link>
+                <Link to="/global-reach" className="text-sm text-gray-200 dark:text-gray-300 hover:text-white transition-colors hover:translate-x-1 inline-block">Global Reach</Link>
               </li>
               <li>
-                <Link to="/global-reach" className="text-sm text-gray-200 hover:text-white transition-colors">Global Reach</Link>
+                <Link to="/blog" className="text-sm text-gray-200 dark:text-gray-300 hover:text-white transition-colors hover:translate-x-1 inline-block">Blog</Link>
               </li>
               <li>
-                <Link to="/faq" className="text-sm text-gray-200 hover:text-white transition-colors">FAQ</Link>
+                <Link to="/careers" className="text-sm text-gray-200 dark:text-gray-300 hover:text-white transition-colors hover:translate-x-1 inline-block">Careers</Link>
               </li>
               <li>
-                <Link to="/privacy" className="text-sm text-gray-200 hover:text-white transition-colors">Privacy Policy</Link>
+                <Link to="/csr" className="text-sm text-gray-200 dark:text-gray-300 hover:text-white transition-colors hover:translate-x-1 inline-block">CSR</Link>
               </li>
               <li>
-                <Link to="/contact" className="text-sm text-gray-200 hover:text-white transition-colors">Contact Us</Link>
+                <Link to="/faq" className="text-sm text-gray-200 dark:text-gray-300 hover:text-white transition-colors hover:translate-x-1 inline-block">FAQ</Link>
               </li>
               <li>
-                <Link to="/blog" className="text-sm text-gray-200 hover:text-white transition-colors">Blog</Link>
+                <Link to="/privacy" className="text-sm text-gray-200 dark:text-gray-300 hover:text-white transition-colors hover:translate-x-1 inline-block">Privacy Policy</Link>
+              </li>
+              <li>
+                <Link to="/contact" className="text-sm text-gray-200 dark:text-gray-300 hover:text-white transition-colors hover:translate-x-1 inline-block">Contact Us</Link>
               </li>
             </ul>
           </div>
           
           {/* Contact Info */}
-          <div className="space-y-4">
+          <div className="space-y-4 animate-fade-in" style={{ animationDelay: "200ms" }}>
             <h3 className="text-xl font-display font-semibold">Registered Office</h3>
-            <address className="not-italic text-sm text-gray-200 space-y-2">
+            <address className="not-italic text-sm text-gray-200 dark:text-gray-300 space-y-2">
               <p className="flex items-start">
                 <MapPin className="h-5 w-5 mr-2 mt-0.5 flex-shrink-0" />
                 <span>22 to 25, 2nd Floor, Chapsey Building, 72/78, Shamaldas Gandhi Marg, Kalbadevi, Mumbai, Maharashtra-400 002</span>
@@ -88,16 +91,16 @@ const Footer = () => {
           </div>
           
           {/* Newsletter */}
-          <div className="space-y-4">
+          <div className="space-y-4 animate-fade-in" style={{ animationDelay: "300ms" }}>
             <h3 className="text-xl font-display font-semibold">Newsletter</h3>
-            <p className="text-sm text-gray-200">
+            <p className="text-sm text-gray-200 dark:text-gray-300">
               Subscribe to our newsletter to get all our news in your inbox.
             </p>
             <form className="flex">
               <Input 
                 type="email" 
                 placeholder="Email Address" 
-                className="rounded-r-none border-r-0 bg-white/10 border-white/20 text-white placeholder:text-gray-300" 
+                className="rounded-r-none border-r-0 bg-white/10 border-white/20 text-white placeholder:text-gray-300 dark:bg-white/5" 
               />
               <Button type="submit" className="rounded-l-none bg-secondary hover:bg-secondary-light">
                 <Send className="h-4 w-4" />
