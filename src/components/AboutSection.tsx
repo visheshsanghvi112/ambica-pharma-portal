@@ -9,15 +9,15 @@ const AboutSection = () => {
     <section className="py-16 md:py-24 bg-background">
       <div className="container">
         <div className="grid md:grid-cols-2 gap-10 items-center">
-          <div>
+          <div className="animate-fade-up" style={{ animationDelay: "0.1s" }}>
             <img
               src="https://images.unsplash.com/photo-1587854692152-cbe660dbde88?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80"
               alt="Ambica Pharma Laboratory"
-              className="rounded-lg shadow-lg"
+              className="rounded-lg shadow-lg hover-scale"
             />
           </div>
           
-          <div className="space-y-6">
+          <div className="space-y-6 animate-fade-up" style={{ animationDelay: "0.3s" }}>
             <div className="inline-block px-4 py-1 bg-secondary/10 rounded-full text-secondary font-medium text-sm">
               Since 2005
             </div>
@@ -57,7 +57,7 @@ const AboutSection = () => {
           </div>
         </div>
         
-        <div className="mt-16 pt-8 border-t border-border">
+        <div className="mt-16 pt-8 border-t border-border animate-fade-up" style={{ animationDelay: "0.5s" }}>
           <h3 className="text-2xl md:text-3xl font-display font-bold text-primary mb-6">
             Who We Are
           </h3>
