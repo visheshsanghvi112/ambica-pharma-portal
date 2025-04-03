@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import { Menu, X, Phone, Mail, MapPin } from "lucide-react";
 import { Button } from "./ui/button";
 import { cn } from "@/lib/utils";
+import { ThemeToggle } from "./ThemeToggle";
 
 const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -31,31 +32,11 @@ const Header = () => {
 
   return (
     <header className="w-full">
-      {/* Top info bar */}
-      <div className="bg-primary text-white py-2 hidden md:block">
-        <div className="container flex justify-between items-center">
-          <div className="flex items-center space-x-4">
-            <div className="flex items-center space-x-1">
-              <Phone className="h-4 w-4" />
-              <span className="text-sm">+91 9967006091</span>
-            </div>
-            <div className="flex items-center space-x-1">
-              <Mail className="h-4 w-4" />
-              <span className="text-sm">ambicapharma@gmail.com</span>
-            </div>
-          </div>
-          <div className="flex items-center space-x-1">
-            <MapPin className="h-4 w-4" />
-            <span className="text-sm">Chapsey Building, Mumbai, Maharashtra</span>
-          </div>
-        </div>
-      </div>
-      
       {/* Main navigation */}
       <nav 
         className={cn(
           "py-4 transition-all duration-300", 
-          scrolled ? "bg-white shadow-md" : "bg-white"
+          scrolled ? "bg-background shadow-md" : "bg-background"
         )}
       >
         <div className="container flex justify-between items-center">
@@ -65,7 +46,7 @@ const Header = () => {
           </Link>
           
           {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center space-x-8">
+          <div className="hidden md:flex items-center space-x-6">
             <Link to="/" className="font-medium text-primary hover:text-secondary transition-colors">
               Home
             </Link>
@@ -78,27 +59,37 @@ const Header = () => {
             <Link to="/global-reach" className="font-medium text-primary hover:text-secondary transition-colors">
               Global Reach
             </Link>
+            <Link to="/faq" className="font-medium text-primary hover:text-secondary transition-colors">
+              FAQ
+            </Link>
+            <Link to="/privacy" className="font-medium text-primary hover:text-secondary transition-colors">
+              Privacy Policy
+            </Link>
             <Link to="/contact" className="font-medium text-primary hover:text-secondary transition-colors">
               Contact Us
             </Link>
+            <ThemeToggle />
             <Button size="sm" className="bg-secondary hover:bg-secondary-light">
               Emergency Order
             </Button>
           </div>
           
           {/* Mobile menu button */}
-          <button 
-            className="md:hidden flex items-center text-primary"
-            onClick={toggleMenu}
-          >
-            {isOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
-          </button>
+          <div className="md:hidden flex items-center space-x-2">
+            <ThemeToggle />
+            <button 
+              className="md:hidden flex items-center text-primary"
+              onClick={toggleMenu}
+            >
+              {isOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+            </button>
+          </div>
         </div>
         
         {/* Mobile Navigation Menu */}
         <div 
           className={cn(
-            "fixed inset-y-0 right-0 bg-white shadow-xl p-6 w-64 transform transition-transform z-50",
+            "fixed inset-y-0 right-0 bg-background shadow-xl p-6 w-64 transform transition-transform z-50",
             isOpen ? "translate-x-0" : "translate-x-full"
           )}
         >
@@ -114,6 +105,12 @@ const Header = () => {
             </Link>
             <Link to="/global-reach" className="font-medium text-primary hover:text-secondary py-2 border-b" onClick={toggleMenu}>
               Global Reach
+            </Link>
+            <Link to="/faq" className="font-medium text-primary hover:text-secondary py-2 border-b" onClick={toggleMenu}>
+              FAQ
+            </Link>
+            <Link to="/privacy" className="font-medium text-primary hover:text-secondary py-2 border-b" onClick={toggleMenu}>
+              Privacy Policy
             </Link>
             <Link to="/contact" className="font-medium text-primary hover:text-secondary py-2 border-b" onClick={toggleMenu}>
               Contact Us

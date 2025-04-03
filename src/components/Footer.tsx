@@ -18,16 +18,16 @@ const Footer = () => {
               where quality meets commitment since 2005.
             </p>
             <div className="flex space-x-3">
-              <a href="https://facebook.com" className="p-2 rounded-full bg-white/10 hover:bg-white/20 transition-colors">
+              <a href="https://facebook.com" className="p-2 rounded-full bg-white/10 hover:bg-white/20 transition-colors" aria-label="Facebook">
                 <Facebook className="h-4 w-4" />
               </a>
-              <a href="https://twitter.com" className="p-2 rounded-full bg-white/10 hover:bg-white/20 transition-colors">
+              <a href="https://twitter.com" className="p-2 rounded-full bg-white/10 hover:bg-white/20 transition-colors" aria-label="Twitter">
                 <Twitter className="h-4 w-4" />
               </a>
-              <a href="https://linkedin.com" className="p-2 rounded-full bg-white/10 hover:bg-white/20 transition-colors">
+              <a href="https://linkedin.com" className="p-2 rounded-full bg-white/10 hover:bg-white/20 transition-colors" aria-label="LinkedIn">
                 <Linkedin className="h-4 w-4" />
               </a>
-              <a href="https://instagram.com" className="p-2 rounded-full bg-white/10 hover:bg-white/20 transition-colors">
+              <a href="https://instagram.com" className="p-2 rounded-full bg-white/10 hover:bg-white/20 transition-colors" aria-label="Instagram">
                 <Instagram className="h-4 w-4" />
               </a>
             </div>
@@ -45,6 +45,15 @@ const Footer = () => {
               </li>
               <li>
                 <Link to="/products" className="text-sm text-gray-200 hover:text-white transition-colors">Products</Link>
+              </li>
+              <li>
+                <Link to="/global-reach" className="text-sm text-gray-200 hover:text-white transition-colors">Global Reach</Link>
+              </li>
+              <li>
+                <Link to="/faq" className="text-sm text-gray-200 hover:text-white transition-colors">FAQ</Link>
+              </li>
+              <li>
+                <Link to="/privacy" className="text-sm text-gray-200 hover:text-white transition-colors">Privacy Policy</Link>
               </li>
               <li>
                 <Link to="/contact" className="text-sm text-gray-200 hover:text-white transition-colors">Contact Us</Link>
@@ -90,7 +99,7 @@ const Footer = () => {
                 placeholder="Email Address" 
                 className="rounded-r-none border-r-0 bg-white/10 border-white/20 text-white placeholder:text-gray-300" 
               />
-              <Button className="rounded-l-none bg-secondary hover:bg-secondary-light">
+              <Button type="submit" className="rounded-l-none bg-secondary hover:bg-secondary-light">
                 <Send className="h-4 w-4" />
               </Button>
             </form>
@@ -99,7 +108,7 @@ const Footer = () => {
         
         {/* Copyright */}
         <div className="border-t border-white/20 mt-8 pt-6 text-center text-sm text-gray-300">
-          <p>© Copyright 2024 | All Rights Reserved by Ambica Pharma</p>
+          <p>© Copyright 2025 | All Rights Reserved by Ambica Pharma</p>
         </div>
       </div>
     </footer>
