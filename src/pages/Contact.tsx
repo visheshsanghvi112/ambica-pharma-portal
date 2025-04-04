@@ -1,4 +1,5 @@
-import React, { useState, useEffect } from "react";
+
+import React, { useState } from "react";
 import { Helmet } from "react-helmet-async";
 import { Button } from "@/components/ui/button";
 import { Label } from "@/components/ui/label";
@@ -9,8 +10,6 @@ import { MapPin, Phone, Mail, Clock, MessageCircle, Building, Send } from "lucid
 import { useToast } from "@/hooks/use-toast";
 import { motion } from "framer-motion";
 import MapComponent from "@/components/MapComponent";
-
-// No need to redefine the window interface here as it's already defined in the google-maps.d.ts file
 
 const Contact = () => {
   const { toast } = useToast();
@@ -66,37 +65,6 @@ const Contact = () => {
       transition: { duration: 0.4 }
     }
   };
-
-  // Load Google Maps script
-  useEffect(() => {
-    // Ensure the script is only added once
-    if (!document.getElementById('google-maps-script')) {
-      // Define the initMap function
-      window.initMap = () => {
-        console.log("Google Maps API loaded");
-      };
-
-      // Create script element
-      const script = document.createElement('script');
-      script.id = 'google-maps-script';
-      // Use a placeholder API key or an empty string instead of process.env
-      script.src = `https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY_HERE&callback=initMap`;
-      script.async = true;
-      script.defer = true;
-      
-      // Add script to document
-      document.head.appendChild(script);
-      
-      return () => {
-        // Clean up script on unmount
-        const scriptElement = document.getElementById('google-maps-script');
-        if (scriptElement) {
-          document.head.removeChild(scriptElement);
-        }
-        delete window.initMap;
-      };
-    }
-  }, []);
 
   return (
     <div className="min-h-screen bg-background pt-24 pb-16">
@@ -315,10 +283,14 @@ const Contact = () => {
         animate={{ opacity: 1 }}
         transition={{ duration: 0.6, delay: 0.8 }}
       >
+        <h2 className="text-2xl md:text-3xl font-display font-bold text-primary mb-6 text-center">
+          Visit Our Location
+        </h2>
         <MapComponent 
           lat={18.9451}
           lng={72.8234}
           zoom={15}
+          title="Ambica Pharma Headquarters"
         />
       </motion.section>
     </div>
