@@ -17,6 +17,7 @@ import FAQ from "./pages/FAQ";
 import PrivacyPolicy from "./pages/PrivacyPolicy";
 import CSR from "./pages/CSR";
 import Careers from "./pages/Careers";
+import Team from "./pages/Team";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -34,10 +35,11 @@ const App = () => (
               <meta name="description" content="Ambica Pharma is a leading manufacturer and distributor of pharmaceutical products with a global presence." />
             </Helmet>
             <Header />
-            <main>
+            <main className="pt-16">
               <Routes>
                 <Route path="/" element={<Index />} />
                 <Route path="/about" element={<About />} />
+                <Route path="/team" element={<Team />} />
                 <Route path="/contact" element={<Contact />} />
                 <Route path="/blog" element={<Blog />} />
                 <Route path="/global-reach" element={<GlobalReach />} />

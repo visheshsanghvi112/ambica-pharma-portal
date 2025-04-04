@@ -1,8 +1,21 @@
 
 import React from "react";
 import { Link } from "react-router-dom";
+import { Menu, X, ChevronDown } from "lucide-react";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from "./ui/dropdown-menu";
 
 const Navbar = () => {
+  const [isOpen, setIsOpen] = React.useState(false);
+  
+  const toggleMenu = () => {
+    setIsOpen(!isOpen);
+  };
+
   return (
     <header className="bg-white shadow-sm">
       <div className="container py-4">
@@ -19,20 +32,47 @@ const Navbar = () => {
           <nav className="hidden md:flex items-center space-x-8">
             <Link to="/" className="text-gray-700 hover:text-primary font-medium">Home</Link>
             <Link to="/about" className="text-gray-700 hover:text-primary font-medium">About Us</Link>
+            
+            {/* About Dropdown */}
+            <DropdownMenu>
+              <DropdownMenuTrigger className="flex items-center text-gray-700 hover:text-primary font-medium">
+                Our Team <ChevronDown className="ml-1 h-4 w-4" />
+              </DropdownMenuTrigger>
+              <DropdownMenuContent>
+                <DropdownMenuItem asChild>
+                  <Link to="/team" className="w-full">Our Teams</Link>
+                </DropdownMenuItem>
+              </DropdownMenuContent>
+            </DropdownMenu>
+            
             <Link to="/products" className="text-gray-700 hover:text-primary font-medium">Products</Link>
             <Link to="/contact" className="text-gray-700 hover:text-primary font-medium">Contact</Link>
           </nav>
           
           <div className="md:hidden">
-            {/* Mobile menu button placeholder */}
-            <button className="text-gray-700">
-              <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
-              </svg>
+            <button className="text-gray-700" onClick={toggleMenu}>
+              {isOpen ? (
+                <X className="h-6 w-6" />
+              ) : (
+                <Menu className="h-6 w-6" />
+              )}
             </button>
           </div>
         </div>
       </div>
+      
+      {/* Mobile menu */}
+      {isOpen && (
+        <div className="md:hidden py-4 px-4 bg-white border-t">
+          <div className="flex flex-col space-y-3">
+            <Link to="/" className="text-gray-700 hover:text-primary font-medium" onClick={() => setIsOpen(false)}>Home</Link>
+            <Link to="/about" className="text-gray-700 hover:text-primary font-medium" onClick={() => setIsOpen(false)}>About Us</Link>
+            <Link to="/team" className="text-gray-700 hover:text-primary font-medium pl-2" onClick={() => setIsOpen(false)}>Our Teams</Link>
+            <Link to="/products" className="text-gray-700 hover:text-primary font-medium" onClick={() => setIsOpen(false)}>Products</Link>
+            <Link to="/contact" className="text-gray-700 hover:text-primary font-medium" onClick={() => setIsOpen(false)}>Contact</Link>
+          </div>
+        </div>
+      )}
     </header>
   );
 };

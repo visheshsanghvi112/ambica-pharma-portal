@@ -1,5 +1,5 @@
 
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { Menu, X, Phone, Mail, ChevronDown } from "lucide-react";
 import { Button } from "./ui/button";
@@ -17,7 +17,7 @@ const Header = () => {
   const [scrolled, setScrolled] = useState(false);
   
   // Handle scroll effect for header
-  useEffect(() => {
+  React.useEffect(() => {
     const handleScroll = () => {
       if (window.scrollY > 50) {
         setScrolled(true);
@@ -44,7 +44,7 @@ const Header = () => {
   };
 
   return (
-    <header className="w-full fixed top-0 z-50">
+    <header className="w-full z-50">
       {/* Main navigation */}
       <nav 
         className={cn(
@@ -71,6 +71,19 @@ const Header = () => {
             <Link to="/about" className="font-medium text-primary hover:text-secondary transition-colors">
               About Us
             </Link>
+            
+            {/* Teams Dropdown */}
+            <DropdownMenu>
+              <DropdownMenuTrigger className="flex items-center font-medium text-primary hover:text-secondary transition-colors focus:outline-none">
+                <span>Our Team</span>
+                <ChevronDown className="ml-1 h-4 w-4" />
+              </DropdownMenuTrigger>
+              <DropdownMenuContent className="bg-background/95 backdrop-blur-md border border-border dark:border-primary/20 p-2 w-48">
+                <DropdownMenuItem asChild>
+                  <Link to="/team" className="w-full cursor-pointer">Our Teams</Link>
+                </DropdownMenuItem>
+              </DropdownMenuContent>
+            </DropdownMenu>
             
             {/* Contact Us Dropdown */}
             <DropdownMenu>
@@ -133,6 +146,9 @@ const Header = () => {
               </Link>
               <Link to="/about" className="font-medium text-primary hover:text-secondary py-2 border-b" onClick={handleMobileNavClick}>
                 About Us
+              </Link>
+              <Link to="/team" className="font-medium text-primary hover:text-secondary py-2 border-b" onClick={handleMobileNavClick}>
+                Our Team
               </Link>
               <Link to="/contact" className="font-medium text-primary hover:text-secondary py-2 border-b" onClick={handleMobileNavClick}>
                 Contact Us
