@@ -10,7 +10,7 @@ import { MapPin, Phone, Mail, Clock, MessageCircle, Building, Send } from "lucid
 import { useToast } from "@/hooks/use-toast";
 import { motion } from "framer-motion";
 
-// Declare the Google Maps types
+// Declare the Google Maps types with Animation added
 declare global {
   interface Window {
     initMap: () => void;
@@ -20,6 +20,10 @@ declare global {
         Marker: new (options: any) => any;
         InfoWindow: new (options: any) => any;
         NavigationControl: new (options: any) => any;
+        Animation: {
+          DROP: number;
+          BOUNCE: number;
+        };
       };
     };
   }
