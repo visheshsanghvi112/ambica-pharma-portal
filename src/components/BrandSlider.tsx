@@ -1,13 +1,13 @@
 
 import React from "react";
-import { motion } from "framer-motion";
+import { Card, CardContent } from "@/components/ui/card";
 
 interface Brand {
   name: string;
   logo: string; // Path to logo image
 }
 
-const BrandSlider: React.FC = () => {
+const BrandCards: React.FC = () => {
   // List of pharmaceutical brands with their names and logos
   const brands: Brand[] = [
     { name: "Cipla", logo: "https://www.cipla.com/sites/all/themes/cipla/images/logo.svg" },
@@ -29,32 +29,17 @@ const BrandSlider: React.FC = () => {
     { name: "Universal", logo: "https://images.unsplash.com/photo-1607619056574-7b8d3ee536b2?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" }
   ];
 
-  // Duplicate the brands array to create a seamless loop
-  const duplicatedBrands = [...brands, ...brands];
-
   return (
     <section className="py-12 bg-gradient-to-r from-primary/5 to-secondary/5 dark:from-primary/10 dark:to-secondary/10">
       <div className="container">
-        <div className="relative py-8">
-          {/* Top gradient overlay */}
-          <div className="absolute top-0 left-0 w-full h-10 bg-gradient-to-b from-background to-transparent z-10"></div>
-          
-          {/* Brand logos slider */}
-          <motion.div
-            className="flex items-center whitespace-nowrap gap-8 py-6 px-4"
-            animate={{ x: ["0%", "-50%"] }}
-            transition={{ 
-              repeat: Infinity, 
-              ease: "linear", 
-              duration: 30 
-            }}
-          >
-            {duplicatedBrands.map((brand, index) => (
-              <div 
-                key={index} 
-                className="mx-6 flex flex-col items-center justify-center"
-              >
-                <div className="w-52 h-52 bg-white dark:bg-gray-800 rounded-lg shadow-md hover:shadow-xl transition-all duration-300 p-4 flex items-center justify-center transform hover:scale-105 border border-primary/10">
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-6">
+          {brands.map((brand, index) => (
+            <Card 
+              key={index} 
+              className="bg-white dark:bg-gray-800 shadow-md hover:shadow-xl transition-all duration-300 border border-primary/10"
+            >
+              <CardContent className="p-4 flex flex-col items-center justify-center">
+                <div className="w-full h-24 flex items-center justify-center mb-2">
                   <img 
                     src={brand.logo} 
                     alt={`${brand.name} logo`}
@@ -73,16 +58,14 @@ const BrandSlider: React.FC = () => {
                     }}
                   />
                 </div>
-              </div>
-            ))}
-          </motion.div>
-          
-          {/* Bottom gradient overlay */}
-          <div className="absolute bottom-0 left-0 w-full h-10 bg-gradient-to-t from-background to-transparent z-10"></div>
+                <p className="text-center text-sm font-medium text-foreground">{brand.name}</p>
+              </CardContent>
+            </Card>
+          ))}
         </div>
       </div>
     </section>
   );
 };
 
-export default BrandSlider;
+export default BrandCards;

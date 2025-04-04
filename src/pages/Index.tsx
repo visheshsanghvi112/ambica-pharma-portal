@@ -1,4 +1,3 @@
-
 import React from "react";
 import HeroSection from "../components/HeroSection";
 import { Button } from "@/components/ui/button";
@@ -9,7 +8,7 @@ import Statistics from "../components/Statistics";
 import Testimonials from "../components/Testimonials";
 import { Card, CardContent } from "@/components/ui/card";
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
-import BrandSlider from "../components/BrandSlider";
+import BrandCards from "../components/BrandSlider";
 
 // Product categories data
 const productCategories = [
@@ -155,13 +154,13 @@ const Index = () => {
         </div>
       </section>
       
-      {/* Brand Slider Section - NEW */}
-      <BrandSlider />
+      {/* Our Trusted Partner Brands - Now as cards */}
+      <BrandCards />
       
       {/* Our Impact in Numbers */}
       <Statistics />
       
-      {/* Product Categories */}
+      {/* Product Categories with enhanced cards */}
       <section className="py-16 bg-background">
         <div className="container">
           <motion.div 
@@ -177,39 +176,33 @@ const Index = () => {
             </p>
           </motion.div>
           
-          <Carousel className="w-full">
-            <CarouselContent>
-              {productCategories.map((category, index) => (
-                <CarouselItem key={index} className="md:basis-1/2 lg:basis-1/3">
-                  <motion.div
-                    initial={{ opacity: 0, scale: 0.95 }}
-                    whileInView={{ opacity: 1, scale: 1 }}
-                    transition={{ duration: 0.5, delay: index * 0.1 }}
-                    viewport={{ once: true }}
-                    className="h-full"
-                  >
-                    <Card className="bg-white dark:bg-card border border-primary/10 shadow-lg hover:shadow-xl transition-all h-full overflow-hidden">
-                      <div className="h-2 bg-gradient-to-r from-primary to-secondary"></div>
-                      <CardContent className="p-6 h-full flex flex-col">
-                        <div className="bg-gradient-to-br from-primary/10 to-secondary/10 p-4 rounded-full w-20 h-20 flex items-center justify-center mx-auto mb-4">
-                          {category.icon}
-                        </div>
-                        <h3 className="text-xl font-bold text-primary text-center mb-2">{category.title}</h3>
-                        <p className="text-foreground/70 text-center mb-4">{category.description}</p>
-                        <div className="mt-auto">
-                          <Button variant="outline" className="w-full hover:bg-primary/10 hover:text-primary transition-colors" asChild>
-                            <Link to="/products">Learn More</Link>
-                          </Button>
-                        </div>
-                      </CardContent>
-                    </Card>
-                  </motion.div>
-                </CarouselItem>
-              ))}
-            </CarouselContent>
-            <CarouselPrevious className="left-1 lg:left-4" />
-            <CarouselNext className="right-1 lg:right-4" />
-          </Carousel>
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+            {productCategories.map((category, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, scale: 0.95 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
+                viewport={{ once: true }}
+              >
+                <Card className="bg-white dark:bg-card border border-primary/10 shadow-lg hover:shadow-xl transition-all h-full overflow-hidden">
+                  <div className="h-2 bg-gradient-to-r from-primary to-secondary"></div>
+                  <CardContent className="p-6 h-full flex flex-col">
+                    <div className="bg-gradient-to-br from-primary/10 to-secondary/10 p-4 rounded-full w-20 h-20 flex items-center justify-center mx-auto mb-4">
+                      {category.icon}
+                    </div>
+                    <h3 className="text-xl font-bold text-primary text-center mb-2">{category.title}</h3>
+                    <p className="text-foreground/70 text-center mb-4">{category.description}</p>
+                    <div className="mt-auto">
+                      <Button variant="outline" className="w-full hover:bg-primary/10 hover:text-primary transition-colors" asChild>
+                        <Link to="/products">Learn More</Link>
+                      </Button>
+                    </div>
+                  </CardContent>
+                </Card>
+              </motion.div>
+            ))}
+          </div>
           
           <div className="text-center mt-8">
             <p className="text-foreground/70 italic mb-4">Looking for a specific medicine? Contact us for information on our complete product range.</p>
@@ -239,7 +232,6 @@ const Index = () => {
           </motion.div>
           
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {/* Reason 1 */}
             <motion.div 
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -254,7 +246,6 @@ const Index = () => {
               <p className="text-foreground/70">All products meet rigorous quality standards and are sourced from certified manufacturers.</p>
             </motion.div>
             
-            {/* Reason 2 */}
             <motion.div 
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -269,7 +260,6 @@ const Index = () => {
               <p className="text-foreground/70">We offer the best market rates through efficient supply chain management and strong manufacturer relationships.</p>
             </motion.div>
             
-            {/* Reason 3 */}
             <motion.div 
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -284,7 +274,6 @@ const Index = () => {
               <p className="text-foreground/70">Our robust network ensures timely delivery of pharmaceuticals across India and international markets.</p>
             </motion.div>
             
-            {/* Reason 4 */}
             <motion.div 
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
