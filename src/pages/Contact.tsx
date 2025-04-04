@@ -41,20 +41,26 @@ const Contact = () => {
   const [mapLoaded, setMapLoaded] = useState(false);
   const mapRef = useRef<HTMLDivElement>(null);
   const mapInstanceRef = useRef<any>(null);
-  const scriptLoadedRef = useRef(false);
+  const isScriptLoading = useRef(false);
+  const mapInitialized = useRef(false);
 
   // Load Google Maps
   useEffect(() => {
-    // Skip if map already loaded, script is loading, or no map container
-    if (mapLoaded || scriptLoadedRef.current || !mapRef.current) return;
+    // Prevent multiple initializations
+    if (mapInitialized.current || !mapRef.current || isScriptLoading.current) {
+      return;
+    }
     
-    // Set a global initialization function
+    // Define the map initialization function only once
     if (typeof window.initMap !== 'function') {
       window.initMap = () => {
-        if (!mapRef.current) return;
+        // Skip if no map container or already initialized
+        if (!mapRef.current || mapInitialized.current) return;
         
         try {
           const mumbaiLocation = { lat: 18.9451, lng: 72.8234 };
+          
+          // Create map instance
           const mapInstance = new window.google.maps.Map(mapRef.current, {
             center: mumbaiLocation,
             zoom: 15,
@@ -89,6 +95,7 @@ const Contact = () => {
           
           mapInstanceRef.current = mapInstance;
           
+          // Add marker
           const marker = new window.google.maps.Marker({
             position: mumbaiLocation,
             map: mapInstance,
@@ -96,6 +103,7 @@ const Contact = () => {
             animation: window.google.maps.Animation.DROP
           });
           
+          // Add info window
           const infowindow = new window.google.maps.InfoWindow({
             content: `
               <div style="padding: 10px; max-width: 200px;">
@@ -111,47 +119,55 @@ const Contact = () => {
             infowindow.open(mapInstance, marker);
           });
           
+          // Mark as initialized and loaded
+          mapInitialized.current = true;
           setMapLoaded(true);
+          isScriptLoading.current = false;
         } catch (error) {
           console.error("Error initializing map:", error);
+          mapInitialized.current = false;
           setMapLoaded(false);
+          isScriptLoading.current = false;
         }
       };
     }
     
-    // Only load script if it's not already present in the DOM
-    if (!document.getElementById('google-maps-script')) {
-      scriptLoadedRef.current = true;
+    // Load the script if it doesn't exist
+    const existingScript = document.getElementById('google-maps-script');
+    
+    if (!existingScript) {
+      isScriptLoading.current = true;
       
-      try {
-        const script = document.createElement('script');
-        script.id = 'google-maps-script';
-        script.src = `https://maps.googleapis.com/maps/api/js?key=&callback=initMap`;
-        script.async = true;
-        script.defer = true;
-        
-        script.onerror = () => {
-          console.error("Error loading Google Maps script");
-          setMapLoaded(false);
-          scriptLoadedRef.current = false;
-        };
-        
-        document.head.appendChild(script);
-      } catch (error) {
-        console.error("Error creating Google Maps script:", error);
-        scriptLoadedRef.current = false;
-      }
+      const script = document.createElement('script');
+      script.id = 'google-maps-script';
+      script.src = `https://maps.googleapis.com/maps/api/js?key=&callback=initMap`;
+      script.async = true;
+      script.defer = true;
+      
+      script.addEventListener('load', () => {
+        // Script has loaded - initMap will be called by Google
+      });
+      
+      script.addEventListener('error', () => {
+        console.error("Error loading Google Maps script");
+        isScriptLoading.current = false;
+        setMapLoaded(false);
+      });
+      
+      document.head.appendChild(script);
     } else if (window.google && window.google.maps) {
-      // If script is already loaded, just call initMap directly
+      // If script already loaded, call initMap directly
       window.initMap();
     }
     
-    // Cleanup function - don't try to remove DOM elements
+    // Simple cleanup that doesn't manipulate the DOM
     return () => {
-      // Only reset refs and state, don't manipulate DOM
-      mapInstanceRef.current = null;
+      // Just clean up our refs, let React handle the DOM
+      if (mapInstanceRef.current) {
+        mapInstanceRef.current = null;
+      }
     };
-  }, [mapLoaded]);
+  }, []);  // Empty dependency array - only run once
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
