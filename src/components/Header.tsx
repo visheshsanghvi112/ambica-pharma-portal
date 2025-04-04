@@ -43,7 +43,7 @@ const Header = () => {
         <div className="container flex justify-between items-center">
           {/* Logo */}
           <Link to="/" className="flex items-center">
-            <img src="/lovable-uploads/b829635b-d0e3-46ff-a0a9-ea07e3056b39.png" alt="Ambica Pharma Logo" className="h-12" />
+            <img src="/lovable-uploads/a5979ffb-180b-4225-a1e8-15425f28d262.png" alt="Ambica Pharma Logo" className="h-14" />
           </Link>
           
           {/* Desktop Navigation */}
@@ -73,7 +73,7 @@ const Header = () => {
               Contact Us
             </Link>
             <ThemeToggle />
-            <Button size="sm" className="bg-secondary hover:bg-secondary-light animate-pulse">
+            <Button size="sm" className="bg-gradient-to-r from-secondary to-primary hover:opacity-90 animate-pulse">
               Emergency Order
             </Button>
           </div>
@@ -122,7 +122,7 @@ const Header = () => {
             <Link to="/contact" className="font-medium text-primary hover:text-secondary py-2 border-b" onClick={toggleMenu}>
               Contact Us
             </Link>
-            <Button className="bg-secondary hover:bg-secondary-light w-full mt-4 animate-pulse">
+            <Button className="bg-gradient-to-r from-secondary to-primary hover:opacity-90 w-full mt-4 animate-pulse">
               Emergency Order
             </Button>
           </div>
