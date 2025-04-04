@@ -1,12 +1,14 @@
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Helmet } from "react-helmet-async";
 import { Button } from "@/components/ui/button";
 import { Label } from "@/components/ui/label";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
-import { MapPin, Phone, Mail, Clock } from "lucide-react";
+import { Card, CardContent } from "@/components/ui/card";
+import { MapPin, Phone, Mail, Clock, MessageCircle, Building, Send } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
+import { motion } from "framer-motion";
 
 const Contact = () => {
   const { toast } = useToast();
@@ -17,6 +19,88 @@ const Contact = () => {
     subject: "",
     message: ""
   });
+
+  const [mapLoaded, setMapLoaded] = useState(false);
+
+  useEffect(() => {
+    // Initialize map
+    const initializeMap = () => {
+      const mapScript = document.createElement('script');
+      mapScript.src = `https://maps.googleapis.com/maps/api/js?key=&callback=initMap`;
+      mapScript.async = true;
+      mapScript.defer = true;
+      
+      window.initMap = () => {
+        const mumbaiLocation = { lat: 18.9451, lng: 72.8234 };
+        const map = new window.google.maps.Map(document.getElementById("contact-map"), {
+          center: mumbaiLocation,
+          zoom: 15,
+          styles: [
+            {
+              "featureType": "all",
+              "elementType": "labels.text.fill",
+              "stylers": [{"saturation": 36}, {"color": "#333333"}, {"lightness": 40}]
+            },
+            {
+              "featureType": "all",
+              "elementType": "labels.text.stroke",
+              "stylers": [{"visibility": "on"}, {"color": "#ffffff"}, {"lightness": 16}]
+            },
+            {
+              "featureType": "all",
+              "elementType": "labels.icon",
+              "stylers": [{"visibility": "off"}]
+            },
+            {
+              "featureType": "administrative",
+              "elementType": "geometry.fill",
+              "stylers": [{"color": "#fefefe"}, {"lightness": 20}]
+            },
+            {
+              "featureType": "administrative",
+              "elementType": "geometry.stroke",
+              "stylers": [{"color": "#fefefe"}, {"lightness": 17}, {"weight": 1.2}]
+            }
+          ]
+        });
+        
+        const marker = new window.google.maps.Marker({
+          position: mumbaiLocation,
+          map: map,
+          title: "Ambica Pharma Office",
+          animation: window.google.maps.Animation.DROP
+        });
+        
+        const infowindow = new window.google.maps.InfoWindow({
+          content: `
+            <div style="padding: 10px; max-width: 200px;">
+              <h3 style="margin: 0; font-size: 16px; color: #2B4D82; font-weight: bold;">Ambica Pharma</h3>
+              <p style="margin: 5px 0 0; font-size: 12px;">
+                22 to 25, 2nd Floor, Chapsey Building, Kalbadevi, Mumbai - 400002
+              </p>
+            </div>
+          `
+        });
+        
+        marker.addListener("click", () => {
+          infowindow.open(map, marker);
+        });
+        
+        setMapLoaded(true);
+      };
+      
+      document.head.appendChild(mapScript);
+    };
+    
+    if (!mapLoaded) {
+      initializeMap();
+    }
+    
+    return () => {
+      // Clean up
+      window.initMap = undefined;
+    };
+  }, [mapLoaded]);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
@@ -44,175 +128,263 @@ const Contact = () => {
     });
   };
 
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: { 
+      opacity: 1,
+      transition: { 
+        duration: 0.6,
+        when: "beforeChildren",
+        staggerChildren: 0.2
+      }
+    }
+  };
+
+  const itemVariants = {
+    hidden: { y: 20, opacity: 0 },
+    visible: { 
+      y: 0, 
+      opacity: 1,
+      transition: { duration: 0.4 }
+    }
+  };
+
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-background pt-24 pb-16">
       <Helmet>
         <title>Contact Us | Ambica Pharma</title>
         <meta name="description" content="Get in touch with Ambica Pharma for inquiries, partnerships, or support." />
       </Helmet>
       
       {/* Hero Section */}
-      <section className="py-16 bg-primary/10">
+      <motion.section 
+        className="py-16 bg-gradient-to-r from-primary/10 to-secondary/10 dark:from-primary/20 dark:to-secondary/20 rounded-b-3xl mb-10"
+        initial={{ opacity: 0, y: -20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6 }}
+      >
         <div className="container">
-          <h1 className="text-4xl md:text-5xl font-display font-bold text-primary mb-6">Contact Us</h1>
-          <p className="text-lg text-gray-600 max-w-3xl">
-            Have questions or need assistance? Reach out to our team, and we'll be happy to help you.
-          </p>
+          <div className="max-w-3xl mx-auto text-center">
+            <motion.h1 
+              className="text-4xl md:text-5xl font-display font-bold text-primary mb-6 relative inline-block"
+              initial={{ opacity: 0, scale: 0.9 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.5, delay: 0.2 }}
+            >
+              <span className="relative z-10">Get In Touch</span>
+              <span className="absolute -bottom-2 left-0 w-full h-3 bg-secondary/20 rounded-full -z-0"></span>
+            </motion.h1>
+            <motion.p 
+              className="text-lg text-muted-foreground"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.5, delay: 0.4 }}
+            >
+              Have questions about our products or services? Our team is here to help you.
+            </motion.p>
+          </div>
         </div>
-      </section>
+      </motion.section>
       
       {/* Contact Information and Form */}
-      <section className="py-16">
-        <div className="container">
-          <div className="grid lg:grid-cols-3 gap-10">
-            {/* Contact Information */}
-            <div className="lg:col-span-1 space-y-8">
-              <div>
-                <h2 className="text-2xl font-display font-semibold text-primary mb-6">Get In Touch</h2>
-                <p className="text-gray-600 mb-8">
-                  Feel free to contact us for any inquiries about our products, services, or partnerships. Our team is ready to assist you.
-                </p>
-              </div>
-              
-              <div className="space-y-6">
-                <div className="flex items-start">
-                  <MapPin className="w-5 h-5 text-primary shrink-0 mt-1 mr-3" />
-                  <div>
-                    <h3 className="font-medium text-gray-900">Registered Office</h3>
-                    <p className="text-gray-600 mt-1">
-                      22 to 25, 2nd Floor, Chapsey Building, 72/78, Shamaldas Gandhi Marg, Kalbadevi, Mumbai, Maharashtra-400 002
-                    </p>
+      <motion.section 
+        className="container mb-16"
+        variants={containerVariants}
+        initial="hidden"
+        animate="visible"
+      >
+        <div className="grid lg:grid-cols-12 gap-10">
+          {/* Contact Information */}
+          <motion.div 
+            className="lg:col-span-4 space-y-8"
+            variants={itemVariants}
+          >
+            <motion.div variants={itemVariants}>
+              <Card className="overflow-hidden border-primary/5 dark:border-primary/10 shadow-lg dark:shadow-primary/5">
+                <CardContent className="p-0">
+                  <div className="h-40 bg-gradient-to-r from-primary/80 to-secondary/80 flex items-center justify-center p-6">
+                    <MessageCircle className="h-20 w-20 text-white/90" strokeWidth={1.5} />
                   </div>
-                </div>
-                
-                <div className="flex items-start">
-                  <Phone className="w-5 h-5 text-primary shrink-0 mt-1 mr-3" />
-                  <div>
-                    <h3 className="font-medium text-gray-900">Phone Numbers</h3>
-                    <p className="text-gray-600 mt-1">
-                      +91 9967006091, 022 48256677
-                    </p>
+                  <div className="p-6 space-y-6">
+                    <div className="flex items-start space-x-4">
+                      <MapPin className="w-5 h-5 text-primary shrink-0 mt-1" />
+                      <div>
+                        <h3 className="font-medium text-foreground">Registered Office</h3>
+                        <p className="text-muted-foreground text-sm mt-1">
+                          22 to 25, 2nd Floor, Chapsey Building, 72/78, Shamaldas Gandhi Marg, Kalbadevi, Mumbai, Maharashtra-400 002
+                        </p>
+                      </div>
+                    </div>
+                    
+                    <div className="flex items-start space-x-4">
+                      <Building className="w-5 h-5 text-primary shrink-0 mt-1" />
+                      <div>
+                        <h3 className="font-medium text-foreground">Warehouse</h3>
+                        <p className="text-muted-foreground text-sm mt-1">
+                          Gala No. 1, First Floor, Building D8, Shree Arihant Compound, Reti Bander Road, Kalher, Bhiwandi (Thane) - 421302
+                        </p>
+                      </div>
+                    </div>
+                    
+                    <div className="flex items-start space-x-4">
+                      <Phone className="w-5 h-5 text-primary shrink-0 mt-1" />
+                      <div>
+                        <h3 className="font-medium text-foreground">Phone Numbers</h3>
+                        <p className="text-muted-foreground text-sm mt-1">
+                          +91 9967006091, 022 48256677<br />
+                          Warehouse: +91 70455 94431
+                        </p>
+                      </div>
+                    </div>
+                    
+                    <div className="flex items-start space-x-4">
+                      <Mail className="w-5 h-5 text-primary shrink-0 mt-1" />
+                      <div>
+                        <h3 className="font-medium text-foreground">Email</h3>
+                        <p className="text-muted-foreground text-sm mt-1">
+                          ambicapharma@gmail.com<br />
+                          info@ambicapharma.net
+                        </p>
+                      </div>
+                    </div>
+                    
+                    <div className="flex items-start space-x-4">
+                      <Clock className="w-5 h-5 text-primary shrink-0 mt-1" />
+                      <div>
+                        <h3 className="font-medium text-foreground">Business Hours</h3>
+                        <p className="text-muted-foreground text-sm mt-1">
+                          Monday - Saturday: 9:00 AM - 6:00 PM<br />
+                          Sunday: Closed
+                        </p>
+                      </div>
+                    </div>
                   </div>
-                </div>
-                
-                <div className="flex items-start">
-                  <Mail className="w-5 h-5 text-primary shrink-0 mt-1 mr-3" />
-                  <div>
-                    <h3 className="font-medium text-gray-900">Email</h3>
-                    <p className="text-gray-600 mt-1">
-                      ambicapharma@gmail.com
-                    </p>
+                </CardContent>
+              </Card>
+            </motion.div>
+          </motion.div>
+          
+          {/* Contact Form */}
+          <motion.div 
+            className="lg:col-span-8"
+            variants={itemVariants}
+          >
+            <Card className="border-primary/5 dark:border-primary/10 shadow-lg dark:shadow-primary/5 overflow-hidden">
+              <div className="h-2 bg-gradient-to-r from-primary to-secondary"></div>
+              <CardContent className="p-8">
+                <h2 className="text-2xl font-display font-semibold text-primary mb-6 flex items-center">
+                  <Send className="w-5 h-5 mr-2" /> Send Us a Message
+                </h2>
+                <form onSubmit={handleSubmit} className="space-y-6">
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div className="space-y-2">
+                      <Label htmlFor="name" className="text-foreground">Full Name</Label>
+                      <Input 
+                        id="name"
+                        name="name"
+                        value={formData.name}
+                        onChange={handleChange}
+                        placeholder="John Doe"
+                        className="border-input/50 focus:border-primary"
+                        required
+                      />
+                    </div>
+                    
+                    <div className="space-y-2">
+                      <Label htmlFor="email" className="text-foreground">Email Address</Label>
+                      <Input 
+                        id="email"
+                        name="email"
+                        type="email"
+                        value={formData.email}
+                        onChange={handleChange}
+                        placeholder="john@example.com"
+                        className="border-input/50 focus:border-primary"
+                        required
+                      />
+                    </div>
                   </div>
-                </div>
-                
-                <div className="flex items-start">
-                  <Clock className="w-5 h-5 text-primary shrink-0 mt-1 mr-3" />
-                  <div>
-                    <h3 className="font-medium text-gray-900">Business Hours</h3>
-                    <p className="text-gray-600 mt-1">
-                      Monday - Saturday: 9:00 AM - 6:00 PM<br />
-                      Sunday: Closed
-                    </p>
+                  
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div className="space-y-2">
+                      <Label htmlFor="phone" className="text-foreground">Phone Number</Label>
+                      <Input 
+                        id="phone"
+                        name="phone"
+                        value={formData.phone}
+                        onChange={handleChange}
+                        placeholder="+91 98765 43210"
+                        className="border-input/50 focus:border-primary"
+                      />
+                    </div>
+                    
+                    <div className="space-y-2">
+                      <Label htmlFor="subject" className="text-foreground">Subject</Label>
+                      <Input 
+                        id="subject"
+                        name="subject"
+                        value={formData.subject}
+                        onChange={handleChange}
+                        placeholder="Product Inquiry"
+                        className="border-input/50 focus:border-primary"
+                        required
+                      />
+                    </div>
                   </div>
-                </div>
-              </div>
-            </div>
-            
-            {/* Contact Form */}
-            <div className="lg:col-span-2 bg-white rounded-lg shadow-md p-8">
-              <h2 className="text-2xl font-display font-semibold text-primary mb-6">Send Us a Message</h2>
-              <form onSubmit={handleSubmit} className="space-y-6">
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                  
                   <div className="space-y-2">
-                    <Label htmlFor="name">Full Name</Label>
-                    <Input 
-                      id="name"
-                      name="name"
-                      value={formData.name}
+                    <Label htmlFor="message" className="text-foreground">Message</Label>
+                    <Textarea 
+                      id="message"
+                      name="message"
+                      value={formData.message}
                       onChange={handleChange}
-                      placeholder="John Doe"
+                      placeholder="Please write your message here..."
+                      rows={5}
+                      className="border-input/50 focus:border-primary resize-none"
                       required
                     />
                   </div>
                   
-                  <div className="space-y-2">
-                    <Label htmlFor="email">Email Address</Label>
-                    <Input 
-                      id="email"
-                      name="email"
-                      type="email"
-                      value={formData.email}
-                      onChange={handleChange}
-                      placeholder="john@example.com"
-                      required
-                    />
-                  </div>
-                </div>
-                
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                  <div className="space-y-2">
-                    <Label htmlFor="phone">Phone Number</Label>
-                    <Input 
-                      id="phone"
-                      name="phone"
-                      value={formData.phone}
-                      onChange={handleChange}
-                      placeholder="+91 98765 43210"
-                    />
-                  </div>
-                  
-                  <div className="space-y-2">
-                    <Label htmlFor="subject">Subject</Label>
-                    <Input 
-                      id="subject"
-                      name="subject"
-                      value={formData.subject}
-                      onChange={handleChange}
-                      placeholder="Product Inquiry"
-                      required
-                    />
-                  </div>
-                </div>
-                
-                <div className="space-y-2">
-                  <Label htmlFor="message">Message</Label>
-                  <Textarea 
-                    id="message"
-                    name="message"
-                    value={formData.message}
-                    onChange={handleChange}
-                    placeholder="Please write your message here..."
-                    rows={5}
-                    required
-                  />
-                </div>
-                
-                <Button type="submit" className="bg-primary hover:bg-primary/90 w-full md:w-auto">
-                  Send Message
-                </Button>
-              </form>
-            </div>
-          </div>
+                  <motion.div
+                    whileHover={{ scale: 1.02 }}
+                    whileTap={{ scale: 0.98 }}
+                  >
+                    <Button 
+                      type="submit" 
+                      className="bg-gradient-to-r from-primary to-secondary text-white hover:opacity-90 transition-all duration-300 w-full md:w-auto"
+                    >
+                      Send Message
+                    </Button>
+                  </motion.div>
+                </form>
+              </CardContent>
+            </Card>
+          </motion.div>
         </div>
-      </section>
+      </motion.section>
       
       {/* Map Section */}
-      <section className="py-16 bg-gray-50">
-        <div className="container">
-          <h2 className="text-2xl font-display font-semibold text-primary mb-6 text-center">Our Location</h2>
-          <div className="rounded-lg overflow-hidden shadow-md h-96">
-            <iframe 
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3773.7325769608624!2d72.82340681488443!3d18.945210987166785!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be7ce1ceef8d381%3A0x42902ab20a1b1acf!2sKalbadevi%2C%20Mumbai%2C%20Maharashtra!5e0!3m2!1sen!2sin!4v1625481302348!5m2!1sen!2sin" 
-              width="100%" 
-              height="100%" 
-              style={{ border: 0 }} 
-              allowFullScreen 
-              loading="lazy" 
-              title="Ambica Pharma Office Location"
-            ></iframe>
-          </div>
-        </div>
-      </section>
+      <motion.section 
+        className="container mb-16"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 0.6, delay: 0.8 }}
+      >
+        <Card className="border-primary/5 dark:border-primary/10 shadow-lg dark:shadow-primary/5 overflow-hidden">
+          <div className="h-2 bg-gradient-to-r from-secondary to-primary"></div>
+          <CardContent className="p-0">
+            <h2 className="sr-only">Our Location</h2>
+            <div id="contact-map" className="h-[600px] w-full bg-muted/30 relative">
+              {!mapLoaded && (
+                <div className="absolute inset-0 flex items-center justify-center">
+                  <div className="animate-spin w-8 h-8 border-4 border-primary border-t-transparent rounded-full"></div>
+                </div>
+              )}
+            </div>
+          </CardContent>
+        </Card>
+      </motion.section>
     </div>
   );
 };

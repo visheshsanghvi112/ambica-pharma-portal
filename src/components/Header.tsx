@@ -73,6 +73,9 @@ const Header = () => {
               </DropdownMenuTrigger>
               <DropdownMenuContent className="bg-background/95 backdrop-blur-md border border-border dark:border-primary/20 p-2 w-48">
                 <DropdownMenuItem asChild>
+                  <Link to="/contact" className="w-full cursor-pointer">Contact Page</Link>
+                </DropdownMenuItem>
+                <DropdownMenuItem asChild>
                   <Link to="/blog" className="w-full cursor-pointer">Blog</Link>
                 </DropdownMenuItem>
                 <DropdownMenuItem asChild>
@@ -86,9 +89,6 @@ const Header = () => {
                 </DropdownMenuItem>
                 <DropdownMenuItem asChild>
                   <Link to="/privacy" className="w-full cursor-pointer">Privacy Policy</Link>
-                </DropdownMenuItem>
-                <DropdownMenuItem asChild>
-                  <Link to="/contact" className="w-full cursor-pointer">Contact Page</Link>
                 </DropdownMenuItem>
               </DropdownMenuContent>
             </DropdownMenu>
