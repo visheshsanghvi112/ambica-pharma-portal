@@ -4,7 +4,7 @@ import HeroSection from "../components/HeroSection";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
-import { CheckCircle, Heart, Tablet, Brain, Shield, Lungs, Pill, Baby, Eye, MessageCircle } from "lucide-react";
+import { CheckCircle, Heart, Tablet, Brain, Shield, Pill, Baby, Eye, MessageCircle } from "lucide-react";
 import Statistics from "../components/Statistics";
 import Testimonials from "../components/Testimonials";
 import { Card, CardContent } from "@/components/ui/card";
@@ -35,7 +35,7 @@ const productCategories = [
   {
     title: "Respiratory",
     description: "Medicines for asthma, COPD, and other respiratory conditions",
-    icon: <Lungs className="h-12 w-12 text-cyan-500" />
+    icon: <Shield className="h-12 w-12 text-cyan-500" />
   },
   {
     title: "Gastrointestinal",
