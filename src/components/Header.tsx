@@ -1,6 +1,5 @@
-
-import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import React, { useState, useEffect } from "react";
+import { Link, useLocation } from "react-router-dom";
 import { Menu, X, Phone, Mail, ChevronDown } from "lucide-react";
 import { Button } from "./ui/button";
 import { cn } from "@/lib/utils";
@@ -15,181 +14,159 @@ import {
 const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
-  
-  // Handle scroll effect for header
-  React.useEffect(() => {
-    const handleScroll = () => {
-      if (window.scrollY > 50) {
-        setScrolled(true);
-      } else {
-        setScrolled(false);
-      }
-    };
-    
-    window.addEventListener("scroll", handleScroll);
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-    };
-  }, []);
-  
-  const toggleMenu = () => {
-    setIsOpen(!isOpen);
-  };
+  const location = useLocation();
 
-  // Handle closing menu when clicking a link in mobile view
-  const handleMobileNavClick = () => {
+  useEffect(() => {
+    const handleScroll = () => setScrolled(window.scrollY > 50);
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  // Scroll lock when sidebar is open
+  useEffect(() => {
     if (isOpen) {
-      setIsOpen(false);
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "";
     }
-  };
+  }, [isOpen]);
+
+  const toggleMenu = () => setIsOpen((prev) => !prev);
+  const closeMenu = () => setIsOpen(false);
+
+  const isActive = (path: string) => location.pathname === path;
 
   return (
-    <header className="w-full z-50">
-      {/* Main navigation */}
-      <nav 
-        className={cn(
-          "py-4 transition-all duration-300 border-b", 
-          scrolled ? "bg-background/95 backdrop-blur-md shadow-sm" : "bg-background/80 backdrop-blur-sm border-transparent",
-          "dark:bg-background/95"
-        )}
-      >
+    <header className="w-full z-50 relative">
+      <nav className={cn(
+        "py-4 transition-all duration-300 border-b",
+        scrolled
+          ? "bg-background/95 backdrop-blur-md shadow-sm"
+          : "bg-background/80 backdrop-blur-sm border-transparent"
+      )}>
         <div className="container flex justify-between items-center">
           {/* Logo */}
           <Link to="/" className="flex items-center">
-            <img 
-              src="/lovable-uploads/a5979ffb-180b-4225-a1e8-15425f28d262.png" 
-              alt="Ambica Pharma Logo" 
-              className="h-14 transition-all duration-300 hover:scale-105 dark:bg-white/10 dark:p-1 dark:rounded-md" 
+            <img
+              src="/lovable-uploads/a5979ffb-180b-4225-a1e8-15425f28d262.png"
+              alt="Ambica Pharma Logo"
+              className="h-14 transition-all duration-300 hover:scale-105 dark:bg-white/10 dark:p-1 dark:rounded-md"
             />
           </Link>
-          
+
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center space-x-6">
-            <Link to="/" className="font-medium text-primary hover:text-secondary transition-colors">
+            <Link to="/" className={cn("font-medium", isActive("/") && "text-secondary")}>
               Home
             </Link>
-            <Link to="/about" className="font-medium text-primary hover:text-secondary transition-colors">
+            <Link to="/about" className={cn("font-medium", isActive("/about") && "text-secondary")}>
               About Us
             </Link>
-            
-            {/* Teams Dropdown */}
+
             <DropdownMenu>
-              <DropdownMenuTrigger className="flex items-center font-medium text-primary hover:text-secondary transition-colors focus:outline-none">
-                <span>Our Team</span>
-                <ChevronDown className="ml-1 h-4 w-4" />
+              <DropdownMenuTrigger className="flex items-center font-medium">
+                <span>Our Team</span><ChevronDown className="ml-1 h-4 w-4" />
               </DropdownMenuTrigger>
-              <DropdownMenuContent className="bg-background/95 backdrop-blur-md border border-border dark:border-primary/20 p-2 w-48">
-                <DropdownMenuItem asChild>
-                  <Link to="/team" className="w-full cursor-pointer">Our Teams</Link>
-                </DropdownMenuItem>
+              <DropdownMenuContent className="bg-background/95 p-2 w-48">
+                <DropdownMenuItem asChild><Link to="/team">Our Teams</Link></DropdownMenuItem>
               </DropdownMenuContent>
             </DropdownMenu>
-            
-            {/* Contact Us Dropdown */}
+
             <DropdownMenu>
-              <DropdownMenuTrigger className="flex items-center font-medium text-primary hover:text-secondary transition-colors focus:outline-none">
-                <span>Contact Us</span>
-                <ChevronDown className="ml-1 h-4 w-4" />
+              <DropdownMenuTrigger className="flex items-center font-medium">
+                <span>Contact Us</span><ChevronDown className="ml-1 h-4 w-4" />
               </DropdownMenuTrigger>
-              <DropdownMenuContent className="bg-background/95 backdrop-blur-md border border-border dark:border-primary/20 p-2 w-48">
-                <DropdownMenuItem asChild>
-                  <Link to="/contact" className="w-full cursor-pointer">Contact Page</Link>
-                </DropdownMenuItem>
-                <DropdownMenuItem asChild>
-                  <Link to="/blog" className="w-full cursor-pointer">Blog</Link>
-                </DropdownMenuItem>
-                <DropdownMenuItem asChild>
-                  <Link to="/careers" className="w-full cursor-pointer">Careers</Link>
-                </DropdownMenuItem>
-                <DropdownMenuItem asChild>
-                  <Link to="/csr" className="w-full cursor-pointer">CSR</Link>
-                </DropdownMenuItem>
-                <DropdownMenuItem asChild>
-                  <Link to="/faq" className="w-full cursor-pointer">FAQ</Link>
-                </DropdownMenuItem>
-                <DropdownMenuItem asChild>
-                  <Link to="/privacy" className="w-full cursor-pointer">Privacy Policy</Link>
-                </DropdownMenuItem>
+              <DropdownMenuContent className="bg-background/95 p-2 w-48">
+                {["/contact", "/blog", "/careers", "/csr", "/faq", "/privacy"].map(path => (
+                  <DropdownMenuItem key={path} asChild>
+                    <Link to={path}>{path.slice(1).replace("-", " ")}</Link>
+                  </DropdownMenuItem>
+                ))}
               </DropdownMenuContent>
             </DropdownMenu>
-            
+
             <ThemeToggle />
-            <Button size="sm" className="bg-gradient-to-r from-secondary to-primary hover:opacity-90 animate-pulse">
+            <Button size="sm" className="bg-gradient-to-r from-secondary to-primary animate-pulse">
               Emergency Order
             </Button>
           </div>
-          
+
           {/* Mobile menu button */}
           <div className="md:hidden flex items-center space-x-2">
             <ThemeToggle />
-            <button 
-              className="md:hidden flex items-center text-primary"
-              onClick={toggleMenu}
-              aria-label={isOpen ? "Close menu" : "Open menu"}
-            >
+            <button onClick={toggleMenu} className="text-primary">
               {isOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
             </button>
           </div>
         </div>
-        
-        {/* Mobile Navigation Menu */}
-        {isOpen && (
-          <div 
-            className={cn(
-              "fixed inset-y-0 right-0 bg-background/95 backdrop-blur-sm shadow-xl p-6 w-64 transform transition-transform z-50",
-              isOpen ? "translate-x-0" : "translate-x-full"
-            )}
-          >
-            <div className="flex flex-col space-y-4 mt-10">
-              <Link to="/" className="font-medium text-primary hover:text-secondary py-2 border-b" onClick={handleMobileNavClick}>
-                Home
+      </nav>
+
+      {/* Sidebar & Overlay */}
+      <div className={cn(
+        "fixed inset-0 z-40 transition-all duration-300",
+        isOpen ? "visible" : "invisible pointer-events-none"
+      )}>
+        {/* Backdrop */}
+        <div
+          className={cn(
+            "absolute inset-0 bg-black/50 backdrop-blur-sm transition-opacity duration-300",
+            isOpen ? "opacity-100" : "opacity-0"
+          )}
+          onClick={closeMenu}
+        />
+
+        {/* Sidebar */}
+        <div className={cn(
+          "absolute right-0 top-0 h-full w-72 bg-background shadow-2xl p-6 z-50 transition-transform duration-300 ease-in-out flex flex-col",
+          isOpen ? "translate-x-0" : "translate-x-full"
+        )}>
+          {/* Close button inside sidebar */}
+          <button className="mb-6 self-end text-muted-foreground" onClick={closeMenu}>
+            <X className="h-5 w-5" />
+          </button>
+
+          {/* Menu Items */}
+          <nav className="flex flex-col space-y-4">
+            {[
+              { path: "/", label: "Home" },
+              { path: "/about", label: "About Us" },
+              { path: "/team", label: "Our Team" },
+              { path: "/contact", label: "Contact Us" },
+              { path: "/blog", label: "Blog" },
+              { path: "/careers", label: "Careers" },
+              { path: "/csr", label: "CSR" },
+              { path: "/faq", label: "FAQ" },
+              { path: "/privacy", label: "Privacy Policy" },
+            ].map(({ path, label }) => (
+              <Link
+                key={path}
+                to={path}
+                onClick={closeMenu}
+                className={cn(
+                  "font-medium text-primary border-b py-1",
+                  isActive(path) && "text-secondary font-semibold"
+                )}
+              >
+                {label}
               </Link>
-              <Link to="/about" className="font-medium text-primary hover:text-secondary py-2 border-b" onClick={handleMobileNavClick}>
-                About Us
-              </Link>
-              <Link to="/team" className="font-medium text-primary hover:text-secondary py-2 border-b" onClick={handleMobileNavClick}>
-                Our Team
-              </Link>
-              <Link to="/contact" className="font-medium text-primary hover:text-secondary py-2 border-b" onClick={handleMobileNavClick}>
-                Contact Us
-              </Link>
-              
-              <div className="pl-4 space-y-2">
-                <Link to="/blog" className="font-medium text-primary/90 hover:text-secondary block py-1" onClick={handleMobileNavClick}>
-                  Blog
-                </Link>
-                <Link to="/careers" className="font-medium text-primary/90 hover:text-secondary block py-1" onClick={handleMobileNavClick}>
-                  Careers
-                </Link>
-                <Link to="/csr" className="font-medium text-primary/90 hover:text-secondary block py-1" onClick={handleMobileNavClick}>
-                  CSR
-                </Link>
-                <Link to="/faq" className="font-medium text-primary/90 hover:text-secondary block py-1" onClick={handleMobileNavClick}>
-                  FAQ
-                </Link>
-                <Link to="/privacy" className="font-medium text-primary/90 hover:text-secondary block py-1" onClick={handleMobileNavClick}>
-                  Privacy Policy
-                </Link>
-              </div>
-              
-              <Button className="bg-gradient-to-r from-secondary to-primary hover:opacity-90 w-full mt-4 animate-pulse" onClick={handleMobileNavClick}>
-                Emergency Order
-              </Button>
+            ))}
+
+            <Button className="bg-gradient-to-r from-secondary to-primary mt-6 animate-pulse" onClick={closeMenu}>
+              Emergency Order
+            </Button>
+          </nav>
+
+          {/* Contact Info */}
+          <div className="mt-auto pt-8 space-y-2 text-sm text-muted-foreground">
+            <div className="flex items-center space-x-2">
+              <Phone className="h-4 w-4" /><span>+91 9967006091</span>
             </div>
-            
-            <div className="mt-8 space-y-3">
-              <div className="flex items-center space-x-2">
-                <Phone className="h-4 w-4 text-primary" />
-                <span className="text-sm">+91 9967006091</span>
-              </div>
-              <div className="flex items-center space-x-2">
-                <Mail className="h-4 w-4 text-primary" />
-                <span className="text-sm">ambicapharma@gmail.com</span>
-              </div>
+            <div className="flex items-center space-x-2">
+              <Mail className="h-4 w-4" /><span>ambicapharma@gmail.com</span>
             </div>
           </div>
-        )}
-      </nav>
+        </div>
+      </div>
     </header>
   );
 };

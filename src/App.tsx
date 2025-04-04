@@ -1,4 +1,3 @@
-
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
@@ -32,10 +31,13 @@ const App = () => (
           <BrowserRouter>
             <Helmet>
               <title>Ambica Pharma - Quality Pharmaceutical Solutions</title>
-              <meta name="description" content="Ambica Pharma is a leading manufacturer and distributor of pharmaceutical products with a global presence." />
+              <meta
+                name="description"
+                content="Ambica Pharma is a leading manufacturer and distributor of pharmaceutical products with a global presence."
+              />
             </Helmet>
             <Header />
-            <main className="pt-16">
+            <main>
               <Routes>
                 <Route path="/" element={<Index />} />
                 <Route path="/about" element={<About />} />
