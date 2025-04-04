@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect, useRef } from "react";
 import { Helmet } from "react-helmet-async";
 import { Button } from "@/components/ui/button";
@@ -40,14 +41,14 @@ const Contact = () => {
   const [mapLoaded, setMapLoaded] = useState(false);
   const mapRef = useRef<HTMLDivElement>(null);
   const mapInstanceRef = useRef<any>(null);
-  const scriptLoadingRef = useRef<boolean>(false);
+  const scriptLoadedRef = useRef(false);
 
   // Load Google Maps
   useEffect(() => {
-    // Skip if map already loaded or no map container
-    if (mapLoaded || !mapRef.current) return;
+    // Skip if map already loaded, script is loading, or no map container
+    if (mapLoaded || scriptLoadedRef.current || !mapRef.current) return;
     
-    // Create one global init function that won't be recreated
+    // Set a global initialization function
     if (typeof window.initMap !== 'function') {
       window.initMap = () => {
         if (!mapRef.current) return;
@@ -118,10 +119,9 @@ const Contact = () => {
       };
     }
     
-    // Check if script is already being loaded or exists
-    const existingScript = document.getElementById('google-maps-script');
-    if (!existingScript && !scriptLoadingRef.current) {
-      scriptLoadingRef.current = true;
+    // Only load script if it's not already present in the DOM
+    if (!document.getElementById('google-maps-script')) {
+      scriptLoadedRef.current = true;
       
       try {
         const script = document.createElement('script');
@@ -133,26 +133,23 @@ const Contact = () => {
         script.onerror = () => {
           console.error("Error loading Google Maps script");
           setMapLoaded(false);
-          scriptLoadingRef.current = false;
+          scriptLoadedRef.current = false;
         };
         
-        // Don't need to keep a ref to the script element itself
         document.head.appendChild(script);
       } catch (error) {
         console.error("Error creating Google Maps script:", error);
-        scriptLoadingRef.current = false;
+        scriptLoadedRef.current = false;
       }
     } else if (window.google && window.google.maps) {
       // If script is already loaded, just call initMap directly
       window.initMap();
     }
     
-    // Cleanup function - only clean up map instance, not DOM nodes
+    // Cleanup function - don't try to remove DOM elements
     return () => {
-      // Only need to nullify the map instance, not remove/alter DOM elements
-      if (mapInstanceRef.current) {
-        mapInstanceRef.current = null;
-      }
+      // Only reset refs and state, don't manipulate DOM
+      mapInstanceRef.current = null;
     };
   }, [mapLoaded]);
 
