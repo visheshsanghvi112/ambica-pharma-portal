@@ -2,13 +2,12 @@
 import React from "react";
 import { Helmet } from "react-helmet-async";
 import { motion } from "framer-motion";
-import { CheckCircle } from "lucide-react";
+import { CheckCircle, Award, Briefcase, Globe } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 import AboutSection from "../components/AboutSection";
 import MissionVision from "../components/MissionVision";
 import GlobalReach from "../components/GlobalReach";
-import Testimonials from "../components/Testimonials";
 
 const About = () => {
   return (
@@ -55,7 +54,7 @@ const About = () => {
               className="rounded-lg overflow-hidden"
             >
               <img 
-                src="https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" 
+                src="/lovable-uploads/c0f96c3b-a789-4906-be6d-0cae782624b8.png" 
                 alt="Mr. Dilip Jain - Founder & Chairman" 
                 className="w-full h-auto rounded-lg shadow-lg transform transition-transform duration-500 hover:scale-105"
               />
@@ -81,9 +80,20 @@ const About = () => {
               <p className="text-foreground/80">
                 Implementing his acquired professional skills to lay a strategic grid that ultimately catapulted the evolution of Johnlee Pharmaceuticals as a leading brand of pharmaceutical and life sciences domain, Mr. Dilip Jain has led the firm to focus on high growth potential segments like generic medicines.
               </p>
-              <p className="text-foreground/80 font-medium">
-                Mr. Dilip Jain's visionary leadership continues to drive Ambica Pharma's commitment to innovation, quality, and customer satisfaction, positioning the company as a key player in the pharmaceutical industry.
-              </p>
+              <div className="flex space-x-4 mt-6">
+                <div className="flex items-center space-x-2">
+                  <Award className="h-5 w-5 text-primary" />
+                  <span className="text-foreground/80 text-sm">ISO-9001-2015</span>
+                </div>
+                <div className="flex items-center space-x-2">
+                  <Briefcase className="h-5 w-5 text-primary" />
+                  <span className="text-foreground/80 text-sm">22+ Years Experience</span>
+                </div>
+                <div className="flex items-center space-x-2">
+                  <Globe className="h-5 w-5 text-primary" />
+                  <span className="text-foreground/80 text-sm">Global Presence</span>
+                </div>
+              </div>
             </motion.div>
           </div>
         </div>
@@ -207,7 +217,7 @@ const About = () => {
         </div>
       </section>
       
-      {/* Leadership */}
+      {/* Values */}
       <section className="py-16 bg-gradient-to-br from-primary/5 to-secondary/5 dark:from-primary/10 dark:to-secondary/10">
         <div className="container">
           <motion.h2
@@ -215,85 +225,6 @@ const About = () => {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
             viewport={{ once: true }} 
-            className="text-3xl font-display font-bold text-primary mb-10 text-center"
-          >
-            Our Leadership
-          </motion.h2>
-          <div className="grid md:grid-cols-3 gap-8">
-            {/* Leader 1 - Already displayed in the founder section above, this is just additional leadership */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.1 }}
-              viewport={{ once: true }}
-              className="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md hover:shadow-lg transition-all"
-            >
-              <img 
-                src="https://images.unsplash.com/photo-1568602471122-7832951cc4c5?ixlib=rb-1.2.1&auto=format&fit=crop&w=300&q=80" 
-                alt="Dr. Rajesh Kumar" 
-                className="w-32 h-32 rounded-full mx-auto mb-4 object-cover border-4 border-primary/20"
-              />
-              <h3 className="text-xl font-semibold text-primary text-center">Dr. Rajesh Kumar</h3>
-              <p className="text-foreground/60 text-center mb-4">Chief Operations Officer</p>
-              <p className="text-foreground/80 text-center">
-                With extensive experience in pharmaceutical operations, Dr. Kumar oversees all operational aspects of Ambica Pharma, ensuring efficiency and quality.
-              </p>
-            </motion.div>
-            
-            {/* Leader 2 */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.2 }}
-              viewport={{ once: true }}
-              className="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md hover:shadow-lg transition-all"
-            >
-              <img 
-                src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-1.2.1&auto=format&fit=crop&w=300&q=80" 
-                alt="Dr. Priya Patel" 
-                className="w-32 h-32 rounded-full mx-auto mb-4 object-cover border-4 border-primary/20"
-              />
-              <h3 className="text-xl font-semibold text-primary text-center">Dr. Priya Patel</h3>
-              <p className="text-foreground/60 text-center mb-4">Head of Research & Development</p>
-              <p className="text-foreground/80 text-center">
-                Dr. Patel leads our research and development efforts, driving innovation and ensuring our products meet the highest scientific standards.
-              </p>
-            </motion.div>
-            
-            {/* Leader 3 */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.3 }}
-              viewport={{ once: true }}
-              className="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md hover:shadow-lg transition-all"
-            >
-              <img 
-                src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-1.2.1&auto=format&fit=crop&w=300&q=80" 
-                alt="Sanjay Mehta" 
-                className="w-32 h-32 rounded-full mx-auto mb-4 object-cover border-4 border-primary/20"
-              />
-              <h3 className="text-xl font-semibold text-primary text-center">Sanjay Mehta</h3>
-              <p className="text-foreground/60 text-center mb-4">Chief Marketing Officer</p>
-              <p className="text-foreground/80 text-center">
-                With his extensive marketing expertise, Mr. Mehta has successfully established Ambica Pharma's presence across domestic and international markets.
-              </p>
-            </motion.div>
-          </div>
-        </div>
-      </section>
-      
-      {/* Testimonials (moved from index) */}
-      <Testimonials />
-      
-      {/* Values */}
-      <section className="py-16 bg-background">
-        <div className="container">
-          <motion.h2
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            viewport={{ once: true }}
             className="text-3xl font-display font-bold text-primary mb-10 text-center"
           >
             Our Core Values
