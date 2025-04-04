@@ -1,3 +1,4 @@
+
 import React, { useEffect, useRef } from 'react';
 
 interface MapComponentProps {
@@ -14,13 +15,24 @@ const MapComponent: React.FC<MapComponentProps> = ({ lat, lng, zoom = 15 }) => {
   useEffect(() => {
     if (!window.google || !mapRef.current) return;
 
-    // Create the map only once
-    googleMapRef.current = new window.google.maps.Map(mapRef.current, {
-      center: { lat, lng },
-      zoom,
-    });
+    // Initialize map if it doesn't exist
+    if (!googleMapRef.current) {
+      googleMapRef.current = new window.google.maps.Map(mapRef.current, {
+        center: { lat, lng },
+        zoom,
+      });
+    } else {
+      // Update existing map center and zoom
+      googleMapRef.current.setCenter({ lat, lng });
+      googleMapRef.current.setZoom(zoom);
+    }
 
-    // Add marker
+    // Remove existing marker if it exists
+    if (markerRef.current) {
+      markerRef.current.setMap(null);
+    }
+
+    // Add new marker
     markerRef.current = new window.google.maps.Marker({
       position: { lat, lng },
       map: googleMapRef.current,
@@ -28,21 +40,14 @@ const MapComponent: React.FC<MapComponentProps> = ({ lat, lng, zoom = 15 }) => {
 
     // Clean up function
     return () => {
-      // Remove marker
+      // Only remove marker, don't try to manipulate the map DOM directly
       if (markerRef.current) {
         markerRef.current.setMap(null);
         markerRef.current = null;
       }
-
-      // Remove map
-      if (googleMapRef.current) {
-        googleMapRef.current = null;
-      }
-
-      // Clear map div manually (just to be safe, avoid removeChild errors)
-      if (mapRef.current) {
-        mapRef.current.innerHTML = '';
-      }
+      
+      // Don't manually clear the map div - this is causing the error
+      // Let React handle the DOM manipulation
     };
   }, [lat, lng, zoom]);
 

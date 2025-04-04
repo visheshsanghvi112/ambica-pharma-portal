@@ -1,5 +1,4 @@
-
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Helmet } from "react-helmet-async";
 import { Button } from "@/components/ui/button";
 import { Label } from "@/components/ui/label";
@@ -84,6 +83,36 @@ const Contact = () => {
       transition: { duration: 0.4 }
     }
   };
+
+  // Load Google Maps script
+  useEffect(() => {
+    // Ensure the script is only added once
+    if (!document.getElementById('google-maps-script')) {
+      // Define the initMap function
+      window.initMap = () => {
+        console.log("Google Maps API loaded");
+      };
+
+      // Create script element
+      const script = document.createElement('script');
+      script.id = 'google-maps-script';
+      script.src = `https://maps.googleapis.com/maps/api/js?key=${process.env.GOOGLE_MAPS_API_KEY || ''}&callback=initMap`;
+      script.async = true;
+      script.defer = true;
+      
+      // Add script to document
+      document.head.appendChild(script);
+      
+      return () => {
+        // Clean up script on unmount
+        const scriptElement = document.getElementById('google-maps-script');
+        if (scriptElement) {
+          document.head.removeChild(scriptElement);
+        }
+        delete window.initMap;
+      };
+    }
+  }, []);
 
   return (
     <div className="min-h-screen bg-background pt-24 pb-16">
@@ -303,9 +332,9 @@ const Contact = () => {
         transition={{ duration: 0.6, delay: 0.8 }}
       >
         <MapComponent 
-          location={{ lat: 18.9451, lng: 72.8234 }}
-          title="Ambica Pharma Office"
-          address="22 to 25, 2nd Floor, Chapsey Building, Kalbadevi, Mumbai - 400002"
+          lat={18.9451}
+          lng={72.8234}
+          zoom={15}
         />
       </motion.section>
     </div>
