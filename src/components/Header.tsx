@@ -36,6 +36,13 @@ const Header = () => {
     setIsOpen(!isOpen);
   };
 
+  // Handle closing menu when clicking a link in mobile view
+  const handleMobileNavClick = () => {
+    if (isOpen) {
+      setIsOpen(false);
+    }
+  };
+
   return (
     <header className="w-full fixed top-0 z-50">
       {/* Main navigation */}
@@ -105,6 +112,7 @@ const Header = () => {
             <button 
               className="md:hidden flex items-center text-primary"
               onClick={toggleMenu}
+              aria-label={isOpen ? "Close menu" : "Open menu"}
             >
               {isOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
             </button>
@@ -112,57 +120,59 @@ const Header = () => {
         </div>
         
         {/* Mobile Navigation Menu */}
-        <div 
-          className={cn(
-            "fixed inset-y-0 right-0 bg-background/95 backdrop-blur-sm shadow-xl p-6 w-64 transform transition-transform z-50",
-            isOpen ? "translate-x-0" : "translate-x-full"
-          )}
-        >
-          <div className="flex flex-col space-y-4 mt-10">
-            <Link to="/" className="font-medium text-primary hover:text-secondary py-2 border-b" onClick={toggleMenu}>
-              Home
-            </Link>
-            <Link to="/about" className="font-medium text-primary hover:text-secondary py-2 border-b" onClick={toggleMenu}>
-              About Us
-            </Link>
-            <Link to="/contact" className="font-medium text-primary hover:text-secondary py-2 border-b" onClick={toggleMenu}>
-              Contact Us
-            </Link>
-            
-            <div className="pl-4 space-y-2">
-              <Link to="/blog" className="font-medium text-primary/90 hover:text-secondary block py-1" onClick={toggleMenu}>
-                Blog
+        {isOpen && (
+          <div 
+            className={cn(
+              "fixed inset-y-0 right-0 bg-background/95 backdrop-blur-sm shadow-xl p-6 w-64 transform transition-transform z-50",
+              isOpen ? "translate-x-0" : "translate-x-full"
+            )}
+          >
+            <div className="flex flex-col space-y-4 mt-10">
+              <Link to="/" className="font-medium text-primary hover:text-secondary py-2 border-b" onClick={handleMobileNavClick}>
+                Home
               </Link>
-              <Link to="/careers" className="font-medium text-primary/90 hover:text-secondary block py-1" onClick={toggleMenu}>
-                Careers
+              <Link to="/about" className="font-medium text-primary hover:text-secondary py-2 border-b" onClick={handleMobileNavClick}>
+                About Us
               </Link>
-              <Link to="/csr" className="font-medium text-primary/90 hover:text-secondary block py-1" onClick={toggleMenu}>
-                CSR
+              <Link to="/contact" className="font-medium text-primary hover:text-secondary py-2 border-b" onClick={handleMobileNavClick}>
+                Contact Us
               </Link>
-              <Link to="/faq" className="font-medium text-primary/90 hover:text-secondary block py-1" onClick={toggleMenu}>
-                FAQ
-              </Link>
-              <Link to="/privacy" className="font-medium text-primary/90 hover:text-secondary block py-1" onClick={toggleMenu}>
-                Privacy Policy
-              </Link>
+              
+              <div className="pl-4 space-y-2">
+                <Link to="/blog" className="font-medium text-primary/90 hover:text-secondary block py-1" onClick={handleMobileNavClick}>
+                  Blog
+                </Link>
+                <Link to="/careers" className="font-medium text-primary/90 hover:text-secondary block py-1" onClick={handleMobileNavClick}>
+                  Careers
+                </Link>
+                <Link to="/csr" className="font-medium text-primary/90 hover:text-secondary block py-1" onClick={handleMobileNavClick}>
+                  CSR
+                </Link>
+                <Link to="/faq" className="font-medium text-primary/90 hover:text-secondary block py-1" onClick={handleMobileNavClick}>
+                  FAQ
+                </Link>
+                <Link to="/privacy" className="font-medium text-primary/90 hover:text-secondary block py-1" onClick={handleMobileNavClick}>
+                  Privacy Policy
+                </Link>
+              </div>
+              
+              <Button className="bg-gradient-to-r from-secondary to-primary hover:opacity-90 w-full mt-4 animate-pulse" onClick={handleMobileNavClick}>
+                Emergency Order
+              </Button>
             </div>
             
-            <Button className="bg-gradient-to-r from-secondary to-primary hover:opacity-90 w-full mt-4 animate-pulse">
-              Emergency Order
-            </Button>
-          </div>
-          
-          <div className="mt-8 space-y-3">
-            <div className="flex items-center space-x-2">
-              <Phone className="h-4 w-4 text-primary" />
-              <span className="text-sm">+91 9967006091</span>
-            </div>
-            <div className="flex items-center space-x-2">
-              <Mail className="h-4 w-4 text-primary" />
-              <span className="text-sm">ambicapharma@gmail.com</span>
+            <div className="mt-8 space-y-3">
+              <div className="flex items-center space-x-2">
+                <Phone className="h-4 w-4 text-primary" />
+                <span className="text-sm">+91 9967006091</span>
+              </div>
+              <div className="flex items-center space-x-2">
+                <Mail className="h-4 w-4 text-primary" />
+                <span className="text-sm">ambicapharma@gmail.com</span>
+              </div>
             </div>
           </div>
-        </div>
+        )}
       </nav>
     </header>
   );

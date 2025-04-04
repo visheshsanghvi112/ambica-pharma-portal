@@ -1,5 +1,5 @@
 
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { Helmet } from "react-helmet-async";
 import { Button } from "@/components/ui/button";
 import { Label } from "@/components/ui/label";
@@ -9,6 +9,21 @@ import { Card, CardContent } from "@/components/ui/card";
 import { MapPin, Phone, Mail, Clock, MessageCircle, Building, Send } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 import { motion } from "framer-motion";
+
+// Declare the Google Maps types
+declare global {
+  interface Window {
+    initMap: () => void;
+    google: {
+      maps: {
+        Map: new (container: HTMLElement, options: any) => any;
+        Marker: new (options: any) => any;
+        InfoWindow: new (options: any) => any;
+        NavigationControl: new (options: any) => any;
+      };
+    };
+  }
+}
 
 const Contact = () => {
   const { toast } = useToast();
@@ -21,18 +36,44 @@ const Contact = () => {
   });
 
   const [mapLoaded, setMapLoaded] = useState(false);
+  const mapRef = useRef<HTMLDivElement>(null);
+  const mapInstanceRef = useRef<any>(null);
+  const mapScriptRef = useRef<HTMLScriptElement | null>(null);
+
+  useEffect(() => {
+    // Clean up function to prevent memory leaks
+    return () => {
+      // Clean up the Google Maps script if it exists
+      if (mapScriptRef.current && document.head.contains(mapScriptRef.current)) {
+        document.head.removeChild(mapScriptRef.current);
+      }
+      
+      // Remove the global initMap function
+      if (window.initMap) {
+        window.initMap = undefined as any;
+      }
+    };
+  }, []);
 
   useEffect(() => {
     // Initialize map
     const initializeMap = () => {
+      // Don't re-initialize if already loaded
+      if (mapLoaded || !mapRef.current) return;
+      
+      // Create script element
       const mapScript = document.createElement('script');
       mapScript.src = `https://maps.googleapis.com/maps/api/js?key=&callback=initMap`;
       mapScript.async = true;
       mapScript.defer = true;
+      mapScriptRef.current = mapScript;
       
+      // Define the initialization function
       window.initMap = () => {
+        if (!mapRef.current) return;
+        
         const mumbaiLocation = { lat: 18.9451, lng: 72.8234 };
-        const map = new window.google.maps.Map(document.getElementById("contact-map"), {
+        const mapInstance = new window.google.maps.Map(mapRef.current, {
           center: mumbaiLocation,
           zoom: 15,
           styles: [
@@ -64,9 +105,11 @@ const Contact = () => {
           ]
         });
         
+        mapInstanceRef.current = mapInstance;
+        
         const marker = new window.google.maps.Marker({
           position: mumbaiLocation,
-          map: map,
+          map: mapInstance,
           title: "Ambica Pharma Office",
           animation: window.google.maps.Animation.DROP
         });
@@ -83,23 +126,19 @@ const Contact = () => {
         });
         
         marker.addListener("click", () => {
-          infowindow.open(map, marker);
+          infowindow.open(mapInstance, marker);
         });
         
         setMapLoaded(true);
       };
       
+      // Add script to document
       document.head.appendChild(mapScript);
     };
     
     if (!mapLoaded) {
       initializeMap();
     }
-    
-    return () => {
-      // Clean up
-      window.initMap = undefined;
-    };
   }, [mapLoaded]);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -375,7 +414,11 @@ const Contact = () => {
           <div className="h-2 bg-gradient-to-r from-secondary to-primary"></div>
           <CardContent className="p-0">
             <h2 className="sr-only">Our Location</h2>
-            <div id="contact-map" className="h-[600px] w-full bg-muted/30 relative">
+            <div 
+              ref={mapRef}
+              id="contact-map" 
+              className="h-[600px] w-full bg-muted/30 relative"
+            >
               {!mapLoaded && (
                 <div className="absolute inset-0 flex items-center justify-center">
                   <div className="animate-spin w-8 h-8 border-4 border-primary border-t-transparent rounded-full"></div>
