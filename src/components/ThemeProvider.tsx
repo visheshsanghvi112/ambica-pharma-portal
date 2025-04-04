@@ -43,32 +43,11 @@ export function ThemeProvider({
         : "light";
 
       root.classList.add(systemTheme);
-      
-      // Update CSS variables for improved dark mode
-      if (systemTheme === 'dark') {
-        updateDarkModeColors(root);
-      }
       return;
     }
 
     root.classList.add(theme);
-    
-    // Update CSS variables for improved dark mode
-    if (theme === 'dark') {
-      updateDarkModeColors(root);
-    }
   }, [theme]);
-
-  // Function to update dark mode colors for better visibility
-  const updateDarkModeColors = (root: HTMLElement) => {
-    // Improved background and card colors for dark mode
-    root.style.setProperty('--card', '222 18% 18%');  // Slightly lighter card background
-    root.style.setProperty('--foreground', '210 40% 98%'); // Brighter text
-    root.style.setProperty('--secondary', '215 25% 27%');  // Improved secondary color
-    root.style.setProperty('--muted', '217 25% 25%');      // Better muted color
-    root.style.setProperty('--accent', '215 30% 30%');     // Enhanced accent
-    root.style.setProperty('--border', '215 25% 25%');     // Better borders
-  };
 
   const value = {
     theme,
