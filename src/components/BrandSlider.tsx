@@ -46,7 +46,7 @@ const BrandSlider: React.FC = () => {
             transition={{ 
               repeat: Infinity, 
               ease: "linear", 
-              duration: 40 
+              duration: 30 
             }}
           >
             {duplicatedBrands.map((brand, index) => (
@@ -54,7 +54,7 @@ const BrandSlider: React.FC = () => {
                 key={index} 
                 className="mx-6 flex flex-col items-center justify-center"
               >
-                <div className="w-44 h-44 bg-white dark:bg-gray-800 rounded-lg shadow-md hover:shadow-xl transition-all duration-300 p-4 flex items-center justify-center transform hover:scale-105 border border-primary/10">
+                <div className="w-52 h-52 bg-white dark:bg-gray-800 rounded-lg shadow-md hover:shadow-xl transition-all duration-300 p-4 flex items-center justify-center transform hover:scale-105 border border-primary/10">
                   <img 
                     src={brand.logo} 
                     alt={`${brand.name} logo`}

@@ -62,24 +62,25 @@ const Header = () => {
             <Link to="/about" className={cn("font-medium", isActive("/about") && "text-secondary")}>
               About Us
             </Link>
-
-            <DropdownMenu>
-              <DropdownMenuTrigger className="flex items-center font-medium">
-                <span>Our Team</span><ChevronDown className="ml-1 h-4 w-4" />
-              </DropdownMenuTrigger>
-              <DropdownMenuContent className="bg-background/95 p-2 w-48">
-                <DropdownMenuItem asChild><Link to="/team">Our Teams</Link></DropdownMenuItem>
-              </DropdownMenuContent>
-            </DropdownMenu>
+            <Link to="/team" className={cn("font-medium", isActive("/team") && "text-secondary")}>
+              Our Team
+            </Link>
 
             <DropdownMenu>
               <DropdownMenuTrigger className="flex items-center font-medium">
                 <span>Contact Us</span><ChevronDown className="ml-1 h-4 w-4" />
               </DropdownMenuTrigger>
               <DropdownMenuContent className="bg-background/95 p-2 w-48">
-                {["/contact", "/blog", "/careers", "/csr", "/faq", "/privacy"].map(path => (
-                  <DropdownMenuItem key={path} asChild>
-                    <Link to={path}>{path.slice(1).replace("-", " ")}</Link>
+                {[
+                  { path: "/contact", label: "Contact" },
+                  { path: "/blog", label: "Blog" },
+                  { path: "/careers", label: "Careers" },
+                  { path: "/csr", label: "CSR" },
+                  { path: "/faq", label: "FAQ" },
+                  { path: "/privacy", label: "Privacy Policy" }
+                ].map(item => (
+                  <DropdownMenuItem key={item.path} asChild>
+                    <Link to={item.path}>{item.label}</Link>
                   </DropdownMenuItem>
                 ))}
               </DropdownMenuContent>

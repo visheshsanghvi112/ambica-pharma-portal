@@ -1,299 +1,262 @@
 
-import React, { useState } from "react";
+import React from "react";
 import { Helmet } from "react-helmet-async";
 import { Button } from "@/components/ui/button";
-import { Label } from "@/components/ui/label";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
-import { Card, CardContent } from "@/components/ui/card";
-import { MapPin, Phone, Mail, Clock, MessageCircle, Building, Send } from "lucide-react";
-import { useToast } from "@/hooks/use-toast";
-import { motion } from "framer-motion";
+import { Label } from "@/components/ui/label";
+import { useForm } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
+import * as z from "zod";
+import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
+import { useToast } from "@/components/ui/use-toast";
+import { Phone, Mail, Clock, MapPin } from "lucide-react";
 import MapComponent from "@/components/MapComponent";
+
+const formSchema = z.object({
+  name: z.string().min(2, {
+    message: "Name must be at least 2 characters.",
+  }),
+  email: z.string().email({
+    message: "Please enter a valid email address.",
+  }),
+  phone: z.string().min(10, {
+    message: "Phone number must be at least 10 digits.",
+  }),
+  subject: z.string().min(2, {
+    message: "Subject must be at least 2 characters.",
+  }),
+  message: z.string().min(10, {
+    message: "Message must be at least 10 characters.",
+  }),
+});
 
 const Contact = () => {
   const { toast } = useToast();
-  const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    phone: "",
-    subject: "",
-    message: ""
-  });
-
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    const { name, value } = e.target;
-    setFormData(prev => ({ ...prev, [name]: value }));
-  };
-
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    console.log("Form submitted:", formData);
-    
-    toast({
-      title: "Message Sent",
-      description: "Thank you for contacting us. We'll get back to you soon!",
-      duration: 5000,
-    });
-    
-    setFormData({
+  const form = useForm<z.infer<typeof formSchema>>({
+    resolver: zodResolver(formSchema),
+    defaultValues: {
       name: "",
       email: "",
       phone: "",
       subject: "",
-      message: ""
+      message: "",
+    },
+  });
+
+  function onSubmit(values: z.infer<typeof formSchema>) {
+    // In a real application, you would send this data to your server
+    console.log(values);
+    toast({
+      title: "Message Sent!",
+      description: "Thank you for contacting us. We'll be in touch soon.",
     });
-  };
-
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: { 
-      opacity: 1,
-      transition: { 
-        duration: 0.6,
-        when: "beforeChildren",
-        staggerChildren: 0.2
-      }
-    }
-  };
-
-  const itemVariants = {
-    hidden: { y: 20, opacity: 0 },
-    visible: { 
-      y: 0, 
-      opacity: 1,
-      transition: { duration: 0.4 }
-    }
-  };
+    form.reset();
+  }
 
   return (
-    <div className="min-h-screen bg-background pt-24 pb-16">
+    <>
       <Helmet>
-        <title>Contact Us | Ambica Pharma</title>
-        <meta name="description" content="Get in touch with Ambica Pharma for inquiries, partnerships, or support." />
+        <title>Contact Ambica Pharma | Get in Touch with Us</title>
+        <meta
+          name="description"
+          content="Contact Ambica Pharma for inquiries about our pharmaceutical products, distribution partnerships, or career opportunities. We're here to help."
+        />
+        <meta name="keywords" content="contact Ambica Pharma, pharmaceutical company contact, pharma inquiry, medicine distributor contact" />
+        <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY_HERE&callback=initMap" async defer></script>
       </Helmet>
-      
-      <motion.section 
-        className="py-16 bg-gradient-to-r from-primary/10 to-secondary/10 dark:from-primary/20 dark:to-secondary/20 rounded-b-3xl mb-10"
-        initial={{ opacity: 0, y: -20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6 }}
-      >
+
+      <section className="py-12 md:py-16 bg-gradient-to-b from-background to-secondary/5">
         <div className="container">
-          <div className="max-w-3xl mx-auto text-center">
-            <motion.h1 
-              className="text-4xl md:text-5xl font-display font-bold text-primary mb-6 relative inline-block"
-              initial={{ opacity: 0, scale: 0.9 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.5, delay: 0.2 }}
-            >
-              <span className="relative z-10">Get In Touch</span>
-              <span className="absolute -bottom-2 left-0 w-full h-3 bg-secondary/20 rounded-full -z-0"></span>
-            </motion.h1>
-            <motion.p 
-              className="text-lg text-muted-foreground"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ duration: 0.5, delay: 0.4 }}
-            >
-              Have questions about our products or services? Our team is here to help you.
-            </motion.p>
+          <div className="max-w-4xl mx-auto text-center mb-12">
+            <h1 className="text-4xl md:text-5xl font-bold mb-4 font-display">Get in Touch</h1>
+            <p className="text-lg text-muted-foreground">
+              We're here to answer any questions you may have about our products and services.
+            </p>
           </div>
-        </div>
-      </motion.section>
-      
-      <motion.section 
-        className="container mb-16"
-        variants={containerVariants}
-        initial="hidden"
-        animate="visible"
-      >
-        <div className="grid lg:grid-cols-12 gap-10">
-          <motion.div 
-            className="lg:col-span-4 space-y-8"
-            variants={itemVariants}
-          >
-            <motion.div variants={itemVariants}>
-              <Card className="overflow-hidden border-primary/5 dark:border-primary/10 shadow-lg dark:shadow-primary/5">
-                <CardContent className="p-0">
-                  <div className="h-40 bg-gradient-to-r from-primary/80 to-secondary/80 flex items-center justify-center p-6">
-                    <MessageCircle className="h-20 w-20 text-white/90" strokeWidth={1.5} />
-                  </div>
-                  <div className="p-6 space-y-6">
-                    <div className="flex items-start space-x-4">
-                      <MapPin className="w-5 h-5 text-primary shrink-0 mt-1" />
-                      <div>
-                        <h3 className="font-medium text-foreground">Registered Office</h3>
-                        <p className="text-muted-foreground text-sm mt-1">
-                          22 to 25, 2nd Floor, Chapsey Building, 72/78, Shamaldas Gandhi Marg, Kalbadevi, Mumbai, Maharashtra-400 002
-                        </p>
-                      </div>
-                    </div>
+
+          <div className="grid md:grid-cols-3 gap-8 mb-16">
+            <div className="bg-card dark:bg-gray-800 p-6 rounded-xl shadow-sm border border-border hover:shadow-md transition-shadow text-center">
+              <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4">
+                <Phone className="h-6 w-6 text-primary" />
+              </div>
+              <h2 className="text-xl font-semibold mb-2">Call Us</h2>
+              <p className="text-muted-foreground mb-4">We're available Monday to Saturday, 9am to 6pm.</p>
+              <a href="tel:+919967006091" className="text-primary hover:underline block">+91 9967006091</a>
+              <a href="tel:02248256677" className="text-primary hover:underline block">022 48256677</a>
+            </div>
+
+            <div className="bg-card dark:bg-gray-800 p-6 rounded-xl shadow-sm border border-border hover:shadow-md transition-shadow text-center">
+              <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4">
+                <Mail className="h-6 w-6 text-primary" />
+              </div>
+              <h2 className="text-xl font-semibold mb-2">Email Us</h2>
+              <p className="text-muted-foreground mb-4">Our support team will get back to you within 24 hours.</p>
+              <a href="mailto:ambicapharma@gmail.com" className="text-primary hover:underline block">ambicapharma@gmail.com</a>
+              <a href="mailto:info@ambicapharma.net" className="text-primary hover:underline block">info@ambicapharma.net</a>
+            </div>
+
+            <div className="bg-card dark:bg-gray-800 p-6 rounded-xl shadow-sm border border-border hover:shadow-md transition-shadow text-center">
+              <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4">
+                <Clock className="h-6 w-6 text-primary" />
+              </div>
+              <h2 className="text-xl font-semibold mb-2">Business Hours</h2>
+              <p className="text-muted-foreground mb-2">Monday - Friday: 9am - 6pm</p>
+              <p className="text-muted-foreground mb-2">Saturday: 9am - 2pm</p>
+              <p className="text-muted-foreground">Sunday: Closed</p>
+            </div>
+          </div>
+
+          <div className="grid md:grid-cols-2 gap-12 items-start mb-16">
+            <div>
+              <h2 className="text-2xl md:text-3xl font-semibold mb-6 font-display">Send Us a Message</h2>
+              
+              <Form {...form}>
+                <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
+                  <div className="grid md:grid-cols-2 gap-6">
+                    <FormField
+                      control={form.control}
+                      name="name"
+                      render={({ field }) => (
+                        <FormItem>
+                          <FormLabel>Your Name</FormLabel>
+                          <FormControl>
+                            <Input placeholder="John Doe" {...field} />
+                          </FormControl>
+                          <FormMessage />
+                        </FormItem>
+                      )}
+                    />
                     
-                    <div className="flex items-start space-x-4">
-                      <Building className="w-5 h-5 text-primary shrink-0 mt-1" />
-                      <div>
-                        <h3 className="font-medium text-foreground">Warehouse</h3>
-                        <p className="text-muted-foreground text-sm mt-1">
-                          Gala No. 1, First Floor, Building D8, Shree Arihant Compound, Reti Bander Road, Kalher, Bhiwandi (Thane) - 421302
-                        </p>
-                      </div>
-                    </div>
-                    
-                    <div className="flex items-start space-x-4">
-                      <Phone className="w-5 h-5 text-primary shrink-0 mt-1" />
-                      <div>
-                        <h3 className="font-medium text-foreground">Phone Numbers</h3>
-                        <p className="text-muted-foreground text-sm mt-1">
-                          +91 9967006091, 022 48256677<br />
-                          Warehouse: +91 70455 94431
-                        </p>
-                      </div>
-                    </div>
-                    
-                    <div className="flex items-start space-x-4">
-                      <Mail className="w-5 h-5 text-primary shrink-0 mt-1" />
-                      <div>
-                        <h3 className="font-medium text-foreground">Email</h3>
-                        <p className="text-muted-foreground text-sm mt-1">
-                          ambicapharma@gmail.com<br />
-                          info@ambicapharma.net
-                        </p>
-                      </div>
-                    </div>
-                    
-                    <div className="flex items-start space-x-4">
-                      <Clock className="w-5 h-5 text-primary shrink-0 mt-1" />
-                      <div>
-                        <h3 className="font-medium text-foreground">Business Hours</h3>
-                        <p className="text-muted-foreground text-sm mt-1">
-                          Monday - Saturday: 9:00 AM - 6:00 PM<br />
-                          Sunday: Closed
-                        </p>
-                      </div>
-                    </div>
-                  </div>
-                </CardContent>
-              </Card>
-            </motion.div>
-          </motion.div>
-          
-          <motion.div 
-            className="lg:col-span-8"
-            variants={itemVariants}
-          >
-            <Card className="border-primary/5 dark:border-primary/10 shadow-lg dark:shadow-primary/5 overflow-hidden">
-              <div className="h-2 bg-gradient-to-r from-primary to-secondary"></div>
-              <CardContent className="p-8">
-                <h2 className="text-2xl font-display font-semibold text-primary mb-6 flex items-center">
-                  <Send className="w-5 h-5 mr-2" /> Send Us a Message
-                </h2>
-                <form onSubmit={handleSubmit} className="space-y-6">
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    <div className="space-y-2">
-                      <Label htmlFor="name" className="text-foreground">Full Name</Label>
-                      <Input 
-                        id="name"
-                        name="name"
-                        value={formData.name}
-                        onChange={handleChange}
-                        placeholder="John Doe"
-                        className="border-input/50 focus:border-primary"
-                        required
-                      />
-                    </div>
-                    
-                    <div className="space-y-2">
-                      <Label htmlFor="email" className="text-foreground">Email Address</Label>
-                      <Input 
-                        id="email"
-                        name="email"
-                        type="email"
-                        value={formData.email}
-                        onChange={handleChange}
-                        placeholder="john@example.com"
-                        className="border-input/50 focus:border-primary"
-                        required
-                      />
-                    </div>
-                  </div>
-                  
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    <div className="space-y-2">
-                      <Label htmlFor="phone" className="text-foreground">Phone Number</Label>
-                      <Input 
-                        id="phone"
-                        name="phone"
-                        value={formData.phone}
-                        onChange={handleChange}
-                        placeholder="+91 98765 43210"
-                        className="border-input/50 focus:border-primary"
-                      />
-                    </div>
-                    
-                    <div className="space-y-2">
-                      <Label htmlFor="subject" className="text-foreground">Subject</Label>
-                      <Input 
-                        id="subject"
-                        name="subject"
-                        value={formData.subject}
-                        onChange={handleChange}
-                        placeholder="Product Inquiry"
-                        className="border-input/50 focus:border-primary"
-                        required
-                      />
-                    </div>
-                  </div>
-                  
-                  <div className="space-y-2">
-                    <Label htmlFor="message" className="text-foreground">Message</Label>
-                    <Textarea 
-                      id="message"
-                      name="message"
-                      value={formData.message}
-                      onChange={handleChange}
-                      placeholder="Please write your message here..."
-                      rows={5}
-                      className="border-input/50 focus:border-primary resize-none"
-                      required
+                    <FormField
+                      control={form.control}
+                      name="email"
+                      render={({ field }) => (
+                        <FormItem>
+                          <FormLabel>Email Address</FormLabel>
+                          <FormControl>
+                            <Input placeholder="john@example.com" {...field} />
+                          </FormControl>
+                          <FormMessage />
+                        </FormItem>
+                      )}
                     />
                   </div>
                   
-                  <motion.div
-                    whileHover={{ scale: 1.02 }}
-                    whileTap={{ scale: 0.98 }}
-                  >
-                    <Button 
-                      type="submit" 
-                      className="bg-gradient-to-r from-primary to-secondary text-white hover:opacity-90 transition-all duration-300 w-full md:w-auto"
-                    >
-                      Send Message
-                    </Button>
-                  </motion.div>
+                  <div className="grid md:grid-cols-2 gap-6">
+                    <FormField
+                      control={form.control}
+                      name="phone"
+                      render={({ field }) => (
+                        <FormItem>
+                          <FormLabel>Phone Number</FormLabel>
+                          <FormControl>
+                            <Input placeholder="+91 9967006091" {...field} />
+                          </FormControl>
+                          <FormMessage />
+                        </FormItem>
+                      )}
+                    />
+                    
+                    <FormField
+                      control={form.control}
+                      name="subject"
+                      render={({ field }) => (
+                        <FormItem>
+                          <FormLabel>Subject</FormLabel>
+                          <FormControl>
+                            <Input placeholder="Product Inquiry" {...field} />
+                          </FormControl>
+                          <FormMessage />
+                        </FormItem>
+                      )}
+                    />
+                  </div>
+                  
+                  <FormField
+                    control={form.control}
+                    name="message"
+                    render={({ field }) => (
+                      <FormItem>
+                        <FormLabel>Your Message</FormLabel>
+                        <FormControl>
+                          <Textarea 
+                            placeholder="Please provide details about your inquiry..."
+                            className="min-h-32"
+                            {...field}
+                          />
+                        </FormControl>
+                        <FormMessage />
+                      </FormItem>
+                    )}
+                  />
+                  
+                  <Button type="submit">Send Message</Button>
                 </form>
-              </CardContent>
-            </Card>
-          </motion.div>
+              </Form>
+            </div>
+            
+            <div className="space-y-6">
+              <div>
+                <h2 className="text-2xl md:text-3xl font-semibold mb-6 font-display">Registered Office</h2>
+                <div className="flex items-start space-x-4 mb-4">
+                  <div className="mt-1">
+                    <MapPin className="h-5 w-5 text-primary" />
+                  </div>
+                  <div>
+                    <h3 className="font-medium">Ambica Pharma</h3>
+                    <p className="text-muted-foreground">
+                      22 to 25, 2nd Floor, Chapsey Building, 72/78, Shamaldas Gandhi Marg, Kalbadevi, Mumbai, Maharashtra-400 002
+                    </p>
+                  </div>
+                </div>
+                
+                <div className="mb-8">
+                  <MapComponent lat={18.9537611} lng={72.8254747} zoom={15} title="Ambica Pharma Registered Office" />
+                </div>
+              </div>
+              
+              <div>
+                <h2 className="text-2xl font-semibold mb-4 font-display">Warehouse</h2>
+                <div className="flex items-start space-x-4">
+                  <div className="mt-1">
+                    <MapPin className="h-5 w-5 text-primary" />
+                  </div>
+                  <div>
+                    <h3 className="font-medium">Ambica Pharma Warehouse</h3>
+                    <p className="text-muted-foreground">
+                      Gala No. 1, First Floor, Building D8, Shree Arihant Compound, Reti Bander Road, Kalher, Bhiwandi (Thane) - 421302
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <div className="bg-card dark:bg-gray-800 p-8 rounded-xl border border-border shadow-lg">
+            <h2 className="text-2xl font-semibold mb-6 text-center font-display">Emergency Contact</h2>
+            <div className="text-center max-w-2xl mx-auto">
+              <p className="mb-4 text-muted-foreground">
+                For urgent matters or emergency orders, please contact our dedicated emergency line:
+              </p>
+              <div className="flex flex-col md:flex-row items-center justify-center gap-4 mb-4">
+                <a href="tel:+919967006091" className="flex items-center gap-2 text-primary hover:underline">
+                  <Phone className="h-5 w-5" />
+                  <span>+91 9967006091</span>
+                </a>
+                <a href="mailto:emergency@ambicapharma.net" className="flex items-center gap-2 text-primary hover:underline">
+                  <Mail className="h-5 w-5" />
+                  <span>emergency@ambicapharma.net</span>
+                </a>
+              </div>
+              <Button className="bg-gradient-to-r from-secondary to-primary animate-pulse">
+                Emergency Order
+              </Button>
+            </div>
+          </div>
         </div>
-      </motion.section>
-      
-      <motion.section 
-        className="container mb-16"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 0.6, delay: 0.8 }}
-      >
-        <h2 className="text-2xl md:text-3xl font-display font-bold text-primary mb-6 text-center">
-          Visit Our Location
-        </h2>
-        <MapComponent 
-          lat={18.9451}
-          lng={72.8234}
-          zoom={15}
-          title="Ambica Pharma Headquarters"
-        />
-      </motion.section>
-    </div>
+      </section>
+    </>
   );
 };
 
