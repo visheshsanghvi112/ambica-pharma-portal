@@ -4,11 +4,12 @@ import HeroSection from "../components/HeroSection";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
-import { CheckCircle, Heart, Tablet, Brain, Shield, Pill, Baby, Eye, MessageCircle } from "lucide-react";
+import { CheckCircle, Heart, Tablet, Brain, Shield, Pill, Baby, Eye, MessageCircle, ArrowRight } from "lucide-react";
 import Statistics from "../components/Statistics";
 import Testimonials from "../components/Testimonials";
 import { Card, CardContent } from "@/components/ui/card";
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
+import BrandSlider from "../components/BrandSlider";
 
 // Product categories data
 const productCategories = [
@@ -95,8 +96,7 @@ const Index = () => {
           >
             <h2 className="text-3xl md:text-4xl font-display font-bold text-primary mb-4">Established Excellence Since 2005</h2>
             <p className="text-foreground/80 max-w-3xl mx-auto">
-              Ambica Pharma is a reputable name engaged in manufacturing, trading, exporting, 
-              wholesaling, and retailing a wide range of Pharmaceutical products.
+              Ambica Pharma is a trusted name in pharmaceutical distribution, known for quality products and exceptional service across India and international markets.
             </p>
           </motion.div>
           
@@ -107,7 +107,7 @@ const Index = () => {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.2 }}
               viewport={{ once: true }}
-              className="bg-gradient-to-br from-primary/5 to-secondary/5 dark:from-primary/10 dark:to-secondary/10 p-8 rounded-xl shadow-sm hover:shadow-md transition-all"
+              className="bg-white dark:bg-gray-800 p-8 rounded-xl shadow-md hover:shadow-lg transition-all border border-primary/10"
             >
               <div className="w-14 h-14 bg-primary/10 rounded-full flex items-center justify-center mb-6 text-primary">
                 <svg xmlns="http://www.w3.org/2000/svg" className="h-7 w-7" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -124,7 +124,7 @@ const Index = () => {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.3 }}
               viewport={{ once: true }}
-              className="bg-gradient-to-br from-primary/5 to-secondary/5 dark:from-primary/10 dark:to-secondary/10 p-8 rounded-xl shadow-sm hover:shadow-md transition-all"
+              className="bg-white dark:bg-gray-800 p-8 rounded-xl shadow-md hover:shadow-lg transition-all border border-primary/10"
             >
               <div className="w-14 h-14 bg-primary/10 rounded-full flex items-center justify-center mb-6 text-primary">
                 <svg xmlns="http://www.w3.org/2000/svg" className="h-7 w-7" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -141,7 +141,7 @@ const Index = () => {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.4 }}
               viewport={{ once: true }}
-              className="bg-gradient-to-br from-primary/5 to-secondary/5 dark:from-primary/10 dark:to-secondary/10 p-8 rounded-xl shadow-sm hover:shadow-md transition-all"
+              className="bg-white dark:bg-gray-800 p-8 rounded-xl shadow-md hover:shadow-lg transition-all border border-primary/10"
             >
               <div className="w-14 h-14 bg-primary/10 rounded-full flex items-center justify-center mb-6 text-primary">
                 <svg xmlns="http://www.w3.org/2000/svg" className="h-7 w-7" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -155,11 +155,14 @@ const Index = () => {
         </div>
       </section>
       
+      {/* Brand Slider Section - NEW */}
+      <BrandSlider />
+      
       {/* Our Impact in Numbers */}
       <Statistics />
       
       {/* Product Categories */}
-      <section className="py-16 bg-gradient-to-r from-primary/5 to-secondary/5 dark:from-primary/10 dark:to-secondary/10">
+      <section className="py-16 bg-background">
         <div className="container">
           <motion.div 
             initial={{ opacity: 0, y: 20 }}
@@ -168,9 +171,9 @@ const Index = () => {
             viewport={{ once: true }}
             className="text-center mb-12"
           >
-            <h2 className="text-3xl md:text-4xl font-display font-bold bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent mb-4">Our Product Categories</h2>
+            <h2 className="text-3xl md:text-4xl font-display font-bold text-primary mb-4">Our Product Categories</h2>
             <p className="text-foreground/80 max-w-3xl mx-auto">
-              Explore our extensive range of quality generic medicines across therapeutic categories.
+              Explore our extensive range of high-quality pharmaceutical products across therapeutic categories.
             </p>
           </motion.div>
           
@@ -210,15 +213,17 @@ const Index = () => {
           
           <div className="text-center mt-8">
             <p className="text-foreground/70 italic mb-4">Looking for a specific medicine? Contact us for information on our complete product range.</p>
-            <Button asChild className="bg-gradient-to-r from-primary to-secondary hover:opacity-90 text-white">
-              <Link to="/contact">Contact Us</Link>
+            <Button asChild className="bg-primary hover:bg-primary/90 text-white">
+              <Link to="/contact" className="flex items-center gap-2">
+                Contact Us <ArrowRight className="h-4 w-4" />
+              </Link>
             </Button>
           </div>
         </div>
       </section>
       
       {/* Why Choose Us */}
-      <section className="py-16 bg-background">
+      <section className="py-16 bg-gradient-to-r from-primary/5 to-secondary/5 dark:from-primary/10 dark:to-secondary/10">
         <div className="container">
           <motion.div 
             initial={{ opacity: 0, y: 20 }}
@@ -227,9 +232,9 @@ const Index = () => {
             viewport={{ once: true }}
             className="max-w-3xl mx-auto text-center mb-12"
           >
-            <h2 className="text-3xl md:text-4xl font-display font-bold text-primary mb-4">Why Choose Us?</h2>
+            <h2 className="text-3xl md:text-4xl font-display font-bold text-primary mb-4">Why Choose Ambica Pharma?</h2>
             <p className="text-foreground/80">
-              We strive to uphold our reputation by offering top-quality products that meet global pharmaceutical standards.
+              We uphold the highest standards of quality and service in all our pharmaceutical products and business operations.
             </p>
           </motion.div>
           
@@ -240,13 +245,13 @@ const Index = () => {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.1 }}
               viewport={{ once: true }}
-              className="flex items-start space-x-3 p-6 rounded-lg bg-white dark:bg-gray-800 shadow-sm hover:shadow-md transition-all"
+              className="flex flex-col items-center text-center p-6 rounded-lg bg-white dark:bg-gray-800 shadow-md hover:shadow-lg transition-all border border-primary/10"
             >
-              <CheckCircle className="h-6 w-6 text-secondary flex-shrink-0" />
-              <div>
-                <h3 className="font-semibold text-primary mb-2">Flexible Payment Modes</h3>
-                <p className="text-sm text-foreground/70">Multiple payment options for your convenience.</p>
+              <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mb-4">
+                <CheckCircle className="h-8 w-8 text-primary" />
               </div>
+              <h3 className="font-semibold text-primary text-xl mb-2">Quality Assurance</h3>
+              <p className="text-foreground/70">All products meet rigorous quality standards and are sourced from certified manufacturers.</p>
             </motion.div>
             
             {/* Reason 2 */}
@@ -255,13 +260,13 @@ const Index = () => {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.2 }}
               viewport={{ once: true }}
-              className="flex items-start space-x-3 p-6 rounded-lg bg-white dark:bg-gray-800 shadow-sm hover:shadow-md transition-all"
+              className="flex flex-col items-center text-center p-6 rounded-lg bg-white dark:bg-gray-800 shadow-md hover:shadow-lg transition-all border border-primary/10"
             >
-              <CheckCircle className="h-6 w-6 text-secondary flex-shrink-0" />
-              <div>
-                <h3 className="font-semibold text-primary mb-2">Timely Delivery</h3>
-                <p className="text-sm text-foreground/70">We ensure prompt and on-time delivery of orders.</p>
+              <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mb-4">
+                <CheckCircle className="h-8 w-8 text-primary" />
               </div>
+              <h3 className="font-semibold text-primary text-xl mb-2">Competitive Pricing</h3>
+              <p className="text-foreground/70">We offer the best market rates through efficient supply chain management and strong manufacturer relationships.</p>
             </motion.div>
             
             {/* Reason 3 */}
@@ -270,13 +275,13 @@ const Index = () => {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.3 }}
               viewport={{ once: true }}
-              className="flex items-start space-x-3 p-6 rounded-lg bg-white dark:bg-gray-800 shadow-sm hover:shadow-md transition-all"
+              className="flex flex-col items-center text-center p-6 rounded-lg bg-white dark:bg-gray-800 shadow-md hover:shadow-lg transition-all border border-primary/10"
             >
-              <CheckCircle className="h-6 w-6 text-secondary flex-shrink-0" />
-              <div>
-                <h3 className="font-semibold text-primary mb-2">Extensive Distribution Network</h3>
-                <p className="text-sm text-foreground/70">Wide coverage for efficient product delivery.</p>
+              <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mb-4">
+                <CheckCircle className="h-8 w-8 text-primary" />
               </div>
+              <h3 className="font-semibold text-primary text-xl mb-2">Extensive Distribution</h3>
+              <p className="text-foreground/70">Our robust network ensures timely delivery of pharmaceuticals across India and international markets.</p>
             </motion.div>
             
             {/* Reason 4 */}
@@ -285,26 +290,28 @@ const Index = () => {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.4 }}
               viewport={{ once: true }}
-              className="flex items-start space-x-3 p-6 rounded-lg bg-white dark:bg-gray-800 shadow-sm hover:shadow-md transition-all"
+              className="flex flex-col items-center text-center p-6 rounded-lg bg-white dark:bg-gray-800 shadow-md hover:shadow-lg transition-all border border-primary/10"
             >
-              <CheckCircle className="h-6 w-6 text-secondary flex-shrink-0" />
-              <div>
-                <h3 className="font-semibold text-primary mb-2">Ethical Business Practices</h3>
-                <p className="text-sm text-foreground/70">We maintain high ethical standards in all operations.</p>
+              <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mb-4">
+                <CheckCircle className="h-8 w-8 text-primary" />
               </div>
+              <h3 className="font-semibold text-primary text-xl mb-2">Expert Consultation</h3>
+              <p className="text-foreground/70">Our pharmaceutical experts provide comprehensive guidance on product selection and regulatory compliance.</p>
             </motion.div>
           </div>
           
           <div className="text-center mt-12">
-            <Button asChild className="bg-gradient-to-r from-primary to-secondary hover:opacity-90 text-white font-medium">
-              <Link to="/about">Learn More About Us</Link>
+            <Button asChild className="bg-primary hover:bg-primary/90 text-white font-medium">
+              <Link to="/about" className="flex items-center gap-2">
+                Learn More About Us <ArrowRight className="h-4 w-4" />
+              </Link>
             </Button>
           </div>
         </div>
       </section>
       
       {/* Customer Testimonials Section */}
-      <section className="py-16 bg-gradient-to-br from-primary/5 via-secondary/5 to-primary/5 dark:from-primary/10 dark:via-secondary/10 dark:to-primary/10">
+      <section className="py-16 bg-background">
         <div className="container">
           <motion.div 
             initial={{ opacity: 0, y: 20 }}
@@ -313,9 +320,9 @@ const Index = () => {
             viewport={{ once: true }}
             className="text-center mb-12"
           >
-            <h2 className="text-3xl md:text-4xl font-display font-bold bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent mb-4">What Our Customers Say</h2>
+            <h2 className="text-3xl md:text-4xl font-display font-bold text-primary mb-4">Client Testimonials</h2>
             <p className="text-foreground/80 max-w-3xl mx-auto">
-              Discover how Ambica Pharma is making a difference in people's lives across India.
+              Hear from healthcare professionals and patients who trust Ambica Pharma for their pharmaceutical needs.
             </p>
           </motion.div>
           
@@ -330,10 +337,10 @@ const Index = () => {
                     viewport={{ once: true }}
                     className="h-full"
                   >
-                    <Card className="bg-white dark:bg-card border border-primary/10 shadow-lg hover:shadow-xl transition-all h-full overflow-hidden">
-                      <div className="h-2 bg-gradient-to-r from-secondary to-primary"></div>
+                    <Card className="bg-white dark:bg-card border border-primary/10 shadow-md hover:shadow-lg transition-all h-full overflow-hidden">
+                      <div className="h-2 bg-gradient-to-r from-primary to-secondary"></div>
                       <CardContent className="p-6 h-full flex flex-col">
-                        <div className="mb-4 text-secondary">
+                        <div className="mb-4 text-primary">
                           <MessageCircle className="h-8 w-8 mx-auto" />
                         </div>
                         <p className="text-foreground/70 text-center italic mb-6">"{testimonial.quote}"</p>
@@ -353,76 +360,6 @@ const Index = () => {
         </div>
       </section>
       
-      {/* Brands We Deal With */}
-      <section className="py-16 bg-background">
-        <div className="container">
-          <motion.div 
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            viewport={{ once: true }}
-            className="text-center mb-12"
-          >
-            <h2 className="text-3xl md:text-4xl font-display font-bold text-primary mb-4">Brands We Deal In</h2>
-            <p className="text-foreground/80 max-w-3xl mx-auto">
-              We partner with leading pharmaceutical brands to provide you with quality medicines.
-            </p>
-          </motion.div>
-          
-          <div className="flex flex-wrap justify-center gap-8">
-            <motion.div 
-              initial={{ opacity: 0, scale: 0.9 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.4, delay: 0.1 }}
-              viewport={{ once: true }}
-              className="p-6 bg-white dark:bg-gray-800 rounded-lg shadow-sm hover:shadow-md transition-all hover-lift"
-            >
-              <h3 className="text-xl font-semibold text-primary">Cipla</h3>
-            </motion.div>
-            
-            <motion.div 
-              initial={{ opacity: 0, scale: 0.9 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.4, delay: 0.2 }}
-              viewport={{ once: true }}
-              className="p-6 bg-white dark:bg-gray-800 rounded-lg shadow-sm hover:shadow-md transition-all hover-lift"
-            >
-              <h3 className="text-xl font-semibold text-primary">Hab Pharma</h3>
-            </motion.div>
-            
-            <motion.div 
-              initial={{ opacity: 0, scale: 0.9 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.4, delay: 0.3 }}
-              viewport={{ once: true }}
-              className="p-6 bg-white dark:bg-gray-800 rounded-lg shadow-sm hover:shadow-md transition-all hover-lift"
-            >
-              <h3 className="text-xl font-semibold text-primary">Universal</h3>
-            </motion.div>
-            
-            <motion.div 
-              initial={{ opacity: 0, scale: 0.9 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.4, delay: 0.4 }}
-              viewport={{ once: true }}
-              className="p-6 bg-white dark:bg-gray-800 rounded-lg shadow-sm hover:shadow-md transition-all hover-lift"
-            >
-              <h3 className="text-xl font-semibold text-primary">Abbott India Limited</h3>
-            </motion.div>
-            
-            <motion.div 
-              initial={{ opacity: 0, scale: 0.9 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.4, delay: 0.5 }}
-              viewport={{ once: true }}
-              className="p-6 bg-white dark:bg-gray-800 rounded-lg shadow-sm hover:shadow-md transition-all hover-lift"
-            >
-              <h3 className="text-xl font-semibold text-primary">Johnlee Pharmaceuticals Pvt. Ltd.</h3>
-            </motion.div>
-          </div>
-        </div>
-      </section>
-      
       {/* CTA Section */}
       <section className="py-16 bg-gradient-to-r from-primary to-secondary text-white">
         <div className="container">
@@ -435,10 +372,12 @@ const Index = () => {
           >
             <h2 className="text-3xl md:text-4xl font-display font-bold mb-6">Ready to Partner With Us?</h2>
             <p className="max-w-2xl mx-auto mb-8 text-white/90">
-              Contact us today to discuss how we can meet your pharmaceutical needs with our high-quality products and excellent service.
+              Contact Ambica Pharma today to discuss how we can meet your pharmaceutical needs with our high-quality products and excellent service.
             </p>
             <Button asChild className="bg-white text-primary hover:bg-white/90">
-              <Link to="/contact">Contact Us Today</Link>
+              <Link to="/contact" className="flex items-center gap-2">
+                Contact Us Today <ArrowRight className="h-4 w-4" />
+              </Link>
             </Button>
           </motion.div>
         </div>
