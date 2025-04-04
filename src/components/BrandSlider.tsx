@@ -83,6 +83,7 @@ const BrandSlider: React.FC = () => {
                     }}
                   />
                 </div>
+                <p className="mt-2 text-sm font-medium text-foreground/70 dark:text-foreground/60 hidden">{brand.name}</p>
               </div>
             ))}
           </motion.div>

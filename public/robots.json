@@ -1,0 +1,35 @@
+
+{
+  "name": "Ambica Pharma - Quality Pharmaceutical Solutions",
+  "description": "Ambica Pharma is a leading manufacturer and distributor of pharmaceutical products with a global presence.",
+  "icons": [
+    { "src": "/favicon.ico", "type": "image/x-icon", "sizes": "16x16 32x32" }
+  ],
+  "sameAs": [
+    "https://www.facebook.com/ambicapharma",
+    "https://www.twitter.com/ambicapharma",
+    "https://www.linkedin.com/company/ambicapharma",
+    "https://www.instagram.com/ambicapharma"
+  ],
+  "url": "https://www.ambicapharma.com",
+  "logo": "https://www.ambicapharma.com/logo.png",
+  "foundingDate": "2005",
+  "founders": [
+    {
+      "name": "Ambica Pharma Founder"
+    }
+  ],
+  "address": {
+    "streetAddress": "Corporate Office Address",
+    "addressLocality": "Mumbai",
+    "addressRegion": "Maharashtra",
+    "postalCode": "400001",
+    "addressCountry": "IN"
+  },
+  "contactPoint": {
+    "telephone": "+91-XXXXXXXXXX",
+    "contactType": "customer service"
+  },
+  "industry": ["Pharmaceutical", "Healthcare"],
+  "certifications": ["ISO-9001:2008", "GMP Certified"]
+}

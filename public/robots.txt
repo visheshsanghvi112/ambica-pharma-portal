@@ -1,14 +1,23 @@
+
+# Allow all web crawlers
+User-agent: *
+Allow: /
+
+# Allow specific crawlers
 User-agent: Googlebot
 Allow: /
 
 User-agent: Bingbot
 Allow: /
 
-User-agent: Twitterbot
+User-agent: Slurp
 Allow: /
 
-User-agent: facebookexternalhit
+User-agent: DuckDuckBot
 Allow: /
 
-User-agent: *
-Allow: /
+# Sitemap
+Sitemap: https://www.ambicapharma.com/sitemap.xml
+
+# Crawl delay
+Crawl-delay: 10
