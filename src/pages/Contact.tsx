@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect, useRef } from "react";
 import { Helmet } from "react-helmet-async";
 import { Button } from "@/components/ui/button";
@@ -10,7 +9,6 @@ import { MapPin, Phone, Mail, Clock, MessageCircle, Building, Send } from "lucid
 import { useToast } from "@/hooks/use-toast";
 import { motion } from "framer-motion";
 
-// Declare the Google Maps types with Animation added
 declare global {
   interface Window {
     initMap: () => void;
@@ -44,112 +42,99 @@ const Contact = () => {
   const mapInstanceRef = useRef<any>(null);
   const mapScriptRef = useRef<HTMLScriptElement | null>(null);
 
-  // Fix: Improved cleanup function to prevent memory leaks and DOM errors
   useEffect(() => {
-    // Set up map
-    const initializeMap = () => {
-      if (mapLoaded || !mapRef.current) return;
+    if (mapLoaded || !mapRef.current) return;
+    
+    window.initMap = () => {
+      if (!mapRef.current) return;
       
-      window.initMap = () => {
-        if (!mapRef.current) return;
+      try {
+        const mumbaiLocation = { lat: 18.9451, lng: 72.8234 };
+        const mapInstance = new window.google.maps.Map(mapRef.current, {
+          center: mumbaiLocation,
+          zoom: 15,
+          styles: [
+            {
+              "featureType": "all",
+              "elementType": "labels.text.fill",
+              "stylers": [{"saturation": 36}, {"color": "#333333"}, {"lightness": 40}]
+            },
+            {
+              "featureType": "all",
+              "elementType": "labels.text.stroke",
+              "stylers": [{"visibility": "on"}, {"color": "#ffffff"}, {"lightness": 16}]
+            },
+            {
+              "featureType": "all",
+              "elementType": "labels.icon",
+              "stylers": [{"visibility": "off"}]
+            },
+            {
+              "featureType": "administrative",
+              "elementType": "geometry.fill",
+              "stylers": [{"color": "#fefefe"}, {"lightness": 20}]
+            },
+            {
+              "featureType": "administrative",
+              "elementType": "geometry.stroke",
+              "stylers": [{"color": "#fefefe"}, {"lightness": 17}, {"weight": 1.2}]
+            }
+          ]
+        });
         
-        try {
-          const mumbaiLocation = { lat: 18.9451, lng: 72.8234 };
-          const mapInstance = new window.google.maps.Map(mapRef.current, {
-            center: mumbaiLocation,
-            zoom: 15,
-            styles: [
-              {
-                "featureType": "all",
-                "elementType": "labels.text.fill",
-                "stylers": [{"saturation": 36}, {"color": "#333333"}, {"lightness": 40}]
-              },
-              {
-                "featureType": "all",
-                "elementType": "labels.text.stroke",
-                "stylers": [{"visibility": "on"}, {"color": "#ffffff"}, {"lightness": 16}]
-              },
-              {
-                "featureType": "all",
-                "elementType": "labels.icon",
-                "stylers": [{"visibility": "off"}]
-              },
-              {
-                "featureType": "administrative",
-                "elementType": "geometry.fill",
-                "stylers": [{"color": "#fefefe"}, {"lightness": 20}]
-              },
-              {
-                "featureType": "administrative",
-                "elementType": "geometry.stroke",
-                "stylers": [{"color": "#fefefe"}, {"lightness": 17}, {"weight": 1.2}]
-              }
-            ]
-          });
-          
-          mapInstanceRef.current = mapInstance;
-          
-          const marker = new window.google.maps.Marker({
-            position: mumbaiLocation,
-            map: mapInstance,
-            title: "Ambica Pharma Office",
-            animation: window.google.maps.Animation.DROP
-          });
-          
-          const infowindow = new window.google.maps.InfoWindow({
-            content: `
-              <div style="padding: 10px; max-width: 200px;">
-                <h3 style="margin: 0; font-size: 16px; color: #2B4D82; font-weight: bold;">Ambica Pharma</h3>
-                <p style="margin: 5px 0 0; font-size: 12px;">
-                  22 to 25, 2nd Floor, Chapsey Building, Kalbadevi, Mumbai - 400002
-                </p>
-              </div>
-            `
-          });
-          
-          marker.addListener("click", () => {
-            infowindow.open(mapInstance, marker);
-          });
-          
-          setMapLoaded(true);
-        } catch (error) {
-          console.error("Error initializing map:", error);
-        }
-      };
-      
-      // Create script element if it doesn't exist
-      if (!mapScriptRef.current) {
-        const script = document.createElement('script');
-        script.src = `https://maps.googleapis.com/maps/api/js?key=&callback=initMap`;
-        script.async = true;
-        script.defer = true;
-        mapScriptRef.current = script;
-        document.head.appendChild(script);
+        mapInstanceRef.current = mapInstance;
+        
+        const marker = new window.google.maps.Marker({
+          position: mumbaiLocation,
+          map: mapInstance,
+          title: "Ambica Pharma Office",
+          animation: window.google.maps.Animation.DROP
+        });
+        
+        const infowindow = new window.google.maps.InfoWindow({
+          content: `
+            <div style="padding: 10px; max-width: 200px;">
+              <h3 style="margin: 0; font-size: 16px; color: #2B4D82; font-weight: bold;">Ambica Pharma</h3>
+              <p style="margin: 5px 0 0; font-size: 12px;">
+                22 to 25, 2nd Floor, Chapsey Building, Kalbadevi, Mumbai - 400002
+              </p>
+            </div>
+          `
+        });
+        
+        marker.addListener("click", () => {
+          infowindow.open(mapInstance, marker);
+        });
+        
+        setMapLoaded(true);
+      } catch (error) {
+        console.error("Error initializing map:", error);
       }
     };
-
-    // Initialize the map when component mounts
-    initializeMap();
     
-    // Cleanup function
+    if (!document.querySelector('script[src*="maps.googleapis.com/maps/api/js"]')) {
+      const script = document.createElement('script');
+      script.src = `https://maps.googleapis.com/maps/api/js?key=&callback=initMap`;
+      script.async = true;
+      script.defer = true;
+      script.onerror = () => console.error("Error loading Google Maps script");
+      
+      mapScriptRef.current = script;
+      document.head.appendChild(script);
+    } else if (window.google && window.google.maps) {
+      window.initMap();
+    }
+    
     return () => {
-      // Remove the global initMap function before removing script
       if (window.initMap) {
-        window.initMap = undefined as any;
+        window.initMap = () => {};
       }
       
-      // Clean up the Google Maps script if it exists
-      if (mapScriptRef.current) {
-        const script = mapScriptRef.current;
-        // Check if the script is actually in the DOM before removing
-        if (document.head.contains(script)) {
-          document.head.removeChild(script);
-        }
-        mapScriptRef.current = null;
+      if (mapInstanceRef.current) {
+        mapInstanceRef.current = null;
       }
       
-      // Clear the map instance
-      mapInstanceRef.current = null;
+      mapScriptRef.current = null;
     };
   }, [mapLoaded]);
 
@@ -162,14 +147,12 @@ const Contact = () => {
     e.preventDefault();
     console.log("Form submitted:", formData);
     
-    // Show success toast
     toast({
       title: "Message Sent",
       description: "Thank you for contacting us. We'll get back to you soon!",
       duration: 5000,
     });
     
-    // Reset form
     setFormData({
       name: "",
       email: "",
@@ -207,7 +190,6 @@ const Contact = () => {
         <meta name="description" content="Get in touch with Ambica Pharma for inquiries, partnerships, or support." />
       </Helmet>
       
-      {/* Hero Section */}
       <motion.section 
         className="py-16 bg-gradient-to-r from-primary/10 to-secondary/10 dark:from-primary/20 dark:to-secondary/20 rounded-b-3xl mb-10"
         initial={{ opacity: 0, y: -20 }}
@@ -237,7 +219,6 @@ const Contact = () => {
         </div>
       </motion.section>
       
-      {/* Contact Information and Form */}
       <motion.section 
         className="container mb-16"
         variants={containerVariants}
@@ -245,7 +226,6 @@ const Contact = () => {
         animate="visible"
       >
         <div className="grid lg:grid-cols-12 gap-10">
-          {/* Contact Information */}
           <motion.div 
             className="lg:col-span-4 space-y-8"
             variants={itemVariants}
@@ -315,7 +295,6 @@ const Contact = () => {
             </motion.div>
           </motion.div>
           
-          {/* Contact Form */}
           <motion.div 
             className="lg:col-span-8"
             variants={itemVariants}
@@ -415,7 +394,6 @@ const Contact = () => {
         </div>
       </motion.section>
       
-      {/* Map Section */}
       <motion.section 
         className="container mb-16"
         initial={{ opacity: 0 }}
