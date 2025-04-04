@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect, useRef } from "react";
 import { Helmet } from "react-helmet-async";
 import { Button } from "@/components/ui/button";
@@ -41,114 +40,116 @@ const Contact = () => {
   const [mapLoaded, setMapLoaded] = useState(false);
   const mapRef = useRef<HTMLDivElement>(null);
   const mapInstanceRef = useRef<any>(null);
-  const mapScriptLoadedRef = useRef<boolean>(false);
+  const scriptLoadingRef = useRef<boolean>(false);
 
   // Load Google Maps
   useEffect(() => {
     // Skip if map already loaded or no map container
     if (mapLoaded || !mapRef.current) return;
     
-    // Define the map initialization function
-    window.initMap = () => {
-      if (!mapRef.current) return;
+    // Create one global init function that won't be recreated
+    if (typeof window.initMap !== 'function') {
+      window.initMap = () => {
+        if (!mapRef.current) return;
+        
+        try {
+          const mumbaiLocation = { lat: 18.9451, lng: 72.8234 };
+          const mapInstance = new window.google.maps.Map(mapRef.current, {
+            center: mumbaiLocation,
+            zoom: 15,
+            styles: [
+              {
+                "featureType": "all",
+                "elementType": "labels.text.fill",
+                "stylers": [{"saturation": 36}, {"color": "#333333"}, {"lightness": 40}]
+              },
+              {
+                "featureType": "all",
+                "elementType": "labels.text.stroke",
+                "stylers": [{"visibility": "on"}, {"color": "#ffffff"}, {"lightness": 16}]
+              },
+              {
+                "featureType": "all",
+                "elementType": "labels.icon",
+                "stylers": [{"visibility": "off"}]
+              },
+              {
+                "featureType": "administrative",
+                "elementType": "geometry.fill",
+                "stylers": [{"color": "#fefefe"}, {"lightness": 20}]
+              },
+              {
+                "featureType": "administrative",
+                "elementType": "geometry.stroke",
+                "stylers": [{"color": "#fefefe"}, {"lightness": 17}, {"weight": 1.2}]
+              }
+            ]
+          });
+          
+          mapInstanceRef.current = mapInstance;
+          
+          const marker = new window.google.maps.Marker({
+            position: mumbaiLocation,
+            map: mapInstance,
+            title: "Ambica Pharma Office",
+            animation: window.google.maps.Animation.DROP
+          });
+          
+          const infowindow = new window.google.maps.InfoWindow({
+            content: `
+              <div style="padding: 10px; max-width: 200px;">
+                <h3 style="margin: 0; font-size: 16px; color: #2B4D82; font-weight: bold;">Ambica Pharma</h3>
+                <p style="margin: 5px 0 0; font-size: 12px;">
+                  22 to 25, 2nd Floor, Chapsey Building, Kalbadevi, Mumbai - 400002
+                </p>
+              </div>
+            `
+          });
+          
+          marker.addListener("click", () => {
+            infowindow.open(mapInstance, marker);
+          });
+          
+          setMapLoaded(true);
+        } catch (error) {
+          console.error("Error initializing map:", error);
+          setMapLoaded(false);
+        }
+      };
+    }
+    
+    // Check if script is already being loaded or exists
+    const existingScript = document.getElementById('google-maps-script');
+    if (!existingScript && !scriptLoadingRef.current) {
+      scriptLoadingRef.current = true;
       
       try {
-        const mumbaiLocation = { lat: 18.9451, lng: 72.8234 };
-        const mapInstance = new window.google.maps.Map(mapRef.current, {
-          center: mumbaiLocation,
-          zoom: 15,
-          styles: [
-            {
-              "featureType": "all",
-              "elementType": "labels.text.fill",
-              "stylers": [{"saturation": 36}, {"color": "#333333"}, {"lightness": 40}]
-            },
-            {
-              "featureType": "all",
-              "elementType": "labels.text.stroke",
-              "stylers": [{"visibility": "on"}, {"color": "#ffffff"}, {"lightness": 16}]
-            },
-            {
-              "featureType": "all",
-              "elementType": "labels.icon",
-              "stylers": [{"visibility": "off"}]
-            },
-            {
-              "featureType": "administrative",
-              "elementType": "geometry.fill",
-              "stylers": [{"color": "#fefefe"}, {"lightness": 20}]
-            },
-            {
-              "featureType": "administrative",
-              "elementType": "geometry.stroke",
-              "stylers": [{"color": "#fefefe"}, {"lightness": 17}, {"weight": 1.2}]
-            }
-          ]
-        });
-        
-        mapInstanceRef.current = mapInstance;
-        
-        const marker = new window.google.maps.Marker({
-          position: mumbaiLocation,
-          map: mapInstance,
-          title: "Ambica Pharma Office",
-          animation: window.google.maps.Animation.DROP
-        });
-        
-        const infowindow = new window.google.maps.InfoWindow({
-          content: `
-            <div style="padding: 10px; max-width: 200px;">
-              <h3 style="margin: 0; font-size: 16px; color: #2B4D82; font-weight: bold;">Ambica Pharma</h3>
-              <p style="margin: 5px 0 0; font-size: 12px;">
-                22 to 25, 2nd Floor, Chapsey Building, Kalbadevi, Mumbai - 400002
-              </p>
-            </div>
-          `
-        });
-        
-        marker.addListener("click", () => {
-          infowindow.open(mapInstance, marker);
-        });
-        
-        setMapLoaded(true);
-        mapScriptLoadedRef.current = true;
-      } catch (error) {
-        console.error("Error initializing map:", error);
-      }
-    };
-    
-    // Only load script if not already loaded
-    if (!document.querySelector('script[src*="maps.googleapis.com/maps/api/js"]') && !mapScriptLoadedRef.current) {
-      try {
         const script = document.createElement('script');
+        script.id = 'google-maps-script';
         script.src = `https://maps.googleapis.com/maps/api/js?key=&callback=initMap`;
         script.async = true;
         script.defer = true;
-        script.id = 'google-maps-script';
         
-        // Add error handling to the script
         script.onerror = () => {
           console.error("Error loading Google Maps script");
           setMapLoaded(false);
+          scriptLoadingRef.current = false;
         };
         
+        // Don't need to keep a ref to the script element itself
         document.head.appendChild(script);
       } catch (error) {
         console.error("Error creating Google Maps script:", error);
+        scriptLoadingRef.current = false;
       }
     } else if (window.google && window.google.maps) {
       // If script is already loaded, just call initMap directly
       window.initMap();
     }
     
-    // Cleanup function
+    // Cleanup function - only clean up map instance, not DOM nodes
     return () => {
-      // Clean up the global initMap function
-      if (window.initMap) {
-        window.initMap = () => {};
-      }
-      
-      // Clean up map instance
+      // Only need to nullify the map instance, not remove/alter DOM elements
       if (mapInstanceRef.current) {
         mapInstanceRef.current = null;
       }
