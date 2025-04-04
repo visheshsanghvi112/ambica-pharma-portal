@@ -10,24 +10,7 @@ import { useToast } from "@/hooks/use-toast";
 import { motion } from "framer-motion";
 import MapComponent from "@/components/MapComponent";
 
-// Define the window interface for Google Maps
-declare global {
-  interface Window {
-    initMap: () => void;
-    google: {
-      maps: {
-        Map: new (container: HTMLElement, options: any) => any;
-        Marker: new (options: any) => any;
-        InfoWindow: new (options: any) => any;
-        NavigationControl: new (options: any) => any;
-        Animation: {
-          DROP: number;
-          BOUNCE: number;
-        };
-      };
-    };
-  }
-}
+// No need to redefine the window interface here as it's already defined in the google-maps.d.ts file
 
 const Contact = () => {
   const { toast } = useToast();
@@ -96,7 +79,8 @@ const Contact = () => {
       // Create script element
       const script = document.createElement('script');
       script.id = 'google-maps-script';
-      script.src = `https://maps.googleapis.com/maps/api/js?key=${process.env.GOOGLE_MAPS_API_KEY || ''}&callback=initMap`;
+      // Use a placeholder API key or an empty string instead of process.env
+      script.src = `https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY_HERE&callback=initMap`;
       script.async = true;
       script.defer = true;
       

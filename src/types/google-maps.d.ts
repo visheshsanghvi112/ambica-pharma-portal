@@ -17,6 +17,16 @@ declare namespace google {
       setMap(map: Map | null): void;
     }
 
+    class InfoWindow {
+      constructor(options: any);
+      open(map: Map, marker?: Marker): void;
+      setContent(content: string): void;
+    }
+
+    class NavigationControl {
+      constructor(options?: any);
+    }
+
     interface MapOptions {
       center: LatLngLiteral;
       zoom: number;
@@ -33,5 +43,10 @@ declare namespace google {
       lat: number;
       lng: number;
     }
+
+    const Animation: {
+      DROP: number;
+      BOUNCE: number;
+    };
   }
 }
