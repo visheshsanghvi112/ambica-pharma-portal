@@ -48,5 +48,10 @@ declare namespace google {
       DROP: number;
       BOUNCE: number;
     };
+
+    namespace event {
+      function addListener(instance: any, eventName: string, handler: Function): any;
+      function clearInstanceListeners(instance: any): void;
+    }
   }
 }

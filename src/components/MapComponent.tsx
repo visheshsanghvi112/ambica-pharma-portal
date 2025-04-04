@@ -68,11 +68,9 @@ const MapComponent: React.FC<MapComponentProps> = ({ lat, lng, zoom = 15, title 
       infoWindowRef.current.setContent(`<div class="p-2 font-semibold text-gray-800">${title}</div>`);
     }
 
-    // FIX: Use the proper way to add click listener to marker
-    // Instead of using 'addListener', directly use the marker's 'click' event
+    // Correctly add click listener to marker to show info window
     if (markerRef.current) {
-      markerRef.current.addListener = markerRef.current.addListener || function() {};
-      google.maps.event.addListener(markerRef.current, 'click', () => {
+      window.google.maps.event.addListener(markerRef.current, 'click', () => {
         if (infoWindowRef.current && mapInstanceRef.current) {
           infoWindowRef.current.open(mapInstanceRef.current, markerRef.current);
         }
@@ -84,8 +82,7 @@ const MapComponent: React.FC<MapComponentProps> = ({ lat, lng, zoom = 15, title 
       if (markerRef.current) {
         // Just remove the marker from the map, don't try to delete DOM elements
         markerRef.current.setMap(null);
-        // FIX: Use google.maps.event instead of directly accessing event property
-        google.maps.event.clearInstanceListeners(markerRef.current);
+        window.google.maps.event.clearInstanceListeners(markerRef.current);
         markerRef.current = null;
       }
       
