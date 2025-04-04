@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect, useRef } from "react";
 import { Helmet } from "react-helmet-async";
 import { Button } from "@/components/ui/button";
@@ -40,11 +41,14 @@ const Contact = () => {
   const [mapLoaded, setMapLoaded] = useState(false);
   const mapRef = useRef<HTMLDivElement>(null);
   const mapInstanceRef = useRef<any>(null);
-  const mapScriptRef = useRef<HTMLScriptElement | null>(null);
+  const mapScriptLoadedRef = useRef<boolean>(false);
 
+  // Load Google Maps
   useEffect(() => {
+    // Skip if map already loaded or no map container
     if (mapLoaded || !mapRef.current) return;
     
+    // Define the map initialization function
     window.initMap = () => {
       if (!mapRef.current) return;
       
@@ -107,34 +111,47 @@ const Contact = () => {
         });
         
         setMapLoaded(true);
+        mapScriptLoadedRef.current = true;
       } catch (error) {
         console.error("Error initializing map:", error);
       }
     };
     
-    if (!document.querySelector('script[src*="maps.googleapis.com/maps/api/js"]')) {
-      const script = document.createElement('script');
-      script.src = `https://maps.googleapis.com/maps/api/js?key=&callback=initMap`;
-      script.async = true;
-      script.defer = true;
-      script.onerror = () => console.error("Error loading Google Maps script");
-      
-      mapScriptRef.current = script;
-      document.head.appendChild(script);
+    // Only load script if not already loaded
+    if (!document.querySelector('script[src*="maps.googleapis.com/maps/api/js"]') && !mapScriptLoadedRef.current) {
+      try {
+        const script = document.createElement('script');
+        script.src = `https://maps.googleapis.com/maps/api/js?key=&callback=initMap`;
+        script.async = true;
+        script.defer = true;
+        script.id = 'google-maps-script';
+        
+        // Add error handling to the script
+        script.onerror = () => {
+          console.error("Error loading Google Maps script");
+          setMapLoaded(false);
+        };
+        
+        document.head.appendChild(script);
+      } catch (error) {
+        console.error("Error creating Google Maps script:", error);
+      }
     } else if (window.google && window.google.maps) {
+      // If script is already loaded, just call initMap directly
       window.initMap();
     }
     
+    // Cleanup function
     return () => {
+      // Clean up the global initMap function
       if (window.initMap) {
         window.initMap = () => {};
       }
       
+      // Clean up map instance
       if (mapInstanceRef.current) {
         mapInstanceRef.current = null;
       }
-      
-      mapScriptRef.current = null;
     };
   }, [mapLoaded]);
 
