@@ -5,6 +5,7 @@ import { Button } from "./ui/button";
 import { Input } from "./ui/input";
 import { Phone, Mail, MapPin, Send, Facebook, Twitter, Linkedin, Instagram } from "lucide-react";
 import { motion } from "framer-motion";
+import { ThemeToggle } from "./ThemeToggle";
 
 const Footer = () => {
   return (
@@ -18,7 +19,10 @@ const Footer = () => {
               Discover excellence in pharmaceutical manufacturing and distribution at Ambica Pharma, 
               where quality meets commitment since 2005.
             </p>
-            <div className="flex space-x-3">
+            <div className="flex items-center space-x-3">
+              <div className="p-2 rounded-full bg-white/10 hover:bg-white/20 transition-colors">
+                <ThemeToggle />
+              </div>
               <a href="https://facebook.com" className="p-2 rounded-full bg-white/10 hover:bg-white/20 transition-colors transform transition-transform hover:scale-110" aria-label="Facebook">
                 <Facebook className="h-4 w-4" />
               </a>
@@ -123,6 +127,13 @@ const Footer = () => {
                 <Send className="h-4 w-4" />
               </Button>
             </form>
+            
+            <div className="mt-6 p-4 bg-white/10 rounded-lg">
+              <h4 className="font-semibold mb-2">Certifications</h4>
+              <p className="text-xs text-white/80">
+                ISO-9001:2008 certified • GMP Certified • WHO Guidelines Compliant • In-house Testing Laboratory
+              </p>
+            </div>
           </div>
         </div>
         

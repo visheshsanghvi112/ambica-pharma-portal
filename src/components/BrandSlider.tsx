@@ -35,16 +35,6 @@ const BrandSlider: React.FC = () => {
   return (
     <section className="py-12 bg-gradient-to-r from-primary/5 to-secondary/5 dark:from-primary/10 dark:to-secondary/10">
       <div className="container">
-        <div className="mb-10 text-center">
-          <h2 className="text-3xl md:text-4xl font-display font-bold text-primary mb-4">
-            Our Trusted Partners
-          </h2>
-          <p className="text-foreground/80 max-w-3xl mx-auto mb-6">
-            We collaborate with leading pharmaceutical manufacturers to provide high-quality medicines at competitive prices.
-          </p>
-          <div className="w-20 h-1 bg-secondary mx-auto"></div>
-        </div>
-        
         <div className="relative py-8">
           {/* Top gradient overlay */}
           <div className="absolute top-0 left-0 w-full h-10 bg-gradient-to-b from-background to-transparent z-10"></div>
@@ -64,7 +54,7 @@ const BrandSlider: React.FC = () => {
                 key={index} 
                 className="mx-6 flex flex-col items-center justify-center"
               >
-                <div className="w-36 h-36 bg-white dark:bg-gray-800 rounded-lg shadow-md hover:shadow-xl transition-all duration-300 p-4 flex items-center justify-center transform hover:scale-105 border border-primary/10">
+                <div className="w-44 h-44 bg-white dark:bg-gray-800 rounded-lg shadow-md hover:shadow-xl transition-all duration-300 p-4 flex items-center justify-center transform hover:scale-105 border border-primary/10">
                   <img 
                     src={brand.logo} 
                     alt={`${brand.name} logo`}

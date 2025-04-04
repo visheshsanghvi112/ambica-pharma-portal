@@ -1,14 +1,30 @@
+
+User-agent: *
+Allow: /
+
+Sitemap: https://ambicapharma.com/sitemap.xml
+
+# Allow search engines to crawl these sections
 User-agent: Googlebot
 Allow: /
+Allow: /about
+Allow: /products
+Allow: /careers
+Allow: /contact
+Allow: /global-reach
+Allow: /blog
 
 User-agent: Bingbot
 Allow: /
+Allow: /about
+Allow: /products
+Allow: /careers
+Allow: /contact
+Allow: /global-reach
+Allow: /blog
 
 User-agent: Twitterbot
 Allow: /
 
 User-agent: facebookexternalhit
-Allow: /
-
-User-agent: *
 Allow: /
