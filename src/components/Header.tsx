@@ -75,6 +75,7 @@ const Header = () => {
                   { path: "/contact", label: "Contact" },
                   { path: "/blog", label: "Blog" },
                   { path: "/careers", label: "Careers" },
+                  { path: "/achievements", label: "Achievements" },
                   { path: "/csr", label: "CSR" },
                   { path: "/faq", label: "FAQ" },
                   { path: "/privacy", label: "Privacy Policy" }
@@ -133,6 +134,7 @@ const Header = () => {
               { path: "/contact", label: "Contact Us" },
               { path: "/blog", label: "Blog" },
               { path: "/careers", label: "Careers" },
+              { path: "/achievements", label: "Achievements" },
               { path: "/csr", label: "CSR" },
               { path: "/faq", label: "FAQ" },
               { path: "/privacy", label: "Privacy Policy" },

@@ -19,6 +19,7 @@ import CSR from "./pages/CSR";
 import Careers from "./pages/Careers";
 import Team from "./pages/Team";
 import NotFound from "./pages/NotFound";
+import Achievements from "./pages/Achievements";
 
 const queryClient = new QueryClient();
 
@@ -50,6 +51,7 @@ const App = () => (
                 <Route path="/privacy" element={<PrivacyPolicy />} />
                 <Route path="/csr" element={<CSR />} />
                 <Route path="/careers" element={<Careers />} />
+                <Route path="/achievements" element={<Achievements />} />
                 <Route path="*" element={<NotFound />} />
               </Routes>
             </main>
