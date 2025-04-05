@@ -1,9 +1,7 @@
-
 import React from "react";
 import { Helmet } from "react-helmet-async";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
-import { Mail, Linkedin, Twitter, Globe } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
 
@@ -238,30 +236,6 @@ const TeamMemberCard: React.FC<{ member: TeamMember }> = ({ member }) => {
           alt={member.name} 
           className="w-full h-64 object-cover object-top transition-transform duration-500 group-hover:scale-105"
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end justify-center p-4">
-          <div className="flex space-x-3">
-            {member.social.email && (
-              <a href={`mailto:${member.social.email}`} className="bg-white/90 p-2 rounded-full hover:bg-primary hover:text-white transition-colors duration-300">
-                <Mail className="h-4 w-4" />
-              </a>
-            )}
-            {member.social.linkedin && (
-              <a href={member.social.linkedin} target="_blank" rel="noopener noreferrer" className="bg-white/90 p-2 rounded-full hover:bg-primary hover:text-white transition-colors duration-300">
-                <Linkedin className="h-4 w-4" />
-              </a>
-            )}
-            {member.social.twitter && (
-              <a href={member.social.twitter} target="_blank" rel="noopener noreferrer" className="bg-white/90 p-2 rounded-full hover:bg-primary hover:text-white transition-colors duration-300">
-                <Twitter className="h-4 w-4" />
-              </a>
-            )}
-            {member.social.website && (
-              <a href={member.social.website} target="_blank" rel="noopener noreferrer" className="bg-white/90 p-2 rounded-full hover:bg-primary hover:text-white transition-colors duration-300">
-                <Globe className="h-4 w-4" />
-              </a>
-            )}
-          </div>
-        </div>
       </div>
       <div className="p-6">
         <h3 className="text-xl font-bold text-gray-900 dark:text-white">{member.name}</h3>

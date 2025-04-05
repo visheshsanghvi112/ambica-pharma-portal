@@ -63,7 +63,6 @@ const Contact = () => {
           content="Contact Ambica Pharma for inquiries about our pharmaceutical products, distribution partnerships, or career opportunities. We're here to help."
         />
         <meta name="keywords" content="contact Ambica Pharma, pharmaceutical company contact, pharma inquiry, medicine distributor contact" />
-        <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY_HERE&callback=initMap" async defer></script>
       </Helmet>
 
       <section className="py-12 md:py-16 bg-gradient-to-b from-background to-secondary/5">
@@ -92,7 +91,6 @@ const Contact = () => {
               </div>
               <h2 className="text-xl font-semibold mb-2">Email Us</h2>
               <p className="text-muted-foreground mb-4">Our support team will get back to you within 24 hours.</p>
-              <a href="mailto:ambicapharma@gmail.com" className="text-primary hover:underline block">ambicapharma@gmail.com</a>
               <a href="mailto:info@ambicapharma.net" className="text-primary hover:underline block">info@ambicapharma.net</a>
             </div>
 
@@ -101,8 +99,8 @@ const Contact = () => {
                 <Clock className="h-6 w-6 text-primary" />
               </div>
               <h2 className="text-xl font-semibold mb-2">Business Hours</h2>
-              <p className="text-muted-foreground mb-2">Monday - Friday: 9am - 6pm</p>
-              <p className="text-muted-foreground mb-2">Saturday: 9am - 2pm</p>
+              <p className="text-muted-foreground mb-2">Office: Monday - Friday: 10am - 7:30pm</p>
+              <p className="text-muted-foreground mb-2">Warehouse: Monday - Saturday: 9am - 12pm</p>
               <p className="text-muted-foreground">Sunday: Closed</p>
             </div>
           </div>
@@ -244,9 +242,9 @@ const Contact = () => {
                   <Phone className="h-5 w-5" />
                   <span>+91 9967006091</span>
                 </a>
-                <a href="mailto:emergency@ambicapharma.net" className="flex items-center gap-2 text-primary hover:underline">
+                <a href="mailto:info@ambicapharma.net" className="flex items-center gap-2 text-primary hover:underline">
                   <Mail className="h-5 w-5" />
-                  <span>emergency@ambicapharma.net</span>
+                  <span>info@ambicapharma.net</span>
                 </a>
               </div>
               <Button className="bg-gradient-to-r from-secondary to-primary animate-pulse">
