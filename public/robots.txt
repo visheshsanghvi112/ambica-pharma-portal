@@ -1,7 +1,11 @@
 
+# Ambica Pharma Robots.txt
+# Website: https://ambicapharma.com
+
 User-agent: *
 Allow: /
 
+# Sitemap
 Sitemap: https://ambicapharma.com/sitemap.xml
 
 # Disallow specific paths
@@ -10,6 +14,8 @@ Disallow: /admin/
 Disallow: /private/
 Disallow: /tmp/
 Disallow: /api/
+Disallow: /*.pdf$
+Disallow: /*?*
 
 # Allow search engines to crawl important sections
 User-agent: Googlebot
@@ -38,8 +44,22 @@ Allow: /achievements
 Allow: /csr
 Allow: /faq
 
+User-agent: Yandexbot
+Allow: /
+Allow: /about
+Allow: /products
+Allow: /careers
+Allow: /contact
+
 User-agent: Twitterbot
 Allow: /
 
 User-agent: facebookexternalhit
 Allow: /
+
+# Crawl-delay for specific bots
+User-agent: Bingbot
+Crawl-delay: 10
+
+User-agent: YandexBot
+Crawl-delay: 10
