@@ -1,3 +1,4 @@
+
 import React from "react";
 import HeroSection from "../components/HeroSection";
 import { Button } from "@/components/ui/button";
@@ -8,7 +9,6 @@ import Statistics from "../components/Statistics";
 import Testimonials from "../components/Testimonials";
 import { Card, CardContent } from "@/components/ui/card";
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
-import BrandCards from "../components/BrandSlider";
 
 // Product categories data
 const productCategories = [
@@ -154,9 +154,6 @@ const Index = () => {
         </div>
       </section>
       
-      {/* Our Trusted Partner Brands - Now as cards */}
-      <BrandCards />
-      
       {/* Our Impact in Numbers */}
       <Statistics />
       
@@ -176,7 +173,7 @@ const Index = () => {
             </p>
           </motion.div>
           
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-6">
             {productCategories.map((category, index) => (
               <motion.div
                 key={index}
@@ -187,17 +184,12 @@ const Index = () => {
               >
                 <Card className="bg-white dark:bg-card border border-primary/10 shadow-lg hover:shadow-xl transition-all h-full overflow-hidden">
                   <div className="h-2 bg-gradient-to-r from-primary to-secondary"></div>
-                  <CardContent className="p-6 h-full flex flex-col">
-                    <div className="bg-gradient-to-br from-primary/10 to-secondary/10 p-4 rounded-full w-20 h-20 flex items-center justify-center mx-auto mb-4">
+                  <CardContent className="p-4 md:p-6 h-full flex flex-col">
+                    <div className="bg-gradient-to-br from-primary/10 to-secondary/10 p-3 md:p-4 rounded-full w-16 h-16 md:w-20 md:h-20 flex items-center justify-center mx-auto mb-3 md:mb-4">
                       {category.icon}
                     </div>
-                    <h3 className="text-xl font-bold text-primary text-center mb-2">{category.title}</h3>
-                    <p className="text-foreground/70 text-center mb-4">{category.description}</p>
-                    <div className="mt-auto">
-                      <Button variant="outline" className="w-full hover:bg-primary/10 hover:text-primary transition-colors" asChild>
-                        <Link to="/products">Learn More</Link>
-                      </Button>
-                    </div>
+                    <h3 className="text-lg md:text-xl font-bold text-primary text-center mb-2">{category.title}</h3>
+                    <p className="text-foreground/70 text-center text-sm md:text-base">{category.description}</p>
                   </CardContent>
                 </Card>
               </motion.div>
@@ -231,19 +223,19 @@ const Index = () => {
             </p>
           </motion.div>
           
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">
             <motion.div 
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.1 }}
               viewport={{ once: true }}
-              className="flex flex-col items-center text-center p-6 rounded-lg bg-white dark:bg-gray-800 shadow-md hover:shadow-lg transition-all border border-primary/10"
+              className="flex flex-col items-center text-center p-4 md:p-6 rounded-lg bg-white dark:bg-gray-800 shadow-md hover:shadow-lg transition-all border border-primary/10"
             >
-              <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mb-4">
-                <CheckCircle className="h-8 w-8 text-primary" />
+              <div className="w-12 h-12 md:w-16 md:h-16 bg-primary/10 rounded-full flex items-center justify-center mb-3 md:mb-4">
+                <CheckCircle className="h-6 w-6 md:h-8 md:w-8 text-primary" />
               </div>
-              <h3 className="font-semibold text-primary text-xl mb-2">Quality Assurance</h3>
-              <p className="text-foreground/70">All products meet rigorous quality standards and are sourced from certified manufacturers.</p>
+              <h3 className="font-semibold text-primary text-lg md:text-xl mb-2">Quality Assurance</h3>
+              <p className="text-foreground/70 text-sm md:text-base">All products meet rigorous quality standards and are sourced from certified manufacturers.</p>
             </motion.div>
             
             <motion.div 
@@ -251,13 +243,13 @@ const Index = () => {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.2 }}
               viewport={{ once: true }}
-              className="flex flex-col items-center text-center p-6 rounded-lg bg-white dark:bg-gray-800 shadow-md hover:shadow-lg transition-all border border-primary/10"
+              className="flex flex-col items-center text-center p-4 md:p-6 rounded-lg bg-white dark:bg-gray-800 shadow-md hover:shadow-lg transition-all border border-primary/10"
             >
-              <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mb-4">
-                <CheckCircle className="h-8 w-8 text-primary" />
+              <div className="w-12 h-12 md:w-16 md:h-16 bg-primary/10 rounded-full flex items-center justify-center mb-3 md:mb-4">
+                <CheckCircle className="h-6 w-6 md:h-8 md:w-8 text-primary" />
               </div>
-              <h3 className="font-semibold text-primary text-xl mb-2">Competitive Pricing</h3>
-              <p className="text-foreground/70">We offer the best market rates through efficient supply chain management and strong manufacturer relationships.</p>
+              <h3 className="font-semibold text-primary text-lg md:text-xl mb-2">Competitive Pricing</h3>
+              <p className="text-foreground/70 text-sm md:text-base">We offer the best market rates through efficient supply chain management and strong manufacturer relationships.</p>
             </motion.div>
             
             <motion.div 
@@ -265,13 +257,13 @@ const Index = () => {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.3 }}
               viewport={{ once: true }}
-              className="flex flex-col items-center text-center p-6 rounded-lg bg-white dark:bg-gray-800 shadow-md hover:shadow-lg transition-all border border-primary/10"
+              className="flex flex-col items-center text-center p-4 md:p-6 rounded-lg bg-white dark:bg-gray-800 shadow-md hover:shadow-lg transition-all border border-primary/10"
             >
-              <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mb-4">
-                <CheckCircle className="h-8 w-8 text-primary" />
+              <div className="w-12 h-12 md:w-16 md:h-16 bg-primary/10 rounded-full flex items-center justify-center mb-3 md:mb-4">
+                <CheckCircle className="h-6 w-6 md:h-8 md:w-8 text-primary" />
               </div>
-              <h3 className="font-semibold text-primary text-xl mb-2">Extensive Distribution</h3>
-              <p className="text-foreground/70">Our robust network ensures timely delivery of pharmaceuticals across India and international markets.</p>
+              <h3 className="font-semibold text-primary text-lg md:text-xl mb-2">Extensive Distribution</h3>
+              <p className="text-foreground/70 text-sm md:text-base">Our robust network ensures timely delivery of pharmaceuticals across India and international markets.</p>
             </motion.div>
             
             <motion.div 
@@ -279,13 +271,13 @@ const Index = () => {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.4 }}
               viewport={{ once: true }}
-              className="flex flex-col items-center text-center p-6 rounded-lg bg-white dark:bg-gray-800 shadow-md hover:shadow-lg transition-all border border-primary/10"
+              className="flex flex-col items-center text-center p-4 md:p-6 rounded-lg bg-white dark:bg-gray-800 shadow-md hover:shadow-lg transition-all border border-primary/10"
             >
-              <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mb-4">
-                <CheckCircle className="h-8 w-8 text-primary" />
+              <div className="w-12 h-12 md:w-16 md:h-16 bg-primary/10 rounded-full flex items-center justify-center mb-3 md:mb-4">
+                <CheckCircle className="h-6 w-6 md:h-8 md:w-8 text-primary" />
               </div>
-              <h3 className="font-semibold text-primary text-xl mb-2">Expert Consultation</h3>
-              <p className="text-foreground/70">Our pharmaceutical experts provide comprehensive guidance on product selection and regulatory compliance.</p>
+              <h3 className="font-semibold text-primary text-lg md:text-xl mb-2">Expert Consultation</h3>
+              <p className="text-foreground/70 text-sm md:text-base">Our pharmaceutical experts provide comprehensive guidance on product selection and regulatory compliance.</p>
             </motion.div>
           </div>
           
