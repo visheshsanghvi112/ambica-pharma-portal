@@ -20,7 +20,7 @@ interface TeamMember {
     twitter?: string;
     website?: string;
   };
-  department: "leadership" | "research" | "sales" | "operations";
+  department: "leadership" | "purchase" | "sales" | "operations" | "it" | "hr" | "administration";
 }
 
 // Sample team data
@@ -73,7 +73,7 @@ const teamMembers: TeamMember[] = [
       linkedin: "https://linkedin.com",
       twitter: "https://twitter.com",
     },
-    department: "research"
+    department: "administration"
   },
   {
     id: 5,
@@ -110,23 +110,10 @@ const teamMembers: TeamMember[] = [
       email: "amit.joshi@ambicapharma.com",
       linkedin: "https://linkedin.com",
     },
-    department: "research"
+    department: "administration"
   },
   {
     id: 8,
-    name: "Meera Reddy",
-    role: "Marketing Director",
-    bio: "Developed our brand strategy and manages our global marketing initiatives across digital and traditional channels.",
-    image: "/lovable-uploads/1ba95355-1c30-42b5-bfbd-fc0bb85e1a41.png",
-    social: {
-      email: "meera.reddy@ambicapharma.com",
-      twitter: "https://twitter.com",
-      linkedin: "https://linkedin.com",
-    },
-    department: "sales"
-  },
-  {
-    id: 9,
     name: "Suresh Patel",
     role: "Supply Chain Manager",
     bio: "Manages our global supply chain to ensure timely delivery of products to distributors and end customers.",
@@ -135,10 +122,10 @@ const teamMembers: TeamMember[] = [
       email: "suresh.patel@ambicapharma.com",
       linkedin: "https://linkedin.com",
     },
-    department: "operations"
+    department: "purchase"
   },
   {
-    id: 10,
+    id: 9,
     name: "Anjali Singh",
     role: "Clinical Research Associate",
     bio: "Coordinates clinical trials and ensures all research protocols meet industry standards and regulatory requirements.",
@@ -147,10 +134,10 @@ const teamMembers: TeamMember[] = [
       email: "anjali.singh@ambicapharma.com",
       linkedin: "https://linkedin.com",
     },
-    department: "research"
+    department: "hr"
   },
   {
-    id: 11,
+    id: 10,
     name: "Vishal Kumar",
     role: "International Business Development",
     bio: "Identifies new market opportunities and develops strategic partnerships to expand our global footprint.",
@@ -162,7 +149,7 @@ const teamMembers: TeamMember[] = [
     department: "sales"
   },
   {
-    id: 12,
+    id: 11,
     name: "Sunita Devi",
     role: "Regulatory Affairs Specialist",
     bio: "Ensures all products comply with regulatory requirements across global markets to facilitate smooth product launches.",
@@ -174,7 +161,7 @@ const teamMembers: TeamMember[] = [
     department: "operations"
   },
   {
-    id: 13,
+    id: 12,
     name: "Dr. Ramesh Jain",
     role: "Product Development Scientist",
     bio: "Leads research on new pharmaceutical formulations and improvements to existing product lines.",
@@ -183,10 +170,10 @@ const teamMembers: TeamMember[] = [
       email: "ramesh.jain@ambicapharma.com",
       linkedin: "https://linkedin.com",
     },
-    department: "research"
+    department: "it"
   },
   {
-    id: 14,
+    id: 13,
     name: "Rakesh Sharma",
     role: "Strategic Partnerships Manager",
     bio: "Develops and maintains relationships with key distributors and partners to strengthen our market position.",
@@ -198,7 +185,7 @@ const teamMembers: TeamMember[] = [
     department: "sales"
   },
   {
-    id: 15,
+    id: 14,
     name: "Deepika Patel",
     role: "Production Manager",
     bio: "Oversees all pharmaceutical manufacturing processes to ensure optimum quality and efficiency.",
@@ -208,6 +195,30 @@ const teamMembers: TeamMember[] = [
       linkedin: "https://linkedin.com",
     },
     department: "operations"
+  },
+  {
+    id: 15,
+    name: "Sunil Kumar",
+    role: "IT Systems Administrator",
+    bio: "Manages our IT infrastructure and ensures all systems are running smoothly to support our operations.",
+    image: "/lovable-uploads/93092566-4a97-4281-9733-909843f42279.png",
+    social: {
+      email: "sunil.kumar@ambicapharma.com",
+      linkedin: "https://linkedin.com",
+    },
+    department: "it"
+  },
+  {
+    id: 16,
+    name: "Rahul Singh",
+    role: "HR Manager",
+    bio: "Oversees recruitment, employee welfare, and HR policies to ensure a positive workplace environment.",
+    image: "/lovable-uploads/2d00527b-e10a-4b35-b6b0-02c80ea39939.png",
+    social: {
+      email: "rahul.singh@ambicapharma.com",
+      linkedin: "https://linkedin.com",
+    },
+    department: "hr"
   }
 ];
 
@@ -321,14 +332,23 @@ const Team = () => {
           <FilterButton active={filter === "leadership"} onClick={() => setFilter("leadership")}>
             Leadership
           </FilterButton>
-          <FilterButton active={filter === "research"} onClick={() => setFilter("research")}>
-            Research
+          <FilterButton active={filter === "purchase"} onClick={() => setFilter("purchase")}>
+            Purchase
           </FilterButton>
           <FilterButton active={filter === "sales"} onClick={() => setFilter("sales")}>
             Sales & Marketing
           </FilterButton>
           <FilterButton active={filter === "operations"} onClick={() => setFilter("operations")}>
             Operations
+          </FilterButton>
+          <FilterButton active={filter === "it"} onClick={() => setFilter("it")}>
+            IT
+          </FilterButton>
+          <FilterButton active={filter === "hr"} onClick={() => setFilter("hr")}>
+            HR
+          </FilterButton>
+          <FilterButton active={filter === "administration"} onClick={() => setFilter("administration")}>
+            Administration
           </FilterButton>
         </motion.div>
         

@@ -60,7 +60,7 @@ const Statistics = () => {
                 {stat.icon}
               </div>
               <div className="text-2xl md:text-4xl font-bold text-primary mb-2 md:mb-3">{stat.value}</div>
-              <p className="text-gray-600 dark:text-gray-300 text-xs md:text-sm">{stat.title}</p>
+              <p className="text-gray-600 dark:text-gray-300 text-xs md:text-sm font-medium">{stat.title}</p>
             </motion.div>
           ))}
         </div>
