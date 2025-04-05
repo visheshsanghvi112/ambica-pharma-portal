@@ -45,12 +45,12 @@ const Header = () => {
           : "bg-background/80 backdrop-blur-sm border-transparent"
       )}>
         <div className="container flex justify-between items-center">
-          {/* Logo - Increased size */}
+          {/* Logo - Further increased size */}
           <Link to="/" className="flex items-center">
             <img
               src="/lovable-uploads/a5979ffb-180b-4225-a1e8-15425f28d262.png"
               alt="Ambica Pharma Logo"
-              className="h-16 md:h-18 transition-all duration-300 hover:scale-105 dark:bg-white/10 dark:p-1 dark:rounded-md"
+              className="h-20 md:h-22 transition-all duration-300 hover:scale-105 dark:bg-white/10 dark:p-1 dark:rounded-md"
             />
           </Link>
 

@@ -92,6 +92,11 @@ const MapComponent: React.FC<MapComponentProps> = ({ lat, lng, zoom = 15, title 
           }
         });
       }
+      
+      // Open info window by default
+      if (infoWindowRef.current && mapInstanceRef.current && markerRef.current) {
+        infoWindowRef.current.open(mapInstanceRef.current, markerRef.current);
+      }
     };
 
     loadGoogleMapsScript();
@@ -122,7 +127,7 @@ const MapComponent: React.FC<MapComponentProps> = ({ lat, lng, zoom = 15, title 
       <div 
         ref={mapRef} 
         className="w-full h-[500px] z-10"
-        aria-label="Google Map showing location of Ambica Pharma"
+        aria-label={`Google Map showing location of ${title}`}
       />
     </div>
   );

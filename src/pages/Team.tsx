@@ -1,3 +1,4 @@
+
 import React from "react";
 import { Helmet } from "react-helmet-async";
 import { Link } from "react-router-dom";
@@ -61,17 +62,16 @@ const teamMembers: TeamMember[] = [
     department: "operations"
   },
   {
-    id: 4,
-    name: "Dr. Ananya Patel",
-    role: "Research Director",
-    bio: "Leading our development of innovative pharmaceutical solutions with a focus on sustainable manufacturing processes.",
-    image: "/lovable-uploads/7c83a2dc-635a-40cc-a26a-24fefa0fe6fe.png",
+    id: 17,
+    name: "Vikram Darji",
+    role: "Purchase Manager",
+    bio: "Manages procurement processes and vendor relationships to ensure quality and cost-efficiency in our supply chain.",
+    image: "/lovable-uploads/22ad766d-7479-4975-84f8-d414d8c4410d.png",
     social: {
-      email: "ananya.patel@ambicapharma.com",
+      email: "vikram.darji@ambicapharma.com",
       linkedin: "https://linkedin.com",
-      twitter: "https://twitter.com",
     },
-    department: "administration"
+    department: "purchase"
   },
   {
     id: 5,

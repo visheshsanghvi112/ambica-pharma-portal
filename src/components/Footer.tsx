@@ -90,7 +90,7 @@ const Footer = () => {
               </p>
               <p className="flex items-center">
                 <Mail className="h-5 w-5 mr-2" />
-                <span>ambicapharma@gmail.com</span>
+                <span>info@ambicapharma.net</span>
               </p>
             </address>
             

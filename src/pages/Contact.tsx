@@ -189,7 +189,7 @@ const Contact = () => {
                     )}
                   />
                   
-                  <Button type="submit">Send Message</Button>
+                  <Button type="submit" className="bg-primary hover:bg-primary/90">Send Message</Button>
                 </form>
               </Form>
             </div>
