@@ -104,3 +104,29 @@ main {
   background-clip: text;
   color: transparent;
 }
+
+/* Cookie consent styles */
+.cookie-enter {
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+.cookie-enter-active {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 300ms, transform 300ms;
+}
+
+.cookie-exit {
+  opacity: 1;
+}
+
+.cookie-exit-active {
+  opacity: 0;
+  transition: opacity 300ms;
+}
+
+/* Hover scale for logo */
+.hover\:scale-115:hover {
+  transform: scale(1.15);
+}

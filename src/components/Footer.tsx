@@ -32,7 +32,7 @@ const Footer = () => {
               <a href="https://instagram.com" className="p-2 rounded-full bg-white/10 hover:bg-white/20 transition-colors transform transition-transform hover:scale-110" aria-label="Instagram">
                 <Instagram className="h-4 w-4" />
               </a>
-              <div className="p-2 rounded-full bg-white/10 hover:bg-white/20 transition-colors">
+              <div className="p-2 rounded-full bg-white/10 hover:bg-white/20 transition-colors hidden">
                 <ThemeToggle />
               </div>
             </div>
