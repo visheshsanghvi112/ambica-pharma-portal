@@ -101,7 +101,7 @@ const About = () => {
               className="rounded-lg overflow-hidden"
             >
               <img 
-                src="/lovable-uploads/c0f96c3b-a789-4906-be6d-0cae782624b8.png" 
+                src="/lovable-uploads/458c13fe-ce57-44e5-bd7e-ccc62d1a36e9.png" 
                 alt="Mr. Dilip Jain - Founder & Chairman of Ambica Pharma" 
                 className="w-full h-auto rounded-lg shadow-lg transform transition-transform duration-500 hover:scale-105"
                 loading="lazy"

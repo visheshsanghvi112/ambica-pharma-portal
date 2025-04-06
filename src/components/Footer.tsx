@@ -90,7 +90,7 @@ const Footer = () => {
               </p>
               <p className="flex items-center">
                 <Mail className="h-5 w-5 mr-2" />
-                <span>info@ambicapharma.net</span>
+                <span>ambicapharma@gmail.com</span>
               </p>
             </address>
             
@@ -98,7 +98,7 @@ const Footer = () => {
             <address className="not-italic text-sm text-white/80 dark:text-white/80 space-y-2">
               <p className="flex items-start">
                 <MapPin className="h-5 w-5 mr-2 mt-0.5 flex-shrink-0" />
-                <span>Gala No. 1, First Floor, Building D8, Shree Arihant Compound, Reti Bander Road, Kalher, Bhiwandi (Thane) - 421302</span>
+                <span>Gala No. 9 to 12, First Floor, Building D8, Shree Arihant Compound, Reti Bander Road, Kalher, Bhiwandi (Thane) - 421302</span>
               </p>
               <p className="flex items-center">
                 <Phone className="h-5 w-5 mr-2" />

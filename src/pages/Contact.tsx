@@ -1,4 +1,3 @@
-
 import React from "react";
 import { Helmet } from "react-helmet-async";
 import { Button } from "@/components/ui/button";
@@ -91,7 +90,7 @@ const Contact = () => {
               </div>
               <h2 className="text-xl font-semibold mb-2">Email Us</h2>
               <p className="text-muted-foreground mb-4">Our support team will get back to you within 24 hours.</p>
-              <a href="mailto:info@ambicapharma.net" className="text-primary hover:underline block">info@ambicapharma.net</a>
+              <a href="mailto:ambicapharma@gmail.com" className="text-primary hover:underline block">ambicapharma@gmail.com</a>
             </div>
 
             <div className="bg-card dark:bg-gray-800 p-6 rounded-xl shadow-sm border border-border hover:shadow-md transition-shadow text-center">
@@ -100,7 +99,7 @@ const Contact = () => {
               </div>
               <h2 className="text-xl font-semibold mb-2">Business Hours</h2>
               <p className="text-muted-foreground mb-2">Office: Monday - Friday: 10am - 7:30pm</p>
-              <p className="text-muted-foreground mb-2">Warehouse: Monday - Saturday: 9am - 12pm</p>
+              <p className="text-muted-foreground mb-2">Warehouse: Monday - Saturday: 9am - 7:30pm</p>
               <p className="text-muted-foreground">Sunday: Closed</p>
             </div>
           </div>
