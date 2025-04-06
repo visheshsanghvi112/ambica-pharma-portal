@@ -12,108 +12,108 @@
             http://www.google.com/schemas/sitemap-image/1.1/sitemap-image.xsd">
 
    <url>
-      <loc>https://ambicapharma.com/</loc>
+      <loc>https://ambicapharma.net/</loc>
       <lastmod>2025-04-05</lastmod>
       <changefreq>weekly</changefreq>
       <priority>1.0</priority>
       <image:image>
-         <image:loc>https://ambicapharma.com/lovable-uploads/a5979ffb-180b-4225-a1e8-15425f28d262.png</image:loc>
+         <image:loc>https://ambicapharma.net/lovable-uploads/a5979ffb-180b-4225-a1e8-15425f28d262.png</image:loc>
          <image:caption>Ambica Pharma Logo</image:caption>
          <image:title>Ambica Pharma - Leading Pharmaceutical Manufacturer</image:title>
       </image:image>
       <image:image>
-         <image:loc>https://ambicapharma.com/lovable-uploads/63a8a1f6-c261-41aa-a504-eafd56cda01a.png</image:loc>
+         <image:loc>https://ambicapharma.net/lovable-uploads/63a8a1f6-c261-41aa-a504-eafd56cda01a.png</image:loc>
          <image:caption>Ambica Pharma Brand Logo</image:caption>
          <image:title>Ambica Pharma Official Logo</image:title>
       </image:image>
    </url>
    <url>
-      <loc>https://ambicapharma.com/about</loc>
+      <loc>https://ambicapharma.net/about</loc>
       <lastmod>2025-04-05</lastmod>
       <changefreq>monthly</changefreq>
       <priority>0.8</priority>
       <image:image>
-         <image:loc>https://ambicapharma.com/lovable-uploads/c0f96c3b-a789-4906-be6d-0cae782624b8.png</image:loc>
+         <image:loc>https://ambicapharma.net/lovable-uploads/c0f96c3b-a789-4906-be6d-0cae782624b8.png</image:loc>
          <image:caption>Mr. Dilip Jain - Founder &amp; Chairman</image:caption>
          <image:title>Ambica Pharma Founder</image:title>
       </image:image>
    </url>
    <url>
-      <loc>https://ambicapharma.com/products</loc>
+      <loc>https://ambicapharma.net/products</loc>
       <lastmod>2025-04-05</lastmod>
       <changefreq>weekly</changefreq>
       <priority>0.8</priority>
       <image:image>
-         <image:loc>https://ambicapharma.com/lovable-uploads/b829635b-d0e3-46ff-a0a9-ea07e3056b39.png</image:loc>
+         <image:loc>https://ambicapharma.net/lovable-uploads/b829635b-d0e3-46ff-a0a9-ea07e3056b39.png</image:loc>
          <image:caption>Ambica Pharma Product Range</image:caption>
          <image:title>Pharmaceutical Products</image:title>
       </image:image>
    </url>
    <url>
-      <loc>https://ambicapharma.com/team</loc>
+      <loc>https://ambicapharma.net/team</loc>
       <lastmod>2025-04-05</lastmod>
       <changefreq>monthly</changefreq>
       <priority>0.7</priority>
       <image:image>
-         <image:loc>https://ambicapharma.com/lovable-uploads/c0f96c3b-a789-4906-be6d-0cae782624b8.png</image:loc>
+         <image:loc>https://ambicapharma.net/lovable-uploads/c0f96c3b-a789-4906-be6d-0cae782624b8.png</image:loc>
          <image:caption>Ambica Pharma Leadership Team</image:caption>
          <image:title>Management Team</image:title>
       </image:image>
    </url>
    <url>
-      <loc>https://ambicapharma.com/contact</loc>
+      <loc>https://ambicapharma.net/contact</loc>
       <lastmod>2025-04-05</lastmod>
       <changefreq>monthly</changefreq>
       <priority>0.7</priority>
    </url>
    <url>
-      <loc>https://ambicapharma.com/careers</loc>
+      <loc>https://ambicapharma.net/careers</loc>
       <lastmod>2025-04-05</lastmod>
       <changefreq>weekly</changefreq>
       <priority>0.7</priority>
    </url>
    <url>
-      <loc>https://ambicapharma.com/blog</loc>
+      <loc>https://ambicapharma.net/blog</loc>
       <lastmod>2025-04-05</lastmod>
       <changefreq>weekly</changefreq>
       <priority>0.6</priority>
    </url>
    <url>
-      <loc>https://ambicapharma.com/global-reach</loc>
+      <loc>https://ambicapharma.net/global-reach</loc>
       <lastmod>2025-04-05</lastmod>
       <changefreq>monthly</changefreq>
       <priority>0.6</priority>
       <image:image>
-         <image:loc>https://ambicapharma.com/lovable-uploads/1ace0070-8637-4045-b4a0-3c3ce09fbede.png</image:loc>
+         <image:loc>https://ambicapharma.net/lovable-uploads/1ace0070-8637-4045-b4a0-3c3ce09fbede.png</image:loc>
          <image:caption>Ambica Pharma Global Distribution</image:caption>
          <image:title>Global Network</image:title>
       </image:image>
    </url>
    <url>
-      <loc>https://ambicapharma.com/faq</loc>
+      <loc>https://ambicapharma.net/faq</loc>
       <lastmod>2025-04-05</lastmod>
       <changefreq>monthly</changefreq>
       <priority>0.5</priority>
    </url>
    <url>
-      <loc>https://ambicapharma.com/csr</loc>
+      <loc>https://ambicapharma.net/csr</loc>
       <lastmod>2025-04-05</lastmod>
       <changefreq>monthly</changefreq>
       <priority>0.5</priority>
    </url>
    <url>
-      <loc>https://ambicapharma.com/achievements</loc>
+      <loc>https://ambicapharma.net/achievements</loc>
       <lastmod>2025-04-05</lastmod>
       <changefreq>monthly</changefreq>
       <priority>0.6</priority>
       <image:image>
-         <image:loc>https://ambicapharma.com/lovable-uploads/252ae4ad-9151-48a8-9618-a9bb2176b30b.png</image:loc>
+         <image:loc>https://ambicapharma.net/lovable-uploads/252ae4ad-9151-48a8-9618-a9bb2176b30b.png</image:loc>
          <image:caption>Ambica Pharma Achievements</image:caption>
          <image:title>Company Awards</image:title>
       </image:image>
    </url>
    <url>
-      <loc>https://ambicapharma.com/privacy</loc>
+      <loc>https://ambicapharma.net/privacy</loc>
       <lastmod>2025-04-05</lastmod>
       <changefreq>yearly</changefreq>
       <priority>0.3</priority>
