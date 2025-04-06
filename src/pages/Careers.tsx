@@ -15,6 +15,7 @@ import { ArrowLeft, ArrowRight, BriefcaseBusiness, CalendarDays, Users, MapPin, 
 import { motion } from "framer-motion";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { useIsMobile } from "@/hooks/use-mobile";
 
 const formSchema = z.object({
   name: z.string().min(2, {
@@ -314,6 +315,7 @@ const experienceLevels = [
 const Careers = () => {
   const [selectedJob, setSelectedJob] = useState<string | null>(null);
   const [showApplication, setShowApplication] = useState(false);
+  const isMobile = useIsMobile();
   
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
@@ -339,6 +341,30 @@ const Careers = () => {
 
   const selectedJobData = jobsData.find(job => job.id === selectedJob);
 
+  // Animation variants
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: { 
+      opacity: 1,
+      transition: { 
+        staggerChildren: 0.1,
+        delayChildren: 0.2
+      }
+    }
+  };
+  
+  const itemVariants = {
+    hidden: { y: 20, opacity: 0 },
+    visible: { 
+      y: 0, 
+      opacity: 1,
+      transition: { 
+        type: "spring", 
+        stiffness: 100 
+      }
+    }
+  };
+
   return (
     <>
       <Helmet>
@@ -355,18 +381,28 @@ const Careers = () => {
         <link rel="canonical" href="https://www.ambicapharma.com/careers" />
       </Helmet>
       
-      <section className="py-12 md:py-24 bg-gradient-to-b from-background to-secondary/5">
-        <div className="container">
+      <section className="py-12 md:py-20 bg-gradient-to-b from-background to-secondary/5">
+        <div className="container px-4 md:px-6">
           {!selectedJob ? (
             <>
-              <div className="max-w-3xl mx-auto text-center mb-12">
-                <h1 className="text-4xl md:text-5xl font-bold mb-4 font-display">Careers at Ambica Pharma</h1>
+              <motion.div 
+                initial={{ opacity: 0, y: -20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6 }}
+                className="max-w-3xl mx-auto text-center mb-12"
+              >
+                <h1 className="text-3xl md:text-5xl font-bold mb-4 font-display bg-clip-text text-transparent bg-gradient-to-r from-primary to-primary/80">Careers at Ambica Pharma</h1>
                 <p className="text-muted-foreground text-lg">Join our team of passionate professionals dedicated to improving global healthcare.</p>
-              </div>
+              </motion.div>
               
-              <div className="grid md:grid-cols-2 gap-12 items-center mb-16">
-                <div>
-                  <h2 className="text-2xl md:text-3xl font-semibold mb-4 font-display">Why Work With Us?</h2>
+              <motion.div 
+                variants={containerVariants}
+                initial="hidden"
+                animate="visible"
+                className="grid md:grid-cols-2 gap-8 lg:gap-12 items-center mb-16"
+              >
+                <motion.div variants={itemVariants}>
+                  <h2 className="text-2xl md:text-3xl font-semibold mb-6 font-display">Why Work With Us?</h2>
                   <ul className="space-y-4">
                     <li className="flex items-start gap-3">
                       <div className="bg-primary/10 p-2 rounded-full mt-1">
@@ -405,9 +441,12 @@ const Careers = () => {
                       </div>
                     </li>
                   </ul>
-                </div>
+                </motion.div>
                 
-                <div className="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-lg border border-border">
+                <motion.div 
+                  variants={itemVariants}
+                  className="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-lg border border-border"
+                >
                   <h2 className="text-2xl font-semibold mb-4 font-display">Our Company</h2>
                   <p className="mb-4">
                     The Company has been accredited with ISO-9001:2008 and manufactures pharmaceutical formulations as per the guidelines of WHO. It is a (GMP Certified) Unit with total quality management and In-house Testing Laboratory.
@@ -421,20 +460,32 @@ const Careers = () => {
                   <p>
                     It is the Company constant and Company will also increasingly focus in high growth potential segments like Vaccines and Biogenetics.
                   </p>
-                </div>
-              </div>
+                </motion.div>
+              </motion.div>
               
               <div className="max-w-5xl mx-auto mb-16">
-                <h2 className="text-2xl md:text-3xl font-semibold mb-8 text-center font-display">Current Openings</h2>
-                <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-                  {jobsData.map((job) => (
+                <motion.h2 
+                  initial={{ opacity: 0, y: 10 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.5 }}
+                  className="text-2xl md:text-3xl font-semibold mb-8 text-center font-display"
+                >
+                  Current Openings
+                </motion.h2>
+                <motion.div 
+                  variants={containerVariants}
+                  initial="hidden"
+                  whileInView="visible"
+                  viewport={{ once: true }}
+                  className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
+                >
+                  {jobsData.map((job, index) => (
                     <motion.div 
                       key={job.id}
-                      initial={{ opacity: 0, y: 20 }}
-                      whileInView={{ opacity: 1, y: 0 }}
-                      transition={{ duration: 0.4 }}
-                      viewport={{ once: true }}
-                      className="bg-card p-6 rounded-lg border border-border hover:shadow-md transition-shadow"
+                      variants={itemVariants}
+                      custom={index}
+                      className="bg-card p-6 rounded-lg border border-border hover:shadow-md transition-all hover:translate-y-[-5px]"
                     >
                       <h3 className="font-semibold text-lg mb-2">{job.title}</h3>
                       <div className="flex items-center text-sm text-muted-foreground mb-1">
@@ -446,19 +497,25 @@ const Careers = () => {
                       <Button 
                         variant="outline" 
                         size="sm" 
-                        className="w-full"
+                        className="w-full hover:bg-primary hover:text-white transition-colors"
                         onClick={() => setSelectedJob(job.id)}
                       >
                         View Details
                       </Button>
                     </motion.div>
                   ))}
-                </div>
+                </motion.div>
               </div>
             </>
           ) : showApplication ? (
-            <div className="max-w-4xl mx-auto bg-primary-foreground dark:bg-gray-800 rounded-xl shadow-xl overflow-hidden border border-border">
-              <div className="p-8 md:p-12">
+            <motion.div 
+              initial={{ opacity: 0, scale: 0.95 }}
+              animate={{ opacity: 1, scale: 1 }}
+              exit={{ opacity: 0, scale: 0.95 }}
+              transition={{ duration: 0.3 }}
+              className="max-w-4xl mx-auto bg-primary-foreground dark:bg-gray-800 rounded-xl shadow-xl overflow-hidden border border-border"
+            >
+              <div className="p-6 md:p-12">
                 <div className="flex items-center mb-8">
                   <Button 
                     variant="ghost" 
@@ -468,7 +525,7 @@ const Careers = () => {
                   >
                     <ArrowLeft className="h-4 w-4 mr-2" /> Back
                   </Button>
-                  <h2 className="text-2xl md:text-3xl font-bold text-primary font-display">
+                  <h2 className="text-xl md:text-3xl font-bold text-primary font-display">
                     Apply for {selectedJobData?.title}
                   </h2>
                 </div>
@@ -615,10 +672,15 @@ const Careers = () => {
                   </form>
                 </Form>
               </div>
-            </div>
+            </motion.div>
           ) : (
-            <div className="max-w-4xl mx-auto bg-primary-foreground dark:bg-gray-800 rounded-xl shadow-xl overflow-hidden border border-border">
-              <div className="p-8 md:p-12">
+            <motion.div 
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.4 }}
+              className="max-w-4xl mx-auto bg-primary-foreground dark:bg-gray-800 rounded-xl shadow-xl overflow-hidden border border-border"
+            >
+              <div className="p-6 md:p-12">
                 <div className="flex items-center mb-8">
                   <Button 
                     variant="ghost" 
@@ -628,14 +690,14 @@ const Careers = () => {
                   >
                     <ArrowLeft className="h-4 w-4 mr-2" /> Back to Jobs
                   </Button>
-                  <h2 className="text-2xl md:text-3xl font-bold text-primary font-display">
+                  <h2 className="text-xl md:text-3xl font-bold text-primary font-display truncate">
                     {selectedJobData?.title}
                   </h2>
                 </div>
                 
                 {selectedJobData && (
                   <div className="space-y-8">
-                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                    <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 md:gap-4">
                       <Card>
                         <CardContent className="pt-6">
                           <div className="flex items-center gap-3">
@@ -710,7 +772,7 @@ const Careers = () => {
                     </div>
                     
                     <Tabs defaultValue="description" className="w-full">
-                      <TabsList className="grid w-full grid-cols-4">
+                      <TabsList className={`grid w-full ${isMobile ? 'grid-cols-2 gap-1' : 'grid-cols-4'}`}>
                         <TabsTrigger value="description">Description</TabsTrigger>
                         <TabsTrigger value="responsibilities">Responsibilities</TabsTrigger>
                         <TabsTrigger value="requirements">Requirements</TabsTrigger>
@@ -755,21 +817,43 @@ const Careers = () => {
                       </TabsContent>
                     </Tabs>
                     
-                    <div className="flex justify-center mt-8">
-                      <Button onClick={() => setShowApplication(true)} className="px-8">
+                    <motion.div 
+                      initial={{ opacity: 0, y: 10 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ delay: 0.4 }}
+                      className="flex justify-center mt-8"
+                    >
+                      <Button 
+                        onClick={() => setShowApplication(true)} 
+                        className="px-8 bg-primary hover:bg-primary/90 transition-colors"
+                      >
                         Apply Now <ArrowRight className="ml-2 h-4 w-4" />
                       </Button>
-                    </div>
+                    </motion.div>
                   </div>
                 )}
               </div>
-            </div>
+            </motion.div>
           )}
           
           {!selectedJob && (
-            <div className="max-w-4xl mx-auto bg-primary-foreground dark:bg-gray-800 rounded-xl shadow-xl overflow-hidden border border-border">
-              <div className="p-8 md:p-12">
-                <h2 className="text-2xl md:text-3xl font-bold mb-6 text-primary text-center font-display">Ready to Join Our Team?</h2>
+            <motion.div 
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: 0.3 }}
+              className="max-w-4xl mx-auto bg-primary-foreground dark:bg-gray-800 rounded-xl shadow-xl overflow-hidden border border-border mt-12"
+            >
+              <div className="p-6 md:p-12">
+                <motion.h2 
+                  initial={{ opacity: 0 }}
+                  whileInView={{ opacity: 1 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: 0.4 }}
+                  className="text-2xl md:text-3xl font-bold mb-6 text-primary text-center font-display"
+                >
+                  Ready to Join Our Team?
+                </motion.h2>
                 <p className="text-center mb-8 text-muted-foreground">
                   Submit your application below and we'll be in touch if your qualifications match our requirements.
                 </p>
@@ -907,11 +991,16 @@ const Careers = () => {
                       )}
                     />
                     
-                    <Button type="submit" className="w-full">Submit Application</Button>
+                    <Button 
+                      type="submit" 
+                      className="w-full bg-primary hover:bg-primary/90 transition-colors"
+                    >
+                      Submit Application
+                    </Button>
                   </form>
                 </Form>
               </div>
-            </div>
+            </motion.div>
           )}
         </div>
       </section>
