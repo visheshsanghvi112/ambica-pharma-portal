@@ -3,7 +3,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { Button } from "./ui/button";
 import { Input } from "./ui/input";
-import { Phone, Mail, MapPin, Send, Facebook, Twitter, Linkedin, Instagram } from "lucide-react";
+import { Phone, Mail, MapPin, Send, Facebook, Twitter, Linkedin, Instagram, Clock } from "lucide-react";
 import { motion } from "framer-motion";
 import { ThemeToggle } from "./ThemeToggle";
 
@@ -105,6 +105,10 @@ const Footer = () => {
                 <Mail className="h-5 w-5 mr-2" />
                 <span>info@ambicapharma.net</span>
               </p>
+              <p className="flex items-center">
+                <Clock className="h-5 w-5 mr-2" />
+                <span>Timings: 9:00 AM - 7:30 PM</span>
+              </p>
             </address>
           </div>
           
@@ -149,3 +153,4 @@ const Footer = () => {
 };
 
 export default Footer;
+

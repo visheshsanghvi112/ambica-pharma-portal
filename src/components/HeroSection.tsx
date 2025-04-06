@@ -4,7 +4,7 @@ import { Button } from "./ui/button";
 import { Link } from "react-router-dom";
 import { motion, useAnimation } from "framer-motion";
 import { useInView } from "framer-motion";
-import { ChevronRight, ArrowRight } from "lucide-react";
+import { ChevronRight, ArrowRight, Shield, Award, Heart } from "lucide-react";
 
 const HeroSection = () => {
   const controls = useAnimation();
@@ -48,8 +48,8 @@ const HeroSection = () => {
             className="space-y-6 z-10"
           >
             <motion.div variants={itemVariants}>
-              <span className="inline-block px-3 py-1 text-sm font-medium bg-secondary/10 dark:bg-secondary/20 text-secondary dark:text-secondary-foreground rounded-full mb-4 animate-pulse">
-                Trusted Since 2005
+              <span className="inline-flex items-center px-3 py-1 text-sm font-medium bg-secondary/10 dark:bg-secondary/20 text-secondary dark:text-secondary-foreground rounded-full mb-4 animate-pulse">
+                <Award className="h-4 w-4 mr-1" /> Trusted Since 2005
               </span>
             </motion.div>
             
@@ -72,36 +72,78 @@ const HeroSection = () => {
               variants={itemVariants}
               className="flex flex-wrap gap-4"
             >
-              <Button asChild size="lg" className="group bg-gradient-to-r from-primary to-secondary text-white hover:opacity-90 shadow-lg shadow-primary/20 dark:shadow-primary/10 transition-all duration-300 hover:shadow-xl">
-                <Link to="/about" className="flex items-center gap-2">
-                  Learn More <ChevronRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
-                </Link>
-              </Button>
-              <Button asChild variant="outline" size="lg" className="group border-primary text-primary hover:bg-primary hover:text-white dark:border-primary-foreground dark:text-primary-foreground dark:hover:bg-primary-foreground/10">
-                <Link to="/contact" className="flex items-center gap-2">
-                  Contact Us <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
-                </Link>
-              </Button>
+              <motion.div
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                transition={{ type: "spring", stiffness: 400, damping: 17 }}
+              >
+                <Button asChild size="lg" className="group bg-gradient-to-r from-primary to-secondary text-white hover:opacity-90 shadow-lg shadow-primary/20 dark:shadow-primary/10 transition-all duration-300 hover:shadow-xl">
+                  <Link to="/about" className="flex items-center gap-2">
+                    Learn More <ChevronRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+                  </Link>
+                </Button>
+              </motion.div>
+              <motion.div
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                transition={{ type: "spring", stiffness: 400, damping: 17 }}
+              >
+                <Button asChild variant="outline" size="lg" className="group border-primary text-primary hover:bg-primary hover:text-white dark:border-primary-foreground dark:text-primary-foreground dark:hover:bg-primary-foreground/10">
+                  <Link to="/contact" className="flex items-center gap-2">
+                    Contact Us <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+                  </Link>
+                </Button>
+              </motion.div>
+            </motion.div>
+
+            {/* Key benefits */}
+            <motion.div
+              variants={itemVariants}
+              className="flex flex-wrap gap-4 pt-4"
+            >
+              {[
+                { icon: <Shield className="h-5 w-5 text-green-500" />, text: "ISO-9001:2008 Certified" },
+                { icon: <Heart className="h-5 w-5 text-red-500" />, text: "WHO-GMP Standards" },
+                { icon: <Award className="h-5 w-5 text-amber-500" />, text: "Quality Assured" }
+              ].map((item, idx) => (
+                <div key={idx} className="flex items-center gap-2 text-sm text-foreground/70 bg-white/50 dark:bg-white/10 px-3 py-1.5 rounded-full backdrop-blur-sm">
+                  {item.icon}
+                  <span>{item.text}</span>
+                </div>
+              ))}
             </motion.div>
           </motion.div>
           
           <motion.div 
-  initial={{ opacity: 0, x: 50 }}
-  animate={{ opacity: 1, x: 0 }}
-  transition={{ duration: 0.8, delay: 0.5 }}
-  className="relative z-10"
->
-  <div className="relative">
-    <div className="absolute -inset-0.5 bg-gradient-to-r from-primary to-secondary rounded-lg blur opacity-30 dark:opacity-40 animate-pulse"></div>
-    <video
-      src="/lovable-uploads/ambicavideo.mp4"
-      autoPlay
-      loop
-      muted
-      className="rounded-lg shadow-2xl max-w-full h-auto relative transform transition-transform duration-500 hover:scale-105 dark:border dark:border-white/10"
-    ></video>
-  </div>
-</motion.div>
+            initial={{ opacity: 0, x: 50 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.8, delay: 0.5 }}
+            className="relative z-10"
+          >
+            <div className="relative">
+              <div className="absolute -inset-0.5 bg-gradient-to-r from-primary to-secondary rounded-lg blur opacity-30 dark:opacity-40 animate-pulse"></div>
+              <motion.div
+                whileHover={{ scale: 1.02 }}
+                transition={{ type: "spring", stiffness: 300, damping: 10 }}
+              >
+                <video
+                  src="/lovable-uploads/ambicavideo.mp4"
+                  autoPlay
+                  loop
+                  muted
+                  className="rounded-lg shadow-2xl max-w-full h-auto relative transform transition-transform duration-500 hover:scale-105 dark:border dark:border-white/10"
+                ></video>
+              </motion.div>
+              {/* Video play button overlay - purely decorative since video autoplays */}
+              <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-16 h-16 rounded-full bg-white/20 backdrop-blur-sm flex items-center justify-center animate-pulse">
+                <div className="w-10 h-10 rounded-full bg-white flex items-center justify-center">
+                  <svg className="w-4 h-4 text-primary ml-1" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M8 5v14l11-7z" />
+                  </svg>
+                </div>
+              </div>
+            </div>
+          </motion.div>
         </div>
       </div>
       
@@ -144,8 +186,18 @@ const HeroSection = () => {
           />
         ))}
       </div>
+
+      {/* Wave decoration at bottom */}
+      <div className="absolute bottom-0 left-0 w-full overflow-hidden z-0 opacity-20">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320" className="w-full h-auto">
+          <path fill="currentColor" fillOpacity="1" className="text-primary"
+            d="M0,96L48,112C96,128,192,160,288,160C384,160,480,128,576,122.7C672,117,768,139,864,154.7C960,171,1056,181,1152,154.7C1248,128,1344,64,1392,32L1440,0L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z">
+          </path>
+        </svg>
+      </div>
     </div>
   );
 };
 
 export default HeroSection;
+
