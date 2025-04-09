@@ -38,6 +38,16 @@
     
     <!-- Canonical URL -->
     <link rel="canonical" href="https://ambicapharma.net" />
+    
+    <!-- Google tag (gtag.js) for Firebase Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-2PZ7FVFDBN"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      // Don't enable analytics until consent
+      gtag('config', 'G-2PZ7FVFDBN', { 'send_page_view': false });
+    </script>
   </head>
 
   <body>

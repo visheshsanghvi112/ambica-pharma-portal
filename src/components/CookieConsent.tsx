@@ -1,10 +1,11 @@
-
 import React, { useEffect, useState } from "react";
 import { Button } from "./ui/button";
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "./ui/card";
 import { X, Info } from "lucide-react";
 import { Link } from "react-router-dom";
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "./ui/tooltip";
+import { analytics, logAnalyticsEvent } from "../lib/firebase";
+import { setAnalyticsCollectionEnabled } from "firebase/analytics";
 
 const COOKIE_CONSENT_KEY = "ambica_cookie_consent";
 const COOKIE_PREFERENCE_VERSION = "1.0"; // Used to track consent version
@@ -40,15 +41,32 @@ const CookieConsent = () => {
       const timer = setTimeout(() => {
         setShowConsent(true);
       }, 1000);
+      
+      // If analytics is available, disable it by default until consent
+      if (analytics) {
+        setAnalyticsCollectionEnabled(analytics, false);
+      }
+      
       return () => clearTimeout(timer);
     } else {
       // Load stored settings
       try {
         const storedSettings = JSON.parse(storedConsent);
         setCookieSettings(storedSettings);
+        
+        // Enable analytics if user consented
+        if (analytics && storedSettings.analytics) {
+          setAnalyticsCollectionEnabled(analytics, true);
+          logAnalyticsEvent('consent_given', { type: 'analytics' });
+        } else if (analytics) {
+          setAnalyticsCollectionEnabled(analytics, false);
+        }
       } catch (e) {
         // If parsing fails, reset to default and show consent
         setShowConsent(true);
+        if (analytics) {
+          setAnalyticsCollectionEnabled(analytics, false);
+        }
       }
     }
   }, []);
@@ -66,14 +84,18 @@ const CookieConsent = () => {
     localStorage.setItem(COOKIE_CONSENT_KEY, JSON.stringify(settings));
     setShowConsent(false);
     
-    // You could trigger analytics setup here if analytics is enabled
-    if (settings.analytics) {
-      // Initialize analytics
+    // Enable or disable analytics based on user consent
+    if (analytics) {
+      setAnalyticsCollectionEnabled(analytics, settings.analytics);
+      if (settings.analytics) {
+        logAnalyticsEvent('consent_given', { type: 'analytics' });
+      }
     }
     
     // You could set marketing cookies here if marketing is enabled
     if (settings.marketing) {
       // Initialize marketing tools
+      logAnalyticsEvent('consent_given', { type: 'marketing' });
     }
   };
 
