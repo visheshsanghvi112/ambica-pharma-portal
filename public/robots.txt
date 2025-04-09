@@ -1,6 +1,7 @@
 
 # Ambica Pharma Robots.txt
 # Website: https://ambicapharma.com
+# Last updated: 2025-04-09
 
 User-agent: *
 Allow: /
@@ -16,6 +17,10 @@ Disallow: /tmp/
 Disallow: /api/
 Disallow: /*.pdf$
 Disallow: /*?*
+Disallow: /*/search*
+Disallow: /*/filter*
+Disallow: /*/sort*
+Disallow: /*?query=*
 
 # Allow search engines to crawl important sections
 User-agent: Googlebot
@@ -30,6 +35,7 @@ Allow: /team
 Allow: /achievements
 Allow: /csr
 Allow: /faq
+Disallow: /*/print$
 
 User-agent: Bingbot
 Allow: /
@@ -43,6 +49,7 @@ Allow: /team
 Allow: /achievements
 Allow: /csr
 Allow: /faq
+Disallow: /*/print$
 
 User-agent: Yandexbot
 Allow: /
@@ -50,6 +57,7 @@ Allow: /about
 Allow: /products
 Allow: /careers
 Allow: /contact
+Disallow: /*/print$
 
 User-agent: Twitterbot
 Allow: /
@@ -63,3 +71,31 @@ Crawl-delay: 10
 
 User-agent: YandexBot
 Crawl-delay: 10
+
+# Health related sections specifically allowed for health industry crawlers
+User-agent: googlebot-news
+Allow: /blog
+Allow: /news
+Allow: /products
+Allow: /achievements
+
+# Google Image Crawler - Allow access to image-heavy pages
+User-agent: Googlebot-Image
+Allow: /products
+Allow: /facilities
+Allow: /team
+Allow: /about
+
+# Prevent archive.org from archiving the site
+User-agent: archive.org_bot
+Disallow: /
+
+# Site mirroring and scraping prevention
+User-agent: HTTrack
+Disallow: /
+
+User-agent: MJ12bot
+Disallow: /
+
+User-agent: AhrefsBot
+Disallow: /

@@ -13,7 +13,7 @@
 
    <url>
       <loc>https://ambicapharma.net/</loc>
-      <lastmod>2025-04-05</lastmod>
+      <lastmod>2025-04-09</lastmod>
       <changefreq>weekly</changefreq>
       <priority>1.0</priority>
       <image:image>
@@ -26,10 +26,11 @@
          <image:caption>Ambica Pharma Brand Logo</image:caption>
          <image:title>Ambica Pharma Official Logo</image:title>
       </image:image>
+      <mobile:mobile/>
    </url>
    <url>
       <loc>https://ambicapharma.net/about</loc>
-      <lastmod>2025-04-05</lastmod>
+      <lastmod>2025-04-09</lastmod>
       <changefreq>monthly</changefreq>
       <priority>0.8</priority>
       <image:image>
@@ -37,21 +38,23 @@
          <image:caption>Mr. Dilip Jain - Founder &amp; Chairman</image:caption>
          <image:title>Ambica Pharma Founder</image:title>
       </image:image>
+      <mobile:mobile/>
    </url>
    <url>
       <loc>https://ambicapharma.net/products</loc>
-      <lastmod>2025-04-05</lastmod>
+      <lastmod>2025-04-09</lastmod>
       <changefreq>weekly</changefreq>
-      <priority>0.8</priority>
+      <priority>0.9</priority>
       <image:image>
          <image:loc>https://ambicapharma.net/lovable-uploads/b829635b-d0e3-46ff-a0a9-ea07e3056b39.png</image:loc>
          <image:caption>Ambica Pharma Product Range</image:caption>
          <image:title>Pharmaceutical Products</image:title>
       </image:image>
+      <mobile:mobile/>
    </url>
    <url>
       <loc>https://ambicapharma.net/team</loc>
-      <lastmod>2025-04-05</lastmod>
+      <lastmod>2025-04-09</lastmod>
       <changefreq>monthly</changefreq>
       <priority>0.7</priority>
       <image:image>
@@ -59,63 +62,146 @@
          <image:caption>Ambica Pharma Leadership Team</image:caption>
          <image:title>Management Team</image:title>
       </image:image>
+      <mobile:mobile/>
    </url>
    <url>
       <loc>https://ambicapharma.net/contact</loc>
-      <lastmod>2025-04-05</lastmod>
+      <lastmod>2025-04-09</lastmod>
       <changefreq>monthly</changefreq>
-      <priority>0.7</priority>
+      <priority>0.8</priority>
+      <mobile:mobile/>
    </url>
    <url>
       <loc>https://ambicapharma.net/careers</loc>
-      <lastmod>2025-04-05</lastmod>
+      <lastmod>2025-04-09</lastmod>
       <changefreq>weekly</changefreq>
       <priority>0.7</priority>
+      <mobile:mobile/>
    </url>
    <url>
       <loc>https://ambicapharma.net/blog</loc>
-      <lastmod>2025-04-05</lastmod>
+      <lastmod>2025-04-09</lastmod>
       <changefreq>weekly</changefreq>
-      <priority>0.6</priority>
+      <priority>0.8</priority>
+      <mobile:mobile/>
    </url>
    <url>
       <loc>https://ambicapharma.net/global-reach</loc>
-      <lastmod>2025-04-05</lastmod>
+      <lastmod>2025-04-09</lastmod>
       <changefreq>monthly</changefreq>
-      <priority>0.6</priority>
+      <priority>0.7</priority>
       <image:image>
          <image:loc>https://ambicapharma.net/lovable-uploads/1ace0070-8637-4045-b4a0-3c3ce09fbede.png</image:loc>
          <image:caption>Ambica Pharma Global Distribution</image:caption>
          <image:title>Global Network</image:title>
       </image:image>
+      <mobile:mobile/>
    </url>
    <url>
       <loc>https://ambicapharma.net/faq</loc>
-      <lastmod>2025-04-05</lastmod>
+      <lastmod>2025-04-09</lastmod>
       <changefreq>monthly</changefreq>
-      <priority>0.5</priority>
+      <priority>0.6</priority>
+      <mobile:mobile/>
    </url>
    <url>
       <loc>https://ambicapharma.net/csr</loc>
-      <lastmod>2025-04-05</lastmod>
+      <lastmod>2025-04-09</lastmod>
       <changefreq>monthly</changefreq>
-      <priority>0.5</priority>
+      <priority>0.6</priority>
+      <mobile:mobile/>
    </url>
    <url>
       <loc>https://ambicapharma.net/achievements</loc>
-      <lastmod>2025-04-05</lastmod>
+      <lastmod>2025-04-09</lastmod>
       <changefreq>monthly</changefreq>
-      <priority>0.6</priority>
+      <priority>0.7</priority>
       <image:image>
          <image:loc>https://ambicapharma.net/lovable-uploads/252ae4ad-9151-48a8-9618-a9bb2176b30b.png</image:loc>
          <image:caption>Ambica Pharma Achievements</image:caption>
          <image:title>Company Awards</image:title>
       </image:image>
+      <mobile:mobile/>
    </url>
    <url>
       <loc>https://ambicapharma.net/privacy</loc>
-      <lastmod>2025-04-05</lastmod>
+      <lastmod>2025-04-09</lastmod>
       <changefreq>yearly</changefreq>
-      <priority>0.3</priority>
+      <priority>0.4</priority>
+      <mobile:mobile/>
+   </url>
+   
+   <!-- Additional product category URLs for better SEO -->
+   <url>
+      <loc>https://ambicapharma.net/products/tablets</loc>
+      <lastmod>2025-04-09</lastmod>
+      <changefreq>monthly</changefreq>
+      <priority>0.7</priority>
+      <mobile:mobile/>
+   </url>
+   <url>
+      <loc>https://ambicapharma.net/products/capsules</loc>
+      <lastmod>2025-04-09</lastmod>
+      <changefreq>monthly</changefreq>
+      <priority>0.7</priority>
+      <mobile:mobile/>
+   </url>
+   <url>
+      <loc>https://ambicapharma.net/products/injectables</loc>
+      <lastmod>2025-04-09</lastmod>
+      <changefreq>monthly</changefreq>
+      <priority>0.7</priority>
+      <mobile:mobile/>
+   </url>
+   <url>
+      <loc>https://ambicapharma.net/products/drops</loc>
+      <lastmod>2025-04-09</lastmod>
+      <changefreq>monthly</changefreq>
+      <priority>0.7</priority>
+      <mobile:mobile/>
+   </url>
+   <url>
+      <loc>https://ambicapharma.net/products/ointments</loc>
+      <lastmod>2025-04-09</lastmod>
+      <changefreq>monthly</changefreq>
+      <priority>0.7</priority>
+      <mobile:mobile/>
+   </url>
+   <url>
+      <loc>https://ambicapharma.net/products/syrups</loc>
+      <lastmod>2025-04-09</lastmod>
+      <changefreq>monthly</changefreq>
+      <priority>0.7</priority>
+      <mobile:mobile/>
+   </url>
+   
+   <!-- Therapeutic category URLs for better SEO -->
+   <url>
+      <loc>https://ambicapharma.net/therapeutic-areas/cardiovascular</loc>
+      <lastmod>2025-04-09</lastmod>
+      <changefreq>monthly</changefreq>
+      <priority>0.6</priority>
+      <mobile:mobile/>
+   </url>
+   <url>
+      <loc>https://ambicapharma.net/therapeutic-areas/diabetic-care</loc>
+      <lastmod>2025-04-09</lastmod>
+      <changefreq>monthly</changefreq>
+      <priority>0.6</priority>
+      <mobile:mobile/>
+   </url>
+   <url>
+      <loc>https://ambicapharma.net/therapeutic-areas/antibiotics</loc>
+      <lastmod>2025-04-09</lastmod>
+      <changefreq>monthly</changefreq>
+      <priority>0.6</priority>
+      <mobile:mobile/>
+   </url>
+   <url>
+      <loc>https://ambicapharma.net/therapeutic-areas/gastrointestinal</loc>
+      <lastmod>2025-04-09</lastmod>
+      <changefreq>monthly</changefreq>
+      <priority>0.6</priority>
+      <mobile:mobile/>
    </url>
 </urlset>
