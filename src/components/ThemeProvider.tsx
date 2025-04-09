@@ -1,5 +1,5 @@
 
-import { createContext, useContext, useEffect, useState } from "react";
+import React, { createContext, useContext, useEffect, useState } from "react";
 
 type Theme = "dark" | "light" | "system";
 
@@ -29,13 +29,18 @@ export function ThemeProvider({
 }: ThemeProviderProps) {
   const [theme, setTheme] = useState<Theme>(
     () => {
-      // Always default to light mode if no preference is stored
-      const storedTheme = localStorage.getItem(storageKey) as Theme;
-      return storedTheme || "light";
+      if (typeof window !== "undefined") {
+        // Always default to light mode if no preference is stored
+        const storedTheme = localStorage.getItem(storageKey) as Theme;
+        return storedTheme || defaultTheme;
+      }
+      return defaultTheme;
     }
   );
 
   useEffect(() => {
+    if (typeof window === "undefined") return;
+    
     const root = window.document.documentElement;
 
     root.classList.remove("light", "dark");
@@ -56,7 +61,9 @@ export function ThemeProvider({
   const value = {
     theme,
     setTheme: (theme: Theme) => {
-      localStorage.setItem(storageKey, theme);
+      if (typeof window !== "undefined") {
+        localStorage.setItem(storageKey, theme);
+      }
       setTheme(theme);
     },
   };
