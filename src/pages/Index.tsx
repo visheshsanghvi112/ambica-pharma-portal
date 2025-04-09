@@ -1,3 +1,4 @@
+
 import React, { useEffect } from "react";
 import HeroSection from "../components/HeroSection";
 import { Button } from "@/components/ui/button";
@@ -119,15 +120,15 @@ const Index = () => {
         <title>Ambica Pharma - Leading Pharmaceutical Manufacturer & Exporter</title>
         <meta name="description" content="Ambica Pharma manufactures high-quality pharmaceutical products, serving 25+ countries with 1000+ medicines across therapeutic categories since 2005." />
         <meta name="keywords" content="pharmaceutical manufacturer, Ambica Pharma, medicine manufacturer, pharmaceutical exporter, healthcare, tablets, capsules, injectables, WHO-GMP, ISO 9001" />
-        <link rel="canonical" href="https://ambicapharma.com" />
+        <link rel="canonical" href="https://ambicapharma.net" />
         <script type="application/ld+json">
           {`
             {
               "@context": "https://schema.org",
               "@type": "Organization",
               "name": "Ambica Pharma",
-              "url": "https://ambicapharma.com",
-              "logo": "https://ambicapharma.com/lovable-uploads/a5979ffb-180b-4225-a1e8-15425f28d262.png",
+              "url": "https://ambicapharma.net",
+              "logo": "https://ambicapharma.net/lovable-uploads/a5979ffb-180b-4225-a1e8-15425f28d262.png",
               "foundingDate": "2005",
               "description": "Leading pharmaceutical manufacturer with WHO-GMP certification, serving global markets since 2005.",
               "address": {
@@ -513,117 +514,6 @@ const Index = () => {
             <CarouselPrevious className="left-1 lg:left-4" />
             <CarouselNext className="right-1 lg:right-4" />
           </Carousel>
-        </div>
-      </section>
-      
-      <section className="py-16 relative overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-primary via-primary/90 to-secondary z-0"></div>
-        
-        <div className="absolute inset-0 z-10 overflow-hidden pointer-events-none">
-          <svg className="absolute top-0 right-0 text-white/10" width="404" height="404" fill="none" viewBox="0 0 404 404">
-            <defs>
-              <pattern id="85737c0e-0916-41d7-917f-596dc7edfa27" x="0" y="0" width="20" height="20" patternUnits="userSpaceOnUse">
-                <rect x="0" y="0" width="4" height="4" className="text-white/10" fill="currentColor" />
-              </pattern>
-            </defs>
-            <rect width="404" height="404" fill="url(#85737c0e-0916-41d7-917f-596dc7edfa27)" />
-          </svg>
-          
-          <svg className="absolute bottom-0 left-0 text-white/10" width="404" height="404" fill="none" viewBox="0 0 404 404">
-            <defs>
-              <pattern id="85737c0e-0916-41d7-917f-596dc7edfa28" x="0" y="0" width="20" height="20" patternUnits="userSpaceOnUse">
-                <rect x="0" y="0" width="4" height="4" className="text-white/10" fill="currentColor" />
-              </pattern>
-            </defs>
-            <rect width="404" height="404" fill="url(#85737c0e-0916-41d7-917f-596dc7edfa28)" />
-          </svg>
-          
-          <div className="absolute top-1/4 right-1/4 w-32 h-32 rounded-full bg-white opacity-10 mix-blend-overlay animate-pulse" style={{ animationDuration: "10s" }}></div>
-          <div className="absolute bottom-1/4 left-1/3 w-48 h-48 rounded-full bg-white opacity-10 mix-blend-overlay animate-pulse" style={{ animationDuration: "15s", animationDelay: "2s" }}></div>
-        </div>
-        
-        <div className="container relative z-20">
-          <motion.div 
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            viewport={{ once: true }}
-            className="bg-white/10 backdrop-blur-md border border-white/20 rounded-2xl p-8 md:p-10 max-w-4xl mx-auto shadow-2xl"
-          >
-            <motion.div 
-              initial={{ opacity: 0, scale: 0.9 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.5 }}
-              viewport={{ once: true }}
-              className="text-center"
-            >
-              <div className="w-16 h-16 mx-auto mb-6 bg-white/20 rounded-full flex items-center justify-center">
-                <motion.div 
-                  animate={{ 
-                    scale: [1, 1.1, 1],
-                  }}
-                  transition={{ 
-                    duration: 2,
-                    repeat: Infinity,
-                    repeatType: "reverse"
-                  }}
-                >
-                  <ArrowRight className="h-8 w-8 text-white" />
-                </motion.div>
-              </div>
-              
-              <motion.h2 
-                initial={{ scale: 0.9, opacity: 0 }}
-                whileInView={{ scale: 1, opacity: 1 }}
-                transition={{ duration: 0.5 }}
-                viewport={{ once: true }}
-                className="text-3xl md:text-4xl font-display font-bold mb-6 text-white"
-              >
-                Ready to Partner With Us?
-              </motion.h2>
-              
-              <motion.p 
-                initial={{ y: 20, opacity: 0 }}
-                whileInView={{ y: 0, opacity: 1 }}
-                transition={{ duration: 0.5, delay: 0.2 }}
-                viewport={{ once: true }}
-                className="max-w-2xl mx-auto mb-8 text-white/90"
-              >
-                Contact Ambica Pharma today to discuss how we can meet your pharmaceutical needs with our high-quality products and excellent service.
-              </motion.p>
-              
-              <motion.div
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                initial={{ y: 20, opacity: 0 }}
-                whileInView={{ y: 0, opacity: 1 }}
-                transition={{ 
-                  type: "spring", 
-                  stiffness: 400, 
-                  damping: 17,
-                  delay: 0.3
-                }}
-                viewport={{ once: true }}
-                className="inline-block"
-              >
-                <Button asChild size={isMobile ? "default" : "lg"} className="bg-white text-primary hover:bg-white/90 font-semibold shadow-xl hover:shadow-2xl transition-all">
-                  <Link to="/contact" className="flex items-center gap-2 group">
-                    Contact Us Today 
-                    <motion.div
-                      animate={{ x: [0, 5, 0] }}
-                      transition={{ 
-                        duration: 1.5,
-                        repeat: Infinity,
-                        repeatType: "reverse"
-                      }}
-                    >
-                      <ArrowRight className="h-4 w-4" />
-                    </motion.div>
-                  </Link>
-                </Button>
-              </motion.div>
-            </motion.div>
-          </motion.div>
         </div>
       </section>
     </div>

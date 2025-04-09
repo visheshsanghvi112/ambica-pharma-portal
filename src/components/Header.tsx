@@ -1,8 +1,10 @@
+
 import React, { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Menu, X, Phone, Mail, ChevronDown } from "lucide-react";
 import { Button } from "./ui/button";
 import { cn } from "@/lib/utils";
+import { ThemeToggle } from "./ThemeToggle";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -89,10 +91,14 @@ const Header = () => {
             <Button size="sm" className="bg-gradient-to-r from-secondary to-primary animate-pulse">
               Emergency Order
             </Button>
+            
+            {/* Theme toggle added here */}
+            <ThemeToggle />
           </div>
 
           {/* Mobile menu button */}
           <div className="md:hidden flex items-center space-x-2">
+            <ThemeToggle /> {/* Theme toggle for mobile */}
             <button onClick={toggleMenu} className="text-primary">
               {isOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
             </button>
