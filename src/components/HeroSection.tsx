@@ -106,10 +106,19 @@ const HeroSection = () => {
                 { icon: <Heart className="h-5 w-5 text-red-500" />, text: "WHO-GMP Standards" },
                 { icon: <Award className="h-5 w-5 text-amber-500" />, text: "Quality Assured" }
               ].map((item, idx) => (
-                <div key={idx} className="flex items-center gap-2 text-sm text-foreground/70 bg-white/50 px-3 py-1.5 rounded-full backdrop-blur-sm">
+                <motion.div 
+                  key={idx} 
+                  className="flex items-center gap-2 text-sm text-foreground/70 bg-white/50 px-3 py-1.5 rounded-full backdrop-blur-sm"
+                  whileHover={{ 
+                    scale: 1.05, 
+                    backgroundColor: "rgba(255, 255, 255, 0.8)",
+                    boxShadow: "0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06)"
+                  }}
+                  transition={{ type: "spring", stiffness: 400, damping: 17 }}
+                >
                   {item.icon}
                   <span>{item.text}</span>
-                </div>
+                </motion.div>
               ))}
             </motion.div>
           </motion.div>
@@ -134,7 +143,6 @@ const HeroSection = () => {
                   className="rounded-lg shadow-2xl max-w-full h-auto relative transform transition-transform duration-500 hover:scale-105"
                 ></video>
               </motion.div>
-              {/* Removed video play button overlay */}
             </div>
           </motion.div>
         </div>

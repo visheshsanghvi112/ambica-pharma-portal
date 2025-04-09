@@ -159,8 +159,8 @@ const Index = () => {
       <section className="py-16 bg-background relative overflow-hidden">
         {/* Background gradient decorations */}
         <div className="absolute top-0 left-0 w-full h-full opacity-5 overflow-hidden pointer-events-none">
-          <div className="absolute top-10 left-10 w-40 h-40 rounded-full bg-primary animate-pulse"></div>
-          <div className="absolute bottom-20 right-10 w-60 h-60 rounded-full bg-secondary animate-pulse" style={{ animationDelay: "1s" }}></div>
+          <div className="absolute top-10 left-10 w-40 h-40 rounded-full bg-primary animate-blob"></div>
+          <div className="absolute bottom-20 right-10 w-60 h-60 rounded-full bg-secondary animate-blob" style={{ animationDelay: "1s" }}></div>
         </div>
         
         <div className="container relative z-10">
@@ -194,11 +194,15 @@ const Index = () => {
               className="bg-white p-8 rounded-xl shadow-md hover:shadow-xl transition-all border border-primary/10 relative overflow-hidden"
             >
               <div className="absolute top-0 right-0 w-24 h-24 bg-gradient-to-bl from-primary/10 to-transparent rounded-bl-full"></div>
-              <div className="w-14 h-14 bg-primary/10 rounded-full flex items-center justify-center mb-6 text-primary relative z-10">
+              <motion.div 
+                className="w-14 h-14 bg-primary/10 rounded-full flex items-center justify-center mb-6 text-primary relative z-10"
+                whileHover={{ rotate: 5, scale: 1.1 }}
+                transition={{ type: "spring", stiffness: 300, damping: 10 }}
+              >
                 <svg xmlns="http://www.w3.org/2000/svg" className="h-7 w-7" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
                 </svg>
-              </div>
+              </motion.div>
               <h3 className="text-xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-primary to-primary-light mb-3">Business Type</h3>
               <p className="text-foreground/80 mb-4">Wholesaler, Trader & Merchant Exporter</p>
             </motion.div>
@@ -213,11 +217,15 @@ const Index = () => {
               className="bg-white p-8 rounded-xl shadow-md hover:shadow-xl transition-all border border-primary/10 relative overflow-hidden"
             >
               <div className="absolute top-0 right-0 w-24 h-24 bg-gradient-to-bl from-secondary/10 to-transparent rounded-bl-full"></div>
-              <div className="w-14 h-14 bg-secondary/10 rounded-full flex items-center justify-center mb-6 text-secondary relative z-10">
+              <motion.div 
+                className="w-14 h-14 bg-secondary/10 rounded-full flex items-center justify-center mb-6 text-secondary relative z-10"
+                whileHover={{ rotate: -5, scale: 1.1 }}
+                transition={{ type: "spring", stiffness: 300, damping: 10 }}
+              >
                 <svg xmlns="http://www.w3.org/2000/svg" className="h-7 w-7" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
                 </svg>
-              </div>
+              </motion.div>
               <h3 className="text-xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-secondary to-secondary-light mb-3">Year of Establishment</h3>
               <p className="text-foreground/80 mb-4">2005</p>
             </motion.div>
@@ -232,11 +240,15 @@ const Index = () => {
               className="bg-white p-8 rounded-xl shadow-md hover:shadow-xl transition-all border border-primary/10 relative overflow-hidden"
             >
               <div className="absolute top-0 right-0 w-24 h-24 bg-gradient-to-bl from-primary/10 to-transparent rounded-bl-full"></div>
-              <div className="w-14 h-14 bg-primary/10 rounded-full flex items-center justify-center mb-6 text-primary relative z-10">
+              <motion.div 
+                className="w-14 h-14 bg-primary/10 rounded-full flex items-center justify-center mb-6 text-primary relative z-10"
+                whileHover={{ rotate: 5, scale: 1.1 }}
+                transition={{ type: "spring", stiffness: 300, damping: 10 }}
+              >
                 <svg xmlns="http://www.w3.org/2000/svg" className="h-7 w-7" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
                 </svg>
-              </div>
+              </motion.div>
               <h3 className="text-xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-primary to-secondary mb-3">Experience</h3>
               <p className="text-foreground/80 mb-4">19+ Years in the Pharmaceutical Industry</p>
             </motion.div>
@@ -269,14 +281,29 @@ const Index = () => {
                   hidden: { opacity: 0, y: 20 },
                   visible: { opacity: 1, y: 0, transition: { duration: 0.5 } }
                 }}
-                className="bg-white/90 backdrop-blur-sm p-4 md:p-6 rounded-lg shadow-lg border border-primary/10 text-center transform transition-transform hover:scale-105"
+                whileHover={{ 
+                  scale: 1.05, 
+                  boxShadow: "0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)" 
+                }}
+                className="bg-white/90 backdrop-blur-sm p-4 md:p-6 rounded-lg shadow-lg border border-primary/10 text-center transform transition-transform"
               >
-                <div className="flex justify-center mb-3">
+                <motion.div 
+                  className="flex justify-center mb-3"
+                  whileHover={{ rotate: 5, scale: 1.1 }}
+                  transition={{ type: "spring", stiffness: 300, damping: 10 }}
+                >
                   <div className="p-2 rounded-full bg-primary/10">
                     {item.icon}
                   </div>
-                </div>
-                <h3 className="text-2xl md:text-3xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-primary to-secondary">{item.value}</h3>
+                </motion.div>
+                <motion.h3 
+                  className="text-2xl md:text-3xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-primary to-secondary"
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  transition={{ duration: 1, repeat: Infinity, repeatType: "reverse" }}
+                >
+                  {item.value}
+                </motion.h3>
                 <p className="text-sm font-medium text-foreground/70">{item.title}</p>
               </motion.div>
             ))}
@@ -313,7 +340,7 @@ const Index = () => {
             </p>
           </motion.div>
           
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-6">
             {productCategories.map((category, index) => (
               <motion.div
                 key={index}
@@ -330,9 +357,13 @@ const Index = () => {
                 <Card className="bg-white border border-primary/10 shadow-lg h-full overflow-hidden relative">
                   <div className="h-2 bg-gradient-to-r from-primary to-secondary"></div>
                   <CardContent className="p-4 md:p-6 h-full flex flex-col">
-                    <div className="bg-gradient-to-br from-primary/10 to-secondary/10 p-3 md:p-4 rounded-full w-16 h-16 md:w-20 md:h-20 flex items-center justify-center mx-auto mb-3 md:mb-4 transform transition-transform hover:scale-110">
+                    <motion.div 
+                      className="bg-gradient-to-br from-primary/10 to-secondary/10 p-3 md:p-4 rounded-full w-16 h-16 md:w-20 md:h-20 flex items-center justify-center mx-auto mb-3 md:mb-4"
+                      whileHover={{ rotate: 5, scale: 1.1 }}
+                      transition={{ type: "spring", stiffness: 300, damping: 10 }}
+                    >
                       {category.icon}
-                    </div>
+                    </motion.div>
                     <h3 className="text-lg md:text-xl font-bold text-primary text-center mb-2">{category.title}</h3>
                     <p className="text-foreground/70 text-center text-sm md:text-base">{category.description}</p>
                   </CardContent>
@@ -386,7 +417,7 @@ const Index = () => {
             </p>
           </motion.div>
           
-          <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">
             {[
               {
                 title: "Quality Assurance",
@@ -426,9 +457,13 @@ const Index = () => {
                 whileHover={{ y: -10, transition: { duration: 0.3 } }}
                 className="flex flex-col items-center text-center p-4 md:p-6 rounded-lg bg-white/90 backdrop-blur-sm shadow-md hover:shadow-xl transition-all border border-primary/10 group"
               >
-                <div className={`w-12 h-12 md:w-16 md:h-16 bg-gradient-to-br ${item.gradient} rounded-full flex items-center justify-center mb-3 md:mb-4 text-white transform transition-all duration-300 group-hover:scale-110`}>
+                <motion.div 
+                  className={`w-12 h-12 md:w-16 md:h-16 bg-gradient-to-br ${item.gradient} rounded-full flex items-center justify-center mb-3 md:mb-4 text-white transform transition-all duration-300`}
+                  whileHover={{ rotate: 5, scale: 1.1 }}
+                  transition={{ type: "spring", stiffness: 300, damping: 10 }}
+                >
                   {item.icon}
-                </div>
+                </motion.div>
                 <h3 className="font-semibold text-primary text-lg md:text-xl mb-2">{item.title}</h3>
                 <p className="text-foreground/70 text-sm md:text-base">{item.description}</p>
               </motion.div>
@@ -455,8 +490,8 @@ const Index = () => {
       <section className="py-16 bg-background relative overflow-hidden">
         {/* Background decorations */}
         <div className="absolute top-0 left-0 w-full h-full pointer-events-none overflow-hidden">
-          <div className="absolute top-1/4 left-1/4 w-64 h-64 bg-primary/5 rounded-full filter blur-3xl opacity-70 animate-pulse" style={{ animationDuration: "15s" }}></div>
-          <div className="absolute bottom-1/4 right-1/4 w-80 h-80 bg-secondary/5 rounded-full filter blur-3xl opacity-70 animate-pulse" style={{ animationDuration: "20s", animationDelay: "2s" }}></div>
+          <div className="absolute top-1/4 left-1/4 w-64 h-64 bg-primary/5 rounded-full filter blur-3xl opacity-70 animate-blob" style={{ animationDuration: "15s" }}></div>
+          <div className="absolute bottom-1/4 right-1/4 w-80 h-80 bg-secondary/5 rounded-full filter blur-3xl opacity-70 animate-blob" style={{ animationDuration: "20s", animationDelay: "2s" }}></div>
         </div>
         
         <div className="container relative z-10">
@@ -480,7 +515,7 @@ const Index = () => {
           <Carousel className="w-full">
             <CarouselContent>
               {customerTestimonials.map((testimonial, index) => (
-                <CarouselItem key={index} className="md:basis-1/2 lg:basis-1/3">
+                <CarouselItem key={index} className="sm:basis-1/1 md:basis-1/2 lg:basis-1/3 p-1">
                   <motion.div
                     initial={{ opacity: 0, scale: 0.95 }}
                     whileInView={{ opacity: 1, scale: 1 }}
@@ -491,9 +526,13 @@ const Index = () => {
                     <Card className="bg-white border border-primary/10 shadow-md hover:shadow-lg transition-all h-full overflow-hidden group">
                       <div className="h-2 bg-gradient-to-r from-primary to-secondary"></div>
                       <CardContent className="p-6 h-full flex flex-col">
-                        <div className="mb-4 text-primary group-hover:scale-110 transition-transform duration-300">
+                        <motion.div 
+                          className="mb-4 text-primary transition-transform duration-300"
+                          whileHover={{ rotate: 5, scale: 1.1 }}
+                          transition={{ type: "spring", stiffness: 300, damping: 10 }}
+                        >
                           <MessageCircle className="h-8 w-8 mx-auto text-secondary" />
-                        </div>
+                        </motion.div>
                         <p className="text-foreground/70 text-center italic mb-6 relative">
                           <span className="text-primary text-3xl absolute -top-2 -left-1 opacity-20">"</span>
                           {testimonial.quote}
@@ -509,13 +548,13 @@ const Index = () => {
                 </CarouselItem>
               ))}
             </CarouselContent>
-            <CarouselPrevious className="left-1 lg:left-4" />
-            <CarouselNext className="right-1 lg:right-4" />
+            <div className="flex items-center justify-center gap-2 mt-4">
+              <CarouselPrevious className="relative static left-auto transform-none" />
+              <CarouselNext className="relative static right-auto transform-none" />
+            </div>
           </Carousel>
         </div>
       </section>
-      
-      {/* CTA Section has been removed as requested */}
     </div>
   );
 };
