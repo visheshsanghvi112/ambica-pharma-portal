@@ -1,11 +1,9 @@
-
 import React from "react";
 import { Link } from "react-router-dom";
 import { Button } from "./ui/button";
 import { Input } from "./ui/input";
 import { Phone, Mail, MapPin, Send, Facebook, Twitter, Linkedin, Instagram, Clock } from "lucide-react";
 import { motion } from "framer-motion";
-import { ThemeToggle } from "./ThemeToggle";
 
 const Footer = () => {
   return (
@@ -153,4 +151,3 @@ const Footer = () => {
 };
 
 export default Footer;
-

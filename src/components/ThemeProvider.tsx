@@ -32,7 +32,7 @@ export function ThemeProvider({
     localStorage.setItem(storageKey, "light");
   }, [storageKey]);
 
-  const value = {
+  const value: ThemeProviderState = {
     theme: "light",
     setTheme: () => {
       // No-op since we only support light theme
