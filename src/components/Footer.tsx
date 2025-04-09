@@ -5,16 +5,17 @@ import { Button } from "./ui/button";
 import { Input } from "./ui/input";
 import { Phone, Mail, MapPin, Send, Facebook, Twitter, Linkedin, Instagram, Clock } from "lucide-react";
 import { motion } from "framer-motion";
+import { ThemeToggle } from "./ThemeToggle";
 
 const Footer = () => {
   return (
-    <footer className="bg-primary text-white">
+    <footer className="bg-primary text-white dark:bg-primary/95">
       <div className="container py-12">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {/* About Section */}
           <div className="space-y-4 animate-fade-in">
             <h3 className="text-xl font-display font-semibold">About Us</h3>
-            <p className="text-sm text-white/80">
+            <p className="text-sm text-white/80 dark:text-white/80">
               Discover excellence in pharmaceutical manufacturing and distribution at Ambica Pharma, 
               where quality meets commitment since 2005.
             </p>
@@ -39,31 +40,31 @@ const Footer = () => {
             <h3 className="text-xl font-display font-semibold">Quick Links</h3>
             <ul className="space-y-2">
               <li>
-                <Link to="/" className="text-sm text-white/80 hover:text-white transition-colors hover:translate-x-1 inline-block">Home</Link>
+                <Link to="/" className="text-sm text-white/80 dark:text-white/80 hover:text-white transition-colors hover:translate-x-1 inline-block">Home</Link>
               </li>
               <li>
-                <Link to="/about" className="text-sm text-white/80 hover:text-white transition-colors hover:translate-x-1 inline-block">About Us</Link>
+                <Link to="/about" className="text-sm text-white/80 dark:text-white/80 hover:text-white transition-colors hover:translate-x-1 inline-block">About Us</Link>
               </li>
               <li>
-                <Link to="/global-reach" className="text-sm text-white/80 hover:text-white transition-colors hover:translate-x-1 inline-block">Global Reach</Link>
+                <Link to="/global-reach" className="text-sm text-white/80 dark:text-white/80 hover:text-white transition-colors hover:translate-x-1 inline-block">Global Reach</Link>
               </li>
               <li>
-                <Link to="/blog" className="text-sm text-white/80 hover:text-white transition-colors hover:translate-x-1 inline-block">Blog</Link>
+                <Link to="/blog" className="text-sm text-white/80 dark:text-white/80 hover:text-white transition-colors hover:translate-x-1 inline-block">Blog</Link>
               </li>
               <li>
-                <Link to="/careers" className="text-sm text-white/80 hover:text-white transition-colors hover:translate-x-1 inline-block">Careers</Link>
+                <Link to="/careers" className="text-sm text-white/80 dark:text-white/80 hover:text-white transition-colors hover:translate-x-1 inline-block">Careers</Link>
               </li>
               <li>
-                <Link to="/csr" className="text-sm text-white/80 hover:text-white transition-colors hover:translate-x-1 inline-block">CSR</Link>
+                <Link to="/csr" className="text-sm text-white/80 dark:text-white/80 hover:text-white transition-colors hover:translate-x-1 inline-block">CSR</Link>
               </li>
               <li>
-                <Link to="/faq" className="text-sm text-white/80 hover:text-white transition-colors hover:translate-x-1 inline-block">FAQ</Link>
+                <Link to="/faq" className="text-sm text-white/80 dark:text-white/80 hover:text-white transition-colors hover:translate-x-1 inline-block">FAQ</Link>
               </li>
               <li>
-                <Link to="/privacy" className="text-sm text-white/80 hover:text-white transition-colors hover:translate-x-1 inline-block">Privacy Policy</Link>
+                <Link to="/privacy" className="text-sm text-white/80 dark:text-white/80 hover:text-white transition-colors hover:translate-x-1 inline-block">Privacy Policy</Link>
               </li>
               <li>
-                <Link to="/contact" className="text-sm text-white/80 hover:text-white transition-colors hover:translate-x-1 inline-block">Contact Us</Link>
+                <Link to="/contact" className="text-sm text-white/80 dark:text-white/80 hover:text-white transition-colors hover:translate-x-1 inline-block">Contact Us</Link>
               </li>
             </ul>
           </div>
@@ -71,7 +72,7 @@ const Footer = () => {
           {/* Contact Info */}
           <div className="space-y-4 animate-fade-in" style={{ animationDelay: "200ms" }}>
             <h3 className="text-xl font-display font-semibold">Registered Office</h3>
-            <address className="not-italic text-sm text-white/80 space-y-2">
+            <address className="not-italic text-sm text-white/80 dark:text-white/80 space-y-2">
               <p className="flex items-start">
                 <MapPin className="h-5 w-5 mr-2 mt-0.5 flex-shrink-0" />
                 <span>22 to 25, 2nd Floor, Chapsey Building, 72/78, Shamaldas Gandhi Marg, Kalbadevi, Mumbai, Maharashtra-400 002</span>
@@ -91,7 +92,7 @@ const Footer = () => {
             </address>
             
             <h3 className="text-xl font-display font-semibold pt-2">Warehouse</h3>
-            <address className="not-italic text-sm text-white/80 space-y-2">
+            <address className="not-italic text-sm text-white/80 dark:text-white/80 space-y-2">
               <p className="flex items-start">
                 <MapPin className="h-5 w-5 mr-2 mt-0.5 flex-shrink-0" />
                 <span>Gala No. 9 to 12, First Floor, Building D8, Shree Arihant Compound, Reti Bander Road, Kalher, Bhiwandi (Thane) - 421302</span>
@@ -114,14 +115,14 @@ const Footer = () => {
           {/* Newsletter */}
           <div className="space-y-4 animate-fade-in" style={{ animationDelay: "300ms" }}>
             <h3 className="text-xl font-display font-semibold">Newsletter</h3>
-            <p className="text-sm text-white/80">
+            <p className="text-sm text-white/80 dark:text-white/80">
               Subscribe to our newsletter to get all our news in your inbox.
             </p>
             <form className="flex">
               <Input 
                 type="email" 
                 placeholder="Email Address" 
-                className="rounded-r-none border-r-0 bg-white/10 border-white/20 text-white placeholder:text-gray-300" 
+                className="rounded-r-none border-r-0 bg-white/10 border-white/20 text-white placeholder:text-gray-300 dark:bg-white/5" 
               />
               <Button type="submit" className="rounded-l-none bg-secondary hover:bg-secondary/80">
                 <Send className="h-4 w-4" />
@@ -142,7 +143,7 @@ const Footer = () => {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.4 }}
-          className="border-t border-white/20 mt-8 pt-6 text-center text-sm text-white/80"
+          className="border-t border-white/20 mt-8 pt-6 text-center text-sm text-white/80 dark:text-white/80"
         >
           <p>© Copyright 2025 | All Rights Reserved by Ambica Pharma</p>
         </motion.div>
@@ -152,3 +153,4 @@ const Footer = () => {
 };
 
 export default Footer;
+

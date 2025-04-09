@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Menu, X, Phone, Mail, ChevronDown } from "lucide-react";
@@ -50,7 +49,7 @@ const Header = () => {
             <img
               src="/lovable-uploads/a5979ffb-180b-4225-a1e8-15425f28d262.png"
               alt="Ambica Pharma Logo"
-              className="h-20 md:h-24 scale-110 transition-all duration-300 hover:scale-115 p-1 rounded-md"
+              className="h-20 md:h-24 scale-110 transition-all duration-300 hover:scale-115 dark:bg-white/10 dark:p-1 dark:rounded-md"
             />
           </Link>
 
@@ -70,7 +69,7 @@ const Header = () => {
               <DropdownMenuTrigger className="flex items-center font-medium">
                 <span>Contact Us</span><ChevronDown className="ml-1 h-4 w-4" />
               </DropdownMenuTrigger>
-              <DropdownMenuContent className="bg-background p-2 w-48 shadow-md rounded-md border border-gray-100">
+              <DropdownMenuContent className="bg-background/95 p-2 w-48">
                 {[
                   { path: "/contact", label: "Contact" },
                   { path: "/blog", label: "Blog" },

@@ -2,6 +2,7 @@
 import type { Config } from "tailwindcss";
 
 export default {
+	darkMode: ["class"],
 	content: [
 		"./pages/**/*.{ts,tsx}",
 		"./components/**/*.{ts,tsx}",
@@ -90,20 +91,6 @@ export default {
 				'counter': {
 					from: { content: "var(--num-start)" },
 					to: { content: "var(--num-end)" }
-				},
-				'blob': {
-					'0%': {
-						transform: 'translate(0px, 0px) scale(1)'
-					},
-					'33%': {
-						transform: 'translate(30px, -50px) scale(1.1)'
-					},
-					'66%': {
-						transform: 'translate(-20px, 20px) scale(0.9)'
-					},
-					'100%': {
-						transform: 'translate(0px, 0px) scale(1)'
-					}
 				}
 			},
 			animation: {
@@ -111,19 +98,10 @@ export default {
 				'accordion-up': 'accordion-up 0.2s ease-out',
 				'fade-in': 'fade-in 0.5s ease-out',
 				'fade-up': 'fade-up 0.7s ease-out',
-				'blob': 'blob 7s infinite',
 			},
 			fontFamily: {
 				sans: ['Inter', 'sans-serif'],
 				display: ['Montserrat', 'sans-serif']
-			},
-			boxShadow: {
-				'elegant': '0 10px 15px -3px rgba(0, 0, 0, 0.05), 0 4px 6px -2px rgba(0, 0, 0, 0.025)',
-				'elegant-lg': '0 20px 25px -5px rgba(0, 0, 0, 0.08), 0 10px 10px -5px rgba(0, 0, 0, 0.04)',
-				'card': '0 2px 8px -1px rgba(0, 0, 0, 0.05), 0 1px 4px -1px rgba(0, 0, 0, 0.02)',
-				'card-hover': '0 8px 30px -3px rgba(0, 0, 0, 0.06), 0 3px 8px -2px rgba(0, 0, 0, 0.04)',
-				'button': '0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06)',
-				'button-hover': '0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06)',
 			}
 		}
 	},
