@@ -70,7 +70,7 @@ const Header = () => {
               <DropdownMenuTrigger className="flex items-center font-medium">
                 <span>Contact Us</span><ChevronDown className="ml-1 h-4 w-4" />
               </DropdownMenuTrigger>
-              <DropdownMenuContent className="bg-background/95 p-2 w-48">
+              <DropdownMenuContent className="bg-background p-2 w-48 shadow-md rounded-md border border-gray-100">
                 {[
                   { path: "/contact", label: "Contact" },
                   { path: "/blog", label: "Blog" },

@@ -38,7 +38,7 @@ const HeroSection = () => {
   };
 
   return (
-    <div ref={ref} className="relative bg-gradient-to-br from-primary/5 via-background to-secondary/5 dark:from-primary/20 dark:via-background/80 dark:to-secondary/20 pt-32 pb-20 md:py-36 overflow-hidden">
+    <div ref={ref} className="relative bg-gradient-to-br from-primary/5 via-background to-secondary/5 pt-32 pb-20 md:py-36 overflow-hidden">
       <div className="container relative z-10">
         <div className="grid md:grid-cols-2 gap-8 items-center">
           <motion.div 
@@ -48,21 +48,21 @@ const HeroSection = () => {
             className="space-y-6 z-10"
           >
             <motion.div variants={itemVariants}>
-              <span className="inline-flex items-center px-3 py-1 text-sm font-medium bg-secondary/10 dark:bg-secondary/20 text-secondary dark:text-secondary-foreground rounded-full mb-4 animate-pulse">
+              <span className="inline-flex items-center px-3 py-1 text-sm font-medium bg-secondary/10 text-secondary rounded-full mb-4 animate-pulse">
                 <Award className="h-4 w-4 mr-1" /> Trusted Since 2005
               </span>
             </motion.div>
             
             <motion.h1 
               variants={itemVariants}
-              className="text-4xl md:text-5xl lg:text-6xl font-display font-bold text-foreground dark:text-primary-foreground leading-tight bg-clip-text text-transparent bg-gradient-to-r from-primary via-primary/90 to-secondary dark:from-white dark:via-primary-foreground dark:to-secondary-foreground"
+              className="text-4xl md:text-5xl lg:text-6xl font-display font-bold text-foreground leading-tight bg-clip-text text-transparent bg-gradient-to-r from-primary via-primary/90 to-secondary"
             >
               Advancing Healthcare<br /> With Excellence
             </motion.h1>
             
             <motion.p 
               variants={itemVariants}
-              className="text-lg text-foreground/80 dark:text-primary-foreground/90 max-w-md"
+              className="text-lg text-foreground/80 max-w-md"
             >
               Ambica Pharma has evolved from a humble startup into a leading force in the pharmaceutical 
               industry. With over 19 years of expertise, we pride ourselves on innovation, quality, and client satisfaction.
@@ -77,7 +77,7 @@ const HeroSection = () => {
                 whileTap={{ scale: 0.95 }}
                 transition={{ type: "spring", stiffness: 400, damping: 17 }}
               >
-                <Button asChild size="lg" className="group bg-gradient-to-r from-primary to-secondary text-white hover:opacity-90 shadow-lg shadow-primary/20 dark:shadow-primary/10 transition-all duration-300 hover:shadow-xl">
+                <Button asChild size="lg" className="group bg-gradient-to-r from-primary to-secondary text-white hover:opacity-90 shadow-lg shadow-primary/20 transition-all duration-300 hover:shadow-xl">
                   <Link to="/about" className="flex items-center gap-2">
                     Learn More <ChevronRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
                   </Link>
@@ -88,7 +88,7 @@ const HeroSection = () => {
                 whileTap={{ scale: 0.95 }}
                 transition={{ type: "spring", stiffness: 400, damping: 17 }}
               >
-                <Button asChild variant="outline" size="lg" className="group border-primary text-primary hover:bg-primary hover:text-white dark:border-primary-foreground dark:text-primary-foreground dark:hover:bg-primary-foreground/10">
+                <Button asChild variant="outline" size="lg" className="group border-primary text-primary hover:bg-primary hover:text-white">
                   <Link to="/contact" className="flex items-center gap-2">
                     Contact Us <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
                   </Link>
@@ -106,7 +106,7 @@ const HeroSection = () => {
                 { icon: <Heart className="h-5 w-5 text-red-500" />, text: "WHO-GMP Standards" },
                 { icon: <Award className="h-5 w-5 text-amber-500" />, text: "Quality Assured" }
               ].map((item, idx) => (
-                <div key={idx} className="flex items-center gap-2 text-sm text-foreground/70 bg-white/50 dark:bg-white/10 px-3 py-1.5 rounded-full backdrop-blur-sm">
+                <div key={idx} className="flex items-center gap-2 text-sm text-foreground/70 bg-white/50 px-3 py-1.5 rounded-full backdrop-blur-sm">
                   {item.icon}
                   <span>{item.text}</span>
                 </div>
@@ -121,7 +121,7 @@ const HeroSection = () => {
             className="relative z-10"
           >
             <div className="relative">
-              <div className="absolute -inset-0.5 bg-gradient-to-r from-primary to-secondary rounded-lg blur opacity-30 dark:opacity-40 animate-pulse"></div>
+              <div className="absolute -inset-0.5 bg-gradient-to-r from-primary to-secondary rounded-lg blur opacity-30 animate-pulse"></div>
               <motion.div
                 whileHover={{ scale: 1.02 }}
                 transition={{ type: "spring", stiffness: 300, damping: 10 }}
@@ -131,15 +131,13 @@ const HeroSection = () => {
                   autoPlay
                   loop
                   muted
-                  className="rounded-lg shadow-2xl max-w-full h-auto relative transform transition-transform duration-500 hover:scale-105 dark:border dark:border-white/10"
+                  className="rounded-lg shadow-2xl max-w-full h-auto relative transform transition-transform duration-500 hover:scale-105 border border-gray-100"
                 ></video>
               </motion.div>
-              {/* Video play button overlay - purely decorative since video autoplays */}
+              {/* Removed the SVG element as requested */}
               <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-16 h-16 rounded-full bg-white/20 backdrop-blur-sm flex items-center justify-center animate-pulse">
                 <div className="w-10 h-10 rounded-full bg-white flex items-center justify-center">
-                  <svg className="w-4 h-4 text-primary ml-1" viewBox="0 0 24 24" fill="currentColor">
-                    <path d="M8 5v14l11-7z" />
-                  </svg>
+                  {/* Play icon removed */}
                 </div>
               </div>
             </div>
@@ -148,19 +146,19 @@ const HeroSection = () => {
       </div>
       
       {/* Decorative elements */}
-      <div className="absolute top-0 right-0 w-1/3 h-full bg-gradient-to-l from-secondary/10 to-transparent dark:from-secondary/5 dark:to-transparent"></div>
+      <div className="absolute top-0 right-0 w-1/3 h-full bg-gradient-to-l from-secondary/10 to-transparent"></div>
       <div className="absolute bottom-0 left-0 w-full h-1/2 bg-gradient-to-t from-background to-transparent"></div>
       
       {/* Animated gradient orbs */}
-      <div className="absolute top-1/4 left-1/4 w-64 h-64 bg-primary/10 dark:bg-primary/20 rounded-full filter blur-3xl animate-blob"></div>
-      <div className="absolute bottom-1/4 right-1/4 w-64 h-64 bg-secondary/10 dark:bg-secondary/20 rounded-full filter blur-3xl animate-blob animation-delay-2000"></div>
+      <div className="absolute top-1/4 left-1/4 w-64 h-64 bg-primary/10 rounded-full filter blur-3xl animate-blob"></div>
+      <div className="absolute bottom-1/4 right-1/4 w-64 h-64 bg-secondary/10 rounded-full filter blur-3xl animate-blob animation-delay-2000"></div>
       
       {/* Floating particles */}
       <div className="absolute inset-0 z-0 overflow-hidden">
         {[...Array(6)].map((_, i) => (
           <motion.div
             key={i}
-            className="absolute w-2 h-2 rounded-full bg-primary/20 dark:bg-primary/30"
+            className="absolute w-2 h-2 rounded-full bg-primary/20"
             initial={{ 
               x: Math.random() * window.innerWidth, 
               y: Math.random() * window.innerHeight,
@@ -200,4 +198,3 @@ const HeroSection = () => {
 };
 
 export default HeroSection;
-
