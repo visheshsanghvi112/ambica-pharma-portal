@@ -26,7 +26,7 @@ const queryClient = new QueryClient();
 
 const App = () => (
   <QueryClientProvider client={queryClient}>
-    <ThemeProvider defaultTheme="light" storageKey="ambica-theme">
+    <ThemeProvider storageKey="ambica-theme">
       <HelmetProvider>
         <TooltipProvider>
           <Toaster />

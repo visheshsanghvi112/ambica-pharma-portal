@@ -48,47 +48,6 @@
     --sidebar-border: 220 13% 91%;
     --sidebar-ring: 217.2 91.2% 59.8%;
   }
-
-  .dark {
-    --background: 222 18% 12%;
-    --foreground: 210 40% 98%;
-
-    --card: 222 16% 14%;
-    --card-foreground: 210 40% 98%;
-
-    --popover: 222 16% 14%;
-    --popover-foreground: 210 40% 98%;
-
-    --primary: 215 65% 45%;
-    --primary-foreground: 210 40% 98%;
-    --primary-light: 215 65% 55%;
-
-    --secondary: 142 70% 45%;
-    --secondary-foreground: 0 0% 100%;
-    --secondary-light: 142 70% 55%;
-
-    --muted: 217.2 32.6% 20%;
-    --muted-foreground: 215 20.2% 75%;
-
-    --accent: 215 25% 25%;
-    --accent-foreground: 210 40% 98%;
-
-    --destructive: 0 62.8% 40%;
-    --destructive-foreground: 210 40% 98%;
-
-    --border: 217.2 32.6% 20%;
-    --input: 217.2 32.6% 20%;
-    --ring: 215 65% 50%;
-    
-    --sidebar-background: 215 28% 14%;
-    --sidebar-foreground: 210 40% 98%;
-    --sidebar-primary: 215 65% 45%;
-    --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 215 28% 20%;
-    --sidebar-accent-foreground: 210 40% 98%;
-    --sidebar-border: 215 28% 22%;
-    --sidebar-ring: 217.2 91.2% 59.8%;
-  }
 }
 
 @layer base {
@@ -108,11 +67,11 @@
   }
   
   ::-webkit-scrollbar-track {
-    @apply bg-muted dark:bg-background;
+    @apply bg-muted;
   }
   
   ::-webkit-scrollbar-thumb {
-    @apply bg-primary/40 rounded-full hover:bg-primary/60 transition-colors dark:bg-primary/60 dark:hover:bg-primary/80;
+    @apply bg-primary/40 rounded-full hover:bg-primary/60 transition-colors;
   }
 }
 
@@ -124,23 +83,15 @@
   }
   
   .bg-gradient {
-    @apply bg-gradient-to-r from-primary to-primary-light dark:from-primary/80 dark:to-primary-light/80;
+    @apply bg-gradient-to-r from-primary to-primary-light;
   }
   
   .bg-gradient-secondary {
-    @apply bg-gradient-to-r from-secondary to-secondary-light dark:from-secondary/90 dark:to-secondary-light/90;
+    @apply bg-gradient-to-r from-secondary to-secondary-light;
   }
   
   .glass-effect {
-    @apply backdrop-blur-md bg-white/70 dark:bg-black/30 border border-white/20 dark:border-white/10;
-  }
-  
-  .dark-card {
-    @apply dark:bg-card dark:border-primary/10 dark:shadow-lg dark:shadow-primary/5;
-  }
-  
-  .dark-gradient-overlay {
-    @apply dark:bg-gradient-to-b dark:from-transparent dark:to-background/80;
+    @apply backdrop-blur-md bg-white/70 border border-white/20;
   }
   
   /* Animation classes */
@@ -171,6 +122,29 @@
   
   .animate-pulse-slow {
     animation: pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  }
+
+  /* Enhanced soft shadow utilities */
+  .shadow-soft {
+    box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05), 0 8px 10px -6px rgba(0, 0, 0, 0.01);
+  }
+  
+  .shadow-soft-lg {
+    box-shadow: 0 20px 30px -10px rgba(0, 0, 0, 0.08), 0 10px 15px -5px rgba(0, 0, 0, 0.02);
+  }
+  
+  .shadow-soft-xl {
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.1), 0 12px 20px -8px rgba(0, 0, 0, 0.03);
+  }
+  
+  /* Enhanced card styles */
+  .card-elegant {
+    @apply bg-white border border-gray-100 rounded-xl shadow-soft transition-all duration-300 hover:shadow-soft-lg;
+  }
+  
+  /* Enhanced button styles */
+  .btn-elegant {
+    @apply px-6 py-2.5 rounded-md bg-gradient-to-r from-primary to-primary-light text-white font-medium shadow-soft transition-all duration-300 hover:shadow-soft-lg hover:-translate-y-0.5;
   }
 }
 
