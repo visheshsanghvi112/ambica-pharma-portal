@@ -3,6 +3,7 @@
 import { initializeApp } from "firebase/app";
 import { getAnalytics, logEvent } from "firebase/analytics";
 import { getFirestore, collection, addDoc, serverTimestamp } from "firebase/firestore";
+import { initializeAppCheck, ReCaptchaV3Provider } from "firebase/app-check";
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
@@ -17,6 +18,14 @@ const firebaseConfig = {
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
+
+// Initialize App Check (Client-side only)
+if (typeof window !== 'undefined') {
+  initializeAppCheck(app, {
+    provider: new ReCaptchaV3Provider('6LdpnhArAAAAAFqzCDVwkD5a8TQemmRQZkZocE1b'),
+    isTokenAutoRefreshEnabled: true
+  });
+}
 
 // Initialize Analytics and export it
 export const analytics = typeof window !== 'undefined' ? getAnalytics(app) : null;
@@ -63,6 +72,48 @@ export const submitCareerApplication = async (formData: any) => {
   }
 };
 
+// Helper function to add test data to verify App Check is working
+export const addTestData = async () => {
+  if (typeof window !== 'undefined') {
+    try {
+      // Sample contact submission
+      const contactData = {
+        name: "John Doe",
+        email: "john.doe@example.com",
+        phone: "9876543210",
+        subject: "Product Inquiry",
+        message: "I'm interested in your latest pharmaceutical products. Can you provide more information?"
+      };
+      
+      const contactResult = await submitContactForm(contactData);
+      console.log("Test contact form submission result:", contactResult);
+      
+      // Sample career application
+      const careerData = {
+        fullName: "Jane Smith",
+        email: "jane.smith@example.com",
+        phone: "8765432109", 
+        position: "sales-manager",
+        experience: "senior",
+        education: "MBA in Pharmaceutical Management, Delhi University",
+        coverLetter: "I have over 7 years of experience in pharmaceutical sales and would love to join your team. My background includes managing regional sales teams and developing successful market strategies.",
+        resumeFileName: "jane_smith_resume.pdf",
+        resumeFileSize: 2500000,
+        resumeFileType: "application/pdf"
+      };
+      
+      const careerResult = await submitCareerApplication(careerData);
+      console.log("Test career application submission result:", careerResult);
+      
+      return { success: true, contactResult, careerResult };
+    } catch (error) {
+      console.error("Error adding test data:", error);
+      return { success: false, error };
+    }
+  }
+  return { success: false, error: "Window is not defined (server-side)" };
+};
+
 // Helper function to get cookies for storage
 const getCookiesForStorage = () => {
   if (typeof window === 'undefined') return {};
@@ -88,5 +139,17 @@ const getCookiesForStorage = () => {
     visitTimestamp: new Date().toISOString(),
   };
 };
+
+// Make the app instance available for app check verification in console
+if (typeof window !== 'undefined') {
+  // @ts-ignore - Making Firebase available globally for console testing
+  window.firebase = { 
+    app: () => app,
+    appCheck: () => {
+      const { getAppCheck } = require('firebase/app-check');
+      return getAppCheck(app);
+    }
+  };
+}
 
 export default app;
