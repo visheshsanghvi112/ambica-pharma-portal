@@ -1,13 +1,13 @@
 
 # Ambica Pharma Robots.txt
-# Website: https://ambicapharma.com
-# Last updated: 2025-04-09
+# Website: https://ambicapharma.net
+# Last updated: 2025-04-10
 
 User-agent: *
 Allow: /
 
 # Sitemap
-Sitemap: https://ambicapharma.com/sitemap.xml
+Sitemap: https://ambicapharma.net/sitemap.xml
 
 # Disallow specific paths
 User-agent: *
@@ -85,6 +85,17 @@ Allow: /products
 Allow: /facilities
 Allow: /team
 Allow: /about
+
+# Pharmaceutical industry specific sections
+Allow: /generic-medicines
+Allow: /tablets
+Allow: /capsules
+Allow: /injectables
+Allow: /drops
+Allow: /who-gmp-certification
+Allow: /iso-certification
+Allow: /quality-control
+Allow: /global-distribution
 
 # Prevent archive.org from archiving the site
 User-agent: archive.org_bot

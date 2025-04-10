@@ -1,10 +1,10 @@
-
 import React from "react";
 import { Helmet } from "react-helmet-async";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
+import { Mail, Linkedin, Twitter, Globe } from "lucide-react";
 
 // Team member type
 interface TeamMember {
@@ -220,7 +220,7 @@ const teamMembers: TeamMember[] = [
   }
 ];
 
-// Team member card component
+// Team member card component with improved structure and accessibility
 const TeamMemberCard: React.FC<{ member: TeamMember }> = ({ member }) => {
   return (
     <motion.div 
@@ -233,14 +233,62 @@ const TeamMemberCard: React.FC<{ member: TeamMember }> = ({ member }) => {
       <div className="relative overflow-hidden group">
         <img 
           src={member.image} 
-          alt={member.name} 
+          alt={`${member.name} - ${member.role} at Ambica Pharma`} 
           className="w-full h-64 object-cover object-top transition-transform duration-500 group-hover:scale-105"
+          loading="lazy"
         />
       </div>
       <div className="p-6">
         <h3 className="text-xl font-bold text-gray-900 dark:text-white">{member.name}</h3>
         <p className="text-primary font-medium mb-3">{member.role}</p>
         <p className="text-gray-600 dark:text-gray-300 text-sm mb-4">{member.bio}</p>
+        
+        {/* Social links with better accessibility */}
+        <div className="flex space-x-2 mt-3">
+          {member.social.email && (
+            <a 
+              href={`mailto:${member.social.email}`} 
+              aria-label={`Email ${member.name}`}
+              className="p-2 text-gray-600 hover:text-primary transition-colors"
+              rel="noopener noreferrer"
+            >
+              <Mail className="h-5 w-5" />
+            </a>
+          )}
+          {member.social.linkedin && (
+            <a 
+              href={member.social.linkedin} 
+              target="_blank" 
+              aria-label={`${member.name}'s LinkedIn profile`}
+              className="p-2 text-gray-600 hover:text-blue-600 transition-colors"
+              rel="noopener noreferrer"
+            >
+              <Linkedin className="h-5 w-5" />
+            </a>
+          )}
+          {member.social.twitter && (
+            <a 
+              href={member.social.twitter} 
+              target="_blank" 
+              aria-label={`${member.name}'s Twitter profile`}
+              className="p-2 text-gray-600 hover:text-blue-400 transition-colors"
+              rel="noopener noreferrer"
+            >
+              <Twitter className="h-5 w-5" />
+            </a>
+          )}
+          {member.social.website && (
+            <a 
+              href={member.social.website} 
+              target="_blank" 
+              aria-label={`${member.name}'s personal website`}
+              className="p-2 text-gray-600 hover:text-purple-600 transition-colors"
+              rel="noopener noreferrer"
+            >
+              <Globe className="h-5 w-5" />
+            </a>
+          )}
+        </div>
       </div>
     </motion.div>
   );
@@ -270,11 +318,37 @@ const Team = () => {
     return teamMembers.filter(member => member.department === filter);
   }, [filter]);
 
+  // Structured data for TeamPage
+  const teamPageSchema = {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "Ambica Pharma",
+    "url": "https://ambicapharma.net",
+    "logo": "/lovable-uploads/e75f626d-a490-496b-8817-294d7128b441.png",
+    "employee": teamMembers.map(member => ({
+      "@type": "Person",
+      "name": member.name,
+      "jobTitle": member.role,
+      "description": member.bio,
+      "image": member.image,
+      "contactPoint": member.social.email ? {
+        "@type": "ContactPoint",
+        "email": member.social.email,
+        "contactType": "professional"
+      } : undefined
+    }))
+  };
+
   return (
     <>
       <Helmet>
-        <title>Our Team | Ambica Pharma</title>
-        <meta name="description" content="Meet the talented team behind Ambica Pharma's success" />
+        <title>Our Team | Ambica Pharma - Leading Pharmaceutical Wholesaler & Exporter</title>
+        <meta name="description" content="Meet Ambica Pharma's expert team of pharmaceutical professionals dedicated to quality healthcare solutions. Our experienced staff drives our success in manufacturing, trading and exporting high-quality medicines globally." />
+        <meta name="keywords" content="Ambica Pharma team, pharmaceutical experts, medicine quality control team, pharmaceutical wholesaler staff, drug export professionals, pharmaceutical industry leaders, medication manufacturing experts, healthcare professionals Mumbai, Indian pharma company leadership, medicine distribution team, Ambica leadership" />
+        <link rel="canonical" href="https://ambicapharma.net/team" />
+        <script type="application/ld+json">
+          {JSON.stringify(teamPageSchema)}
+        </script>
       </Helmet>
       
       <div className="container py-12 md:py-20 px-4 md:px-6">
@@ -288,8 +362,8 @@ const Team = () => {
           <h1 className="text-3xl md:text-5xl font-bold mb-4 text-primary">Our Team</h1>
           <div className="w-24 h-1 bg-secondary mx-auto mt-2 mb-6"></div>
           <p className="text-lg text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
-            Meet the talented professionals behind Ambica Pharma's success. Our diverse team brings together
-            experience and innovation to deliver exceptional pharmaceutical solutions.
+            Meet the talented professionals behind Ambica Pharma's success. Our diverse team of experts brings together
+            extensive experience and innovation to deliver exceptional pharmaceutical solutions to global markets.
           </p>
         </motion.div>
         
@@ -343,7 +417,7 @@ const Team = () => {
         >
           <h2 className="text-2xl md:text-3xl font-bold mb-4 text-primary">Join Our Team</h2>
           <p className="text-base md:text-lg text-gray-700 dark:text-gray-300 mb-6 max-w-2xl mx-auto">
-            We're always looking for talented individuals to join our innovative team. Explore current opportunities and become part of our mission.
+            We're always looking for talented individuals to join our innovative pharmaceutical team. Explore current opportunities and become part of our mission to deliver quality healthcare solutions worldwide.
           </p>
           <Button size="lg" className="bg-gradient-to-r from-primary to-secondary text-white hover:opacity-90">
             <Link to="/careers">View Open Positions</Link>
