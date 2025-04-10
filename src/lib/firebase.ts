@@ -1,3 +1,4 @@
+
 // Import the functions you need from the SDKs
 import { initializeApp } from "firebase/app";
 import { getAnalytics, logEvent } from "firebase/analytics";
@@ -39,8 +40,17 @@ export const logAnalyticsEvent = (eventName: string, eventParams?: Record<string
   }
 };
 
+// Define the type for form submission responses
+type FormSubmissionResponse = {
+  success: boolean;
+  id?: string;
+  error?: any;
+  message: string;
+  isLocalOnly?: boolean;
+};
+
 // Helper function to store contact form submissions
-export const submitContactForm = async (formData: any) => {
+export const submitContactForm = async (formData: any): Promise<FormSubmissionResponse> => {
   try {
     // Console log for debugging
     console.log("Submitting contact form data:", formData);
@@ -66,7 +76,8 @@ export const submitContactForm = async (formData: any) => {
         return { 
           success: false, 
           error,
-          message: "Permission denied. Please check Firestore security rules."
+          message: "Permission denied. Please check Firestore security rules.",
+          isLocalOnly: true
         };
       } else {
         console.error("Firebase error:", error.message);
@@ -87,7 +98,7 @@ export const submitContactForm = async (formData: any) => {
 };
 
 // Helper function to store career applications
-export const submitCareerApplication = async (formData: any) => {
+export const submitCareerApplication = async (formData: any): Promise<FormSubmissionResponse> => {
   try {
     // Console log for debugging
     console.log("Submitting career application data:", formData);
@@ -113,7 +124,8 @@ export const submitCareerApplication = async (formData: any) => {
         return { 
           success: false, 
           error,
-          message: "Permission denied. Please check Firestore security rules."
+          message: "Permission denied. Please check Firestore security rules.",
+          isLocalOnly: true
         };
       } else {
         console.error("Firebase error:", error.message);
