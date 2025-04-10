@@ -1,13 +1,10 @@
-
 import React from "react";
 import { motion } from "framer-motion";
-import { Award, Star, TrendingUp, Users, Sparkles, Shield, CheckCircle, Globe } from "lucide-react";
+import { Award, Star, TrendingUp, Users, Sparkles, Shield, CheckCircle, Globe, Pill } from "lucide-react";
 
-// Component with enhanced SEO content and visual design
 const AboutSection = () => {
   return (
     <section id="about-section" className="py-20 relative overflow-hidden">
-      {/* Background decorative elements */}
       <div className="absolute top-0 left-0 w-full h-full opacity-10 overflow-hidden pointer-events-none">
         <div className="absolute top-10 left-10 w-40 h-40 rounded-full bg-gradient-to-r from-blue-300 to-blue-400 blur-3xl animate-blob"></div>
         <div className="absolute bottom-20 right-10 w-60 h-60 rounded-full bg-gradient-to-r from-purple-300 to-indigo-400 blur-3xl animate-blob" style={{ animationDelay: "2s" }}></div>
@@ -125,13 +122,11 @@ const AboutSection = () => {
               </div>
             </div>
             
-            {/* Decorative elements */}
             <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-full h-full max-w-md max-h-96 -z-10">
               <div className="absolute inset-0 border-2 border-primary/20 rounded-2xl -rotate-3"></div>
               <div className="absolute inset-0 border-2 border-secondary/20 rounded-2xl rotate-3"></div>
             </div>
             
-            {/* Stats overlay */}
             <motion.div 
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
