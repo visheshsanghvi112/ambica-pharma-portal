@@ -238,7 +238,7 @@ const Contact = () => {
                   <div>
                     <h3 className="font-medium">Ambica Pharma Warehouse</h3>
                     <p className="text-muted-foreground">
-                      Gala No. 1, First Floor, Building D8, Shree Arihant Compound, Reti Bander Road, Kalher, Bhiwandi (Thane) - 421302
+                      Gala No.9 to 12, First Floor, Building D8, Shree Arihant Compound, Reti Bander Road, Kalher, Bhiwandi (Thane) - 421302
                     </p>
                   </div>
                 </div>

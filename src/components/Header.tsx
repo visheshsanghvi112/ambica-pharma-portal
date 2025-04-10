@@ -61,9 +61,9 @@ const Header = () => {
             <Link to="/about" className={cn("font-medium", isActive("/about") && "text-secondary")}>
               About Us
             </Link>
-            <Link to="/team" className={cn("font-medium", isActive("/team") && "text-secondary")}>
+            {/* <Link to="/team" className={cn("font-medium", isActive("/team") && "text-secondary")}>
               Our Team
-            </Link>
+            </Link> */}
 
             <DropdownMenu>
               <DropdownMenuTrigger className="flex items-center font-medium">
@@ -72,9 +72,10 @@ const Header = () => {
               <DropdownMenuContent className="bg-background/95 p-2 w-48">
                 {[
                   { path: "/contact", label: "Contact" },
-                  { path: "/blog", label: "Blog" },
+                  // { path: "/blog", label: "Blog" },
+                  { path: "/team", label: "Our Team" },
                   { path: "/careers", label: "Careers" },
-                  { path: "/achievements", label: "Achievements" },
+                  // { path: "/achievements", label: "Achievements" },
                   { path: "/csr", label: "CSR" },
                   { path: "/faq", label: "FAQ" },
                   { path: "/privacy", label: "Privacy Policy" }
