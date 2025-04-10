@@ -1,4 +1,3 @@
-
 // Import the functions you need from the SDKs
 import { initializeApp } from "firebase/app";
 import { getAnalytics, logEvent } from "firebase/analytics";
@@ -43,63 +42,94 @@ export const logAnalyticsEvent = (eventName: string, eventParams?: Record<string
 // Helper function to store contact form submissions
 export const submitContactForm = async (formData: any) => {
   try {
+    // Console log for debugging
+    console.log("Submitting contact form data:", formData);
+    
     const docRef = await addDoc(collection(db, "contactSubmissions"), {
       ...formData,
       timestamp: serverTimestamp(),
       userCookies: getCookiesForStorage(),
     });
-    console.log("Contact form submitted with ID: ", docRef.id);
-    return { success: true, id: docRef.id };
+    console.log("Contact form submitted successfully with ID:", docRef.id);
+    return { 
+      success: true, 
+      id: docRef.id,
+      message: "Your message has been sent successfully!"
+    };
   } catch (error) {
-    console.error("Error submitting contact form: ", error);
+    console.error("Error submitting contact form:", error);
     
-    // Check if the error is due to permission issues
-    if (error instanceof Error && error.message.includes("permission")) {
-      console.warn("Firebase permission error. Please check your Firestore security rules.");
-      alert("Firebase Security Rules Error: Please configure your Firestore security rules to allow writes to 'contactSubmissions' collection. For now, data will only be saved locally.");
-      
-      // For demo purposes, we'll simulate success to avoid breaking the UI experience
-      // In a real app, you might want to handle this differently (e.g., store in localStorage)
-      return { 
-        success: true, 
-        id: "local-" + Date.now(),
-        isLocalOnly: true,
-        originalError: error
-      };
+    if (error instanceof Error) {
+      // Check for specific error types
+      if (error.message.includes("permission")) {
+        console.warn("Firebase permission error:", error.message);
+        return { 
+          success: false, 
+          error,
+          message: "Permission denied. Please check Firestore security rules."
+        };
+      } else {
+        console.error("Firebase error:", error.message);
+        return { 
+          success: false, 
+          error,
+          message: "An error occurred while submitting your message. Please try again."
+        };
+      }
     }
     
-    return { success: false, error };
+    return { 
+      success: false, 
+      error,
+      message: "An unknown error occurred. Please try again."
+    };
   }
 };
 
 // Helper function to store career applications
 export const submitCareerApplication = async (formData: any) => {
   try {
+    // Console log for debugging
+    console.log("Submitting career application data:", formData);
+    
     const docRef = await addDoc(collection(db, "careerApplications"), {
       ...formData,
       timestamp: serverTimestamp(),
       userCookies: getCookiesForStorage(),
     });
-    console.log("Career application submitted with ID: ", docRef.id);
-    return { success: true, id: docRef.id };
+    console.log("Career application submitted successfully with ID:", docRef.id);
+    return { 
+      success: true, 
+      id: docRef.id,
+      message: "Your application has been submitted successfully!"
+    };
   } catch (error) {
-    console.error("Error submitting career application: ", error);
+    console.error("Error submitting career application:", error);
     
-    // Check if the error is due to permission issues
-    if (error instanceof Error && error.message.includes("permission")) {
-      console.warn("Firebase permission error. Please check your Firestore security rules.");
-      alert("Firebase Security Rules Error: Please configure your Firestore security rules to allow writes to 'careerApplications' collection. For now, data will only be saved locally.");
-      
-      // For demo purposes, we'll simulate success to avoid breaking the UI experience
-      return { 
-        success: true, 
-        id: "local-" + Date.now(),
-        isLocalOnly: true,
-        originalError: error
-      };
+    if (error instanceof Error) {
+      // Check for specific error types
+      if (error.message.includes("permission")) {
+        console.warn("Firebase permission error:", error.message);
+        return { 
+          success: false, 
+          error,
+          message: "Permission denied. Please check Firestore security rules."
+        };
+      } else {
+        console.error("Firebase error:", error.message);
+        return { 
+          success: false, 
+          error,
+          message: "An error occurred while submitting your application. Please try again."
+        };
+      }
     }
     
-    return { success: false, error };
+    return { 
+      success: false, 
+      error,
+      message: "An unknown error occurred. Please try again."
+    };
   }
 };
 
