@@ -102,7 +102,7 @@ const teamMembers: TeamMember[] = [
     id: 7,
     name: "Vishesh Sanghvi",
     role: "Software Development Engineer",
-    bio: "Specializes in formulation development with a particular focus on controlled-release medications.",
+    bio: "Handles backend architecture—software, data, servers, and automation.",
     image: "/lovable-uploads/36b133b6-f6f2-41fb-9193-b22e199635dc.png",
     social: {
       email: "amit.joshi@ambicapharma.com",
@@ -132,13 +132,13 @@ const teamMembers: TeamMember[] = [
       email: "anjali.singh@ambicapharma.com",
       linkedin: "https://linkedin.com",
     },
-    department: "hr"
+    department: "sales"
   },
   {
     id: 10,
-    name: "Vishal Kumar",
-    role: "International Business Development",
-    bio: "Identifies new market opportunities and develops strategic partnerships to expand our global footprint.",
+    name: "Smita Amin",
+    role: "Billing and Coordinator",
+    bio: "Manages billing processes and ensures smooth coordination across teams and clients.",
     image: "/lovable-uploads/5cb5aba3-94fe-4193-bcb1-5f85b6466eed.png",
     social: {
       email: "vishal.kumar@ambicapharma.com",
@@ -160,15 +160,15 @@ const teamMembers: TeamMember[] = [
   },
   {
     id: 12,
-    name: "Dr. Ramesh Jain",
-    role: "Product Development Scientist",
+    name: "Sneha Gurav",
+    role: "Sales Executive",
     bio: "Leads research on new pharmaceutical formulations and improvements to existing product lines.",
     image: "/lovable-uploads/483f15ca-c98f-4038-973a-aaedabcd00d0.png",
     social: {
       email: "ramesh.jain@ambicapharma.com",
       linkedin: "https://linkedin.com",
     },
-    department: "it"
+    department: "sales"
   },
   {
     id: 13,
@@ -184,21 +184,21 @@ const teamMembers: TeamMember[] = [
   },
   {
     id: 14,
-    name: "Deepika Patel",
-    role: "Production Manager",
-    bio: "Oversees all pharmaceutical manufacturing processes to ensure optimum quality and efficiency.",
+    name: "Naitik Singh",
+    role: "Sales Executive",
+    bio: "Works on growing sales and building relationships with customers.",
     image: "/lovable-uploads/bc4c361f-8223-47af-8792-52900375891b.png",
     social: {
       email: "deepika.patel@ambicapharma.com",
       linkedin: "https://linkedin.com",
     },
-    department: "operations"
+    department: "sales"
   },
   {
     id: 15,
-    name: "Sunil Kumar",
-    role: "IT Systems Administrator",
-    bio: "Manages our IT infrastructure and ensures all systems are running smoothly to support our operations.",
+    name: "Mukesh Dabhi",
+    role: "Sales Executive",
+    bio: "Works on growing sales and building relationships with customers.",
     image: "/lovable-uploads/93092566-4a97-4281-9733-909843f42279.png",
     social: {
       email: "sunil.kumar@ambicapharma.com",
