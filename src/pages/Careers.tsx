@@ -3,51 +3,14 @@ import React, { useState } from 'react';
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
-import { Label } from "@/components/ui/label";
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
-import { useForm } from "react-hook-form";
-import { zodResolver } from "@hookform/resolvers/zod";
-import * as z from "zod";
-import { Form, FormControl, FormDescription, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
-import { toast } from "@/components/ui/use-toast";
+import { useToast } from "@/components/ui/use-toast";
 import { Helmet } from "react-helmet-async";
 import { ArrowLeft, ArrowRight, BriefcaseBusiness, CalendarDays, Users, MapPin, CircleDollarSign, Clock, GraduationCap, CheckCircle2, FileText, Globe, Building } from "lucide-react";
 import { motion } from "framer-motion";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import { Card, CardContent } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { useIsMobile } from "@/hooks/use-mobile";
-
-const formSchema = z.object({
-  name: z.string().min(2, {
-    message: "Name must be at least 2 characters.",
-  }),
-  email: z.string().email({
-    message: "Please enter a valid email address.",
-  }),
-  phone: z.string().min(10, {
-    message: "Phone number must be at least 10 digits.",
-  }),
-  position: z.string({
-    required_error: "Please select a position.",
-  }),
-  experience: z.string({
-    required_error: "Please select your experience level.",
-  }),
-  message: z.string().min(10, {
-    message: "Cover letter must be at least 10 characters.",
-  }),
-  resume: z.any()
-    .refine((file) => file?.length === 1, "Resume is required.")
-    .refine(
-      (file) => file?.[0]?.size <= 5000000,
-      "Max file size is 5MB."
-    )
-    .refine(
-      (file) => 
-        ["application/pdf", "application/msword", "application/vnd.openxmlformats-officedocument.wordprocessingml.document"].includes(file?.[0]?.type),
-      "Only PDF and Word documents are accepted."
-    ),
-});
+import CareerApplicationForm from "@/components/CareerApplicationForm";
 
 // Single job data for Export Billing Officer
 const jobData = {
@@ -95,40 +58,16 @@ const jobData = {
   ]
 };
 
-const experienceLevels = [
-  "Entry Level (0-2 years)",
-  "Mid Level (3-5 years)",
-  "Senior Level (6-10 years)",
-  "Executive Level (10+ years)"
+// Array of open positions
+const openPositions = [
+  { id: "export-billing", title: "Export Billing Officer" }
 ];
 
 const Careers = () => {
   const [selectedJob, setSelectedJob] = useState<string | null>(null);
   const [showApplication, setShowApplication] = useState(false);
   const isMobile = useIsMobile();
-  
-  const form = useForm<z.infer<typeof formSchema>>({
-    resolver: zodResolver(formSchema),
-    defaultValues: {
-      name: "",
-      email: "",
-      phone: "",
-      message: "",
-      position: "Export Billing Officer",
-    },
-  });
-
-  function onSubmit(values: z.infer<typeof formSchema>) {
-    // In a real application, you would send this data to your server
-    console.log(values);
-    toast({
-      title: "Application Submitted!",
-      description: "Thank you for your interest in joining our team. We'll be in touch soon.",
-    });
-    form.reset();
-    setShowApplication(false);
-    setSelectedJob(null);
-  }
+  const { toast } = useToast();
 
   // Animation variants
   const containerVariants = {
@@ -334,138 +273,8 @@ const Careers = () => {
                   </h2>
                 </div>
                 
-                <Form {...form}>
-                  <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
-                    <div className="grid md:grid-cols-2 gap-6">
-                      <FormField
-                        control={form.control}
-                        name="name"
-                        render={({ field }) => (
-                          <FormItem>
-                            <FormLabel>Full Name</FormLabel>
-                            <FormControl>
-                              <Input placeholder="John Doe" {...field} />
-                            </FormControl>
-                            <FormMessage />
-                          </FormItem>
-                        )}
-                      />
-                      
-                      <FormField
-                        control={form.control}
-                        name="email"
-                        render={({ field }) => (
-                          <FormItem>
-                            <FormLabel>Email Address</FormLabel>
-                            <FormControl>
-                              <Input placeholder="john@example.com" {...field} />
-                            </FormControl>
-                            <FormMessage />
-                          </FormItem>
-                        )}
-                      />
-                      
-                      <FormField
-                        control={form.control}
-                        name="phone"
-                        render={({ field }) => (
-                          <FormItem>
-                            <FormLabel>Phone Number</FormLabel>
-                            <FormControl>
-                              <Input placeholder="+91 9967006091" {...field} />
-                            </FormControl>
-                            <FormMessage />
-                          </FormItem>
-                        )}
-                      />
-                      
-                      <FormField
-                        control={form.control}
-                        name="position"
-                        render={({ field }) => (
-                          <FormItem>
-                            <FormLabel>Position</FormLabel>
-                            <FormControl>
-                              <Input value={jobData.title} readOnly {...field} />
-                            </FormControl>
-                            <FormMessage />
-                          </FormItem>
-                        )}
-                      />
-                      
-                      <FormField
-                        control={form.control}
-                        name="experience"
-                        render={({ field }) => (
-                          <FormItem>
-                            <FormLabel>Experience Level</FormLabel>
-                            <Select onValueChange={field.onChange} defaultValue={field.value}>
-                              <FormControl>
-                                <SelectTrigger>
-                                  <SelectValue placeholder="Select experience level" />
-                                </SelectTrigger>
-                              </FormControl>
-                              <SelectContent>
-                                {experienceLevels.map((level) => (
-                                  <SelectItem key={level} value={level}>{level}</SelectItem>
-                                ))}
-                              </SelectContent>
-                            </Select>
-                            <FormMessage />
-                          </FormItem>
-                        )}
-                      />
-                      
-                      <FormField
-                        control={form.control}
-                        name="resume"
-                        render={({ field: { onChange, value, ...rest } }) => (
-                          <FormItem className="md:col-span-2">
-                            <FormLabel>Resume/CV</FormLabel>
-                            <FormControl>
-                              <Input 
-                                type="file" 
-                                className="cursor-pointer" 
-                                onChange={(e) => onChange(e.target.files)}
-                                accept=".pdf,.doc,.docx"
-                                {...rest}
-                              />
-                            </FormControl>
-                            <FormDescription>
-                              Upload your resume (PDF or Word, max 5MB)
-                            </FormDescription>
-                            <FormMessage />
-                          </FormItem>
-                        )}
-                      />
-                    </div>
-                    
-                    <FormField
-                      control={form.control}
-                      name="message"
-                      render={({ field }) => (
-                        <FormItem>
-                          <FormLabel>Cover Letter</FormLabel>
-                          <FormControl>
-                            <Textarea 
-                              placeholder="Tell us why you're interested in this position and what you would bring to our team..."
-                              className="min-h-32"
-                              {...field}
-                            />
-                          </FormControl>
-                          <FormMessage />
-                        </FormItem>
-                      )}
-                    />
-                    
-                    <div className="flex justify-end gap-4">
-                      <Button type="button" variant="outline" onClick={() => setShowApplication(false)}>
-                        Cancel
-                      </Button>
-                      <Button type="submit">Submit Application</Button>
-                    </div>
-                  </form>
-                </Form>
+                <CareerApplicationForm openPositions={openPositions} />
+                
               </div>
             </motion.div>
           ) : (
