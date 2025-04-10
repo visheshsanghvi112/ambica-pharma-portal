@@ -26,8 +26,8 @@ interface TeamMember {
 const teamMembers: TeamMember[] = [
   {
     id: 1,
-    name: "Dr. Rajesh Kumar",
-    role: "CEO & Founder",
+    name: "Sandeep Gautam",
+    role: "Export Billing",
     bio: "Dr. Kumar has over 25 years of experience in the pharmaceutical industry with a PhD in Pharmacology from IIT Bombay.",
     image: "/lovable-uploads/dd6e336c-a7e1-45fc-9078-da61d4735faa.png",
     social: {
@@ -35,31 +35,31 @@ const teamMembers: TeamMember[] = [
       linkedin: "https://linkedin.com",
       twitter: "https://twitter.com",
     },
-    department: "leadership"
+    department: "purchase"
   },
   {
     id: 2,
-    name: "Dr. Priya Sharma",
-    role: "Chief Scientific Officer",
-    bio: "Dr. Sharma leads our research initiatives with her expertise in drug development and clinical research. Former research lead at AstraZeneca.",
+    name: "Sara Gawade",
+    role: "Sales Executive",
+    bio: "Sara leads our sales with her expertise in marketing.",
     image: "/lovable-uploads/06d0b989-c8d1-4611-b622-ea299eaf0817.png",
     social: {
       email: "priya.sharma@ambicapharma.com",
       linkedin: "https://linkedin.com",
     },
-    department: "leadership"
+    department: "sales"
   },
   {
     id: 3,
-    name: "Vikram Singh",
-    role: "Head of Operations",
-    bio: "Vikram oversees all manufacturing operations and ensures our facilities meet international standards. MBA from IIM Ahmedabad.",
+    name: "Sanket Mishra",
+    role: "Sales Executive",
+    bio: "Sanket oversees all sales operations and ensures our facilities meet international standards. MBA from IIM Ahmedabad.",
     image: "/lovable-uploads/0d8ebdef-722b-44c0-bfc3-8f644b9bb51a.png",
     social: {
       email: "vikram.singh@ambicapharma.com",
       linkedin: "https://linkedin.com",
     },
-    department: "operations"
+    department: "sales"
   },
   {
     id: 17,
@@ -75,9 +75,9 @@ const teamMembers: TeamMember[] = [
   },
   {
     id: 5,
-    name: "Rahul Verma",
-    role: "Global Sales Director",
-    bio: "Rahul has expanded our market presence to 45+ countries with strategic partnerships and distribution networks.",
+    name: "Anjali Vedhwal",
+    role: "Export Coordinator",
+    bio: "Anjali has expanded our market presence to 45+ countries with strategic partnerships and distribution networks.",
     image: "/lovable-uploads/b9310eb6-c2d2-4e00-acdd-dbca91490105.png",
     social: {
       email: "rahul.verma@ambicapharma.com",
@@ -88,8 +88,8 @@ const teamMembers: TeamMember[] = [
   },
   {
     id: 6,
-    name: "Neha Gupta",
-    role: "Quality Assurance Manager",
+    name: "Hitesh Kumar",
+    role: "Account Manager",
     bio: "Ensures all our products meet the highest international quality standards and compliance requirements.",
     image: "/lovable-uploads/1ace0070-8637-4045-b4a0-3c3ce09fbede.png",
     social: {
