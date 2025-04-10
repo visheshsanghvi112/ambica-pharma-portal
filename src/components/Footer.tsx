@@ -16,7 +16,7 @@ const Footer = () => {
           <div className="space-y-4 animate-fade-in">
             <h3 className="text-xl font-display font-semibold">About Us</h3>
             <p className="text-sm text-white/80 dark:text-white/80">
-              Discover excellence in pharmaceutical manufacturing and distribution at Ambica Pharma, 
+              Discover excellence in pharmaceutical distribution at Ambica Pharma, 
               where quality meets commitment since 2005.
             </p>
             <div className="flex items-center space-x-3">
@@ -88,6 +88,7 @@ const Footer = () => {
               <p className="flex items-center">
                 <Mail className="h-5 w-5 mr-2" />
                 <span>ambicapharma@gmail.com</span>
+                <span>info@ambicapharma.net</span>
               </p>
             </address>
             
@@ -103,7 +104,7 @@ const Footer = () => {
               </p>
               <p className="flex items-center">
                 <Mail className="h-5 w-5 mr-2" />
-                <span>info@ambicapharma.net</span>
+                <span>warehouse@ambicapharma.net</span>
               </p>
               <p className="flex items-center">
                 <Clock className="h-5 w-5 mr-2" />
