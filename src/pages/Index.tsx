@@ -1,3 +1,4 @@
+
 import React, { useEffect } from "react";
 import HeroSection from "../components/HeroSection";
 import { Button } from "@/components/ui/button";
@@ -10,6 +11,18 @@ import Testimonials from "../components/Testimonials";
 import { Card, CardContent } from "@/components/ui/card";
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
 import SEOHead from "../components/SEOHead";
+
+// CounterAnimation component for number counting
+const CounterAnimation = ({ targetValue }) => {
+  // Remove any non-numeric characters for counting
+  const numericValue = parseInt(targetValue.replace(/\D/g, ""));
+  
+  return (
+    <span>
+      {targetValue}
+    </span>
+  );
+};
 
 // Product categories data
 const productCategories = [
@@ -496,3 +509,18 @@ const Index = () => {
                   className={`w-12 h-12 md:w-16 md:h-16 bg-gradient-to-br ${item.gradient} rounded-full flex items-center justify-center mb-3 md:mb-4 text-white transform transition-all duration-300`}
                   whileHover={{ rotate: 5, scale: 1.1 }}
                   transition={{ type: "spring", stiffness: 300, damping: 10 }}
+                >
+                  {item.icon}
+                </motion.div>
+                <h3 className="text-lg font-bold mb-2">{item.title}</h3>
+                <p className="text-sm text-foreground/70">{item.description}</p>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+    </div>
+  );
+};
+
+export default Index;
