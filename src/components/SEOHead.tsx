@@ -54,6 +54,10 @@ const SEOHead: React.FC<SEOHeadProps> = ({
           {JSON.stringify(structuredData)}
         </script>
       )}
+      
+      {/* Favicon */}
+      <link rel="icon" href="/lovable-uploads/e75f626d-a490-496b-8817-294d7128b441.png" />
+      <link rel="apple-touch-icon" href="/lovable-uploads/e75f626d-a490-496b-8817-294d7128b441.png" />
     </Helmet>
   );
 };
