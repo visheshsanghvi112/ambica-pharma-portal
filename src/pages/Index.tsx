@@ -1,4 +1,3 @@
-
 import React, { useEffect } from "react";
 import HeroSection from "../components/HeroSection";
 import { Button } from "@/components/ui/button";
@@ -11,7 +10,6 @@ import Testimonials from "../components/Testimonials";
 import { Card, CardContent } from "@/components/ui/card";
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
 import SEOHead from "../components/SEOHead";
-import MissionVision from "../components/MissionVision";
 
 // Product categories data
 const productCategories = [
@@ -259,7 +257,7 @@ const Index = () => {
         </div>
       </section>
       
-      {/* Global Presence Banner with enhanced visual effects */}
+      {/* Global Presence Banner with enhanced visual effects and number counter */}
       <section ref={ref} className="py-12 bg-gradient-to-r from-blue-50 via-transparent to-indigo-50 dark:from-blue-900/10 dark:via-transparent dark:to-indigo-900/10 relative overflow-hidden">
         <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80')] opacity-5 mix-blend-overlay"></div>
         
@@ -303,14 +301,11 @@ const Index = () => {
                     {item.icon}
                   </div>
                 </motion.div>
-                <motion.h3 
+                <motion.div 
                   className="text-2xl md:text-3xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-indigo-600"
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  transition={{ duration: 1, repeat: Infinity, repeatType: "reverse" }}
                 >
-                  {item.value}
-                </motion.h3>
+                  <CounterAnimation targetValue={item.value} />
+                </motion.div>
                 <p className="text-sm font-medium text-foreground/70">{item.title}</p>
               </motion.div>
             ))}
@@ -320,9 +315,6 @@ const Index = () => {
       
       {/* Our Impact in Numbers */}
       <Statistics />
-      
-      {/* Mission & Vision section */}
-      <MissionVision />
       
       {/* Product Categories with enhanced cards */}
       <section className="py-16 bg-gradient-to-b from-white to-blue-50 dark:from-background dark:to-indigo-900/10 relative overflow-hidden">
@@ -504,143 +496,3 @@ const Index = () => {
                   className={`w-12 h-12 md:w-16 md:h-16 bg-gradient-to-br ${item.gradient} rounded-full flex items-center justify-center mb-3 md:mb-4 text-white transform transition-all duration-300`}
                   whileHover={{ rotate: 5, scale: 1.1 }}
                   transition={{ type: "spring", stiffness: 300, damping: 10 }}
-                >
-                  {item.icon}
-                </motion.div>
-                <h3 className="font-semibold text-blue-700 dark:text-blue-300 text-lg md:text-xl mb-2">{item.title}</h3>
-                <p className="text-foreground/70 text-sm md:text-base">{item.description}</p>
-              </motion.div>
-            ))}
-          </div>
-          
-          <div className="text-center mt-12">
-            <motion.div
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              transition={{ type: "spring", stiffness: 400, damping: 17 }}
-            >
-              <Button asChild className="bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white font-medium shadow-md hover:shadow-lg">
-                <Link to="/about" className="flex items-center gap-2">
-                  Learn More About Us <ArrowRight className="h-4 w-4 group-hover:translate-x-1 transition-transform" />
-                </Link>
-              </Button>
-            </motion.div>
-          </div>
-        </div>
-      </section>
-      
-      {/* Customer Testimonials Section - Enhanced with better styling */}
-      <section className="py-16 bg-gradient-to-b from-blue-50 to-white dark:from-indigo-900/10 dark:to-background relative overflow-hidden">
-        {/* Background decorations */}
-        <div className="absolute top-0 left-0 w-full h-full pointer-events-none overflow-hidden">
-          <div className="absolute top-1/4 left-1/4 w-64 h-64 bg-gradient-to-br from-blue-200/50 to-blue-300/30 dark:from-blue-500/20 dark:to-blue-700/10 rounded-full filter blur-3xl opacity-70 animate-blob" style={{ animationDuration: "15s" }}></div>
-          <div className="absolute bottom-1/4 right-1/4 w-80 h-80 bg-gradient-to-br from-indigo-200/50 to-purple-300/30 dark:from-indigo-500/20 dark:to-purple-700/10 rounded-full filter blur-3xl opacity-70 animate-blob" style={{ animationDuration: "20s", animationDelay: "2s" }}></div>
-        </div>
-        
-        <div className="container relative z-10">
-          <motion.div 
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            viewport={{ once: true }}
-            className="text-center mb-12"
-          >
-            <motion.span 
-              className="inline-block px-3 py-1 text-sm font-medium bg-gradient-to-r from-indigo-100 to-purple-100 dark:from-indigo-900/60 dark:to-purple-900/60 text-indigo-700 dark:text-indigo-300 rounded-full mb-4"
-              whileHover={{ scale: 1.05 }}
-              transition={{ type: "spring", stiffness: 400, damping: 10 }}
-            >
-              <MessageCircle className="h-4 w-4 inline mr-1" />
-              Success Stories
-            </motion.span>
-            <h2 className="text-3xl md:text-4xl font-display font-bold bg-clip-text text-transparent bg-gradient-to-r from-blue-600 via-indigo-600 to-violet-600 mb-4">Client Testimonials</h2>
-            <div className="w-24 h-1 bg-gradient-to-r from-blue-600 to-violet-600 mx-auto mt-2 mb-4 rounded-full"></div>
-            <p className="text-foreground/80 max-w-3xl mx-auto text-lg">
-              Hear from healthcare professionals and patients who trust Ambica Pharma for their pharmaceutical needs.
-            </p>
-          </motion.div>
-          
-          <Carousel className="w-full">
-            <CarouselContent>
-              {customerTestimonials.map((testimonial, index) => (
-                <CarouselItem key={index} className="sm:basis-1/1 md:basis-1/2 lg:basis-1/3 p-1">
-                  <motion.div
-                    initial={{ opacity: 0, scale: 0.95 }}
-                    whileInView={{ opacity: 1, scale: 1 }}
-                    transition={{ duration: 0.5, delay: index * 0.1 }}
-                    viewport={{ once: true }}
-                    className="h-full"
-                  >
-                    <Card className="bg-gradient-to-br from-white to-blue-50/90 dark:from-gray-800 dark:to-blue-900/30 border border-blue-100 dark:border-blue-900/50 shadow-md hover:shadow-lg transition-all h-full overflow-hidden group">
-                      <div className="h-2 bg-gradient-to-r from-blue-500 to-indigo-500"></div>
-                      <CardContent className="p-6 h-full flex flex-col">
-                        <motion.div 
-                          className="mb-4 text-indigo-600 dark:text-indigo-400 transition-transform duration-300"
-                          whileHover={{ rotate: 5, scale: 1.1 }}
-                          transition={{ type: "spring", stiffness: 300, damping: 10 }}
-                        >
-                          <MessageCircle className="h-8 w-8 mx-auto" />
-                        </motion.div>
-                        <p className="text-foreground/70 text-center italic mb-6 relative">
-                          <span className="text-blue-300 dark:text-blue-500 text-3xl absolute -top-2 -left-1 opacity-20">"</span>
-                          {testimonial.quote}
-                          <span className="text-blue-300 dark:text-blue-500 text-3xl absolute -bottom-4 -right-1 opacity-20">"</span>
-                        </p>
-                        <div className="mt-auto text-center">
-                          <h4 className="font-semibold text-blue-700 dark:text-blue-300">{testimonial.author}</h4>
-                          <p className="text-foreground/60 text-sm">{testimonial.position}</p>
-                        </div>
-                      </CardContent>
-                    </Card>
-                  </motion.div>
-                </CarouselItem>
-              ))}
-            </CarouselContent>
-            <div className="flex items-center justify-center gap-2 mt-4">
-              <CarouselPrevious className="relative static left-auto transform-none bg-gradient-to-r from-blue-500 to-indigo-500 text-white border-none hover:from-blue-600 hover:to-indigo-600" />
-              <CarouselNext className="relative static right-auto transform-none bg-gradient-to-r from-blue-500 to-indigo-500 text-white border-none hover:from-blue-600 hover:to-indigo-600" />
-            </div>
-          </Carousel>
-        </div>
-      </section>
-      
-      {/* Add custom CSS for background pattern */}
-      <style>
-        {`
-        @keyframes blob {
-          0% {
-            transform: translate(0px, 0px) scale(1);
-          }
-          33% {
-            transform: translate(30px, -50px) scale(1.1);
-          }
-          66% {
-            transform: translate(-20px, 20px) scale(0.9);
-          }
-          100% {
-            transform: translate(0px, 0px) scale(1);
-          }
-        }
-        
-        .animate-blob {
-          animation: blob 15s infinite alternate;
-        }
-        
-        .animation-delay-2000 {
-          animation-delay: 2s;
-        }
-        
-        .animation-delay-4000 {
-          animation-delay: 4s;
-        }
-        
-        .bg-grid-pattern {
-          background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%239C92AC' fill-opacity='0.1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
-        }
-        `}
-      </style>
-    </div>
-  );
-};
-
-export default Index;
