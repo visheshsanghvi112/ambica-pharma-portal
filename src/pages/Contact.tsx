@@ -1,3 +1,4 @@
+
 import React from "react";
 import { Helmet } from "react-helmet-async";
 import { Button } from "@/components/ui/button";
@@ -11,6 +12,7 @@ import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "
 import { useToast } from "@/components/ui/use-toast";
 import { Phone, Mail, Clock, MapPin } from "lucide-react";
 import MapComponent from "@/components/MapComponent";
+import { submitContactForm, logAnalyticsEvent } from "@/lib/firebase";
 
 const formSchema = z.object({
   name: z.string().min(2, {
@@ -43,14 +45,28 @@ const Contact = () => {
     },
   });
 
-  function onSubmit(values: z.infer<typeof formSchema>) {
-    // In a real application, you would send this data to your server
-    console.log(values);
-    toast({
-      title: "Message Sent!",
-      description: "Thank you for contacting us. We'll be in touch soon.",
+  async function onSubmit(values: z.infer<typeof formSchema>) {
+    // Log analytics event
+    logAnalyticsEvent('contact_form_submit', {
+      subject: values.subject
     });
-    form.reset();
+    
+    // Submit to Firestore
+    const result = await submitContactForm(values);
+    
+    if (result.success) {
+      toast({
+        title: "Message Sent!",
+        description: "Thank you for contacting us. We'll be in touch soon.",
+      });
+      form.reset();
+    } else {
+      toast({
+        title: "Submission Error",
+        description: "There was a problem sending your message. Please try again.",
+        variant: "destructive",
+      });
+    }
   }
 
   return (

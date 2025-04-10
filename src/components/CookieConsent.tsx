@@ -1,11 +1,13 @@
+
 import React, { useEffect, useState } from "react";
 import { Button } from "./ui/button";
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "./ui/card";
 import { X, Info } from "lucide-react";
 import { Link } from "react-router-dom";
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "./ui/tooltip";
-import { analytics, logAnalyticsEvent } from "../lib/firebase";
+import { analytics, logAnalyticsEvent, db } from "../lib/firebase";
 import { setAnalyticsCollectionEnabled } from "firebase/analytics";
+import { doc, setDoc, serverTimestamp } from "firebase/firestore";
 
 const COOKIE_CONSENT_KEY = "ambica_cookie_consent";
 const COOKIE_PREFERENCE_VERSION = "1.0"; // Used to track consent version
@@ -80,7 +82,7 @@ const CookieConsent = () => {
     }
   };
 
-  const saveConsent = (settings: CookieSettings) => {
+  const saveConsent = async (settings: CookieSettings) => {
     localStorage.setItem(COOKIE_CONSENT_KEY, JSON.stringify(settings));
     setShowConsent(false);
     
@@ -90,6 +92,27 @@ const CookieConsent = () => {
       if (settings.analytics) {
         logAnalyticsEvent('consent_given', { type: 'analytics' });
       }
+    }
+    
+    // Store consent in Firestore
+    try {
+      // Generate a unique ID for this consent record
+      const consentId = `consent_${Date.now()}_${Math.random().toString(36).substring(2, 9)}`;
+      
+      await setDoc(doc(db, "cookieConsent", consentId), {
+        ...settings,
+        timestamp: serverTimestamp(),
+        userAgent: navigator.userAgent,
+        language: navigator.language,
+        screenSize: {
+          width: window.screen.width,
+          height: window.screen.height
+        },
+        referrer: document.referrer,
+        url: window.location.href
+      });
+    } catch (error) {
+      console.error("Error storing cookie consent:", error);
     }
     
     // You could set marketing cookies here if marketing is enabled
