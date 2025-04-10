@@ -28,7 +28,7 @@ const teamMembers: TeamMember[] = [
     id: 1,
     name: "Sandeep Gautam",
     role: "Export Billing",
-    bio: "Dr. Kumar has over 25 years of experience in the pharmaceutical industry with a PhD in Pharmacology from IIT Bombay.",
+    bio: "Sandeep has over 25 years of experience in the pharmaceutical industry.",
     image: "/lovable-uploads/dd6e336c-a7e1-45fc-9078-da61d4735faa.png",
     social: {
       email: "rajesh.kumar@ambicapharma.com",
@@ -100,19 +100,19 @@ const teamMembers: TeamMember[] = [
   },
   {
     id: 7,
-    name: "Dr. Amit Joshi",
-    role: "Senior Researcher",
+    name: "Vishesh Sanghvi",
+    role: "Software Development Engineer",
     bio: "Specializes in formulation development with a particular focus on controlled-release medications.",
     image: "/lovable-uploads/36b133b6-f6f2-41fb-9193-b22e199635dc.png",
     social: {
       email: "amit.joshi@ambicapharma.com",
       linkedin: "https://linkedin.com",
     },
-    department: "administration"
+    department: "it"
   },
   {
     id: 8,
-    name: "Suresh Patel",
+    name: "Arfad",
     role: "Supply Chain Manager",
     bio: "Manages our global supply chain to ensure timely delivery of products to distributors and end customers.",
     image: "/lovable-uploads/252ae4ad-9151-48a8-9618-a9bb2176b30b.png",
@@ -124,8 +124,8 @@ const teamMembers: TeamMember[] = [
   },
   {
     id: 9,
-    name: "Anjali Singh",
-    role: "Clinical Research Associate",
+    name: "Samiksha Hate",
+    role: "Export Coordinator",
     bio: "Coordinates clinical trials and ensures all research protocols meet industry standards and regulatory requirements.",
     image: "/lovable-uploads/54bfce67-fd49-4c5f-90df-30c1b9d4d8b1.png",
     social: {
