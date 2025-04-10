@@ -16,7 +16,7 @@ const Footer = () => {
           <div className="space-y-4 animate-fade-in">
             <h3 className="text-xl font-display font-semibold">About Us</h3>
             <p className="text-sm text-white/80 dark:text-white/80">
-              Discover excellence in pharmaceutical manufacturing and distribution at Ambica Pharma, 
+              Experience excellence in pharmaceutical distribution, trading, and export at Ambica Pharma, 
               where quality meets commitment since 2005.
             </p>
             <div className="flex items-center space-x-3">
@@ -89,6 +89,10 @@ const Footer = () => {
                 <Mail className="h-5 w-5 mr-2" />
                 <span>ambicapharma@gmail.com</span>
               </p>
+              <p className="flex items-center">
+                <Mail className="h-5 w-5 mr-2" />
+                <span>info@ambicapharma.net</span>
+              </p>
             </address>
             
             <h3 className="text-xl font-display font-semibold pt-2">Warehouse</h3>
@@ -103,7 +107,7 @@ const Footer = () => {
               </p>
               <p className="flex items-center">
                 <Mail className="h-5 w-5 mr-2" />
-                <span>info@ambicapharma.net</span>
+                <span>warehouse@ambicapharma.net</span>
               </p>
               <p className="flex items-center">
                 <Clock className="h-5 w-5 mr-2" />
@@ -132,7 +136,7 @@ const Footer = () => {
             <div className="mt-6 p-4 bg-white/10 rounded-lg">
               <h4 className="font-semibold mb-2">ISO-9001:2008 certified • GMP Certified</h4>
               <p className="text-xs text-white/80">
-                The Company has been accredited with ISO-9001:2008 and manufactures pharmaceutical formulations as per the guidelines of WHO.
+                The Company has been accredited with ISO-9001:2008 and distributes pharmaceutical formulations as per the guidelines of WHO.
               </p>
             </div>
           </div>
@@ -153,4 +157,3 @@ const Footer = () => {
 };
 
 export default Footer;
-
