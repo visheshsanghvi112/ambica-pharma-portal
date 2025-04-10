@@ -337,7 +337,7 @@ const Contact = () => {
               <div className="flex flex-col md:flex-row items-center justify-center gap-4 mb-4">
                 <a href="tel:+919967006091" className="flex items-center gap-2 text-primary hover:underline">
                   <Phone className="h-5 w-5" />
-                  <span>+91 9876544321</span>
+                  <span>+91 9967006091</span>
                 </a>
                 <a href="mailto:info@ambicapharma.net" className="flex items-center gap-2 text-primary hover:underline">
                   <Mail className="h-5 w-5" />
