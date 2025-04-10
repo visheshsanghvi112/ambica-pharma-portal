@@ -129,6 +129,7 @@ const CareerApplicationForm = ({ openPositions }: CareerApplicationFormProps) =>
         fileError={fileError}
         setFileError={setFileError}
         setResumeFile={setResumeFile}
+        fileInputRef={fileInputRef}
         submissionError={submissionStatus.status === 'error' ? submissionStatus.message : null}
       />
     </>

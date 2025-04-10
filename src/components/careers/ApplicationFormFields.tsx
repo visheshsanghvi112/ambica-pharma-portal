@@ -25,7 +25,7 @@ const applicationFormSchema = z.object({
     .max(1000, { message: "Cover letter cannot exceed 1000 characters." }),
 });
 
-export type ApplicationFormValues = z.infer<typeof applicationFormSchema>;
+type ApplicationFormValues = z.infer<typeof applicationFormSchema>;
 
 interface ApplicationFormFieldsProps {
   openPositions: { id: string; title: string }[];
@@ -34,6 +34,7 @@ interface ApplicationFormFieldsProps {
   fileError: string | null;
   setFileError: (error: string | null) => void;
   setResumeFile: (file: File | null) => void;
+  fileInputRef?: React.RefObject<HTMLInputElement>;
   submissionError: string | null;
 }
 
@@ -44,6 +45,7 @@ const ApplicationFormFields = ({
   fileError,
   setFileError,
   setResumeFile,
+  fileInputRef,
   submissionError
 }: ApplicationFormFieldsProps) => {
   const form = useForm<ApplicationFormValues>({
@@ -206,6 +208,7 @@ const ApplicationFormFields = ({
           onFileChange={setResumeFile}
           fileError={fileError}
           setFileError={setFileError}
+          fileInputRef={fileInputRef}
         />
         
         <Button 

@@ -10,11 +10,15 @@ interface ResumeUploaderProps {
   onFileChange: (file: File | null) => void;
   fileError: string | null;
   setFileError: (error: string | null) => void;
+  fileInputRef?: React.RefObject<HTMLInputElement>;
 }
 
-const ResumeUploader = ({ onFileChange, fileError, setFileError }: ResumeUploaderProps) => {
-  const fileInputRef = useRef<HTMLInputElement>(null);
+const ResumeUploader = ({ onFileChange, fileError, setFileError, fileInputRef }: ResumeUploaderProps) => {
+  const internalFileInputRef = useRef<HTMLInputElement>(null);
   const [resumeFile, setResumeFile] = useState<File | null>(null);
+  
+  // Use the provided ref or the internal one
+  const actualFileInputRef = fileInputRef || internalFileInputRef;
 
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setFileError(null);
@@ -43,7 +47,7 @@ const ResumeUploader = ({ onFileChange, fileError, setFileError }: ResumeUploade
       <Label htmlFor="resume">Resume/CV (PDF, DOCX, max 5MB) <span className="text-red-500">*</span></Label>
       <Input 
         id="resume" 
-        ref={fileInputRef}
+        ref={actualFileInputRef}
         type="file" 
         accept=".pdf,.doc,.docx" 
         onChange={handleFileChange}
@@ -61,5 +65,5 @@ const ResumeUploader = ({ onFileChange, fileError, setFileError }: ResumeUploade
   );
 };
 
-export { ResumeUploader, fileInputRef };
+export { ResumeUploader };
 export type { ResumeUploaderProps };
