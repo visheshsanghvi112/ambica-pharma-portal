@@ -1,5 +1,5 @@
 
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import { z } from "zod";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -11,7 +11,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { useToast } from "@/components/ui/use-toast";
 import { Label } from "@/components/ui/label";
 import { submitCareerApplication, logAnalyticsEvent } from "@/lib/firebase";
-import { CheckCircle2, AlertCircle } from "lucide-react";
+import { CheckCircle2, AlertCircle, Loader2 } from "lucide-react";
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 
 const MAX_FILE_SIZE = 5000000; // 5MB
@@ -39,6 +39,7 @@ interface CareerApplicationFormProps {
 
 const CareerApplicationForm = ({ openPositions }: CareerApplicationFormProps) => {
   const { toast } = useToast();
+  const fileInputRef = useRef<HTMLInputElement>(null);
   const [resumeFile, setResumeFile] = useState<File | null>(null);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [fileError, setFileError] = useState<string | null>(null);
@@ -87,6 +88,10 @@ const CareerApplicationForm = ({ openPositions }: CareerApplicationFormProps) =>
     
     if (!resumeFile) {
       setFileError("Please upload your resume before submitting.");
+      // Scroll to file input for better visibility of error
+      if (fileInputRef.current) {
+        fileInputRef.current.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      }
       return;
     }
 
@@ -108,6 +113,7 @@ const CareerApplicationForm = ({ openPositions }: CareerApplicationFormProps) =>
         resumeFileName: resumeFile.name,
         resumeFileSize: resumeFile.size,
         resumeFileType: resumeFile.type,
+        submissionTimestamp: new Date().toISOString()
       };
       
       console.log("Submitting application data:", applicationData);
@@ -128,6 +134,9 @@ const CareerApplicationForm = ({ openPositions }: CareerApplicationFormProps) =>
         
         form.reset();
         setResumeFile(null);
+        if (fileInputRef.current) {
+          fileInputRef.current.value = '';
+        }
       } else {
         setSubmissionStatus({
           status: 'error',
@@ -177,6 +186,9 @@ const CareerApplicationForm = ({ openPositions }: CareerApplicationFormProps) =>
               setSubmissionStatus({ status: 'idle', message: '' });
               form.reset();
               setResumeFile(null);
+              if (fileInputRef.current) {
+                fileInputRef.current.value = '';
+              }
             }}
             className="bg-primary hover:bg-primary/90"
           >
@@ -206,7 +218,7 @@ const CareerApplicationForm = ({ openPositions }: CareerApplicationFormProps) =>
             name="fullName"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Full Name</FormLabel>
+                <FormLabel>Full Name <span className="text-red-500">*</span></FormLabel>
                 <FormControl>
                   <Input placeholder="John Doe" {...field} />
                 </FormControl>
@@ -220,7 +232,7 @@ const CareerApplicationForm = ({ openPositions }: CareerApplicationFormProps) =>
             name="email"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Email Address</FormLabel>
+                <FormLabel>Email Address <span className="text-red-500">*</span></FormLabel>
                 <FormControl>
                   <Input placeholder="john@example.com" type="email" {...field} />
                 </FormControl>
@@ -236,7 +248,7 @@ const CareerApplicationForm = ({ openPositions }: CareerApplicationFormProps) =>
             name="phone"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Phone Number</FormLabel>
+                <FormLabel>Phone Number <span className="text-red-500">*</span></FormLabel>
                 <FormControl>
                   <Input placeholder="+91 9967006091" {...field} />
                 </FormControl>
@@ -250,7 +262,7 @@ const CareerApplicationForm = ({ openPositions }: CareerApplicationFormProps) =>
             name="position"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Position</FormLabel>
+                <FormLabel>Position <span className="text-red-500">*</span></FormLabel>
                 <Select 
                   onValueChange={field.onChange} 
                   defaultValue={field.value}
@@ -279,7 +291,7 @@ const CareerApplicationForm = ({ openPositions }: CareerApplicationFormProps) =>
           name="experience"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>Experience Level</FormLabel>
+              <FormLabel>Experience Level <span className="text-red-500">*</span></FormLabel>
               <Select 
                 onValueChange={field.onChange} 
                 defaultValue={field.value}
@@ -306,7 +318,7 @@ const CareerApplicationForm = ({ openPositions }: CareerApplicationFormProps) =>
           name="education"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>Education</FormLabel>
+              <FormLabel>Education <span className="text-red-500">*</span></FormLabel>
               <FormControl>
                 <Input placeholder="Highest degree, University/College" {...field} />
               </FormControl>
@@ -320,11 +332,11 @@ const CareerApplicationForm = ({ openPositions }: CareerApplicationFormProps) =>
           name="coverLetter"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>Cover Letter</FormLabel>
+              <FormLabel>Cover Letter <span className="text-red-500">*</span></FormLabel>
               <FormControl>
                 <Textarea 
                   placeholder="Tell us why you're interested in this position and why you'd be a good fit..."
-                  className="min-h-32"
+                  className="min-h-32 resize-y"
                   {...field}
                 />
               </FormControl>
@@ -337,18 +349,20 @@ const CareerApplicationForm = ({ openPositions }: CareerApplicationFormProps) =>
         />
         
         <div className="space-y-2">
-          <Label htmlFor="resume">Resume/CV (PDF, DOCX, max 5MB)</Label>
+          <Label htmlFor="resume">Resume/CV (PDF, DOCX, max 5MB) <span className="text-red-500">*</span></Label>
           <Input 
             id="resume" 
+            ref={fileInputRef}
             type="file" 
             accept=".pdf,.doc,.docx" 
             onChange={handleFileChange}
+            className="cursor-pointer"
           />
           {fileError && (
             <p className="text-sm text-red-500 mt-1">{fileError}</p>
           )}
           {resumeFile && !fileError && (
-            <p className="text-sm text-muted-foreground">
+            <p className="text-sm text-green-600 mt-1">
               Selected file: {resumeFile.name} ({(resumeFile.size / 1024 / 1024).toFixed(2)} MB)
             </p>
           )}
@@ -359,7 +373,12 @@ const CareerApplicationForm = ({ openPositions }: CareerApplicationFormProps) =>
           className="bg-primary hover:bg-primary/90 w-full md:w-auto"
           disabled={isSubmitting}
         >
-          {isSubmitting ? "Submitting..." : "Submit Application"}
+          {isSubmitting ? (
+            <>
+              <Loader2 className="h-4 w-4 mr-2 animate-spin" />
+              Submitting...
+            </>
+          ) : "Submit Application"}
         </Button>
       </form>
     </Form>

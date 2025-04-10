@@ -21,7 +21,7 @@ const AboutSection = () => {
             <div className="absolute -bottom-4 -right-4 w-32 h-32 bg-secondary/10 rounded-full -z-10"></div>
             <img
               src="https://images.unsplash.com/photo-1587854692152-cbe660dbde88?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80"
-              alt="Ambica Pharma Laboratory"
+              alt="Ambica Pharma Distribution Center"
               className="rounded-lg shadow-lg hover:scale-[1.02] transition-all duration-500 w-full"
             />
           </motion.div>
@@ -41,7 +41,7 @@ const AboutSection = () => {
             </h2>
             <p className="text-foreground">
               As a professionally managed company, we focus on continuous growth, 
-              delivering pharmaceutical products that meet global standards while 
+              distributing and trading pharmaceutical products that meet global standards while 
               maintaining ethical practices and total quality management.
             </p>
             
@@ -55,7 +55,7 @@ const AboutSection = () => {
               <div className="flex items-start">
                 <CheckCircle className="h-5 w-5 text-secondary mr-3 mt-1 flex-shrink-0" />
                 <p className="text-foreground">
-                  Following stringent WHO guidelines for production with GMP-certified manufacturing units
+                  Following stringent WHO guidelines to ensure quality with all our partners
                 </p>
               </div>
               <div className="flex items-start">
@@ -101,10 +101,11 @@ const AboutSection = () => {
           </h3>
           <div className="grid md:grid-cols-2 gap-8">
             <p className="text-foreground mb-4">
-              Incepted in the year 2005, Ambica Pharma is an eminent entity indulged in manufacturing, trading, 
+              Incepted in the year 2005, Ambica Pharma is an eminent entity indulged in trading, 
               exporting, wholesaling and retailing a huge compilation of Pharmaceutical Tablets, Capsules, injectables, 
-              Drops, Ointments, etc. Manufactured making use of supreme in class material and progressive tools and 
-              technology; these are in conformism with the norms and guidelines defined by the market.
+              Drops, Ointments, etc. We partner with top manufacturers and source high-quality pharmaceuticals 
+              made using supreme in class material and progressive tools and technology; these are in conformism 
+              with the norms and guidelines defined by the market.
             </p>
             <p className="text-foreground">
               With a motive to stand high on the visions of our patrons, we are indulged in providing a huge array 
