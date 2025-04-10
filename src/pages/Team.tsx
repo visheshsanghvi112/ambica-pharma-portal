@@ -28,7 +28,7 @@ const teamMembers: TeamMember[] = [
     id: 1,
     name: "Sandeep Gautam",
     role: "Export Billing",
-    bio: "Sandeep has over 25 years of experience in the pharmaceutical industry.",
+    bio: "Sandeep has over 5 years of experience in the pharmaceutical industry.",
     image: "/lovable-uploads/dd6e336c-a7e1-45fc-9078-da61d4735faa.png",
     social: {
       email: "rajesh.kumar@ambicapharma.com",
@@ -53,7 +53,7 @@ const teamMembers: TeamMember[] = [
     id: 3,
     name: "Sanket Mishra",
     role: "Sales Executive",
-    bio: "Sanket oversees all sales operations and ensures our facilities meet international standards. MBA from IIM Ahmedabad.",
+    bio: "Sanket oversees all sales operations and ensures our facilities meet international standards.",
     image: "/lovable-uploads/0d8ebdef-722b-44c0-bfc3-8f644b9bb51a.png",
     social: {
       email: "vikram.singh@ambicapharma.com",
@@ -77,7 +77,7 @@ const teamMembers: TeamMember[] = [
     id: 5,
     name: "Anjali Vedhwal",
     role: "Export Coordinator",
-    bio: "Anjali has expanded our market presence to 45+ countries with strategic partnerships and distribution networks.",
+    bio: "Anjali has expanded our market presence to 25+ countries with strategic partnerships and distribution networks.",
     image: "/lovable-uploads/b9310eb6-c2d2-4e00-acdd-dbca91490105.png",
     social: {
       email: "rahul.verma@ambicapharma.com",
@@ -90,7 +90,7 @@ const teamMembers: TeamMember[] = [
     id: 6,
     name: "Hitesh Kumar",
     role: "Account Manager",
-    bio: "Ensures all our products meet the highest international quality standards and compliance requirements.",
+    bio: "Ensures all our accounting is done proper.",
     image: "/lovable-uploads/1ace0070-8637-4045-b4a0-3c3ce09fbede.png",
     social: {
       email: "neha.gupta@ambicapharma.com",
@@ -114,7 +114,7 @@ const teamMembers: TeamMember[] = [
     id: 8,
     name: "Arfad",
     role: "Supply Chain Manager",
-    bio: "Manages our global supply chain to ensure timely delivery of products to distributors and end customers.",
+    bio: "Manages our softwares and databases ervers to scrapers, I build, break, migrate, and scale—end to end.",
     image: "/lovable-uploads/252ae4ad-9151-48a8-9618-a9bb2176b30b.png",
     social: {
       email: "suresh.patel@ambicapharma.com",
