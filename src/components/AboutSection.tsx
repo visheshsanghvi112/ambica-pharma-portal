@@ -17,6 +17,7 @@ const AboutSection = () => {
       
       <div className="container relative z-10">
         <div className="grid md:grid-cols-2 gap-12 items-center">
+          {/* First column - Text content */}
           <motion.div
             initial={{ opacity: 0, x: -50 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -103,28 +104,31 @@ const AboutSection = () => {
             </div>
           </motion.div>
           
-           
+          {/* Second column - Visual element */}
+          <motion.div
+            initial={{ opacity: 0, x: 50 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.8 }}
+            viewport={{ once: true }}
+            className="order-1 md:order-2 relative"
+          >
             <div className="relative z-10 overflow-hidden rounded-2xl shadow-2xl group">
               <div className="absolute inset-0 bg-gradient-to-r from-primary/20 to-secondary/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10"></div>
-          
               <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent rounded-lg z-20"></div>
               
-              
-                
-                <div className="mt-3 flex space-x-2">
-                  <motion.span 
-                    className="inline-block px-2 py-1 text-xs font-medium bg-white/20 backdrop-blur-sm text-white rounded-full"
-                    whileHover={{ scale: 1.05 }}
-                  >
-                    Quality-Focused
-                  </motion.span>
-                  <motion.span 
-                    className="inline-block px-2 py-1 text-xs font-medium bg-white/20 backdrop-blur-sm text-white rounded-full"
-                    whileHover={{ scale: 1.05 }}
-                  >
-                    Advanced Technology
-                  </motion.span>
-                </div>
+              <div className="mt-3 flex space-x-2">
+                <motion.span 
+                  className="inline-block px-2 py-1 text-xs font-medium bg-white/20 backdrop-blur-sm text-white rounded-full"
+                  whileHover={{ scale: 1.05 }}
+                >
+                  Quality-Focused
+                </motion.span>
+                <motion.span 
+                  className="inline-block px-2 py-1 text-xs font-medium bg-white/20 backdrop-blur-sm text-white rounded-full"
+                  whileHover={{ scale: 1.05 }}
+                >
+                  Advanced Technology
+                </motion.span>
               </div>
             </div>
             
@@ -151,6 +155,7 @@ const AboutSection = () => {
           </motion.div>
         </div>
         
+        {/* Products Section */}
         <div className="mt-20 bg-gradient-to-br from-primary/5 to-secondary/5 p-8 rounded-2xl shadow-sm border border-primary/10">
           <h3 className="text-2xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-primary to-secondary mb-6">Our Pharmaceutical Product Range</h3>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8">
