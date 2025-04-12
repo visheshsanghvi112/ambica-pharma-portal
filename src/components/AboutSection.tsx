@@ -8,6 +8,7 @@ import CompanyIntroduction from "./about/CompanyIntroduction";
 import KeyFeature from "./about/KeyFeature";
 import PartnerBadge from "./about/PartnerBadge";
 import ProductsSection from "./about/ProductsSection";
+import { Badge } from "./ui/badge";
 
 const AboutSection = () => {
   const isMobile = useIsMobile();
@@ -91,12 +92,26 @@ const AboutSection = () => {
                 className="w-full h-auto object-cover"
                 style={{ minHeight: '350px' }}
               />
+              <div className="absolute bottom-0 left-0 w-full bg-gradient-to-t from-black/70 to-transparent p-6">
+                <div className="flex flex-wrap gap-2">
+                  <Badge variant="default" className="bg-white/90 text-primary hover:bg-white/80">
+                    Quality-Focused
+                  </Badge>
+                  <Badge variant="secondary" className="bg-white/90 text-secondary hover:bg-white/80">
+                    Advanced Technology
+                  </Badge>
+                  <Badge variant="outline" className="bg-white/90 text-blue-500 hover:bg-white/80">
+                    Global Distribution
+                  </Badge>
+                </div>
+              </div>
             </div>
             
             <PartnerBadge />
           </motion.div>
         </div>
         
+        {/* Products Section */}
         <ProductsSection />
       </div>
     </section>
@@ -104,4 +119,3 @@ const AboutSection = () => {
 };
 
 export default AboutSection;
-
