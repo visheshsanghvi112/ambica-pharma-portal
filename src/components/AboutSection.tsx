@@ -103,30 +103,13 @@ const AboutSection = () => {
             </div>
           </motion.div>
           
-          <motion.div
-            initial={{ opacity: 0, scale: 0.9 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.8 }}
-            viewport={{ once: true }}
-            className="order-1 md:order-2 relative"
-          >
+           
             <div className="relative z-10 overflow-hidden rounded-2xl shadow-2xl group">
               <div className="absolute inset-0 bg-gradient-to-r from-primary/20 to-secondary/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10"></div>
-              
-              <img 
-                src="/lovable-uploads/7c83a2dc-635a-40cc-a26a-24fefa0fe6fe.png" 
-                alt="Ambica Pharma - Pharmaceutical Distribution and Excellence" 
-                className="w-full h-auto rounded-lg transform transition-transform duration-500 group-hover:scale-105"
-                loading="lazy"
-                width="600"
-                height="400"
-              />
-              
+          
               <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent rounded-lg z-20"></div>
               
-              <div className="absolute bottom-4 left-4 right-4 z-30">
-                <p className="text-white font-semibold text-xl">Commitment to Excellence</p>
-                <p className="text-white/90">State-of-the-art facilities and rigorous quality controls</p>
+              
                 
                 <div className="mt-3 flex space-x-2">
                   <motion.span 
