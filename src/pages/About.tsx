@@ -8,8 +8,11 @@ import { Link } from "react-router-dom";
 import AboutSection from "../components/AboutSection";
 import MissionVision from "../components/MissionVision";
 import GlobalReach from "../components/GlobalReach";
+import { useIsMobile } from "@/hooks/use-mobile";
 
 const About = () => {
+  const isMobile = useIsMobile();
+  
   // JSON-LD structured data for better SEO
   const structuredData = {
     "@context": "https://schema.org",
@@ -64,29 +67,75 @@ const About = () => {
         </script>
       </Helmet>
       
-      {/* Hero Section */}
-      <section className="py-16 bg-gradient-to-br from-primary/5 to-secondary/5 dark:from-primary/10 dark:to-secondary/10">
-        <div className="container">
-          <motion.h1 
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
-            className="text-4xl md:text-5xl font-display font-bold text-primary mb-6"
-          >
-            About Ambica Pharma
-          </motion.h1>
-          <motion.p 
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.1 }}
-            className="text-lg text-foreground/80 max-w-3xl"
-          >
-            Established in 2005, Ambica Pharma is a reputable name engaged in manufacturing, trading, exporting, wholesaling, and retailing a wide range of Pharmaceutical Tablets, Capsules, Injectables, Drops, Ointments, and more.
-          </motion.p>
+      {/* Hero Section - Enhanced with gradient and more modern design */}
+      <section className="py-16 md:py-24 bg-gradient-to-br from-primary/10 via-secondary/5 to-primary/5 dark:from-primary/20 dark:via-secondary/10 dark:to-primary/10 relative overflow-hidden">
+        <div className="absolute top-0 left-0 w-full h-full opacity-40 overflow-hidden pointer-events-none">
+          <div className="absolute top-10 left-10 w-40 h-40 rounded-full bg-gradient-to-r from-blue-300 to-blue-400 blur-3xl animate-blob"></div>
+          <div className="absolute bottom-20 right-10 w-60 h-60 rounded-full bg-gradient-to-r from-purple-300 to-indigo-400 blur-3xl animate-blob" style={{ animationDelay: "2s" }}></div>
+          <div className="absolute top-1/3 right-1/4 w-32 h-32 rounded-full bg-gradient-to-r from-pink-300 to-purple-400 blur-3xl animate-blob" style={{ animationDelay: "4s" }}></div>
+        </div>
+        
+        <div className="container relative z-10">
+          <div className="max-w-4xl mx-auto text-center">
+            <motion.span 
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5 }}
+              className="inline-block px-4 py-1.5 text-sm font-medium bg-primary/10 text-primary rounded-full mb-4"
+            >
+              <Award className="h-4 w-4 inline mr-2" />
+              Established 2005
+            </motion.span>
+            
+            <motion.h1 
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.1 }}
+              className="text-4xl md:text-6xl font-display font-bold bg-clip-text text-transparent bg-gradient-to-r from-primary via-secondary to-primary mb-6"
+            >
+              About Ambica Pharma
+            </motion.h1>
+            
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.2 }}
+              className="w-32 h-1 bg-gradient-to-r from-primary to-secondary mx-auto mb-6 rounded-full"
+            ></motion.div>
+            
+            <motion.p 
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.3 }}
+              className="text-lg md:text-xl text-foreground/80 mb-8"
+            >
+              Established in 2005, Ambica Pharma is a reputable name engaged in manufacturing, trading, exporting, wholesaling, and retailing a wide range of Pharmaceutical Tablets, Capsules, Injectables, Drops, Ointments, and more.
+            </motion.p>
+            
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.4 }}
+              className="flex flex-wrap justify-center gap-3 md:gap-6"
+            >
+              <div className="flex items-center space-x-2 bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm px-4 py-2 rounded-full shadow-sm">
+                <Award className="h-5 w-5 text-primary" aria-hidden="true" />
+                <span className="text-foreground/80 text-sm">ISO 9001:2015</span>
+              </div>
+              <div className="flex items-center space-x-2 bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm px-4 py-2 rounded-full shadow-sm">
+                <Award className="h-5 w-5 text-primary" aria-hidden="true" />
+                <span className="text-foreground/80 text-sm">WHO-GMP Certified</span>
+              </div>
+              <div className="flex items-center space-x-2 bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm px-4 py-2 rounded-full shadow-sm">
+                <Globe className="h-5 w-5 text-primary" aria-hidden="true" />
+                <span className="text-foreground/80 text-sm">Global Presence</span>
+              </div>
+            </motion.div>
+          </div>
         </div>
       </section>
       
-      {/* About Section (moved from index) */}
+      {/* About Section */}
       <AboutSection />
       
       {/* Founder Section */}
@@ -98,7 +147,7 @@ const About = () => {
               whileInView={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8 }}
               viewport={{ once: true }}
-              className="rounded-lg overflow-hidden"
+              className="rounded-lg overflow-hidden order-2 md:order-1"
             >
               <img 
                 src="/lovable-uploads/458c13fe-ce57-44e5-bd7e-ccc62d1a36e9.png" 
@@ -113,7 +162,7 @@ const About = () => {
               whileInView={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8 }}
               viewport={{ once: true }}
-              className="space-y-6"
+              className="space-y-6 order-1 md:order-2"
             >
               <h2 id="founder-section" className="text-3xl font-display font-bold text-primary">Founder & Chairman</h2>
               <div className="text-lg font-semibold text-secondary inline-block px-4 py-1 rounded-full bg-secondary/10">
@@ -128,18 +177,18 @@ const About = () => {
               <p className="text-foreground/80">
                 Implementing his acquired professional skills to lay a strategic grid that ultimately catapulted the evolution of Johnlee Pharmaceuticals as a leading brand of pharmaceutical and life sciences domain, Mr. Dilip Jain has led the firm to focus on high growth potential segments like generic medicines.
               </p>
-              <div className="flex flex-wrap space-x-4 mt-6">
-                <div className="flex items-center space-x-2 mb-2">
+              <div className="flex flex-wrap gap-3 mt-6">
+                <div className="flex items-center space-x-2 bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm px-4 py-2 rounded-full shadow-sm">
                   <Award className="h-5 w-5 text-primary" aria-hidden="true" />
                   <span className="text-foreground/80 text-sm">ISO-9001-2015 Certified</span>
                 </div>
-                <div className="flex items-center space-x-2 mb-2">
+                <div className="flex items-center space-x-2 bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm px-4 py-2 rounded-full shadow-sm">
                   <Briefcase className="h-5 w-5 text-primary" aria-hidden="true" />
-                  <span className="text-foreground/80 text-sm">22+ Years Industry Experience</span>
+                  <span className="text-foreground/80 text-sm">22+ Years Experience</span>
                 </div>
-                <div className="flex items-center space-x-2 mb-2">
+                <div className="flex items-center space-x-2 bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm px-4 py-2 rounded-full shadow-sm">
                   <Globe className="h-5 w-5 text-primary" aria-hidden="true" />
-                  <span className="text-foreground/80 text-sm">Global Presence in 25+ Countries</span>
+                  <span className="text-foreground/80 text-sm">Global Presence</span>
                 </div>
               </div>
             </motion.div>
@@ -147,20 +196,26 @@ const About = () => {
         </div>
       </section>
       
-      {/* Mission & Vision (moved from index) */}
+      {/* Mission & Vision */}
       <MissionVision />
       
-      {/* Company History */}
-      <section className="py-16 bg-background" aria-labelledby="history-section">
-        <div className="container">
+      {/* Company History - Enhanced with a better layout */}
+      <section className="py-16 bg-background relative overflow-hidden" aria-labelledby="history-section">
+        <div className="absolute top-0 left-0 w-full h-full opacity-5 overflow-hidden pointer-events-none">
+          <div className="absolute top-1/4 right-1/4 w-96 h-96 rounded-full bg-gradient-to-r from-blue-400 to-blue-500 blur-3xl"></div>
+          <div className="absolute bottom-1/4 left-1/4 w-80 h-80 rounded-full bg-gradient-to-r from-secondary to-green-400 blur-3xl"></div>
+        </div>
+        
+        <div className="container relative z-10">
           <div className="grid md:grid-cols-2 gap-10 items-center">
             <motion.div 
               initial={{ opacity: 0, y: 50 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8 }}
               viewport={{ once: true }}
+              className="bg-white/60 dark:bg-gray-800/60 backdrop-blur-sm p-8 rounded-xl shadow-xl border border-gray-100 dark:border-gray-700"
             >
-              <h2 id="history-section" className="text-3xl font-display font-bold text-primary mb-6">Our History</h2>
+              <h2 id="history-section" className="text-3xl font-display font-bold text-transparent bg-clip-text bg-gradient-to-r from-primary to-secondary mb-6">Our History</h2>
               <p className="text-foreground/80 mb-4">
                 Incepted in the year 2005, Ambica Pharma started as a small pharmaceutical enterprise with a vision to provide quality medicines at affordable prices. Over the years, we have grown to become a leading manufacturer and distributor of pharmaceutical products in India and globally.
               </p>
@@ -170,6 +225,14 @@ const About = () => {
               <p className="text-foreground/80">
                 Today, Ambica Pharma stands as a testament to perseverance, innovation, and an unwavering commitment to quality healthcare solutions.
               </p>
+              
+              <motion.div 
+                initial={{ width: 0 }}
+                whileInView={{ width: "100px" }}
+                transition={{ duration: 1 }}
+                viewport={{ once: true }}
+                className="h-1 bg-gradient-to-r from-primary to-secondary rounded-full mt-6"
+              ></motion.div>
             </motion.div>
             <motion.div 
               initial={{ opacity: 0, y: 50 }}
@@ -178,23 +241,31 @@ const About = () => {
               viewport={{ once: true }}
               className="order-first md:order-last"
             >
-              <img 
-                src="https://images.unsplash.com/photo-1563213126-a4273aed2016?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" 
-                alt="Ambica Pharma Manufacturing Facility History" 
-                className="rounded-lg shadow-lg transform transition-transform duration-500 hover:scale-105"
-                loading="lazy"
-                width="800"
-                height="500"
-              />
+              <div className="relative rounded-xl overflow-hidden shadow-2xl">
+                <img 
+                  src="https://images.unsplash.com/photo-1563213126-a4273aed2016?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" 
+                  alt="Ambica Pharma Manufacturing Facility History" 
+                  className="w-full h-auto rounded-lg transform transition-transform duration-500 hover:scale-105"
+                  loading="lazy"
+                  width="800"
+                  height="500"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent flex items-end">
+                  <div className="p-6">
+                    <p className="text-white font-medium text-lg md:text-xl">From small beginnings to a global presence</p>
+                    <p className="text-white/80 text-sm md:text-base">Our journey of excellence since 2005</p>
+                  </div>
+                </div>
+              </div>
             </motion.div>
           </div>
         </div>
       </section>
       
-      {/* Global Reach (moved from index) */}
+      {/* Global Reach */}
       <GlobalReach />
       
-      {/* Certifications Section - New section for SEO */}
+      {/* Certifications Section - Redesigned for better mobile view */}
       <section className="py-16 bg-gradient-to-br from-primary/5 to-secondary/5 dark:from-primary/10 dark:to-secondary/10" aria-labelledby="certifications-section">
         <div className="container">
           <motion.h2
@@ -203,64 +274,50 @@ const About = () => {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
             viewport={{ once: true }}
-            className="text-3xl md:text-4xl font-display font-bold text-primary mb-10 text-center"
+            className="text-3xl md:text-4xl font-display font-bold text-transparent bg-clip-text bg-gradient-to-r from-primary to-secondary mb-10 text-center"
           >
             Our Certifications & Standards
           </motion.h2>
           
-          <div className="grid md:grid-cols-3 gap-8">
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.1 }}
-              viewport={{ once: true }}
-              className="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md hover:shadow-lg transition-all duration-300 text-center"
-            >
-              <div className="w-16 h-16 bg-primary/10 rounded-full mx-auto flex items-center justify-center mb-4">
-                <Award className="h-8 w-8 text-primary" aria-hidden="true" />
-              </div>
-              <h3 className="text-xl font-semibold text-primary mb-3">ISO 9001:2015</h3>
-              <p className="text-foreground/80">
-                Our ISO 9001:2015 certification ensures that we maintain consistent quality management systems across all our operations, from product development to delivery.
-              </p>
-            </motion.div>
-            
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.2 }}
-              viewport={{ once: true }}
-              className="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md hover:shadow-lg transition-all duration-300 text-center"
-            >
-              <div className="w-16 h-16 bg-primary/10 rounded-full mx-auto flex items-center justify-center mb-4">
-                <Award className="h-8 w-8 text-primary" aria-hidden="true" />
-              </div>
-              <h3 className="text-xl font-semibold text-primary mb-3">WHO-GMP Compliant</h3>
-              <p className="text-foreground/80">
-                Our manufacturing facilities adhere to World Health Organization Good Manufacturing Practices (WHO-GMP), ensuring our products meet international quality standards.
-              </p>
-            </motion.div>
-            
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.3 }}
-              viewport={{ once: true }}
-              className="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md hover:shadow-lg transition-all duration-300 text-center"
-            >
-              <div className="w-16 h-16 bg-primary/10 rounded-full mx-auto flex items-center justify-center mb-4">
-                <Award className="h-8 w-8 text-primary" aria-hidden="true" />
-              </div>
-              <h3 className="text-xl font-semibold text-primary mb-3">Quality Control</h3>
-              <p className="text-foreground/80">
-                Our advanced quality control laboratory ensures each batch of medication undergoes rigorous testing before reaching the market, guaranteeing safety and efficacy.
-              </p>
-            </motion.div>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            {[
+              {
+                icon: <Award className="h-8 w-8 text-primary" />,
+                title: "ISO 9001:2015",
+                description: "Our ISO 9001:2015 certification ensures that we maintain consistent quality management systems across all our operations, from product development to delivery."
+              },
+              {
+                icon: <Award className="h-8 w-8 text-primary" />,
+                title: "WHO-GMP Compliant",
+                description: "Our manufacturing facilities adhere to World Health Organization Good Manufacturing Practices (WHO-GMP), ensuring our products meet international quality standards."
+              },
+              {
+                icon: <Award className="h-8 w-8 text-primary" />,
+                title: "Quality Control",
+                description: "Our advanced quality control laboratory ensures each batch of medication undergoes rigorous testing before reaching the market, guaranteeing safety and efficacy."
+              }
+            ].map((item, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: index * 0.1 }}
+                viewport={{ once: true }}
+                className="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md hover:shadow-lg transition-all duration-300"
+                whileHover={{ y: -5, boxShadow: "0px 10px 30px rgba(0, 0, 0, 0.1)" }}
+              >
+                <div className="w-16 h-16 bg-gradient-to-br from-primary/10 to-secondary/10 rounded-full mx-auto flex items-center justify-center mb-4">
+                  {item.icon}
+                </div>
+                <h3 className="text-xl font-semibold text-primary mb-3 text-center">{item.title}</h3>
+                <p className="text-foreground/80 text-center">{item.description}</p>
+              </motion.div>
+            ))}
           </div>
         </div>
       </section>
       
-      {/* Our Commitment */}
+      {/* Our Commitment - Enhanced with better cards for mobile */}
       <section className="py-16 bg-background" aria-labelledby="commitment-section">
         <div className="container">
           <motion.div
@@ -270,71 +327,57 @@ const About = () => {
             viewport={{ once: true }}
             className="text-center mb-12"
           >
-            <h2 id="commitment-section" className="text-3xl md:text-4xl font-display font-bold text-primary mb-4">Our Commitment</h2>
+            <h2 id="commitment-section" className="text-3xl md:text-4xl font-display font-bold text-transparent bg-clip-text bg-gradient-to-r from-primary to-secondary mb-4">Our Commitment</h2>
             <p className="text-foreground/80 max-w-3xl mx-auto">
               We strive to uphold our reputation by offering top-quality products that meet global pharmaceutical standards.
             </p>
           </motion.div>
           
-          <div className="grid md:grid-cols-3 gap-6">
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.1 }}
-              viewport={{ once: true }}
-              className="p-6 bg-white dark:bg-gray-800 rounded-lg shadow-sm hover:shadow-md transition-all"
-            >
-              <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center mb-4 text-primary">
-                <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-                </svg>
-              </div>
-              <h3 className="text-xl font-semibold text-primary mb-3">Quality Assurance</h3>
-              <p className="text-foreground/80">
-                Every product undergoes stringent quality checks before final delivery, maintaining high standards of excellence.
-              </p>
-            </motion.div>
-            
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.2 }}
-              viewport={{ once: true }}
-              className="p-6 bg-white dark:bg-gray-800 rounded-lg shadow-sm hover:shadow-md transition-all"
-            >
-              <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center mb-4 text-primary">
-                <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+            {[
+              {
+                icon: <CheckCircle />,
+                title: "Quality Assurance",
+                description: "Every product undergoes stringent quality checks before final delivery, maintaining high standards of excellence."
+              },
+              {
+                icon: <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
-                </svg>
-              </div>
-              <h3 className="text-xl font-semibold text-primary mb-3">Experienced Team</h3>
-              <p className="text-foreground/80">
-                Our experienced team ensures smooth operations across all departments, enabling efficient order fulfillment and customer satisfaction.
-              </p>
-            </motion.div>
-            
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.3 }}
-              viewport={{ once: true }}
-              className="p-6 bg-white dark:bg-gray-800 rounded-lg shadow-sm hover:shadow-md transition-all"
-            >
-              <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center mb-4 text-primary">
-                <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                </svg>,
+                title: "Experienced Team",
+                description: "Our experienced team ensures smooth operations across all departments, enabling efficient order fulfillment and customer satisfaction."
+              },
+              {
+                icon: <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
-                </svg>
-              </div>
-              <h3 className="text-xl font-semibold text-primary mb-3">Skilled Leadership</h3>
-              <p className="text-foreground/80">
-                Guided by our skilled leadership, we have grown to become a trusted supplier in the industry.
-              </p>
-            </motion.div>
+                </svg>,
+                title: "Skilled Leadership",
+                description: "Guided by our skilled leadership, we have grown to become a trusted supplier in the industry."
+              }
+            ].map((item, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: index * 0.1 }}
+                viewport={{ once: true }}
+                className="p-6 bg-white dark:bg-gray-800 rounded-lg shadow-sm hover:shadow-md transition-all"
+                whileHover={{ y: -5 }}
+              >
+                <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center mb-4 text-primary">
+                  {item.icon}
+                </div>
+                <h3 className="text-xl font-semibold text-primary mb-3">{item.title}</h3>
+                <p className="text-foreground/80">
+                  {item.description}
+                </p>
+              </motion.div>
+            ))}
           </div>
         </div>
       </section>
       
-      {/* Values */}
+      {/* Values - Enhanced with better responsive design */}
       <section className="py-16 bg-gradient-to-br from-primary/5 to-secondary/5 dark:from-primary/10 dark:to-secondary/10" aria-labelledby="values-section">
         <div className="container">
           <motion.h2
@@ -343,91 +386,65 @@ const About = () => {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
             viewport={{ once: true }} 
-            className="text-3xl font-display font-bold text-primary mb-10 text-center"
+            className="text-3xl font-display font-bold text-transparent bg-clip-text bg-gradient-to-r from-primary to-secondary mb-10 text-center"
           >
             Our Core Values
           </motion.h2>
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {/* Value 1 */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.1 }}
-              viewport={{ once: true }}
-              className="p-6 border border-gray-200 dark:border-gray-700 rounded-lg bg-white dark:bg-gray-800 hover:shadow-md transition-shadow transform transition-transform duration-300 hover:scale-105"
-            >
-              <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center mb-4">
-                <svg className="w-6 h-6 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            {/* Value items with a responsive grid that looks good on all devices */}
+            {[
+              {
+                icon: <svg className="w-6 h-6 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-                </svg>
-              </div>
-              <h3 className="text-xl font-semibold text-primary mb-2">Quality</h3>
-              <p className="text-foreground/80">
-                We maintain the highest standards in every aspect of our operations, from research to manufacturing.
-              </p>
-            </motion.div>
-            
-            {/* Value 2 */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.2 }}
-              viewport={{ once: true }}
-              className="p-6 border border-gray-200 dark:border-gray-700 rounded-lg bg-white dark:bg-gray-800 hover:shadow-md transition-shadow transform transition-transform duration-300 hover:scale-105"
-            >
-              <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center mb-4">
-                <svg className="w-6 h-6 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                </svg>,
+                title: "Quality",
+                description: "We maintain the highest standards in every aspect of our operations, from research to manufacturing."
+              },
+              {
+                icon: <svg className="w-6 h-6 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4" />
-                </svg>
-              </div>
-              <h3 className="text-xl font-semibold text-primary mb-2">Innovation</h3>
-              <p className="text-foreground/80">
-                We continuously strive to develop new and improved pharmaceutical solutions to meet evolving healthcare needs.
-              </p>
-            </motion.div>
-            
-            {/* Value 3 */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.3 }}
-              viewport={{ once: true }}
-              className="p-6 border border-gray-200 dark:border-gray-700 rounded-lg bg-white dark:bg-gray-800 hover:shadow-md transition-shadow transform transition-transform duration-300 hover:scale-105"
-            >
-              <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center mb-4">
-                <svg className="w-6 h-6 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                </svg>,
+                title: "Innovation",
+                description: "We continuously strive to develop new and improved pharmaceutical solutions to meet evolving healthcare needs."
+              },
+              {
+                icon: <svg className="w-6 h-6 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
-                </svg>
-              </div>
-              <h3 className="text-xl font-semibold text-primary mb-2">Integrity</h3>
-              <p className="text-foreground/80">
-                We operate with transparency, honesty, and ethical practices in all our business dealings.
-              </p>
-            </motion.div>
-            
-            {/* Value 4 */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.4 }}
-              viewport={{ once: true }}
-              className="p-6 border border-gray-200 dark:border-gray-700 rounded-lg bg-white dark:bg-gray-800 hover:shadow-md transition-shadow transform transition-transform duration-300 hover:scale-105"
-            >
-              <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center mb-4">
-                <svg className="w-6 h-6 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                </svg>,
+                title: "Integrity",
+                description: "We operate with transparency, honesty, and ethical practices in all our business dealings."
+              },
+              {
+                icon: <svg className="w-6 h-6 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
-                </svg>
-              </div>
-              <h3 className="text-xl font-semibold text-primary mb-2">Patient-Centric</h3>
-              <p className="text-foreground/80">
-                Every decision we make is guided by our commitment to improve patient health and well-being.
-              </p>
-            </motion.div>
+                </svg>,
+                title: "Patient-Centric",
+                description: "Every decision we make is guided by our commitment to improve patient health and well-being."
+              }
+            ].map((item, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: index * 0.1 }}
+                viewport={{ once: true }}
+                className="p-6 border border-gray-200 dark:border-gray-700 rounded-lg bg-white dark:bg-gray-800 hover:shadow-md transition-shadow transform transition-transform duration-300 hover:scale-105"
+                whileHover={{ y: -5 }}
+              >
+                <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center mb-4">
+                  {item.icon}
+                </div>
+                <h3 className="text-xl font-semibold text-primary mb-2">{item.title}</h3>
+                <p className="text-foreground/80">
+                  {item.description}
+                </p>
+              </motion.div>
+            ))}
           </div>
         </div>
       </section>
       
-      {/* Manufacturing Expertise - New section for SEO */}
+      {/* Manufacturing Expertise - Enhanced for better mobile view */}
       <section className="py-16 bg-background" aria-labelledby="manufacturing-section">
         <div className="container">
           <motion.h2 
@@ -436,7 +453,7 @@ const About = () => {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
             viewport={{ once: true }}
-            className="text-3xl font-display font-bold text-primary mb-10 text-center"
+            className="text-3xl font-display font-bold text-transparent bg-clip-text bg-gradient-to-r from-primary to-secondary mb-10 text-center"
           >
             Our Manufacturing Expertise
           </motion.h2>
@@ -447,7 +464,7 @@ const About = () => {
               whileInView={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.6 }}
               viewport={{ once: true }}
-              className="space-y-6"
+              className="space-y-6 bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md"
             >
               <h3 className="text-2xl font-semibold text-primary">State-of-the-Art Facilities</h3>
               <p className="text-foreground/80">
@@ -483,7 +500,7 @@ const About = () => {
               whileInView={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.6, delay: 0.2 }}
               viewport={{ once: true }}
-              className="space-y-6"
+              className="space-y-6 bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md"
             >
               <h3 className="text-2xl font-semibold text-primary">Quality Control Process</h3>
               <p className="text-foreground/80">
@@ -517,9 +534,14 @@ const About = () => {
         </div>
       </section>
       
-      {/* CTA Section */}
-      <section className="py-16 bg-gradient-to-r from-primary to-secondary text-white">
-        <div className="container text-center">
+      {/* Enhanced CTA Section with gradient background */}
+      <section className="py-16 bg-gradient-to-r from-primary to-secondary text-white relative overflow-hidden">
+        <div className="absolute inset-0 opacity-20">
+          <div className="absolute top-0 right-0 w-96 h-96 bg-white rounded-full filter blur-3xl"></div>
+          <div className="absolute bottom-0 left-0 w-96 h-96 bg-white rounded-full filter blur-3xl"></div>
+        </div>
+        
+        <div className="container text-center relative z-10">
           <motion.h2
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
@@ -544,7 +566,7 @@ const About = () => {
             transition={{ duration: 0.6, delay: 0.2 }}
             viewport={{ once: true }}
           >
-            <Button asChild className="bg-white text-primary hover:bg-white/90">
+            <Button asChild className="bg-white text-primary hover:bg-white/90 px-8 py-6 text-lg shadow-lg">
               <Link to="/contact">Contact Us Today</Link>
             </Button>
           </motion.div>

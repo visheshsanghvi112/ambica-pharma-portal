@@ -1,8 +1,12 @@
+
 import React from "react";
 import { motion } from "framer-motion";
 import { Award, Star, TrendingUp, Users, Sparkles, Shield, CheckCircle, Globe, Pill } from "lucide-react";
+import { useIsMobile } from "@/hooks/use-mobile";
 
 const AboutSection = () => {
+  const isMobile = useIsMobile();
+  
   return (
     <section id="about-section" className="py-20 relative overflow-hidden">
       <div className="absolute top-0 left-0 w-full h-full opacity-10 overflow-hidden pointer-events-none">
@@ -106,19 +110,38 @@ const AboutSection = () => {
             viewport={{ once: true }}
             className="order-1 md:order-2 relative"
           >
-            <div className="relative z-10 overflow-hidden rounded-2xl shadow-2xl border-8 border-white dark:border-gray-800">
+            <div className="relative z-10 overflow-hidden rounded-2xl shadow-2xl group">
+              <div className="absolute inset-0 bg-gradient-to-r from-primary/20 to-secondary/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10"></div>
+              
               <img 
                 src="/lovable-uploads/7c83a2dc-635a-40cc-a26a-24fefa0fe6fe.png" 
                 alt="Ambica Pharma - Pharmaceutical Innovation and Excellence" 
-                className="w-full h-auto rounded-lg transform transition-transform duration-500 hover:scale-105"
+                className="w-full h-auto rounded-lg transform transition-transform duration-500 group-hover:scale-105"
                 loading="lazy"
                 width="600"
                 height="400"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent rounded-lg"></div>
-              <div className="absolute bottom-4 left-4 right-4 text-white p-3 rounded-lg bg-black/30 backdrop-blur-sm">
-                <p className="font-semibold">Commitment to Excellence</p>
-                <p className="text-sm opacity-90">State-of-the-art facilities and rigorous quality controls</p>
+              
+              <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent rounded-lg z-20"></div>
+              
+              <div className="absolute bottom-4 left-4 right-4 z-30">
+                <p className="text-white font-semibold text-xl">Commitment to Excellence</p>
+                <p className="text-white/90">State-of-the-art facilities and rigorous quality controls</p>
+                
+                <div className="mt-3 flex space-x-2">
+                  <motion.span 
+                    className="inline-block px-2 py-1 text-xs font-medium bg-white/20 backdrop-blur-sm text-white rounded-full"
+                    whileHover={{ scale: 1.05 }}
+                  >
+                    Quality-Focused
+                  </motion.span>
+                  <motion.span 
+                    className="inline-block px-2 py-1 text-xs font-medium bg-white/20 backdrop-blur-sm text-white rounded-full"
+                    whileHover={{ scale: 1.05 }}
+                  >
+                    Advanced Technology
+                  </motion.span>
+                </div>
               </div>
             </div>
             
@@ -147,7 +170,7 @@ const AboutSection = () => {
         
         <div className="mt-20 bg-gradient-to-br from-primary/5 to-secondary/5 p-8 rounded-2xl shadow-sm border border-primary/10">
           <h3 className="text-2xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-primary to-secondary mb-6">Our Pharmaceutical Product Range</h3>
-          <div className="grid md:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8">
             <motion.div 
               whileHover={{ y: -5 }}
               transition={{ type: "spring", stiffness: 300, damping: 10 }}
