@@ -27,7 +27,7 @@ const About = () => {
         "name": "Mr. Dilip Jain"
       }
     ],
-    "description": "Established in 2005, Ambica Pharma is a reputable name engaged in manufacturing, trading, exporting, wholesaling, and retailing a wide range of Pharmaceutical Tablets, Capsules, Injectables, Drops, Ointments, and more.",
+    "description": "Established in 2005, Ambica Pharma is a reputable name engaged in distributing, trading, exporting, wholesaling, and retailing a wide range of Pharmaceutical Tablets, Capsules, Injectables, Drops, Ointments, and more.",
     "address": {
       "@type": "PostalAddress",
       "addressLocality": "Mumbai",
@@ -51,33 +51,21 @@ const About = () => {
   return (
     <div className="min-h-screen bg-background animate-fade-in">
       <Helmet>
-  <title>About Ambica Pharma | Leading Pharmaceutical Manufacturer in India</title>
-  <meta
-    name="description"
-    content="Learn about Ambica Pharma, a WHO-GMP certified pharmaceutical manufacturer established in 2005 with a global presence in over 25 countries. Renowned for high-quality pharmaceuticals including tablets, capsules, injectables, and more."
-  />
-  <meta
-    name="keywords"
-    content="pharmaceutical manufacturer india, ambica pharma history, who-gmp certified, pharmaceutical exporter, iso 9001 certified, pharmaceutical company mission vision, pharmaceutical tablets, capsules manufacturer, global pharmaceutical company"
-  />
-  <link rel="canonical" href="https://ambicapharma.com/about" />
-  <meta property="og:title" content="About Ambica Pharma | Leading Pharmaceutical Manufacturer in India" />
-  <meta
-    property="og:description"
-    content="Learn about Ambica Pharma, a WHO-GMP certified pharmaceutical manufacturer established in 2005 with a global footprint in 25+ countries. Known for high-quality pharmaceuticals."
-  />
-  <meta property="og:url" content="https://ambicapharma.com/about" />
-  <meta property="og:type" content="website" />
-  <meta name="twitter:title" content="About Ambica Pharma | Leading Pharmaceutical Manufacturer in India" />
-  <meta
-    name="twitter:description"
-    content="Learn about Ambica Pharma, a WHO-GMP certified pharmaceutical manufacturer established in 2005 with a global footprint in 25+ countries."
-  />
-  <script type="application/ld+json">
-    {JSON.stringify(structuredData)}
-  </script>
-</Helmet>
-
+        <title>About Ambica Pharma | Leading Pharmaceutical Distributer in India</title>
+        <meta name="description" content="Learn about Ambica Pharma, a WHO-GMP certified pharmaceutical distributer established in 2005 with a global footprint in 25+ countries. Known for quality pharmaceuticals including tablets, capsules, injectables & more." />
+        <meta name="keywords" content="pharmaceutical distributer india, ambica pharma history, who-gmp certified, pharmaceutical exporter, iso 9001 certified, pharmaceutical company mission vision, pharmaceutical tablets, capsules manufacturer, global pharmaceutical company" />
+        <link rel="canonical" href="https://ambicapharma.com/about" />
+        <meta property="og:title" content="About Ambica Pharma | Leading Pharmaceutical Distributer in India" />
+        <meta property="og:description" content="Learn about Ambica Pharma, a WHO-GMP certified pharmaceutical distributer established in 2005 with a global footprint in 25+ countries. Known for high-quality pharmaceuticals." />
+        <meta property="og:url" content="https://ambicapharma.com/about" />
+        <meta property="og:type" content="website" />
+        <meta property="og:image" content="https://ambicapharma.com/lovable-uploads/c0f96c3b-a789-4906-be6d-0cae782624b8.png" />
+        <meta name="twitter:title" content="About Ambica Pharma | Leading Pharmaceutical Distributer in India" />
+        <meta name="twitter:description" content="Learn about Ambica Pharma, a WHO-GMP certified pharmaceutical distributer established in 2005 with a global footprint in 25+ countries." />
+        <script type="application/ld+json">
+          {JSON.stringify(structuredData)}
+        </script>
+      </Helmet>
       
       {/* Hero Section - Enhanced with gradient and more modern design */}
       <section className="py-16 md:py-24 bg-gradient-to-br from-primary/10 via-secondary/5 to-primary/5 dark:from-primary/20 dark:via-secondary/10 dark:to-primary/10 relative overflow-hidden">
@@ -121,7 +109,7 @@ const About = () => {
               transition={{ duration: 0.5, delay: 0.3 }}
               className="text-lg md:text-xl text-foreground/80 mb-8"
             >
-              Established in 2005, Ambica Pharma is a reputable name engaged in manufacturing, trading, exporting, wholesaling, and retailing a wide range of Pharmaceutical Tablets, Capsules, Injectables, Drops, Ointments, and more.
+              Established in 2005, Ambica Pharma is a reputable name engaged in distributer, trading, exporting, wholesaling, and retailing a wide range of Pharmaceutical Tablets, Capsules, Injectables, Drops, Ointments, and more.
             </motion.p>
             
             <motion.div
@@ -181,7 +169,7 @@ const About = () => {
                 Mr. Dilip Jain
               </div>
               <p className="text-foreground/80">
-                One such phenomenon is Mr. Dilip Jain (Founder & Chairman, Ambica Pharma), who has maneuvered the foundation and evolution of his firm Ambica Pharma as one of the exceptionally managed and exponentially growing pharmaceutical companies having more than 18 years of manufacturing and marketing experience.
+                One such phenomenon is Mr. Dilip Jain (Founder & Chairman, Ambica Pharma), who has maneuvered the foundation and evolution of his firm Ambica Pharma as one of the exceptionally managed and exponentially growing pharmaceutical companies having more than 18 years of distributing and marketing experience.
               </p>
               <p className="text-foreground/80">
                 During his more than 22 years of experience in the Pharma industry as an industry leader, Mr. Dilip Jain garnered a wide range of expertise in sales, marketing, and creating distribution networks on a Pan India basis.
