@@ -1,7 +1,10 @@
+
 import React from "react";
 import { Helmet } from "react-helmet-async";
 import { motion } from "framer-motion";
-import { Award, Globe } from "lucide-react";
+import { Award, Globe, Briefcase, CheckCircle } from "lucide-react";
+import { Link } from "react-router-dom";
+import { Button } from "@/components/ui/button";
 import AboutSection from "../components/AboutSection";
 import MissionVision from "../components/MissionVision";
 import GlobalReach from "../components/GlobalReach";
