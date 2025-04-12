@@ -3,12 +3,14 @@ import React from "react";
 import { motion } from "framer-motion";
 import { Award, Star, TrendingUp, Users, Sparkles, Shield, CheckCircle, Globe, Pill } from "lucide-react";
 import { useIsMobile } from "@/hooks/use-mobile";
+import { Card, CardContent } from "@/components/ui/card";
 
 const AboutSection = () => {
   const isMobile = useIsMobile();
   
   return (
     <section id="about-section" className="py-20 relative overflow-hidden">
+      {/* Background blobs */}
       <div className="absolute top-0 left-0 w-full h-full opacity-10 overflow-hidden pointer-events-none">
         <div className="absolute top-10 left-10 w-40 h-40 rounded-full bg-gradient-to-r from-blue-300 to-blue-400 blur-3xl animate-blob"></div>
         <div className="absolute bottom-20 right-10 w-60 h-60 rounded-full bg-gradient-to-r from-purple-300 to-indigo-400 blur-3xl animate-blob" style={{ animationDelay: "2s" }}></div>
@@ -61,7 +63,7 @@ const AboutSection = () => {
               </motion.div>
             </div>
             
-            <div className="grid grid-cols-2 gap-6 mt-10">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-10">
               <div className="flex items-start">
                 <div className="p-3 bg-primary/10 rounded-lg mr-4 shadow-sm">
                   <Award className="h-6 w-6 text-primary" />
@@ -104,7 +106,7 @@ const AboutSection = () => {
             </div>
           </motion.div>
           
-          {/* Second column - Visual element */}
+          {/* Second column - Design element */}
           <motion.div
             initial={{ opacity: 0, x: 50 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -112,29 +114,45 @@ const AboutSection = () => {
             viewport={{ once: true }}
             className="order-1 md:order-2 relative"
           >
-            <div className="relative z-10 overflow-hidden rounded-2xl shadow-2xl group">
-              <div className="absolute inset-0 bg-gradient-to-r from-primary/20 to-secondary/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10"></div>
-              <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent rounded-lg z-20"></div>
+            <div className="relative z-10 bg-gradient-to-br from-primary/5 via-secondary/5 to-primary/5 p-8 rounded-2xl shadow-lg border border-primary/10 h-full min-h-[320px] flex flex-col justify-center">
+              <div className="absolute inset-0 bg-gradient-to-r from-primary/5 to-secondary/5 opacity-30 rounded-2xl"></div>
               
-              <div className="mt-3 flex space-x-2">
-                <motion.span 
-                  className="inline-block px-2 py-1 text-xs font-medium bg-white/20 backdrop-blur-sm text-white rounded-full"
-                  whileHover={{ scale: 1.05 }}
+              <div className="relative z-10">
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.5 }}
+                  viewport={{ once: true }}
+                  className="text-center mb-6"
                 >
-                  Quality-Focused
-                </motion.span>
-                <motion.span 
-                  className="inline-block px-2 py-1 text-xs font-medium bg-white/20 backdrop-blur-sm text-white rounded-full"
-                  whileHover={{ scale: 1.05 }}
-                >
-                  Advanced Technology
-                </motion.span>
+                  <Shield className="h-16 w-16 text-primary mx-auto mb-4" />
+                  <h3 className="text-2xl font-bold text-primary mb-2">Quality Commitment</h3>
+                  <p className="text-foreground/80">
+                    Our dedication to quality ensures we distribute only the finest pharmaceutical products that meet international standards.
+                  </p>
+                </motion.div>
+                
+                <div className="flex flex-wrap justify-center gap-3 mt-6">
+                  <motion.span 
+                    className="inline-block px-3 py-1.5 text-sm font-medium bg-white/90 dark:bg-gray-800/90 text-primary rounded-full shadow-sm"
+                    whileHover={{ scale: 1.05 }}
+                  >
+                    Quality-Focused
+                  </motion.span>
+                  <motion.span 
+                    className="inline-block px-3 py-1.5 text-sm font-medium bg-white/90 dark:bg-gray-800/90 text-secondary rounded-full shadow-sm"
+                    whileHover={{ scale: 1.05 }}
+                  >
+                    Advanced Technology
+                  </motion.span>
+                  <motion.span 
+                    className="inline-block px-3 py-1.5 text-sm font-medium bg-white/90 dark:bg-gray-800/90 text-blue-500 rounded-full shadow-sm"
+                    whileHover={{ scale: 1.05 }}
+                  >
+                    Global Distribution
+                  </motion.span>
+                </div>
               </div>
-            </div>
-            
-            <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-full h-full max-w-md max-h-96 -z-10">
-              <div className="absolute inset-0 border-2 border-primary/20 rounded-2xl -rotate-3"></div>
-              <div className="absolute inset-0 border-2 border-secondary/20 rounded-2xl rotate-3"></div>
             </div>
             
             <motion.div 
@@ -157,8 +175,8 @@ const AboutSection = () => {
         
         {/* Products Section */}
         <div className="mt-20 bg-gradient-to-br from-primary/5 to-secondary/5 p-8 rounded-2xl shadow-sm border border-primary/10">
-          <h3 className="text-2xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-primary to-secondary mb-6">Our Pharmaceutical Product Range</h3>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8">
+          <h3 className="text-2xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-primary to-secondary mb-8 text-center md:text-left">Our Pharmaceutical Product Range</h3>
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 lg:gap-8">
             <motion.div 
               whileHover={{ y: -5 }}
               transition={{ type: "spring", stiffness: 300, damping: 10 }}
