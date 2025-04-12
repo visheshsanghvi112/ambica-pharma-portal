@@ -1,10 +1,7 @@
-
 import React from "react";
 import { Helmet } from "react-helmet-async";
 import { motion } from "framer-motion";
-import { CheckCircle, Award, Briefcase, Globe } from "lucide-react";
-import { Button } from "@/components/ui/button";
-import { Link } from "react-router-dom";
+import { Award, Globe } from "lucide-react";
 import AboutSection from "../components/AboutSection";
 import MissionVision from "../components/MissionVision";
 import GlobalReach from "../components/GlobalReach";
@@ -56,18 +53,17 @@ const About = () => {
         <meta name="keywords" content="pharmaceutical distributor india, ambica pharma history, who-gmp certified, pharmaceutical exporter, iso 9001 certified, pharmaceutical company mission vision, pharmaceutical tablets wholesaler, capsules trader, global pharmaceutical company" />
         <link rel="canonical" href="https://ambicapharma.com/about" />
         <meta property="og:title" content="About Ambica Pharma | Leading Pharmaceutical Wholesaler, Trader & Exporter in India" />
-        <meta property="og:description" content="Learn about Ambica Pharma, a WHO-GMP certified pharmaceutical distributor established in 2005 with a global footprint in 25+ countries. Known for high-quality pharmaceuticals." />
+        <meta property="og:description" content="Learn about Ambica Pharma, a WHO-GMP certified pharmaceutical distributer established in 2005 with a global footprint in 25+ countries. Known for high-quality pharmaceuticals." />
         <meta property="og:url" content="https://ambicapharma.com/about" />
         <meta property="og:type" content="website" />
         <meta property="og:image" content="https://ambicapharma.com/lovable-uploads/c0f96c3b-a789-4906-be6d-0cae782624b8.png" />
         <meta name="twitter:title" content="About Ambica Pharma | Leading Pharmaceutical Wholesaler, Trader & Exporter in India" />
-        <meta name="twitter:description" content="Learn about Ambica Pharma, a WHO-GMP certified pharmaceutical distributor established in 2005 with a global footprint in 25+ countries." />
+        <meta name="twitter:description" content="Learn about Ambica Pharma, a WHO-GMP certified pharmaceutical distributer established in 2005 with a global footprint in 25+ countries." />
         <script type="application/ld+json">
           {JSON.stringify(structuredData)}
         </script>
       </Helmet>
       
-      {/* Hero Section - Enhanced with gradient and more modern design */}
       <section className="py-16 md:py-24 bg-gradient-to-br from-primary/10 via-secondary/5 to-primary/5 dark:from-primary/20 dark:via-secondary/10 dark:to-primary/10 relative overflow-hidden">
         <div className="absolute top-0 left-0 w-full h-full opacity-40 overflow-hidden pointer-events-none">
           <div className="absolute top-10 left-10 w-40 h-40 rounded-full bg-gradient-to-r from-blue-300 to-blue-400 blur-3xl animate-blob"></div>
@@ -135,10 +131,8 @@ const About = () => {
         </div>
       </section>
       
-      {/* About Section */}
       <AboutSection />
       
-      {/* Founder Section */}
       <section className="py-16 bg-gradient-to-br from-primary/5 to-secondary/5 dark:from-primary/10 dark:to-secondary/10" aria-labelledby="founder-section">
         <div className="container">
           <div className="grid md:grid-cols-2 gap-10 items-center">
@@ -196,10 +190,8 @@ const About = () => {
         </div>
       </section>
       
-      {/* Mission & Vision */}
       <MissionVision />
       
-      {/* Company History - Enhanced with a better layout */}
       <section className="py-16 bg-background relative overflow-hidden" aria-labelledby="history-section">
         <div className="absolute top-0 left-0 w-full h-full opacity-5 overflow-hidden pointer-events-none">
           <div className="absolute top-1/4 right-1/4 w-96 h-96 rounded-full bg-gradient-to-r from-blue-400 to-blue-500 blur-3xl"></div>
@@ -262,10 +254,8 @@ const About = () => {
         </div>
       </section>
       
-      {/* Global Reach */}
       <GlobalReach />
       
-      {/* Certifications Section - Redesigned for better mobile view */}
       <section className="py-16 bg-gradient-to-br from-primary/5 to-secondary/5 dark:from-primary/10 dark:to-secondary/10" aria-labelledby="certifications-section">
         <div className="container">
           <motion.h2
@@ -317,7 +307,6 @@ const About = () => {
         </div>
       </section>
       
-      {/* Our Commitment - Enhanced with better cards for mobile */}
       <section className="py-16 bg-background" aria-labelledby="commitment-section">
         <div className="container">
           <motion.div
@@ -342,7 +331,7 @@ const About = () => {
               },
               {
                 icon: <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4" />
                 </svg>,
                 title: "Experienced Team",
                 description: "Our experienced team ensures smooth operations across all departments, enabling efficient order fulfillment and customer satisfaction."
@@ -364,7 +353,7 @@ const About = () => {
                 className="p-6 bg-white dark:bg-gray-800 rounded-lg shadow-sm hover:shadow-md transition-all"
                 whileHover={{ y: -5 }}
               >
-                <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center mb-4 text-primary">
+                <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center mb-4">
                   {item.icon}
                 </div>
                 <h3 className="text-xl font-semibold text-primary mb-3">{item.title}</h3>
@@ -377,7 +366,6 @@ const About = () => {
         </div>
       </section>
       
-      {/* Values - Enhanced with better responsive design */}
       <section className="py-16 bg-gradient-to-br from-primary/5 to-secondary/5 dark:from-primary/10 dark:to-secondary/10" aria-labelledby="values-section">
         <div className="container">
           <motion.h2
@@ -391,7 +379,6 @@ const About = () => {
             Our Core Values
           </motion.h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            {/* Value items with a responsive grid that looks good on all devices */}
             {[
               {
                 icon: <svg className="w-6 h-6 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -444,7 +431,6 @@ const About = () => {
         </div>
       </section>
       
-      {/* Distribution Expertise - Enhanced for better mobile view */}
       <section className="py-16 bg-background" aria-labelledby="distribution-section">
         <div className="container">
           <motion.h2 
@@ -534,7 +520,6 @@ const About = () => {
         </div>
       </section>
       
-      {/* Enhanced CTA Section with gradient background */}
       <section className="py-16 bg-gradient-to-r from-primary to-secondary text-white relative overflow-hidden">
         <div className="absolute inset-0 opacity-20">
           <div className="absolute top-0 right-0 w-96 h-96 bg-white rounded-full filter blur-3xl"></div>
