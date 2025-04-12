@@ -72,8 +72,8 @@ const productCategories = [
 const customerTestimonials = [
   {
     quote: "Ambica Pharma has been our reliable supplier for diabetes medications. Their quality products and timely delivery make them our preferred partner.",
-    author: "Raj Sharma",
-    position: "Pharmacy Owner, Delhi"
+    author: "Gaurav Mishra",
+    position: "Regular Customer, Delhi"
   },
   {
     quote: "As a small clinic owner, I've been sourcing medicines from Ambica for years. Their prompt service and competitive pricing keep my patients happy.",
@@ -88,7 +88,7 @@ const customerTestimonials = [
   {
     quote: "The pediatric antibiotics from Ambica Pharma are trusted by our hospital for efficacy and safety. We appreciate their commitment to quality.",
     author: "Dr. Anita Desai",
-    position: "Pediatrician, Bangalore"
+    position: "Pediatrician, Mumbai"
   }
 ];
 
@@ -96,22 +96,22 @@ const customerTestimonials = [
 const globalAchievements = [
   { 
     title: "Countries Served", 
-    value: "25+", 
+    value: "45+", 
     icon: <Globe className="h-6 w-6 text-blue-500" />
   },
   { 
     title: "Trusted Partners", 
-    value: "300+", 
+    value: "300000+", 
     icon: <UserCheck className="h-6 w-6 text-green-500" />
   },
   { 
     title: "Product Range", 
-    value: "1000+", 
+    value: "5000+", 
     icon: <TrendingUp className="h-6 w-6 text-purple-500" />
   },
   { 
     title: "Awards Won", 
-    value: "15+", 
+    value: "35+", 
     icon: <Award className="h-6 w-6 text-amber-500" />
   }
 ];

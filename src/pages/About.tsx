@@ -51,21 +51,33 @@ const About = () => {
   return (
     <div className="min-h-screen bg-background animate-fade-in">
       <Helmet>
-        <title>About Ambica Pharma | Leading Pharmaceutical Manufacturer in India</title>
-        <meta name="description" content="Learn about Ambica Pharma, a WHO-GMP certified pharmaceutical manufacturer established in 2005 with a global footprint in 25+ countries. Known for quality pharmaceuticals including tablets, capsules, injectables & more." />
-        <meta name="keywords" content="pharmaceutical manufacturer india, ambica pharma history, who-gmp certified, pharmaceutical exporter, iso 9001 certified, pharmaceutical company mission vision, pharmaceutical tablets, capsules manufacturer, global pharmaceutical company" />
-        <link rel="canonical" href="https://ambicapharma.com/about" />
-        <meta property="og:title" content="About Ambica Pharma | Leading Pharmaceutical Manufacturer in India" />
-        <meta property="og:description" content="Learn about Ambica Pharma, a WHO-GMP certified pharmaceutical manufacturer established in 2005 with a global footprint in 25+ countries. Known for high-quality pharmaceuticals." />
-        <meta property="og:url" content="https://ambicapharma.com/about" />
-        <meta property="og:type" content="website" />
-        <meta property="og:image" content="https://ambicapharma.com/lovable-uploads/c0f96c3b-a789-4906-be6d-0cae782624b8.png" />
-        <meta name="twitter:title" content="About Ambica Pharma | Leading Pharmaceutical Manufacturer in India" />
-        <meta name="twitter:description" content="Learn about Ambica Pharma, a WHO-GMP certified pharmaceutical manufacturer established in 2005 with a global footprint in 25+ countries." />
-        <script type="application/ld+json">
-          {JSON.stringify(structuredData)}
-        </script>
-      </Helmet>
+  <title>About Ambica Pharma | Leading Pharmaceutical Manufacturer in India</title>
+  <meta
+    name="description"
+    content="Learn about Ambica Pharma, a WHO-GMP certified pharmaceutical manufacturer established in 2005 with a global presence in over 25 countries. Renowned for high-quality pharmaceuticals including tablets, capsules, injectables, and more."
+  />
+  <meta
+    name="keywords"
+    content="pharmaceutical manufacturer india, ambica pharma history, who-gmp certified, pharmaceutical exporter, iso 9001 certified, pharmaceutical company mission vision, pharmaceutical tablets, capsules manufacturer, global pharmaceutical company"
+  />
+  <link rel="canonical" href="https://ambicapharma.com/about" />
+  <meta property="og:title" content="About Ambica Pharma | Leading Pharmaceutical Manufacturer in India" />
+  <meta
+    property="og:description"
+    content="Learn about Ambica Pharma, a WHO-GMP certified pharmaceutical manufacturer established in 2005 with a global footprint in 25+ countries. Known for high-quality pharmaceuticals."
+  />
+  <meta property="og:url" content="https://ambicapharma.com/about" />
+  <meta property="og:type" content="website" />
+  <meta name="twitter:title" content="About Ambica Pharma | Leading Pharmaceutical Manufacturer in India" />
+  <meta
+    name="twitter:description"
+    content="Learn about Ambica Pharma, a WHO-GMP certified pharmaceutical manufacturer established in 2005 with a global footprint in 25+ countries."
+  />
+  <script type="application/ld+json">
+    {JSON.stringify(structuredData)}
+  </script>
+</Helmet>
+
       
       {/* Hero Section - Enhanced with gradient and more modern design */}
       <section className="py-16 md:py-24 bg-gradient-to-br from-primary/10 via-secondary/5 to-primary/5 dark:from-primary/20 dark:via-secondary/10 dark:to-primary/10 relative overflow-hidden">
@@ -468,7 +480,7 @@ const About = () => {
             >
               <h3 className="text-2xl font-semibold text-primary">State-of-the-Art Facilities</h3>
               <p className="text-foreground/80">
-                Our manufacturing units are equipped with cutting-edge technology and adhere to international quality standards. We specialize in producing a diverse range of pharmaceutical formulations including:
+                Our distributing units are equipped with cutting-edge technology and adhere to international quality standards. We specialize in producing a diverse range of pharmaceutical formulations including:
               </p>
               
               <ul className="space-y-3">
