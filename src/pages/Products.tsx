@@ -8,7 +8,7 @@ const Products = () => {
     <div className="min-h-screen bg-background">
       <Helmet>
         <title>Our Products | Ambica Pharma</title>
-        <meta name="description" content="Explore Ambica Pharma's range of high-quality pharmaceutical products." />
+        <meta name="description" content="Explore Ambica Pharma's range of high-quality pharmaceutical products distributed worldwide." />
       </Helmet>
       
       {/* Hero Section */}
@@ -16,7 +16,7 @@ const Products = () => {
         <div className="container">
           <h1 className="text-4xl md:text-5xl font-display font-bold text-primary mb-6">Our Products</h1>
           <p className="text-lg text-gray-600 max-w-3xl">
-            Discover our extensive range of pharmaceutical products, manufactured with precision and care to meet global standards.
+            Discover our extensive range of pharmaceutical products, sourced from quality-certified suppliers and distributed with precision and care to meet global standards.
           </p>
         </div>
       </section>
@@ -176,17 +176,17 @@ const Products = () => {
             <div>
               <h2 className="text-3xl font-display font-bold text-primary mb-6">Quality Assurance</h2>
               <p className="text-gray-600 mb-4">
-                At Ambica Pharma, we are committed to maintaining the highest standards of quality in all our products. Our state-of-the-art facilities are equipped with advanced machinery and operated by skilled professionals to ensure that every product meets stringent quality parameters.
+                At Ambica Pharma, we are committed to maintaining the highest standards of quality in all our products. Our quality control processes ensure that every product we distribute meets stringent quality parameters.
               </p>
               <p className="text-gray-600 mb-4">
-                Our quality control processes include:
+                Our quality assurance processes include:
               </p>
               <ul className="list-disc pl-6 space-y-2 text-gray-600">
-                <li>Rigorous raw material testing</li>
-                <li>In-process quality checks at various stages</li>
-                <li>Final product analysis before distribution</li>
+                <li>Rigorous supplier qualification</li>
+                <li>Certificate of analysis verification for each batch</li>
+                <li>Product quality checks before distribution</li>
                 <li>Compliance with WHO-GMP standards</li>
-                <li>ISO 9001:2015 certified manufacturing processes</li>
+                <li>ISO 9001:2015 certified processes</li>
               </ul>
             </div>
             <div>

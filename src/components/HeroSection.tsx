@@ -64,8 +64,8 @@ const HeroSection = () => {
               variants={itemVariants}
               className="text-lg text-foreground/80 max-w-md"
             >
-              Ambica Pharma has evolved from a humble startup into a leading force in the pharmaceutical 
-              industry. With over 19 years of expertise, we pride ourselves on innovation, quality, and client satisfaction.
+              Ambica Pharma has evolved from a humble startup into a leading force in pharmaceutical 
+              distribution. With over 19 years of expertise, we pride ourselves on quality, service, and client satisfaction.
             </motion.p>
             
             <motion.div 

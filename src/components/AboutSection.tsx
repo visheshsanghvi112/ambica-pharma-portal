@@ -115,7 +115,7 @@ const AboutSection = () => {
               
               <img 
                 src="/lovable-uploads/7c83a2dc-635a-40cc-a26a-24fefa0fe6fe.png" 
-                alt="Ambica Pharma - Pharmaceutical Innovation and Excellence" 
+                alt="Ambica Pharma - Pharmaceutical Distribution and Excellence" 
                 className="w-full h-auto rounded-lg transform transition-transform duration-500 group-hover:scale-105"
                 loading="lazy"
                 width="600"
@@ -204,7 +204,7 @@ const AboutSection = () => {
                 <h4 className="text-lg font-semibold text-secondary">Pharmaceutical Capsules</h4>
               </div>
               <p className="text-foreground/70">
-                Our capsule formulations include antibiotics, anti-inflammatory, nutritional supplements, and specialized medicine manufactured under strict quality control.
+                Our capsule formulations include antibiotics, anti-inflammatory, nutritional supplements, and specialized medicine sourced from quality-certified suppliers.
               </p>
               <div className="flex flex-wrap gap-2 mt-4">
                 <span className="inline-block px-2 py-1 text-xs bg-secondary/10 text-secondary rounded-full">Anti-inflammatory</span>

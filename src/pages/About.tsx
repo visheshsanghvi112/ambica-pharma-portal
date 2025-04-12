@@ -51,17 +51,17 @@ const About = () => {
   return (
     <div className="min-h-screen bg-background animate-fade-in">
       <Helmet>
-        <title>About Ambica Pharma | Leading Pharmaceutical Distributer in India</title>
+        <title>About Ambica Pharma | Leading Pharmaceutical Wholesaler, Trader & Exporter in India</title>
         <meta name="description" content="Learn about Ambica Pharma, a WHO-GMP certified pharmaceutical distributer established in 2005 with a global footprint in 25+ countries. Known for quality pharmaceuticals including tablets, capsules, injectables & more." />
-        <meta name="keywords" content="pharmaceutical distributer india, ambica pharma history, who-gmp certified, pharmaceutical exporter, iso 9001 certified, pharmaceutical company mission vision, pharmaceutical tablets, capsules manufacturer, global pharmaceutical company" />
+        <meta name="keywords" content="pharmaceutical distributor india, ambica pharma history, who-gmp certified, pharmaceutical exporter, iso 9001 certified, pharmaceutical company mission vision, pharmaceutical tablets wholesaler, capsules trader, global pharmaceutical company" />
         <link rel="canonical" href="https://ambicapharma.com/about" />
-        <meta property="og:title" content="About Ambica Pharma | Leading Pharmaceutical Distributer in India" />
-        <meta property="og:description" content="Learn about Ambica Pharma, a WHO-GMP certified pharmaceutical distributer established in 2005 with a global footprint in 25+ countries. Known for high-quality pharmaceuticals." />
+        <meta property="og:title" content="About Ambica Pharma | Leading Pharmaceutical Wholesaler, Trader & Exporter in India" />
+        <meta property="og:description" content="Learn about Ambica Pharma, a WHO-GMP certified pharmaceutical distributor established in 2005 with a global footprint in 25+ countries. Known for high-quality pharmaceuticals." />
         <meta property="og:url" content="https://ambicapharma.com/about" />
         <meta property="og:type" content="website" />
         <meta property="og:image" content="https://ambicapharma.com/lovable-uploads/c0f96c3b-a789-4906-be6d-0cae782624b8.png" />
-        <meta name="twitter:title" content="About Ambica Pharma | Leading Pharmaceutical Distributer in India" />
-        <meta name="twitter:description" content="Learn about Ambica Pharma, a WHO-GMP certified pharmaceutical distributer established in 2005 with a global footprint in 25+ countries." />
+        <meta name="twitter:title" content="About Ambica Pharma | Leading Pharmaceutical Wholesaler, Trader & Exporter in India" />
+        <meta name="twitter:description" content="Learn about Ambica Pharma, a WHO-GMP certified pharmaceutical distributor established in 2005 with a global footprint in 25+ countries." />
         <script type="application/ld+json">
           {JSON.stringify(structuredData)}
         </script>
@@ -109,7 +109,7 @@ const About = () => {
               transition={{ duration: 0.5, delay: 0.3 }}
               className="text-lg md:text-xl text-foreground/80 mb-8"
             >
-              Established in 2005, Ambica Pharma is a reputable name engaged in distributer, trading, exporting, wholesaling, and retailing a wide range of Pharmaceutical Tablets, Capsules, Injectables, Drops, Ointments, and more.
+              Established in 2005, Ambica Pharma is a reputable name engaged in distributing, trading, exporting, wholesaling, and retailing a wide range of Pharmaceutical Tablets, Capsules, Injectables, Drops, Ointments, and more.
             </motion.p>
             
             <motion.div
@@ -169,7 +169,7 @@ const About = () => {
                 Mr. Dilip Jain
               </div>
               <p className="text-foreground/80">
-                One such phenomenon is Mr. Dilip Jain (Founder & Chairman, Ambica Pharma), who has maneuvered the foundation and evolution of his firm Ambica Pharma as one of the exceptionally managed and exponentially growing pharmaceutical companies having more than 18 years of distributing and marketing experience.
+                One such phenomenon is Mr. Dilip Jain (Founder & Chairman, Ambica Pharma), who has maneuvered the foundation and evolution of his firm Ambica Pharma as one of the exceptionally managed and exponentially growing pharmaceutical distribution companies having more than 18 years of distributing and marketing experience.
               </p>
               <p className="text-foreground/80">
                 During his more than 22 years of experience in the Pharma industry as an industry leader, Mr. Dilip Jain garnered a wide range of expertise in sales, marketing, and creating distribution networks on a Pan India basis.
@@ -217,10 +217,10 @@ const About = () => {
             >
               <h2 id="history-section" className="text-3xl font-display font-bold text-transparent bg-clip-text bg-gradient-to-r from-primary to-secondary mb-6">Our History</h2>
               <p className="text-foreground/80 mb-4">
-                Incepted in the year 2005, Ambica Pharma started as a small pharmaceutical enterprise with a vision to provide quality medicines at affordable prices. Over the years, we have grown to become a leading manufacturer and distributor of pharmaceutical products in India and globally.
+                Incepted in the year 2005, Ambica Pharma started as a small pharmaceutical distribution enterprise with a vision to provide quality medicines at affordable prices. Over the years, we have grown to become a leading distributor and exporter of pharmaceutical products in India and globally.
               </p>
               <p className="text-foreground/80 mb-4">
-                What began as a modest operation has evolved into a comprehensive pharmaceutical company with state-of-the-art manufacturing facilities, cutting-edge research and development, and a robust distribution network spanning across multiple countries.
+                What began as a modest operation has evolved into a comprehensive pharmaceutical distribution company with state-of-the-art facilities, cutting-edge technologies, and a robust distribution network spanning across multiple countries.
               </p>
               <p className="text-foreground/80">
                 Today, Ambica Pharma stands as a testament to perseverance, innovation, and an unwavering commitment to quality healthcare solutions.
@@ -244,7 +244,7 @@ const About = () => {
               <div className="relative rounded-xl overflow-hidden shadow-2xl">
                 <img 
                   src="https://images.unsplash.com/photo-1563213126-a4273aed2016?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" 
-                  alt="Ambica Pharma Manufacturing Facility History" 
+                  alt="Ambica Pharma Distribution Facility History" 
                   className="w-full h-auto rounded-lg transform transition-transform duration-500 hover:scale-105"
                   loading="lazy"
                   width="800"
@@ -284,17 +284,17 @@ const About = () => {
               {
                 icon: <Award className="h-8 w-8 text-primary" />,
                 title: "ISO 9001:2015",
-                description: "Our ISO 9001:2015 certification ensures that we maintain consistent quality management systems across all our operations, from product development to delivery."
+                description: "Our ISO 9001:2015 certification ensures that we maintain consistent quality management systems across all our operations, from procurement to delivery."
               },
               {
                 icon: <Award className="h-8 w-8 text-primary" />,
                 title: "WHO-GMP Compliant",
-                description: "Our manufacturing facilities adhere to World Health Organization Good Manufacturing Practices (WHO-GMP), ensuring our products meet international quality standards."
+                description: "Our facilities adhere to World Health Organization Good Manufacturing Practices (WHO-GMP), ensuring the products we distribute meet international quality standards."
               },
               {
                 icon: <Award className="h-8 w-8 text-primary" />,
                 title: "Quality Control",
-                description: "Our advanced quality control laboratory ensures each batch of medication undergoes rigorous testing before reaching the market, guaranteeing safety and efficacy."
+                description: "Our advanced quality control processes ensure each batch of medication undergoes rigorous testing before distribution, guaranteeing safety and efficacy."
               }
             ].map((item, index) => (
               <motion.div
@@ -398,14 +398,14 @@ const About = () => {
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
                 </svg>,
                 title: "Quality",
-                description: "We maintain the highest standards in every aspect of our operations, from research to manufacturing."
+                description: "We maintain the highest standards in every aspect of our operations, from sourcing to distribution."
               },
               {
                 icon: <svg className="w-6 h-6 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4" />
                 </svg>,
                 title: "Innovation",
-                description: "We continuously strive to develop new and improved pharmaceutical solutions to meet evolving healthcare needs."
+                description: "We continuously strive to improve our distribution and logistics solutions to meet evolving healthcare needs."
               },
               {
                 icon: <svg className="w-6 h-6 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -444,18 +444,18 @@ const About = () => {
         </div>
       </section>
       
-      {/* Manufacturing Expertise - Enhanced for better mobile view */}
-      <section className="py-16 bg-background" aria-labelledby="manufacturing-section">
+      {/* Distribution Expertise - Enhanced for better mobile view */}
+      <section className="py-16 bg-background" aria-labelledby="distribution-section">
         <div className="container">
           <motion.h2 
-            id="manufacturing-section"
+            id="distribution-section"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
             viewport={{ once: true }}
             className="text-3xl font-display font-bold text-transparent bg-clip-text bg-gradient-to-r from-primary to-secondary mb-10 text-center"
           >
-            Our Manufacturing Expertise
+            Our Distribution Expertise
           </motion.h2>
           
           <div className="grid md:grid-cols-2 gap-10">
@@ -468,7 +468,7 @@ const About = () => {
             >
               <h3 className="text-2xl font-semibold text-primary">State-of-the-Art Facilities</h3>
               <p className="text-foreground/80">
-                Our distributing units are equipped with cutting-edge technology and adhere to international quality standards. We specialize in producing a diverse range of pharmaceutical formulations including:
+                Our distribution units are equipped with cutting-edge technology and adhere to international quality standards. We specialize in distributing a diverse range of pharmaceutical formulations including:
               </p>
               
               <ul className="space-y-3">
@@ -510,7 +510,7 @@ const About = () => {
               <ul className="space-y-3">
                 <li className="flex items-start">
                   <CheckCircle className="h-5 w-5 text-secondary mr-3 mt-1 flex-shrink-0" aria-hidden="true" />
-                  <span className="text-foreground/80">Raw material testing and verification before production</span>
+                  <span className="text-foreground/80">Product testing and verification before distribution</span>
                 </li>
                 <li className="flex items-start">
                   <CheckCircle className="h-5 w-5 text-secondary mr-3 mt-1 flex-shrink-0" aria-hidden="true" />

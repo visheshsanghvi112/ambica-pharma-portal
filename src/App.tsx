@@ -33,25 +33,25 @@ const App = () => (
           <Sonner />
           <BrowserRouter>
             <Helmet>
-              <title>Ambica Pharma - Leading Pharmaceutical Manufacturer in India</title>
+              <title>Ambica Pharma - Leading Pharmaceutical Wholesaler, Trader & Exporter in India</title>
               <meta
                 name="description"
-                content="Ambica Pharma is a trusted manufacturer and distributor of high-quality pharmaceutical products with WHO-GMP certification, serving 25+ countries worldwide since 2005."
+                content="Ambica Pharma is a trusted wholesaler, trader, and exporter of high-quality pharmaceutical products with WHO-GMP certification, serving 25+ countries worldwide since 2005."
               />
-              <meta name="keywords" content="Ambica Pharma, pharmaceutical manufacturer, drug manufacturing, pharma exporter, India pharma company, WHO-GMP certified, quality medicines, healthcare solutions, generic drugs, pharmaceutical products, medicine supplier, tablet manufacturer, capsule manufacturer, injectable medicines, pharmaceutical wholesaler, drug distributor, Mumbai pharma, pharmaceutical industry, pharmaceutical formulations, healthcare company" />
+              <meta name="keywords" content="Ambica Pharma, pharmaceutical distributor, drug distribution, pharma exporter, India pharma company, WHO-GMP certified, quality medicines, healthcare solutions, generic drugs, pharmaceutical products, medicine supplier, tablet wholesaler, capsule trader, injectable medicines, pharmaceutical wholesaler, drug distributor, Mumbai pharma, pharmaceutical industry, pharmaceutical formulations, healthcare company" />
               <meta name="author" content="Ambica Pharma" />
               <meta name="robots" content="index, follow" />
               <meta name="google-site-verification" content="aeyZni3K0snO5KuyIGrofZih24QiU4K4TsbGBieI6Lk" />
-              <meta property="og:title" content="Ambica Pharma - Leading Pharmaceutical Manufacturer in India" />
-              <meta property="og:description" content="Ambica Pharma is a trusted manufacturer and distributor of high-quality pharmaceutical products with WHO-GMP certification, serving 25+ countries worldwide since 2005." />
+              <meta property="og:title" content="Ambica Pharma - Leading Pharmaceutical Wholesaler, Trader & Exporter in India" />
+              <meta property="og:description" content="Ambica Pharma is a trusted wholesaler, trader, and exporter of high-quality pharmaceutical products with WHO-GMP certification, serving 25+ countries worldwide since 2005." />
               <meta property="og:type" content="website" />
               <meta property="og:url" content="https://ambicapharma.com" />
               <meta property="og:image" content="/lovable-uploads/a5979ffb-180b-4225-a1e8-15425f28d262.png" />
               <meta property="og:site_name" content="Ambica Pharma" />
               <meta property="og:locale" content="en_US" />
               <meta name="twitter:card" content="summary_large_image" />
-              <meta name="twitter:title" content="Ambica Pharma - Leading Pharmaceutical Manufacturer in India" />
-              <meta name="twitter:description" content="Ambica Pharma is a trusted manufacturer and distributor of high-quality pharmaceutical products with WHO-GMP certification, serving 25+ countries worldwide since 2005." />
+              <meta name="twitter:title" content="Ambica Pharma - Leading Pharmaceutical Wholesaler, Trader & Exporter in India" />
+              <meta name="twitter:description" content="Ambica Pharma is a trusted wholesaler, trader, and exporter of high-quality pharmaceutical products with WHO-GMP certification, serving 25+ countries worldwide since 2005." />
               <meta name="twitter:image" content="/lovable-uploads/a5979ffb-180b-4225-a1e8-15425f28d262.png" />
               <link rel="canonical" href="https://ambicapharma.com" />
               
@@ -88,7 +88,7 @@ const App = () => (
                     },
                     "foundingDate": "2005",
                     "foundingLocation": "Mumbai, India",
-                    "description": "Ambica Pharma is a leading pharmaceutical manufacturer with WHO-GMP certification, producing high-quality medicines and exporting to over 25 countries worldwide since 2005.",
+                    "description": "Ambica Pharma is a leading pharmaceutical distributor, wholesaler, trader and exporter with WHO-GMP certification, providing high-quality medicines to over 25 countries worldwide since 2005.",
                     "slogan": "Quality Healthcare Solutions",
                     "numberOfEmployees": {
                       "@type": "QuantitativeValue",
