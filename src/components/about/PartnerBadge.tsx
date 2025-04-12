@@ -10,7 +10,7 @@ const PartnerBadge = () => {
       whileInView={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5, delay: 0.3 }}
       viewport={{ once: true }}
-      className="absolute -bottom-5 -right-5 md:right-10 bg-white dark:bg-gray-800 p-4 rounded-lg shadow-xl border border-primary/10"
+      className="absolute -bottom-5 md:bottom-10 right-5 md:right-10 bg-white dark:bg-gray-800 p-4 rounded-lg shadow-xl border border-primary/10"
     >
       <div className="flex items-center gap-3">
         <Shield className="h-8 w-8 text-primary" />

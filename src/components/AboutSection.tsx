@@ -8,6 +8,7 @@ import CompanyIntroduction from "./about/CompanyIntroduction";
 import KeyFeature from "./about/KeyFeature";
 import PartnerBadge from "./about/PartnerBadge";
 import ProductsSection from "./about/ProductsSection";
+import { Badge } from "./ui/badge";
 
 const AboutSection = () => {
   const isMobile = useIsMobile();
@@ -63,7 +64,7 @@ const AboutSection = () => {
               </p>
             </CompanyIntroduction>
             
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-10">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 mt-10">
               {keyFeatures.map((feature, index) => (
                 <KeyFeature 
                   key={index}
@@ -76,7 +77,7 @@ const AboutSection = () => {
             </div>
           </motion.div>
           
-          {/* Second column - Design element */}
+          {/* Second column - Image and badges */}
           <motion.div
             initial={{ opacity: 0, x: 50 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -84,45 +85,24 @@ const AboutSection = () => {
             viewport={{ once: true }}
             className="order-1 md:order-2 relative"
           >
-            <div className="relative z-10 bg-gradient-to-br from-primary/5 via-secondary/5 to-primary/5 p-8 rounded-2xl shadow-lg border border-primary/10 h-full min-h-[320px] flex flex-col justify-center">
-              <div className="absolute inset-0 bg-gradient-to-r from-primary/5 to-secondary/5 opacity-30 rounded-2xl"></div>
-              
-              <div className="relative z-10">
-                <motion.div
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.5 }}
-                  viewport={{ once: true }}
-                  className="text-center mb-6"
-                >
-                  <div className="h-16 w-16 text-primary mx-auto mb-4 flex items-center justify-center bg-primary/10 rounded-full">
-                    <Award className="h-10 w-10 text-primary" />
-                  </div>
-                  <h3 className="text-2xl font-bold text-primary mb-2">Quality Commitment</h3>
-                  <p className="text-foreground/80">
-                    Our dedication to quality ensures we distribute only the finest pharmaceutical products that meet international standards.
-                  </p>
-                </motion.div>
-                
-                <div className="flex flex-wrap justify-center gap-3 mt-6">
-                  <motion.span 
-                    className="inline-block px-3 py-1.5 text-sm font-medium bg-white/90 dark:bg-gray-800/90 text-primary rounded-full shadow-sm"
-                    whileHover={{ scale: 1.05 }}
-                  >
+            <div className="relative z-10 rounded-2xl overflow-hidden shadow-lg">
+              <img 
+                src="https://images.unsplash.com/photo-1576091160550-2173dba999ef?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3" 
+                alt="Pharmaceutical laboratory" 
+                className="w-full h-auto object-cover"
+                style={{ minHeight: '350px' }}
+              />
+              <div className="absolute bottom-0 left-0 w-full bg-gradient-to-t from-black/70 to-transparent p-6">
+                <div className="flex flex-wrap gap-2">
+                  <Badge variant="default" className="bg-white/90 text-primary hover:bg-white/80">
                     Quality-Focused
-                  </motion.span>
-                  <motion.span 
-                    className="inline-block px-3 py-1.5 text-sm font-medium bg-white/90 dark:bg-gray-800/90 text-secondary rounded-full shadow-sm"
-                    whileHover={{ scale: 1.05 }}
-                  >
+                  </Badge>
+                  <Badge variant="secondary" className="bg-white/90 text-secondary hover:bg-white/80">
                     Advanced Technology
-                  </motion.span>
-                  <motion.span 
-                    className="inline-block px-3 py-1.5 text-sm font-medium bg-white/90 dark:bg-gray-800/90 text-blue-500 rounded-full shadow-sm"
-                    whileHover={{ scale: 1.05 }}
-                  >
+                  </Badge>
+                  <Badge variant="outline" className="bg-white/90 text-blue-500 hover:bg-white/80">
                     Global Distribution
-                  </motion.span>
+                  </Badge>
                 </div>
               </div>
             </div>
