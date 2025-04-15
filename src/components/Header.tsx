@@ -130,7 +130,7 @@ const Header = () => {
             {[
               { path: "/", label: "Home" },
               { path: "/about", label: "About Us" },
-              { path: "/team", label: "Our Team" },
+              // { path: "/team", label: "Our Team" },
               { path: "/contact", label: "Contact Us" },
               { path: "/blog", label: "Blog" },
               { path: "/careers", label: "Careers" },
