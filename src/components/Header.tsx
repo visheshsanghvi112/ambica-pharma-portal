@@ -73,7 +73,7 @@ const Header = () => {
                 {[
                   { path: "/contact", label: "Contact" },
                   // { path: "/blog", label: "Blog" },
-                  { path: "/team", label: "Our Team" },
+                  // { path: "/team", label: "Our Team" },
                   { path: "/careers", label: "Careers" },
                   // { path: "/achievements", label: "Achievements" },
                   { path: "/csr", label: "CSR" },
