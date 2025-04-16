@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Menu, X, Phone, Mail, ChevronDown } from "lucide-react";
@@ -56,37 +55,41 @@ const Header = () => {
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center space-x-6">
-            <Link to="/" className={cn("font-medium transition-colors hover:text-primary", isActive("/") && "text-secondary")}>
+            <Link to="/" className={cn("font-medium", isActive("/") && "text-secondary")}>
               Home
             </Link>
-            <Link to="/about" className={cn("font-medium transition-colors hover:text-primary", isActive("/about") && "text-secondary")}>
+            <Link to="/about" className={cn("font-medium", isActive("/about") && "text-secondary")}>
               About Us
             </Link>
+            {/* <Link to="/team" className={cn("font-medium", isActive("/team") && "text-secondary")}>
+              Our Team
+            </Link> */}
 
             <DropdownMenu>
-              <DropdownMenuTrigger className="flex items-center font-medium transition-colors hover:text-primary">
+              <DropdownMenuTrigger className="flex items-center font-medium">
                 <span>Contact Us</span><ChevronDown className="ml-1 h-4 w-4" />
               </DropdownMenuTrigger>
-              <DropdownMenuContent className="bg-background/95 p-2 w-48 border border-border/60 shadow-lg">
+              <DropdownMenuContent className="bg-background/95 p-2 w-48">
                 {[
                   { path: "/contact", label: "Contact" },
+                  // { path: "/blog", label: "Blog" },
+                  // { path: "/team", label: "Our Team" },
                   { path: "/careers", label: "Careers" },
+                  // { path: "/achievements", label: "Achievements" },
                   { path: "/csr", label: "CSR" },
                   { path: "/faq", label: "FAQ" },
                   { path: "/privacy", label: "Privacy Policy" }
                 ].map(item => (
-                  <DropdownMenuItem key={item.path} asChild className="hover:bg-primary/10 cursor-pointer">
+                  <DropdownMenuItem key={item.path} asChild>
                     <Link to={item.path}>{item.label}</Link>
                   </DropdownMenuItem>
                 ))}
               </DropdownMenuContent>
             </DropdownMenu>
 
-            <Link to="/contact" className="hidden lg:block">
-              <Button size="sm" className="bg-gradient-to-r from-red-500 to-red-600 hover:from-red-600 hover:to-red-700 shadow-md hover:shadow-lg animate-pulse">
-                Emergency Order
-              </Button>
-            </Link>
+            <Button size="sm" className="bg-gradient-to-r from-secondary to-primary animate-pulse">
+              Emergency Order
+            </Button>
           </div>
 
           {/* Mobile menu button */}
@@ -127,6 +130,7 @@ const Header = () => {
             {[
               { path: "/", label: "Home" },
               { path: "/about", label: "About Us" },
+              // { path: "/team", label: "Our Team" },
               { path: "/contact", label: "Contact Us" },
               { path: "/blog", label: "Blog" },
               { path: "/careers", label: "Careers" },
@@ -148,7 +152,7 @@ const Header = () => {
               </Link>
             ))}
 
-            <Button className="bg-gradient-to-r from-red-500 to-red-600 hover:from-red-600 hover:to-red-700 mt-6 animate-pulse" onClick={closeMenu}>
+            <Button className="bg-gradient-to-r from-secondary to-primary mt-6 animate-pulse" onClick={closeMenu}>
               Emergency Order
             </Button>
           </nav>
