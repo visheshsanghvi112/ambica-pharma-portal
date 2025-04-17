@@ -1,7 +1,6 @@
-
 import React from "react";
-import { Helmet } from "react-helmet-async";
 import { Badge } from "@/components/ui/badge";
+import SEOHead from "@/components/SEOHead";
 
 const GlobalReach = () => {
   const regions = [
@@ -76,12 +75,29 @@ const GlobalReach = () => {
     }
   ];
 
+  const globalReachSchema = {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "Ambica Pharma",
+    "url": "https://ambicapharma.net/global-reach",
+    "logo": "/lovable-uploads/e75f626d-a490-496b-8817-294d7128b441.png",
+    "description": "Ambica Pharma has a global presence in over 50 countries across 5 continents, with major facilities in India, Singapore, Dubai, and South Africa.",
+    "location": regions.map(region => ({
+      "@type": "Place",
+      "name": region.name,
+      "description": region.description
+    }))
+  };
+
   return (
     <div className="min-h-screen bg-background">
-      <Helmet>
-        <title>Global Reach | Ambica Pharma</title>
-        <meta name="description" content="Explore Ambica Pharma's global presence and international operations across continents." />
-      </Helmet>
+      <SEOHead 
+        title="Global Reach"
+        description="Explore Ambica Pharma's worldwide presence across 50+ countries. As a leading pharmaceutical wholesaler and exporter, we deliver high-quality medicines globally with excellence and reliability."
+        keywords="pharmaceutical global presence, international medicine wholesaler, drug export, international pharmaceutical distribution, global pharmaceutical trading, medicine supplier worldwide, pharmaceutical exporter India, international drug wholesale, global medication supplier, worldwide drug distribution, international pharma partnerships, global healthcare solutions"
+        canonicalUrl="https://ambicapharma.net/global-reach"
+        structuredData={globalReachSchema}
+      />
       
       {/* Hero Section */}
       <section className="py-16 bg-primary/10 relative overflow-hidden">

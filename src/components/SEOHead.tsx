@@ -24,19 +24,29 @@ const SEOHead: React.FC<SEOHeadProps> = ({
   ogType = "website",
   structuredData,
 }) => {
+  // Ensure title format is "Page Name | Ambica Pharma" unless it already contains Ambica Pharma
+  const formattedTitle = title.includes("Ambica Pharma") 
+    ? title 
+    : `${title} | Ambica Pharma`;
+  
+  // Enhance keywords with common variations of the company name
+  const enhancedKeywords = keywords 
+    ? `Ambica Pharma, Ambica, Ammbica, Ambicapharma, AmbicaPharma, ${keywords}` 
+    : "Ambica Pharma, Ambica, Ammbica, Ambicapharma, AmbicaPharma, pharmaceutical distributor, medicine wholesaler, pharma exporter";
+
   return (
     <Helmet>
       {/* Primary Meta Tags */}
-      <title>{title}</title>
+      <title>{formattedTitle}</title>
       <meta name="description" content={description} />
-      {keywords && <meta name="keywords" content={keywords} />}
+      <meta name="keywords" content={enhancedKeywords} />
       
       {/* Canonical URL */}
       <link rel="canonical" href={canonicalUrl} />
       
       {/* Open Graph / Facebook */}
       <meta property="og:type" content={ogType} />
-      <meta property="og:title" content={title} />
+      <meta property="og:title" content={formattedTitle} />
       <meta property="og:description" content={description} />
       <meta property="og:image" content={ogImage} />
       <meta property="og:url" content={canonicalUrl} />
@@ -44,13 +54,17 @@ const SEOHead: React.FC<SEOHeadProps> = ({
       
       {/* Twitter */}
       <meta name="twitter:card" content="summary_large_image" />
-      <meta name="twitter:title" content={title} />
+      <meta name="twitter:title" content={formattedTitle} />
       <meta name="twitter:description" content={description} />
       <meta name="twitter:image" content={ogImage} />
       
       {/* Additional SEO meta tags */}
       <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
       <meta name="author" content="Ambica Pharma" />
+      <meta name="geo.region" content="IN" />
+      <meta name="geo.placename" content="Mumbai" />
+      <meta name="language" content="English" />
+      <meta name="revisit-after" content="7 days" />
       
       {/* Structured Data */}
       {structuredData && (
