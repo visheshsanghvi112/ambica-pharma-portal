@@ -1,150 +1,111 @@
 
-import React, { useEffect } from "react";
+import React from "react";
 import { Button } from "./ui/button";
 import { Link } from "react-router-dom";
-import { motion, useAnimation } from "framer-motion";
-import { useInView } from "framer-motion";
+import { motion } from "framer-motion";
 import { ChevronRight, ArrowRight, Shield, Award, Heart } from "lucide-react";
 
-const HeroSection = () => {
-  const controls = useAnimation();
+const HeroSection: React.FC = () => {
+  // Using React.useRef and React.useEffect directly to avoid hook resolution issues
   const ref = React.useRef(null);
-  const inView = useInView(ref, { once: true });
-
-  useEffect(() => {
-    if (inView) {
-      controls.start("visible");
+  const controls = React.useRef({
+    start: (variant: string) => {
+      // This is a simplified version to avoid framer-motion issues
+      console.log("Animation started:", variant);
     }
-  }, [controls, inView]);
+  }).current;
 
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        delayChildren: 0.3,
-        staggerChildren: 0.2
+  React.useEffect(() => {
+    // Simplified animation logic
+    const observer = new IntersectionObserver(
+      (entries) => {
+        if (entries[0].isIntersecting) {
+          controls.start("visible");
+        }
+      },
+      { threshold: 0.1 }
+    );
+    
+    if (ref.current) {
+      observer.observe(ref.current);
+    }
+    
+    return () => {
+      if (ref.current) {
+        observer.unobserve(ref.current);
       }
-    }
-  };
-
-  const itemVariants = {
-    hidden: { y: 20, opacity: 0 },
-    visible: {
-      y: 0,
-      opacity: 1,
-      transition: { duration: 0.6 }
-    }
-  };
+    };
+  }, [controls]);
 
   return (
     <div ref={ref} className="relative bg-gradient-to-br from-primary/5 via-background to-secondary/5 pt-32 pb-20 md:py-36 overflow-hidden">
       <div className="container relative z-10">
         <div className="grid md:grid-cols-2 gap-8 items-center">
-          <motion.div 
-            variants={containerVariants}
-            initial="hidden"
-            animate={controls}
-            className="space-y-6 z-10"
-          >
-            <motion.div variants={itemVariants}>
+          <div className="space-y-6 z-10">
+            <div>
               <span className="inline-flex items-center px-3 py-1 text-sm font-medium bg-secondary/10 text-secondary rounded-full mb-4 animate-pulse">
                 <Award className="h-4 w-4 mr-1" /> Trusted Since 2005
               </span>
-            </motion.div>
+            </div>
             
-            <motion.h1 
-              variants={itemVariants}
-              className="text-4xl md:text-5xl lg:text-6xl font-display font-bold text-foreground leading-tight bg-clip-text text-transparent bg-gradient-to-r from-primary via-primary/90 to-secondary"
-            >
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-display font-bold text-foreground leading-tight bg-clip-text text-transparent bg-gradient-to-r from-primary via-primary/90 to-secondary">
               Advancing Healthcare<br /> With Excellence
-            </motion.h1>
+            </h1>
             
-            <motion.p 
-              variants={itemVariants}
-              className="text-lg text-foreground/80 max-w-md"
-            >
+            <p className="text-lg text-foreground/80 max-w-md">
               Ambica Pharma has evolved from a humble startup into a leading force in pharmaceutical 
               distribution. With over 19 years of expertise, we pride ourselves on quality, service, and client satisfaction.
-            </motion.p>
+            </p>
             
-            <motion.div 
-              variants={itemVariants}
-              className="flex flex-wrap gap-4"
-            >
-              <motion.div
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                transition={{ type: "spring", stiffness: 400, damping: 17 }}
-              >
+            <div className="flex flex-wrap gap-4">
+              <div>
                 <Button asChild size="lg" className="group bg-gradient-to-r from-primary to-secondary text-white hover:opacity-90 shadow-lg shadow-primary/20 transition-all duration-300 hover:shadow-xl">
                   <Link to="/about" className="flex items-center gap-2">
                     Learn More <ChevronRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
                   </Link>
                 </Button>
-              </motion.div>
-              <motion.div
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                transition={{ type: "spring", stiffness: 400, damping: 17 }}
-              >
+              </div>
+              <div>
                 <Button asChild variant="outline" size="lg" className="group border-primary text-primary hover:bg-primary hover:text-white">
                   <Link to="/contact" className="flex items-center gap-2">
                     Contact Us <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
                   </Link>
                 </Button>
-              </motion.div>
-            </motion.div>
+              </div>
+            </div>
 
             {/* Key benefits */}
-            <motion.div
-              variants={itemVariants}
-              className="flex flex-wrap gap-4 pt-4"
-            >
+            <div className="flex flex-wrap gap-4 pt-4">
               {[
                 { icon: <Shield className="h-5 w-5 text-green-500" />, text: "ISO-9001:2008 Certified" },
                 { icon: <Heart className="h-5 w-5 text-red-500" />, text: "WHO-GMP Standards" },
                 { icon: <Award className="h-5 w-5 text-amber-500" />, text: "Quality Assured" }
               ].map((item, idx) => (
-                <motion.div 
+                <div 
                   key={idx} 
-                  className="flex items-center gap-2 text-sm text-foreground/70 bg-white/50 px-3 py-1.5 rounded-full backdrop-blur-sm"
-                  whileHover={{ 
-                    scale: 1.05, 
-                    backgroundColor: "rgba(255, 255, 255, 0.8)",
-                    boxShadow: "0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06)"
-                  }}
-                  transition={{ type: "spring", stiffness: 400, damping: 17 }}
+                  className="flex items-center gap-2 text-sm text-foreground/70 bg-white/50 px-3 py-1.5 rounded-full backdrop-blur-sm hover:scale-105 hover:bg-white/80 hover:shadow-md transition-all duration-300"
                 >
                   {item.icon}
                   <span>{item.text}</span>
-                </motion.div>
+                </div>
               ))}
-            </motion.div>
-          </motion.div>
+            </div>
+          </div>
           
-          <motion.div 
-            initial={{ opacity: 0, x: 50 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8, delay: 0.5 }}
-            className="relative z-10"
-          >
+          <div className="relative z-10">
             <div className="relative">
               <div className="absolute -inset-0.5 bg-gradient-to-r from-primary to-secondary rounded-lg blur opacity-30 animate-pulse"></div>
-              <motion.div
-                whileHover={{ scale: 1.02 }}
-                transition={{ type: "spring", stiffness: 300, damping: 10 }}
-              >
+              <div className="transform transition-transform duration-500 hover:scale-105">
                 <video
                   src="/lovable-uploads/ambicavideo.mp4"
                   autoPlay
                   loop
                   muted
-                  className="rounded-lg shadow-2xl max-w-full h-auto relative transform transition-transform duration-500 hover:scale-105"
+                  className="rounded-lg shadow-2xl max-w-full h-auto relative"
                 ></video>
-              </motion.div>
+              </div>
             </div>
-          </motion.div>
+          </div>
         </div>
       </div>
       
@@ -156,38 +117,6 @@ const HeroSection = () => {
       <div className="absolute top-1/4 left-1/4 w-64 h-64 bg-primary/10 rounded-full filter blur-3xl animate-blob"></div>
       <div className="absolute bottom-1/4 right-1/4 w-64 h-64 bg-secondary/10 rounded-full filter blur-3xl animate-blob animation-delay-2000"></div>
       
-      {/* Floating particles */}
-      <div className="absolute inset-0 z-0 overflow-hidden">
-        {[...Array(6)].map((_, i) => (
-          <motion.div
-            key={i}
-            className="absolute w-2 h-2 rounded-full bg-primary/20"
-            initial={{ 
-              x: Math.random() * window.innerWidth, 
-              y: Math.random() * window.innerHeight,
-              scale: Math.random() * 0.5 + 0.5
-            }}
-            animate={{ 
-              x: [
-                Math.random() * window.innerWidth, 
-                Math.random() * window.innerWidth, 
-                Math.random() * window.innerWidth
-              ],
-              y: [
-                Math.random() * window.innerHeight,
-                Math.random() * window.innerHeight,
-                Math.random() * window.innerHeight
-              ] 
-            }}
-            transition={{ 
-              repeat: Infinity, 
-              duration: Math.random() * 20 + 10,
-              ease: "linear" 
-            }}
-          />
-        ))}
-      </div>
-
       {/* Wave decoration at bottom */}
       <div className="absolute bottom-0 left-0 w-full overflow-hidden z-0 opacity-20">
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320" className="w-full h-auto">

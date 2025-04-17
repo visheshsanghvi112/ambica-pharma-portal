@@ -12,7 +12,7 @@ import {
 } from "./ui/dropdown-menu";
 import { motion } from "framer-motion";
 
-const Header = () => {
+const Header: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const location = useLocation();

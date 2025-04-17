@@ -51,12 +51,6 @@ const SEOHead: React.FC<SEOHeadProps> = ({
       {/* Additional SEO meta tags */}
       <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
       <meta name="author" content="Ambica Pharma" />
-      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-      <meta name="theme-color" content="#4F46E5" />
-      <meta name="mobile-web-app-capable" content="yes" />
-      <meta name="apple-mobile-web-app-capable" content="yes" />
-      <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
-      <meta name="format-detection" content="telephone=no" />
       
       {/* Structured Data */}
       {structuredData && (
@@ -64,11 +58,6 @@ const SEOHead: React.FC<SEOHeadProps> = ({
           {JSON.stringify(structuredData)}
         </script>
       )}
-      
-      {/* Favicon */}
-      <link rel="icon" href="/lovable-uploads/e75f626d-a490-496b-8817-294d7128b441.png" />
-      <link rel="apple-touch-icon" href="/lovable-uploads/e75f626d-a490-496b-8817-294d7128b441.png" />
-      <link rel="shortcut icon" href="/lovable-uploads/e75f626d-a490-496b-8817-294d7128b441.png" />
     </Helmet>
   );
 };
