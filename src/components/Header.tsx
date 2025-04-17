@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Menu, X, Phone, Mail, ChevronDown } from "lucide-react";
@@ -9,6 +10,7 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "./ui/dropdown-menu";
+import { motion } from "framer-motion";
 
 const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -61,9 +63,6 @@ const Header = () => {
             <Link to="/about" className={cn("font-medium", isActive("/about") && "text-secondary")}>
               About Us
             </Link>
-            {/* <Link to="/team" className={cn("font-medium", isActive("/team") && "text-secondary")}>
-              Our Team
-            </Link> */}
 
             <DropdownMenu>
               <DropdownMenuTrigger className="flex items-center font-medium">
@@ -72,10 +71,7 @@ const Header = () => {
               <DropdownMenuContent className="bg-background/95 p-2 w-48">
                 {[
                   { path: "/contact", label: "Contact" },
-                  // { path: "/blog", label: "Blog" },
-                  // { path: "/team", label: "Our Team" },
                   { path: "/careers", label: "Careers" },
-                  // { path: "/achievements", label: "Achievements" },
                   { path: "/csr", label: "CSR" },
                   { path: "/faq", label: "FAQ" },
                   { path: "/privacy", label: "Privacy Policy" }
@@ -87,9 +83,16 @@ const Header = () => {
               </DropdownMenuContent>
             </DropdownMenu>
 
-            <Button size="sm" className="bg-gradient-to-r from-secondary to-primary animate-pulse">
-              Emergency Order
-            </Button>
+            <motion.div
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+            >
+              <Link to="/emergency">
+                <Button className="bg-gradient-to-r from-secondary to-primary text-white animate-pulse">
+                  Emergency Order
+                </Button>
+              </Link>
+            </motion.div>
           </div>
 
           {/* Mobile menu button */}
@@ -130,7 +133,6 @@ const Header = () => {
             {[
               { path: "/", label: "Home" },
               { path: "/about", label: "About Us" },
-              // { path: "/team", label: "Our Team" },
               { path: "/contact", label: "Contact Us" },
               { path: "/blog", label: "Blog" },
               { path: "/careers", label: "Careers" },
@@ -152,9 +154,11 @@ const Header = () => {
               </Link>
             ))}
 
-            <Button className="bg-gradient-to-r from-secondary to-primary mt-6 animate-pulse" onClick={closeMenu}>
-              Emergency Order
-            </Button>
+            <Link to="/emergency" onClick={closeMenu}>
+              <Button className="bg-gradient-to-r from-secondary to-primary mt-6 animate-pulse w-full">
+                Emergency Order
+              </Button>
+            </Link>
           </nav>
 
           {/* Contact Info */}

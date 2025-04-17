@@ -1,5 +1,6 @@
 
 import React, { useEffect, useRef } from 'react';
+import { motion } from 'framer-motion';
 
 interface MapComponentProps {
   lat: number;
@@ -15,7 +16,7 @@ const MapComponent: React.FC<MapComponentProps> = ({ lat, lng, zoom = 15, title 
   const infoWindowRef = useRef<google.maps.InfoWindow | null>(null);
 
   useEffect(() => {
-    // Create a script element to load Google Maps API
+    // Load Google Maps API with correct async attribute
     const loadGoogleMapsScript = () => {
       if (window.google && window.google.maps) {
         // API already loaded
@@ -49,9 +50,39 @@ const MapComponent: React.FC<MapComponentProps> = ({ lat, lng, zoom = 15, title 
           zoomControl: true,
           styles: [
             {
+              featureType: "all",
+              elementType: "labels.text.fill",
+              stylers: [{ color: "#7c93a3" }, { lightness: -10 }]
+            },
+            {
+              featureType: "administrative.country",
+              elementType: "geometry",
+              stylers: [{ visibility: "on" }]
+            },
+            {
+              featureType: "administrative.province",
+              elementType: "geometry.stroke",
+              stylers: [{ color: "#ffffff" }]
+            },
+            {
+              featureType: "landscape",
+              elementType: "geometry",
+              stylers: [{ color: "#f9f9f9" }]
+            },
+            {
+              featureType: "landscape.man_made",
+              elementType: "geometry.stroke",
+              stylers: [{ color: "#e6e6e6" }, { visibility: "on" }]
+            },
+            {
               featureType: "poi",
-              elementType: "labels",
-              stylers: [{ visibility: "off" }]
+              elementType: "geometry",
+              stylers: [{ visibility: "simplified" }]
+            },
+            {
+              featureType: "water",
+              elementType: "all",
+              stylers: [{ color: "#aee0f4" }]
             }
           ]
         };
@@ -78,10 +109,10 @@ const MapComponent: React.FC<MapComponentProps> = ({ lat, lng, zoom = 15, title 
       // Create info window
       if (!infoWindowRef.current) {
         infoWindowRef.current = new window.google.maps.InfoWindow({
-          content: `<div class="p-2 font-semibold text-gray-800">${title}</div>`
+          content: `<div class="p-3 font-semibold text-gray-800">${title}</div>`
         });
       } else {
-        infoWindowRef.current.setContent(`<div class="p-2 font-semibold text-gray-800">${title}</div>`);
+        infoWindowRef.current.setContent(`<div class="p-3 font-semibold text-gray-800">${title}</div>`);
       }
 
       // Correctly add click listener to marker to show info window
@@ -123,13 +154,18 @@ const MapComponent: React.FC<MapComponentProps> = ({ lat, lng, zoom = 15, title 
   }, [lat, lng, zoom, title]);
 
   return (
-    <div className="w-full rounded-xl overflow-hidden shadow-xl border border-primary/10">
+    <motion.div 
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.5 }}
+      className="w-full rounded-xl overflow-hidden shadow-xl border border-primary/20"
+    >
       <div 
         ref={mapRef} 
-        className="w-full h-[500px] z-10"
+        className="w-full h-[400px] md:h-[500px] z-10"
         aria-label={`Google Map showing location of ${title}`}
       />
-    </div>
+    </motion.div>
   );
 };
 
