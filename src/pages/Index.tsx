@@ -1,10 +1,8 @@
-
 import React, { useEffect } from "react";
 import HeroSection from "../components/HeroSection";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
-import { motion, useAnimation } from "framer-motion";
-import { useInView } from "framer-motion";
+import { motion, useAnimation, useInView } from "framer-motion";
 import { CheckCircle, Heart, Tablet, Brain, Shield, Pill, Baby, Eye, MessageCircle, ArrowRight, Award, Star, TrendingUp, Globe, UserCheck, Sparkles } from "lucide-react";
 import Statistics from "../components/Statistics";
 import Testimonials from "../components/Testimonials";
@@ -68,56 +66,7 @@ const productCategories = [
   }
 ];
 
-// Customer testimonials data
-const customerTestimonials = [
-  {
-    quote: "Ambica Pharma has been our reliable supplier for diabetes medications. Their quality products and timely delivery make them our preferred partner.",
-    author: "Gaurav Mishra",
-    position: "Regular Customer, Delhi"
-  },
-  {
-    quote: "As a small clinic owner, I've been sourcing medicines from Ambica for years. Their prompt service and competitive pricing keep my patients happy.",
-    author: "Dr. Priya Patel",
-    position: "General Physician, Mumbai"
-  },
-  {
-    quote: "Finding affordable cardiovascular medications was challenging until I discovered Ambica Pharma. Now my patients can afford their treatment plans.",
-    author: "Dr. Kumar Singh",
-    position: "Cardiologist, Hyderabad"
-  },
-  {
-    quote: "The pediatric antibiotics from Ambica Pharma are trusted by our hospital for efficacy and safety. We appreciate their commitment to quality.",
-    author: "Dr. Anita Desai",
-    position: "Pediatrician, Mumbai"
-  }
-];
-
-// Global achievements data
-const globalAchievements = [
-  { 
-    title: "Countries Served", 
-    value: "45+", 
-    icon: <Globe className="h-6 w-6 text-blue-500" />
-  },
-  { 
-    title: "Trusted Partners", 
-    value: "300000+", 
-    icon: <UserCheck className="h-6 w-6 text-green-500" />
-  },
-  { 
-    title: "Product Range", 
-    value: "5000+", 
-    icon: <TrendingUp className="h-6 w-6 text-purple-500" />
-  },
-  { 
-    title: "Awards Won", 
-    value: "35+", 
-    icon: <Award className="h-6 w-6 text-amber-500" />
-  }
-];
-
 const Index = () => {
-  // Setup animation controls for scroll animations
   const controls = useAnimation();
   const ref = React.useRef(null);
   const inView = useInView(ref, { once: false, amount: 0.3 });
@@ -134,37 +83,14 @@ const Index = () => {
       <SEOHead 
         title="Ambica Pharma - Leading Pharmaceutical Wholesaler, Trader & Exporter in India"
         description="Ambica Pharma is a top pharmaceutical wholesaler, trader and exporter offering high-quality medicines, tablets, capsules, injectables, and drops with WHO-GMP and ISO 9001 certification. Serving global markets in 25+ countries since 2005."
-        keywords="pharmaceutical wholesaler, pharmaceutical trader, medicine exporter, Ambica Pharma, pharmaceutical tablets, pharmaceutical capsules, pharmaceutical injectables, medicine manufacturer, drug distributor, pharmaceutical drops, WHO-GMP certified, ISO 9001 pharma, healthcare products, generic medicine exporter, pharmaceutical suppliers India"
-        structuredData={{
-          "@context": "https://schema.org",
-          "@type": "Organization",
-          "name": "Ambica Pharma",
-          "url": "https://ambicapharma.net",
-          "logo": "/lovable-uploads/e75f626d-a490-496b-8817-294d7128b441.png",
-          "foundingDate": "2005",
-          "description": "Leading pharmaceutical wholesaler, trader, and exporter of tablets, capsules, and injectables with WHO-GMP certification, serving global markets since 2005.",
-          "address": {
-            "@type": "PostalAddress",
-            "streetAddress": "22 to 25, 2nd Floor, Chapsey Building, 72/78, Shamaldas Gandhi Marg, Kalbadevi",
-            "addressLocality": "Mumbai",
-            "addressRegion": "Maharashtra",
-            "postalCode": "400 002",
-            "addressCountry": "IN"
-          },
-          "contactPoint": {
-            "@type": "ContactPoint",
-            "telephone": "+91-9004049076",
-            "contactType": "customer service",
-            "availableLanguage": ["English", "Hindi"]
-          }
-        }}
+        keywords="pharmaceutical wholesaler, pharmaceutical trader, medicine exporter, Ambica Pharma, pharmaceutical tablets, pharmaceutical capsules, pharmaceutical injectables, medicine manufacturer, drug distributor, pharmaceutical drops, WHO-GMP certified, ISO 9001 pharma, healthcare products, generic medicine exporter, pharmaceutical suppliers India, Ambica, Ammbica, AmbicaPharma"
       />
       
       {/* Hero Section */}
       <HeroSection />
-      
-      {/* Quick Overview */}
-      <section className="py-16 bg-gradient-to-r from-indigo-50 to-blue-50 dark:from-indigo-900/20 dark:to-blue-900/20 relative overflow-hidden">
+
+      {/* Quick Overview with enhanced styling */}
+      <section className="py-16 bg-gradient-to-br from-blue-50/50 via-background to-indigo-50/50 dark:from-blue-950/10 dark:via-background dark:to-indigo-950/10 relative overflow-hidden">
         {/* Animated background elements */}
         <div className="absolute top-0 left-0 w-full h-full opacity-30 overflow-hidden pointer-events-none">
           <div className="absolute top-10 left-10 w-40 h-40 rounded-full bg-gradient-to-r from-blue-300 to-blue-400 blur-3xl animate-blob"></div>
@@ -181,23 +107,23 @@ const Index = () => {
             className="text-center mb-12"
           >
             <motion.span 
-              className="px-3 py-1 text-sm font-medium bg-secondary/10 text-secondary rounded-full mb-4 inline-block"
-              whileHover={{ scale: 1.05, backgroundColor: "rgba(var(--secondary), 0.2)" }}
+              className="px-4 py-1.5 text-sm font-medium bg-gradient-to-r from-primary/10 to-secondary/10 text-primary rounded-full mb-4 inline-flex items-center gap-2"
+              whileHover={{ scale: 1.05 }}
               transition={{ type: "spring", stiffness: 400, damping: 10 }}
             >
-              <Sparkles className="h-4 w-4 inline mr-1" />
-              Trusted Pharmaceutical Partner
+              <Sparkles className="h-4 w-4" />
+              Trusted Pharmaceutical Partner Since 2005
             </motion.span>
-            <h2 className="text-3xl md:text-4xl font-display font-bold mb-4 bg-clip-text text-transparent bg-gradient-to-r from-blue-600 via-indigo-600 to-violet-600">
-              Established Excellence Since 2005
+            <h2 className="text-3xl md:text-4xl xl:text-5xl font-display font-bold mb-6 bg-clip-text text-transparent bg-gradient-to-r from-primary via-primary/90 to-secondary">
+              Excellence in Pharmaceutical Distribution
             </h2>
-            <div className="w-24 h-1 bg-gradient-to-r from-blue-600 to-violet-600 mx-auto mt-2 mb-4 rounded-full"></div>
-            <p className="text-foreground/80 max-w-3xl mx-auto text-lg">
-              Ambica Pharma is a trusted name in pharmaceutical distribution, known for quality products and exceptional service across India and international markets.
+            <div className="w-24 h-1 bg-gradient-to-r from-primary to-secondary mx-auto mb-6 rounded-full"></div>
+            <p className="text-foreground/80 max-w-3xl mx-auto text-lg md:text-xl leading-relaxed">
+              Providing quality pharmaceutical products and exceptional service across India and international markets.
             </p>
           </motion.div>
           
-          <div className="grid md:grid-cols-3 gap-8">
+          <div className="grid md:grid-cols-3 gap-6 md:gap-8">
             {/* Card 1 */}
             <motion.div 
               initial={{ opacity: 0, y: 20 }}
@@ -270,8 +196,9 @@ const Index = () => {
         </div>
       </section>
       
-      {/* Global Presence Banner with enhanced visual effects and number counter */}
-      <section ref={ref} className="py-12 bg-gradient-to-r from-blue-50 via-transparent to-indigo-50 dark:from-blue-900/10 dark:via-transparent dark:to-indigo-900/10 relative overflow-hidden">
+      {/* Global Presence Banner */}
+      <section className="py-12 bg-gradient-to-r from-primary/5 via-background to-secondary/5 dark:from-primary/10 dark:via-background dark:to-secondary/10 relative overflow-hidden">
+        {/* Animated pattern overlay */}
         <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80')] opacity-5 mix-blend-overlay"></div>
         
         {/* Animated pattern overlay */}
@@ -292,7 +219,28 @@ const Index = () => {
             animate={controls}
             className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-8"
           >
-            {globalAchievements.map((item, index) => (
+            {[
+              { 
+                title: "Countries Served", 
+                value: "45+", 
+                icon: <Globe className="h-6 w-6 text-blue-500" />
+              },
+              { 
+                title: "Trusted Partners", 
+                value: "300000+", 
+                icon: <UserCheck className="h-6 w-6 text-green-500" />
+              },
+              { 
+                title: "Product Range", 
+                value: "5000+", 
+                icon: <TrendingUp className="h-6 w-6 text-purple-500" />
+              },
+              { 
+                title: "Awards Won", 
+                value: "35+", 
+                icon: <Award className="h-6 w-6 text-amber-500" />
+              }
+            ].map((item, index) => (
               <motion.div
                 key={index}
                 variants={{
@@ -326,11 +274,11 @@ const Index = () => {
         </div>
       </section>
       
-      {/* Our Impact in Numbers */}
+      {/* Statistics with enhanced visuals */}
       <Statistics />
       
-      {/* Product Categories with enhanced cards */}
-      <section className="py-16 bg-gradient-to-b from-white to-blue-50 dark:from-background dark:to-indigo-900/10 relative overflow-hidden">
+      {/* Product Categories with improved card design */}
+      <section className="py-16 bg-gradient-to-b from-background via-blue-50/20 to-background dark:from-background dark:via-blue-900/5 dark:to-background relative overflow-hidden">
         {/* Background decorative elements */}
         <div className="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none">
           <div className="absolute top-40 left-20 w-64 h-64 bg-gradient-to-br from-blue-200/40 to-blue-300/20 dark:from-blue-500/10 dark:to-blue-700/5 rounded-full filter blur-3xl"></div>
@@ -409,8 +357,8 @@ const Index = () => {
         </div>
       </section>
       
-      {/* Why Choose Us - Enhanced with better styling */}
-      <section className="py-16 bg-gradient-to-r from-blue-50 to-indigo-50 dark:from-blue-900/10 dark:to-indigo-900/10 relative overflow-hidden">
+      {/* Why Choose Us - Enhanced Layout */}
+      <section className="py-16 bg-gradient-to-br from-background to-secondary/5 dark:from-background dark:to-secondary/10 relative overflow-hidden">
         {/* Decorative elements */}
         <div className="absolute inset-0">
           <div className="absolute top-0 left-0 w-full h-20 bg-gradient-to-b from-background to-transparent"></div>
@@ -519,6 +467,9 @@ const Index = () => {
           </div>
         </div>
       </section>
+
+      {/* Testimonials with improved visuals */}
+      <Testimonials />
     </div>
   );
 };
