@@ -154,7 +154,7 @@ const Header: React.FC = () => {
               </Link>
             ))}
 
-            <Link to="/emergency" onClick={closeMenu}>
+            <Link to="/contact" onClick={closeMenu}>
               <Button className="bg-gradient-to-r from-secondary to-primary mt-6 animate-pulse w-full">
                 Emergency Order
               </Button>
