@@ -87,7 +87,7 @@ const Header: React.FC = () => {
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
             >
-              <Link to="/emergency">
+              <Link to="/contact">
                 <Button className="bg-gradient-to-r from-secondary to-primary text-white animate-pulse">
                   Emergency Order
                 </Button>
