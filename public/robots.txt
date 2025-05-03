@@ -1,107 +1,79 @@
 
 # Ambica Pharma Robots.txt
 # Website: https://ambicapharma.net
-# Last updated: 2025-04-10
+# Last updated: 2025-05-03
 
 User-agent: *
 Allow: /
 
-# Sitemap
+# Sitemap declaration
 Sitemap: https://ambicapharma.net/sitemap.xml
 
-# Disallow specific paths
+# Specific crawler directives
+User-agent: Googlebot
+Allow: /
+Crawl-delay: 2
+
+User-agent: Bingbot
+Allow: /
+Crawl-delay: 5
+
+User-agent: Yandexbot
+Allow: /
+Crawl-delay: 10
+
+# Search engine specific permissions
+User-agent: Googlebot-Image
+Allow: /images/
+Allow: /products/
+Allow: /team/
+Allow: /facilities/
+Allow: /achievements/
+
+User-agent: Googlebot-Mobile
+Allow: /
+
+# Healthcare specific crawlers
+User-agent: googlebot-news
+Allow: /blog/
+Allow: /news/
+Allow: /products/
+Allow: /achievements/
+
+# Disallow admin, private, and unnecessary paths
 User-agent: *
 Disallow: /admin/
 Disallow: /private/
 Disallow: /tmp/
 Disallow: /api/
-Disallow: /*.pdf$
-Disallow: /*?*
-Disallow: /*/search*
-Disallow: /*/filter*
-Disallow: /*/sort*
-Disallow: /*?query=*
+Disallow: /*/print
+Disallow: /*/pdf
+Disallow: /*/export
+Disallow: /*?*query=*
+Disallow: /*?*filter=*
+Disallow: /*?*sort=*
+Disallow: /*?*search=*
+Disallow: /*?*s=*
+Disallow: /*?*utm_*=*
 
-# Allow search engines to crawl important sections
-User-agent: Googlebot
-Allow: /
-Allow: /about
-Allow: /products
-Allow: /careers
-Allow: /contact
-Allow: /global-reach
-Allow: /blog
-Allow: /team
-Allow: /achievements
-Allow: /csr
-Allow: /faq
-Disallow: /*/print$
+# Pharmaceutical industry-specific sections for SEO
+Allow: /generic-medicines/
+Allow: /tablets/
+Allow: /capsules/
+Allow: /injectables/
+Allow: /drops/
+Allow: /ointments/
+Allow: /who-gmp-certification/
+Allow: /iso-certification/
+Allow: /quality-control/
+Allow: /global-distribution/
+Allow: /pharmaceutical-exports/
+Allow: /pharmaceutical-trading/
+Allow: /pharmaceutical-wholesaling/
+Allow: /bulk-medicine-supply/
+Allow: /pharma-quotation/
 
-User-agent: Bingbot
-Allow: /
-Allow: /about
-Allow: /products
-Allow: /careers
-Allow: /contact
-Allow: /global-reach
-Allow: /blog
-Allow: /team
-Allow: /achievements
-Allow: /csr
-Allow: /faq
-Disallow: /*/print$
-
-User-agent: Yandexbot
-Allow: /
-Allow: /about
-Allow: /products
-Allow: /careers
-Allow: /contact
-Disallow: /*/print$
-
-User-agent: Twitterbot
-Allow: /
-
-User-agent: facebookexternalhit
-Allow: /
-
-# Crawl-delay for specific bots
-User-agent: Bingbot
-Crawl-delay: 10
-
-User-agent: YandexBot
-Crawl-delay: 10
-
-# Health related sections specifically allowed for health industry crawlers
-User-agent: googlebot-news
-Allow: /blog
-Allow: /news
-Allow: /products
-Allow: /achievements
-
-# Google Image Crawler - Allow access to image-heavy pages
-User-agent: Googlebot-Image
-Allow: /products
-Allow: /facilities
-Allow: /team
-Allow: /about
-
-# Pharmaceutical industry specific sections
-Allow: /generic-medicines
-Allow: /tablets
-Allow: /capsules
-Allow: /injectables
-Allow: /drops
-Allow: /who-gmp-certification
-Allow: /iso-certification
-Allow: /quality-control
-Allow: /global-distribution
-
-# Prevent archive.org from archiving the site
-User-agent: archive.org_bot
-Disallow: /
-
-# Site mirroring and scraping prevention
+# Prevent scraping and site mirroring
 User-agent: HTTrack
 Disallow: /
 

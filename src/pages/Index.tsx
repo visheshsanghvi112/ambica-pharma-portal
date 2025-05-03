@@ -1,4 +1,3 @@
-
 import React, { useEffect } from "react";
 import HeroSection from "../components/HeroSection";
 import { Button } from "@/components/ui/button";
@@ -128,36 +127,85 @@ const Index = () => {
     }
   }, [controls, inView]);
 
+  // Enhanced SEO structured data for the homepage
+  const homePageStructuredData = {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "@id": "https://ambicapharma.net/#webpage",
+    "url": "https://ambicapharma.net/",
+    "name": "Ambica Pharma - Leading Pharmaceutical Wholesaler, Trader & Exporter in India",
+    "isPartOf": {
+      "@id": "https://ambicapharma.net/#website"
+    },
+    "primaryImageOfPage": {
+      "@id": "https://ambicapharma.net/lovable-uploads/e75f626d-a490-496b-8817-294d7128b441.png"
+    },
+    "datePublished": "2005-01-01T00:00:00+00:00",
+    "dateModified": "2025-05-03T00:00:00+00:00",
+    "description": "Ambica Pharma is a top pharmaceutical wholesaler, trader and exporter offering high-quality medicines, tablets, capsules, injectables, and drops with WHO-GMP and ISO 9001 certification. Serving global markets in 25+ countries since 2005.",
+    "breadcrumb": {
+      "@id": "https://ambicapharma.net/#breadcrumb"
+    },
+    "inLanguage": "en-US",
+    "potentialAction": [
+      {
+        "@type": "ReadAction",
+        "target": ["https://ambicapharma.net/"]
+      },
+      {
+        "@type": "SearchAction",
+        "target": {
+          "@type": "EntryPoint",
+          "urlTemplate": "https://ambicapharma.net/search?q={search_term_string}"
+        },
+        "query-input": "required name=search_term_string"
+      }
+    ],
+    "mainEntity": {
+      "@type": "Organization",
+      "name": "Ambica Pharma",
+      "url": "https://ambicapharma.net",
+      "logo": "https://ambicapharma.net/lovable-uploads/e75f626d-a490-496b-8817-294d7128b441.png",
+      "description": "Leading pharmaceutical wholesaler, trader, and exporter of tablets, capsules, and injectables with WHO-GMP certification, serving global markets since 2005.",
+      "founders": [
+        {
+          "@type": "Person",
+          "name": "Dilip Shah",
+          "jobTitle": "Founder & Managing Director"
+        }
+      ],
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "22 to 25, 2nd Floor, Chapsey Building, 72/78, Shamaldas Gandhi Marg, Kalbadevi",
+        "addressLocality": "Mumbai",
+        "addressRegion": "Maharashtra",
+        "postalCode": "400 002",
+        "addressCountry": "IN"
+      },
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "telephone": "+91-9004049076",
+        "contactType": "customer service",
+        "availableLanguage": ["English", "Hindi"]
+      },
+      "sameAs": [
+        "https://www.facebook.com/ambicapharma",
+        "https://twitter.com/ambicapharma",
+        "https://www.linkedin.com/company/ambica-pharma"
+      ]
+    }
+  };
+
   return (
     <div className="min-h-screen">
-      {/* SEO Optimization */}
+      {/* Enhanced SEO Optimization */}
       <SEOHead 
         title="Ambica Pharma - Leading Pharmaceutical Wholesaler, Trader & Exporter in India"
         description="Ambica Pharma is a top pharmaceutical wholesaler, trader and exporter offering high-quality medicines, tablets, capsules, injectables, and drops with WHO-GMP and ISO 9001 certification. Serving global markets in 25+ countries since 2005."
-        keywords="pharmaceutical wholesaler, pharmaceutical trader, medicine exporter, Ambica Pharma, pharmaceutical tablets, pharmaceutical capsules, pharmaceutical injectables, medicine manufacturer, drug distributor, pharmaceutical drops, WHO-GMP certified, ISO 9001 pharma, healthcare products, generic medicine exporter, pharmaceutical suppliers India"
-        structuredData={{
-          "@context": "https://schema.org",
-          "@type": "Organization",
-          "name": "Ambica Pharma",
-          "url": "https://ambicapharma.net",
-          "logo": "/lovable-uploads/e75f626d-a490-496b-8817-294d7128b441.png",
-          "foundingDate": "2005",
-          "description": "Leading pharmaceutical wholesaler, trader, and exporter of tablets, capsules, and injectables with WHO-GMP certification, serving global markets since 2005.",
-          "address": {
-            "@type": "PostalAddress",
-            "streetAddress": "22 to 25, 2nd Floor, Chapsey Building, 72/78, Shamaldas Gandhi Marg, Kalbadevi",
-            "addressLocality": "Mumbai",
-            "addressRegion": "Maharashtra",
-            "postalCode": "400 002",
-            "addressCountry": "IN"
-          },
-          "contactPoint": {
-            "@type": "ContactPoint",
-            "telephone": "+91-9004049076",
-            "contactType": "customer service",
-            "availableLanguage": ["English", "Hindi"]
-          }
-        }}
+        keywords="pharmaceutical wholesaler, pharmaceutical trader, medicine exporter, Ambica Pharma, AmbicaPharma, Ambica, Ambicapharma, Mumbai pharmaceutical company, pharmaceutical tablets, pharmaceutical capsules, pharmaceutical injectables, medicine manufacturer, drug distributor, pharmaceutical drops, WHO-GMP certified, ISO 9001 pharma, healthcare products, generic medicine exporter, pharmaceutical suppliers India, bulk medicine distributor, pharmaceutical business, pharma franchise, pharmaceutical company Mumbai, affordable medicines, quality medicines, global pharma exporter"
+        structuredData={homePageStructuredData}
+        publishedDate="2005-01-01"
+        modifiedDate="2025-05-03"
       />
       
       {/* Hero Section */}

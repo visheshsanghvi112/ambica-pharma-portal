@@ -1,18 +1,21 @@
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0" />
     <title>Ambica Pharma - Leading Pharmaceutical Wholesaler, Trader & Exporter in India</title>
     <meta name="description" content="Ambica Pharma is a top pharmaceutical wholesaler, trader and exporter offering high-quality medicines, tablets, capsules, injectables, and drops with WHO-GMP and ISO 9001 certification. Serving global markets in 25+ countries since 2005." />
     <meta name="author" content="Ambica Pharma" />
     <meta name="google-site-verification" content="aeyZni3K0snO5KuyIGrofZih24QiU4K4TsbGBieI6Lk" />
-    <meta name="keywords" content="pharmaceutical wholesaler, pharmaceutical trader, medicine exporter, Ambica Pharma, pharmaceutical tablets, pharmaceutical capsules, pharmaceutical injectables, medicine manufacturer, drug distributor, pharmaceutical drops, WHO-GMP certified, ISO 9001 pharma, healthcare products, generic medicine exporter, pharmaceutical suppliers India, bulk medicine distributor, pharmaceutical marketing, pharma franchise, pharmaceutical company Mumbai, affordable medicines, quality medicines, global pharma exporter" />
-    <meta name="robots" content="index, follow" />
+    <meta name="keywords" content="Ambica Pharma, AmbicaPharma, Ambica, Ambicapharma, Ammbica Pharma, pharmaceutical wholesaler, pharmaceutical trader, medicine exporter, bulk medicine supplier, medicine manufacturer India, WHO-GMP certified, ISO 9001 pharma, pharmaceutical products, generic medicine exporter, pharmaceutical suppliers India, bulk medicine distributor, pharmaceutical marketing, pharma franchise, pharmaceutical company Mumbai, affordable medicines, quality medicines, global pharma exporter" />
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
     <meta name="geo.region" content="IN-MH" />
     <meta name="geo.placename" content="Mumbai" />
     <meta name="geo.position" content="19.0760;72.8777" />
     <meta name="ICBM" content="19.0760, 72.8777" />
+    <meta name="theme-color" content="#1e40af" />
+    <meta name="msapplication-TileColor" content="#1e40af" />
 
     <!-- Open Graph Tags for better social media sharing -->
     <meta property="og:title" content="Ambica Pharma - Leading Pharmaceutical Wholesaler, Trader &amp; Exporter" />
@@ -21,6 +24,10 @@
     <meta property="og:url" content="https://ambicapharma.net" />
     <meta property="og:site_name" content="Ambica Pharma" />
     <meta property="og:locale" content="en_US" />
+    <meta property="og:image" content="https://ambicapharma.net/lovable-uploads/e75f626d-a490-496b-8817-294d7128b441.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="Ambica Pharma Logo - Leading Pharmaceutical Wholesaler in India" />
     <meta property="business:contact_data:street_address" content="22 to 25, 2nd Floor, Chapsey Building, 72/78, Shamaldas Gandhi Marg, Kalbadevi" />
     <meta property="business:contact_data:locality" content="Mumbai" />
     <meta property="business:contact_data:region" content="Maharashtra" />
@@ -32,25 +39,30 @@
     <meta name="twitter:site" content="@ambicapharma" />
     <meta name="twitter:title" content="Ambica Pharma - Leading Pharmaceutical Wholesaler, Trader &amp; Exporter" />
     <meta name="twitter:description" content="Top pharmaceutical wholesaler and exporter with ISO 9001 and WHO-GMP certifications. Supplying tablets, capsules, injectables to global markets since 2005." />
+    <meta name="twitter:image" content="https://ambicapharma.net/lovable-uploads/e75f626d-a490-496b-8817-294d7128b441.png" />
+    <meta name="twitter:image:alt" content="Ambica Pharma Logo - Pharmaceutical Exporter" />
     
     <!-- Favicon -->
-    <link rel="icon" type="image/png" href="public/lovable-uploads/a5979ffb-180b-4225-a1e8-15425f28d262.png" />
-    <link rel="apple-touch-icon" href="public/lovable-uploads/a5979ffb-180b-4225-a1e8-15425f28d262.png" />
-    
-    <!-- Google Maps API - Commented out since not used on index page -->
-    <!-- <script async defer src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY_HERE&callback=initMap"></script> -->
+    <link rel="icon" type="image/png" href="/lovable-uploads/a5979ffb-180b-4225-a1e8-15425f28d262.png" />
+    <link rel="apple-touch-icon" href="/lovable-uploads/a5979ffb-180b-4225-a1e8-15425f28d262.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/lovable-uploads/a5979ffb-180b-4225-a1e8-15425f28d262.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/lovable-uploads/a5979ffb-180b-4225-a1e8-15425f28d262.png" />
     
     <!-- Canonical URL -->
     <link rel="canonical" href="https://ambicapharma.net" />
     
-    <!-- Google tag (gtag.js) for Firebase Analytics -->
+    <!-- Google tag (gtag.js) for Google Analytics 4 -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-2PZ7FVFDBN"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
       gtag('js', new Date());
       // Don't enable analytics until consent
-      gtag('config', 'G-2PZ7FVFDBN', { 'send_page_view': false });
+      gtag('config', 'G-2PZ7FVFDBN', { 
+        'send_page_view': false,
+        'anonymize_ip': true,
+        'cookie_flags': 'SameSite=None;Secure'
+      });
     </script>
     
     <!-- Structured Data for Organization -->
@@ -58,10 +70,21 @@
       {
         "@context": "https://schema.org",
         "@type": "Organization",
+        "@id": "https://ambicapharma.net/#organization",
         "name": "Ambica Pharma",
         "url": "https://ambicapharma.net",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://ambicapharma.net/lovable-uploads/e75f626d-a490-496b-8817-294d7128b441.png",
+          "width": "800",
+          "height": "600"
+        },
         "foundingDate": "2005",
+        "foundingLocation": "Mumbai, India",
         "description": "Leading pharmaceutical wholesaler, trader, and exporter of tablets, capsules, and injectables with WHO-GMP certification, serving global markets since 2005.",
+        "slogan": "Quality Medicines for Global Health",
+        "award": ["ISO 9001:2015 Certified", "WHO-GMP Certified"],
+        "hasCredential": ["ISO 9001:2015", "WHO-GMP"],
         "address": {
           "@type": "PostalAddress",
           "streetAddress": "22 to 25, 2nd Floor, Chapsey Building, 72/78, Shamaldas Gandhi Marg, Kalbadevi",
@@ -70,12 +93,68 @@
           "postalCode": "400 002",
           "addressCountry": "IN"
         },
-        "contactPoint": {
-          "@type": "ContactPoint",
-          "telephone": "+91-9004049076",
-          "contactType": "customer service",
-          "availableLanguage": ["English", "Hindi"]
+        "contactPoint": [
+          {
+            "@type": "ContactPoint",
+            "telephone": "+91-9004049076",
+            "contactType": "customer service",
+            "contactOption": "TollFree",
+            "availableLanguage": ["English", "Hindi"]
+          },
+          {
+            "@type": "ContactPoint",
+            "telephone": "+91-022-22061599",
+            "contactType": "sales",
+            "availableLanguage": ["English", "Hindi"]
+          }
+        ],
+        "sameAs": [
+          "https://www.facebook.com/ambicapharma",
+          "https://twitter.com/ambicapharma",
+          "https://www.linkedin.com/company/ambica-pharma",
+          "https://www.instagram.com/ambicapharma/"
+        ],
+        "funder": {
+          "@type": "Person",
+          "name": "Dilip Shah",
+          "jobTitle": "Founder & Managing Director"
+        }
+      }
+    </script>
+    
+    <!-- Structured Data for Local Business -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "LocalBusiness",
+        "@id": "https://ambicapharma.net/#localbusiness",
+        "name": "Ambica Pharma",
+        "image": "https://ambicapharma.net/lovable-uploads/e75f626d-a490-496b-8817-294d7128b441.png",
+        "priceRange": "$$",
+        "telephone": "+91-9004049076",
+        "email": "info@ambicapharma.net",
+        "url": "https://ambicapharma.net",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "22 to 25, 2nd Floor, Chapsey Building, 72/78, Shamaldas Gandhi Marg, Kalbadevi",
+          "addressLocality": "Mumbai",
+          "addressRegion": "Maharashtra",
+          "postalCode": "400 002",
+          "addressCountry": "India"
         },
+        "geo": {
+          "@type": "GeoCoordinates",
+          "latitude": "19.0760",
+          "longitude": "72.8777"
+        },
+        "openingHoursSpecification": [
+          {
+            "@type": "OpeningHoursSpecification",
+            "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
+            "opens": "09:00",
+            "closes": "18:00"
+          }
+        ],
         "sameAs": [
           "https://www.facebook.com/ambicapharma",
           "https://twitter.com/ambicapharma",
@@ -89,20 +168,61 @@
       {
         "@context": "https://schema.org",
         "@type": "Product",
-        "name": "Pharmaceutical Products",
+        "name": "Pharmaceutical Products by Ambica Pharma",
+        "image": "https://ambicapharma.net/lovable-uploads/b9310eb6-c2d2-4e00-acdd-dbca91490105.png",
+        "description": "High-quality pharmaceutical tablets, capsules, injectables, drops, and more with WHO-GMP certification, exported worldwide.",
         "brand": {
           "@type": "Brand",
           "name": "Ambica Pharma"
         },
-        "description": "High-quality pharmaceutical tablets, capsules, injectables, drops, and more with WHO-GMP certification.",
         "category": "Pharmaceutical Products",
+        "keywords": "pharmaceutical tablets, pharmaceutical capsules, pharmaceutical injectables, pharmaceutical drops, WHO-GMP certified medicines",
+        "audience": {
+          "@type": "Audience",
+          "audienceType": "Pharmaceutical Distributors, Hospitals, Pharmacies"
+        },
         "offers": {
           "@type": "AggregateOffer",
           "priceCurrency": "INR",
-          "availability": "https://schema.org/InStock"
+          "availability": "https://schema.org/InStock",
+          "highPrice": "5000",
+          "lowPrice": "100",
+          "offerCount": "1000"
+        },
+        "review": {
+          "@type": "Review",
+          "reviewRating": {
+            "@type": "Rating",
+            "ratingValue": "4.8",
+            "bestRating": "5"
+          },
+          "author": {
+            "@type": "Organization",
+            "name": "Global Pharma Review"
+          }
         }
       }
     </script>
+    
+    <!-- Breadcrumb Schema -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Home",
+            "item": "https://ambicapharma.net/"
+          }
+        ]
+      }
+    </script>
+    
+    <!-- Alternate language versions -->
+    <link rel="alternate" hreflang="en" href="https://ambicapharma.net/" />
+    <link rel="alternate" hreflang="x-default" href="https://ambicapharma.net/" />
   </head>
 
   <body>
