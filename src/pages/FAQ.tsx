@@ -1,4 +1,3 @@
-
 import React, { useState } from "react";
 import { Helmet } from "react-helmet-async";
 import {
@@ -8,7 +7,7 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 import { Card, CardContent } from "@/components/ui/card";
-import { BookOpen, MessageSquareQuestion, ChevronDown } from "lucide-react";
+import { BookOpen, MessageSquare, ChevronDown } from "lucide-react";
 import { motion } from "framer-motion";
 import SEOHead from "@/components/SEOHead";
 import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/components/ui/collapsible";
@@ -208,7 +207,7 @@ const FAQ = () => {
                     >
                       <AccordionTrigger className="text-lg font-medium py-4 px-6">
                         <div className="flex items-center gap-2 text-left">
-                          <MessageSquareQuestion className="h-5 w-5 text-primary flex-shrink-0" />
+                          <MessageSquare className="h-5 w-5 text-primary flex-shrink-0" />
                           <span>{faq.question}</span>
                         </div>
                       </AccordionTrigger>
@@ -224,7 +223,7 @@ const FAQ = () => {
             </motion.div>
           ) : (
             <div className="text-center py-8">
-              <MessageSquareQuestion className="h-12 w-12 mx-auto text-gray-400" />
+              <MessageSquare className="h-12 w-12 mx-auto text-gray-400" />
               <h3 className="mt-4 text-xl font-medium">No matching questions found</h3>
               <p className="mt-2 text-gray-500">Try adjusting your search or filter criteria</p>
               <button 
@@ -249,9 +248,9 @@ const FAQ = () => {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             {[
               { title: "Products", icon: <BookOpen className="h-6 w-6" />, id: "products", description: "Learn about our product range, availability, and custom solutions" },
-              { title: "Ordering", icon: <MessageSquareQuestion className="h-6 w-6" />, id: "ordering", description: "Information about placing orders, lead times, and requirements" },
+              { title: "Ordering", icon: <MessageSquare className="h-6 w-6" />, id: "ordering", description: "Information about placing orders, lead times, and requirements" },
               { title: "Business", icon: <BookOpen className="h-6 w-6" />, id: "business", description: "Partnership opportunities, export capabilities, and distribution" },
-              { title: "Quality", icon: <MessageSquareQuestion className="h-6 w-6" />, id: "quality", description: "Our quality control processes and certifications" }
+              { title: "Quality", icon: <MessageSquare className="h-6 w-6" />, id: "quality", description: "Our quality control processes and certifications" }
             ].map((category) => (
               <Card key={category.title} className="hover:shadow-md transition-all hover:-translate-y-1 cursor-pointer" onClick={() => setCategoryFilter(category.id)}>
                 <CardContent className="p-6 flex flex-col items-center text-center">
@@ -280,7 +279,7 @@ const FAQ = () => {
                   </p>
                   <div className="flex flex-col sm:flex-row gap-4">
                     <a href="/contact" className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-md bg-primary text-white font-medium hover:bg-primary/90 transition-colors">
-                      <MessageSquareQuestion className="h-4 w-4" />
+                      <MessageSquare className="h-4 w-4" />
                       Contact Support
                     </a>
                     <a href="tel:+919967006091" className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-md bg-secondary text-white font-medium hover:bg-secondary/90 transition-colors">
