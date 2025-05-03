@@ -201,22 +201,24 @@ const FAQ = () => {
                   className="transition-all"
                 >
                   <Card className="overflow-hidden hover:shadow-md transition-all border-l-4 border-l-primary/80">
-                    <AccordionItem 
-                      value={`item-${index}`}
-                      className="border-none"
-                    >
-                      <AccordionTrigger className="text-lg font-medium py-4 px-6">
-                        <div className="flex items-center gap-2 text-left">
-                          <MessageSquare className="h-5 w-5 text-primary flex-shrink-0" />
-                          <span>{faq.question}</span>
-                        </div>
-                      </AccordionTrigger>
-                      <AccordionContent className="text-gray-700 pt-2 pb-4 px-6">
-                        <div className="pl-7 border-l border-dashed border-gray-300">
-                          {faq.answer}
-                        </div>
-                      </AccordionContent>
-                    </AccordionItem>
+                    <Accordion type="single" collapsible>
+                      <AccordionItem 
+                        value={`item-${index}`}
+                        className="border-none"
+                      >
+                        <AccordionTrigger className="text-lg font-medium py-4 px-6">
+                          <div className="flex items-center gap-2 text-left">
+                            <MessageSquare className="h-5 w-5 text-primary flex-shrink-0" />
+                            <span>{faq.question}</span>
+                          </div>
+                        </AccordionTrigger>
+                        <AccordionContent className="text-gray-700 pt-2 pb-4 px-6">
+                          <div className="pl-7 border-l border-dashed border-gray-300">
+                            {faq.answer}
+                          </div>
+                        </AccordionContent>
+                      </AccordionItem>
+                    </Accordion>
                   </Card>
                 </motion.div>
               ))}
