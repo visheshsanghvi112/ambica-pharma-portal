@@ -9,9 +9,11 @@ interface ProductCardProps {
   description: string;
   tags: string[];
   colorClass: string;
+  image?: string;
+  imageAlt?: string;
 }
 
-const ProductCard = ({ icon, title, description, tags, colorClass }: ProductCardProps) => {
+const ProductCard = ({ icon, title, description, tags, colorClass, image, imageAlt }: ProductCardProps) => {
   return (
     <motion.div 
       whileHover={{ y: -5 }}
@@ -24,6 +26,21 @@ const ProductCard = ({ icon, title, description, tags, colorClass }: ProductCard
         </div>
         <h4 className={`text-lg font-semibold ${colorClass}`}>{title}</h4>
       </div>
+      
+      {image && (
+        <div className="mb-4 overflow-hidden rounded-md">
+          <motion.img 
+            src={image} 
+            alt={imageAlt || title} 
+            width="400"
+            height="225"
+            className="w-full h-auto object-cover transition-transform hover:scale-105 duration-300"
+            loading="lazy"
+            whileHover={{ scale: 1.05 }}
+          />
+        </div>
+      )}
+      
       <p className="text-foreground/70">
         {description}
       </p>

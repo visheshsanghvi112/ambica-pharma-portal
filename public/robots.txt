@@ -1,7 +1,7 @@
 
 # Ambica Pharma Robots.txt
 # Website: https://ambicapharma.net
-# Last updated: 2025-05-03
+# Last updated: 2025-05-05
 
 User-agent: *
 Allow: /
@@ -22,14 +22,16 @@ User-agent: Yandexbot
 Allow: /
 Crawl-delay: 10
 
-# Search engine specific permissions
+# Image indexing directives
 User-agent: Googlebot-Image
 Allow: /images/
 Allow: /products/
 Allow: /team/
 Allow: /facilities/
 Allow: /achievements/
+Allow: /lovable-uploads/
 
+# Mobile-specific directives
 User-agent: Googlebot-Mobile
 Allow: /
 
@@ -56,7 +58,7 @@ Disallow: /*?*search=*
 Disallow: /*?*s=*
 Disallow: /*?*utm_*=*
 
-# Pharmaceutical industry-specific sections for SEO
+# Pharmaceutical industry-specific sections for SEO priority
 Allow: /generic-medicines/
 Allow: /tablets/
 Allow: /capsules/
@@ -72,6 +74,11 @@ Allow: /pharmaceutical-trading/
 Allow: /pharmaceutical-wholesaling/
 Allow: /bulk-medicine-supply/
 Allow: /pharma-quotation/
+Allow: /tablets/*
+Allow: /capsules/*
+Allow: /injectables/*
+Allow: /drops/*
+Allow: /ointments/*
 
 # Prevent scraping and site mirroring
 User-agent: HTTrack

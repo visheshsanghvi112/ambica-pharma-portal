@@ -8,27 +8,69 @@ const statistics = [
   {
     title: "Years of Marketing & Distribution",
     value: "19",
-    icon: <Clock className="h-7 w-7 md:h-8 md:w-8 text-primary" />
+    icon: <Clock className="h-6 w-6 md:h-7 md:w-7 text-primary" />
   },
   {
     title: "Happy Customers",
     value: "9242+",
-    icon: <Users className="h-7 w-7 md:h-8 md:w-8 text-primary" />
+    icon: <Users className="h-6 w-6 md:h-7 md:w-7 text-primary" />
   },
   {
     title: "Years of Experience",
     value: "22",
-    icon: <Award className="h-7 w-7 md:h-8 md:w-8 text-primary" />
+    icon: <Award className="h-6 w-6 md:h-7 md:w-7 text-primary" />
   },
   {
     title: "Quality Products",
     value: "1000+",
-    icon: <Activity className="h-7 w-7 md:h-8 md:w-8 text-primary" />
+    icon: <Activity className="h-6 w-6 md:h-7 md:w-7 text-primary" />
   }
 ];
 
 const Statistics = () => {
   const isMobile = useIsMobile();
+  
+  // HowTo schema for implementing pharmaceutical quality control
+  const howToSchema = {
+    "@context": "https://schema.org",
+    "@type": "HowTo",
+    "name": "How Ambica Pharma Ensures Pharmaceutical Quality",
+    "description": "Learn how Ambica Pharma implements rigorous quality control measures for pharmaceutical products.",
+    "totalTime": "PT2H",
+    "tool": [
+      {
+        "@type": "HowToTool",
+        "name": "Quality Testing Equipment"
+      },
+      {
+        "@type": "HowToTool",
+        "name": "WHO-GMP Standards Documentation"
+      }
+    ],
+    "step": [
+      {
+        "@type": "HowToStep",
+        "name": "Sourcing Quality Raw Materials",
+        "text": "We source pharmaceutical ingredients from WHO-GMP certified suppliers.",
+        "image": "https://ambicapharma.net/lovable-uploads/b9310eb6-c2d2-4e00-acdd-dbca91490105.png",
+        "url": "https://ambicapharma.net/quality-control"
+      },
+      {
+        "@type": "HowToStep",
+        "name": "Manufacturing Excellence",
+        "text": "Our manufacturing partners follow strict quality protocols and international standards.",
+        "image": "https://ambicapharma.net/lovable-uploads/1ba95355-1c30-42b5-bfbd-fc0bb85e1a41.png",
+        "url": "https://ambicapharma.net/who-gmp-certification"
+      },
+      {
+        "@type": "HowToStep",
+        "name": "Quality Testing",
+        "text": "All products undergo rigorous testing to ensure efficacy and safety.",
+        "image": "https://ambicapharma.net/lovable-uploads/93092566-4a97-4281-9733-909843f42279.png",
+        "url": "https://ambicapharma.net/quality-control"
+      }
+    ]
+  };
 
   return (
     <section className="py-12 md:py-16 bg-white dark:bg-background relative overflow-hidden">
@@ -126,13 +168,19 @@ const Statistics = () => {
             <div className="relative rounded-xl overflow-hidden shadow-lg">
               <img
                 src="https://images.unsplash.com/photo-1576602976047-174e57a47881?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80"
-                alt="Pharmaceutical Products"
+                alt="Pharmaceutical Products by Ambica Pharma - WHO-GMP certified tablets, capsules and injectables"
                 className="w-full h-auto rounded-lg hover:scale-[1.02] transition-transform duration-500"
+                width="800"
+                height="600"
+                loading="lazy"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-primary/20 to-transparent opacity-50 pointer-events-none"></div>
             </div>
           </motion.div>
         </div>
+        
+        {/* Add HowTo Schema */}
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(howToSchema) }} />
       </div>
     </section>
   );
