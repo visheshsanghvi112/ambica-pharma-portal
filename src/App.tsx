@@ -10,6 +10,7 @@ import { ThemeProvider } from "./components/ThemeProvider";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 import CookieConsent from "./components/CookieConsent";
+import WhatsAppButton from "./components/WhatsAppButton";
 import Index from "./pages/Index";
 import About from "./pages/About";
 import Contact from "./pages/Contact";
@@ -57,6 +58,7 @@ const App: React.FC = () => {
                 </Routes>
               </main>
               <Footer />
+              <WhatsAppButton />
               <CookieConsent />
               <Toaster />
               <Sonner />
