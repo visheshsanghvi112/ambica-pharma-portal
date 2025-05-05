@@ -457,7 +457,7 @@ const Index = () => {
         </div>
       </section>
       
-      {/* Why Choose Us - Enhanced with better styling and 3D icons */}
+      {/* Why Choose Us - Enhanced with better styling and 3D icons with black/white colors */}
       <section className="py-16 bg-gradient-to-r from-blue-50 to-indigo-50 dark:from-blue-900/10 dark:to-indigo-900/10 relative overflow-hidden">
         {/* Decorative elements */}
         <div className="absolute inset-0">
@@ -518,30 +518,34 @@ const Index = () => {
               {
                 title: "Quality Assurance",
                 description: "All products meet rigorous quality standards and are sourced from certified manufacturers.",
-                icon: <Star className="h-10 w-10 text-yellow-500 drop-shadow-[0_2px_3px_rgba(234,179,8,0.4)]" />,
+                icon: <Star className="h-10 w-10 text-white" />,
                 delay: 0.1,
-                gradient: "from-yellow-500 to-amber-500"
+                gradient: "from-yellow-500 to-amber-500",
+                iconBgClass: "bg-gradient-to-br from-yellow-500 to-amber-500"
               },
               {
                 title: "Competitive Pricing",
                 description: "We offer the best market rates through efficient supply chain management and strong manufacturer relationships.",
-                icon: <CheckCircle className="h-10 w-10 text-green-500 drop-shadow-[0_2px_3px_rgba(34,197,94,0.4)]" />,
+                icon: <CheckCircle className="h-10 w-10 text-white" />,
                 delay: 0.2,
-                gradient: "from-green-500 to-emerald-500"
+                gradient: "from-green-500 to-emerald-500",
+                iconBgClass: "bg-gradient-to-br from-green-500 to-emerald-500"
               },
               {
                 title: "Extensive Distribution",
                 description: "Our robust network ensures timely delivery of pharmaceuticals across India and international markets.",
-                icon: <Globe className="h-10 w-10 text-blue-500 drop-shadow-[0_2px_3px_rgba(59,130,246,0.4)]" />,
+                icon: <Globe className="h-10 w-10 text-white" />,
                 delay: 0.3,
-                gradient: "from-blue-500 to-sky-500" 
+                gradient: "from-blue-500 to-sky-500",
+                iconBgClass: "bg-gradient-to-br from-blue-500 to-sky-500"
               },
               {
                 title: "Expert Consultation",
                 description: "Our pharmaceutical experts provide comprehensive guidance on product selection and regulatory compliance.",
-                icon: <UserCheck className="h-10 w-10 text-purple-500 drop-shadow-[0_2px_3px_rgba(168,85,247,0.4)]" />,
+                icon: <UserCheck className="h-10 w-10 text-white" />,
                 delay: 0.4,
-                gradient: "from-purple-500 to-indigo-500"
+                gradient: "from-purple-500 to-indigo-500",
+                iconBgClass: "bg-gradient-to-br from-purple-500 to-indigo-500"
               }
             ].map((item, index) => (
               <motion.div 
@@ -554,7 +558,7 @@ const Index = () => {
                 className="flex flex-col items-center text-center p-5 md:p-6 rounded-lg bg-gradient-to-br from-white/90 to-blue-50/80 dark:from-gray-800 dark:to-blue-900/30 backdrop-blur-sm shadow-lg hover:shadow-xl transition-all border border-blue-100 dark:border-blue-900/50 group"
               >
                 <motion.div 
-                  className={`w-20 h-20 bg-gradient-to-br ${item.gradient} rounded-2xl flex items-center justify-center mb-4 shadow-lg transform transition-all duration-300 relative overflow-hidden group-hover:scale-110`}
+                  className={`w-20 h-20 ${item.iconBgClass} rounded-2xl flex items-center justify-center mb-4 shadow-lg transform transition-all duration-300 relative overflow-hidden group-hover:scale-110`}
                   whileHover={{ rotate: 5, scale: 1.1 }}
                   transition={{ type: "spring", stiffness: 300, damping: 10 }}
                   style={{ 
@@ -565,7 +569,7 @@ const Index = () => {
                   <div className="absolute inset-0 bg-white/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 transform -translate-x-full group-hover:translate-x-full"></div>
                   {/* 3D-like shadow under the icon */}
                   <div className="absolute inset-0 bg-black/10 filter blur-sm transform translate-y-1 scale-90 rounded-2xl"></div>
-                  {/* Icon with enhanced visibility */}
+                  {/* Icon with white color for better contrast */}
                   <div className="relative z-10">
                     {item.icon}
                   </div>

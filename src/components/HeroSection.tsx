@@ -74,34 +74,34 @@ const HeroSection: React.FC = () => {
               </div>
             </div>
 
-            {/* Key benefits with enhanced 3D icons */}
+            {/* Key benefits with enhanced 3D icons with white icons */}
             <div className="flex flex-wrap gap-4 pt-4">
               {[
                 { 
-                  icon: <Shield className="h-5 w-5 text-green-500 drop-shadow-[0_1px_2px_rgba(34,197,94,0.6)]" />, 
+                  icon: <Shield className="h-5 w-5 text-white" />, 
                   text: "ISO-9001:2008 Certified",
-                  color: "green" 
+                  bgColor: "bg-green-500" 
                 },
                 { 
-                  icon: <Heart className="h-5 w-5 text-red-500 drop-shadow-[0_1px_2px_rgba(239,68,68,0.6)]" />, 
+                  icon: <Heart className="h-5 w-5 text-white" />, 
                   text: "WHO-GMP Standards",
-                  color: "red" 
+                  bgColor: "bg-red-500" 
                 },
                 { 
-                  icon: <Award className="h-5 w-5 text-amber-500 drop-shadow-[0_1px_2px_rgba(245,158,11,0.6)]" />, 
+                  icon: <Award className="h-5 w-5 text-white" />, 
                   text: "Quality Assured",
-                  color: "amber" 
+                  bgColor: "bg-amber-500" 
                 }
               ].map((item, idx) => (
                 <motion.div 
                   key={idx} 
-                  className={`flex items-center gap-2 text-sm text-foreground/70 bg-white/50 px-3 py-1.5 rounded-full backdrop-blur-sm hover:scale-105 hover:bg-white/80 hover:shadow-md transition-all duration-300 border border-${item.color}-100/30`}
+                  className={`flex items-center gap-2 text-sm text-foreground/70 bg-white/50 px-3 py-1.5 rounded-full backdrop-blur-sm hover:scale-105 hover:bg-white/80 hover:shadow-md transition-all duration-300 border border-gray-100/30`}
                   whileHover={{ 
                     scale: 1.05,
                     boxShadow: "0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06)"
                   }}
                 >
-                  <div className={`p-1 bg-${item.color}-100/50 rounded-full`}>
+                  <div className={`p-1 ${item.bgColor} rounded-full flex items-center justify-center shadow-sm`}>
                     {item.icon}
                   </div>
                   <span>{item.text}</span>

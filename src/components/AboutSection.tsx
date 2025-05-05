@@ -15,25 +15,25 @@ const AboutSection = () => {
   
   const keyFeatures = [
     {
-      icon: <Award className="h-6 w-6 text-primary" />,
+      icon: <Award className="h-6 w-6" />,
       title: "WHO-GMP Certified",
       description: "Highest quality standards",
       colorClass: "text-primary"
     },
     {
-      icon: <Star className="h-6 w-6 text-secondary" />,
+      icon: <Star className="h-6 w-6" />,
       title: "ISO 9001:2015",
       description: "Certified quality processes",
       colorClass: "text-secondary"
     },
     {
-      icon: <Globe className="h-6 w-6 text-blue-500" />,
+      icon: <Globe className="h-6 w-6" />,
       title: "Global Presence",
       description: "Exporting to 25+ countries",
       colorClass: "text-blue-500"
     },
     {
-      icon: <Users className="h-6 w-6 text-purple-500" />,
+      icon: <Users className="h-6 w-6" />,
       title: "Expert Team",
       description: "Pharmaceutical specialists",
       colorClass: "text-purple-500"
