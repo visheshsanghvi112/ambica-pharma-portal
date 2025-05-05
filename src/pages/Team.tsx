@@ -1,10 +1,16 @@
+
 import React from "react";
 import { Helmet } from "react-helmet-async";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
-import { Mail, Linkedin, Twitter, Globe } from "lucide-react";
+import {
+  Card,
+  CardHeader,
+  CardContent,
+  CardFooter
+} from "@/components/ui/card";
 
 // Team member type
 interface TeamMember {
@@ -220,81 +226,57 @@ const teamMembers: TeamMember[] = [
   }
 ];
 
-// Team member card component with improved structure and accessibility
+// Enhanced team member card component
 const TeamMemberCard: React.FC<{ member: TeamMember }> = ({ member }) => {
+  const getInitials = (name: string) => {
+    return name
+      .split(' ')
+      .map(part => part.charAt(0))
+      .join('')
+      .toUpperCase()
+      .substring(0, 2);
+  };
+
   return (
     <motion.div 
       initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5 }}
       viewport={{ once: true }}
-      className="flex flex-col bg-white dark:bg-gray-800 rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300"
     >
-      <div className="relative overflow-hidden group">
-        <img 
-          src={member.image} 
-          alt={`${member.name} - ${member.role} at Ambica Pharma`} 
-          className="w-full h-64 object-cover object-top transition-transform duration-500 group-hover:scale-105"
-          loading="lazy"
-        />
-      </div>
-      <div className="p-6">
-        <h3 className="text-xl font-bold text-gray-900 dark:text-white">{member.name}</h3>
-        <p className="text-primary font-medium mb-3">{member.role}</p>
-        <p className="text-gray-600 dark:text-gray-300 text-sm mb-4">{member.bio}</p>
-        
-        {/* Social links with better accessibility */}
-        <div className="flex space-x-2 mt-3">
-          {member.social.email && (
-            <a 
-              href={`mailto:${member.social.email}`} 
-              aria-label={`Email ${member.name}`}
-              className="p-2 text-gray-600 hover:text-primary transition-colors"
-              rel="noopener noreferrer"
-            >
-              <Mail className="h-5 w-5" />
-            </a>
-          )}
-          {member.social.linkedin && (
-            <a 
-              href={member.social.linkedin} 
-              target="_blank" 
-              aria-label={`${member.name}'s LinkedIn profile`}
-              className="p-2 text-gray-600 hover:text-blue-600 transition-colors"
-              rel="noopener noreferrer"
-            >
-              <Linkedin className="h-5 w-5" />
-            </a>
-          )}
-          {member.social.twitter && (
-            <a 
-              href={member.social.twitter} 
-              target="_blank" 
-              aria-label={`${member.name}'s Twitter profile`}
-              className="p-2 text-gray-600 hover:text-blue-400 transition-colors"
-              rel="noopener noreferrer"
-            >
-              <Twitter className="h-5 w-5" />
-            </a>
-          )}
-          {member.social.website && (
-            <a 
-              href={member.social.website} 
-              target="_blank" 
-              aria-label={`${member.name}'s personal website`}
-              className="p-2 text-gray-600 hover:text-purple-600 transition-colors"
-              rel="noopener noreferrer"
-            >
-              <Globe className="h-5 w-5" />
-            </a>
-          )}
+      <Card className="h-full overflow-hidden hover:shadow-lg transition-all duration-300 dark:border-primary/10">
+        <div className="relative overflow-hidden group h-64">
+          <img 
+            src={member.image} 
+            alt={`${member.name} - ${member.role}`} 
+            className="w-full h-full object-cover object-center transition-transform duration-500 group-hover:scale-105"
+            loading="lazy"
+          />
+          <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
         </div>
-      </div>
+        
+        <CardHeader className="pb-2">
+          <div className="flex items-center gap-3">
+            <Avatar className="h-10 w-10 border-2 border-primary/20">
+              <AvatarImage src={member.image} alt={member.name} />
+              <AvatarFallback className="bg-primary text-white">{getInitials(member.name)}</AvatarFallback>
+            </Avatar>
+            <div className="text-left">
+              <h3 className="text-xl font-bold text-gray-900 dark:text-white leading-tight">{member.name}</h3>
+              <p className="text-primary font-medium text-sm">{member.role}</p>
+            </div>
+          </div>
+        </CardHeader>
+        
+        <CardContent className="text-left">
+          <p className="text-gray-600 dark:text-gray-300 text-sm">{member.bio}</p>
+        </CardContent>
+      </Card>
     </motion.div>
   );
 };
 
-// Filter buttons for team categories
+// Filter button component
 const FilterButton: React.FC<{ 
   active: boolean; 
   onClick: () => void; 
@@ -303,7 +285,7 @@ const FilterButton: React.FC<{
   <Button
     variant={active ? "default" : "outline"}
     onClick={onClick}
-    className={`min-w-[120px] ${active ? 'bg-primary hover:bg-primary/90' : ''}`}
+    className={`min-w-[120px] ${active ? 'bg-primary hover:bg-primary/90' : ''} transition-all duration-300`}
   >
     {children}
   </Button>
@@ -318,6 +300,22 @@ const Team = () => {
     return teamMembers.filter(member => member.department === filter);
   }, [filter]);
 
+  // Animation variants
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    show: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.1
+      }
+    }
+  };
+
+  const itemVariants = {
+    hidden: { opacity: 0, y: 20 },
+    show: { opacity: 1, y: 0 }
+  };
+
   // Structured data for TeamPage
   const teamPageSchema = {
     "@context": "https://schema.org",
@@ -331,11 +329,6 @@ const Team = () => {
       "jobTitle": member.role,
       "description": member.bio,
       "image": member.image,
-      "contactPoint": member.social.email ? {
-        "@type": "ContactPoint",
-        "email": member.social.email,
-        "contactType": "professional"
-      } : undefined
     }))
   };
 
@@ -359,8 +352,10 @@ const Team = () => {
           transition={{ duration: 0.5 }}
           className="text-center mb-12 md:mb-16"
         >
-          <h1 className="text-3xl md:text-5xl font-bold mb-4 text-primary">Our Team</h1>
-          <div className="w-24 h-1 bg-secondary mx-auto mt-2 mb-6"></div>
+          <h1 className="text-3xl md:text-5xl font-bold mb-4">
+            <span className="bg-clip-text text-transparent bg-gradient-to-r from-primary to-secondary">Our Team</span>
+          </h1>
+          <div className="w-24 h-1 bg-gradient-to-r from-primary to-secondary mx-auto mt-2 mb-6 rounded-full"></div>
           <p className="text-lg text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
             Meet the talented professionals behind Ambica Pharma's success. Our diverse team of experts brings together
             extensive experience and innovation to deliver exceptional pharmaceutical solutions to global markets.
@@ -384,7 +379,7 @@ const Team = () => {
             Purchase
           </FilterButton>
           <FilterButton active={filter === "sales"} onClick={() => setFilter("sales")}>
-            Sales & Marketing
+            Sales
           </FilterButton>
           <FilterButton active={filter === "operations"} onClick={() => setFilter("operations")}>
             Operations
@@ -396,16 +391,23 @@ const Team = () => {
             HR
           </FilterButton>
           <FilterButton active={filter === "administration"} onClick={() => setFilter("administration")}>
-            Administration
+            Admin
           </FilterButton>
         </motion.div>
         
-        {/* Team grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 md:gap-8">
+        {/* Team grid with animations */}
+        <motion.div 
+          variants={containerVariants}
+          initial="hidden"
+          animate="show"
+          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 md:gap-8"
+        >
           {filteredMembers.map(member => (
-            <TeamMemberCard key={member.id} member={member} />
+            <motion.div key={member.id} variants={itemVariants}>
+              <TeamMemberCard member={member} />
+            </motion.div>
           ))}
-        </div>
+        </motion.div>
         
         {/* Join our team section */}
         <motion.div 
@@ -413,15 +415,17 @@ const Team = () => {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
           viewport={{ once: true }}
-          className="mt-20 md:mt-24 bg-gradient-to-r from-primary/10 to-secondary/10 p-6 md:p-12 rounded-xl text-center"
+          className="mt-20 md:mt-24 rounded-xl text-center overflow-hidden"
         >
-          <h2 className="text-2xl md:text-3xl font-bold mb-4 text-primary">Join Our Team</h2>
-          <p className="text-base md:text-lg text-gray-700 dark:text-gray-300 mb-6 max-w-2xl mx-auto">
-            We're always looking for talented individuals to join our innovative pharmaceutical team. Explore current opportunities and become part of our mission to deliver quality healthcare solutions worldwide.
-          </p>
-          <Button size="lg" className="bg-gradient-to-r from-primary to-secondary text-white hover:opacity-90">
-            <Link to="/careers">View Open Positions</Link>
-          </Button>
+          <div className="glass-effect p-6 md:p-12 bg-gradient-to-br from-primary/5 to-secondary/5 backdrop-blur-sm border border-white/20 dark:border-white/10 shadow-lg">
+            <h2 className="text-2xl md:text-3xl font-bold mb-4 bg-clip-text text-transparent bg-gradient-to-r from-primary to-secondary">Join Our Team</h2>
+            <p className="text-base md:text-lg text-gray-700 dark:text-gray-300 mb-6 max-w-2xl mx-auto">
+              We're always looking for talented individuals to join our innovative pharmaceutical team. Explore current opportunities and become part of our mission to deliver quality healthcare solutions worldwide.
+            </p>
+            <Button size="lg" className="bg-gradient-to-r from-primary to-secondary text-white hover:opacity-90 hover:shadow-lg transition-all">
+              <Link to="/careers">View Open Positions</Link>
+            </Button>
+          </div>
         </motion.div>
       </div>
     </>
