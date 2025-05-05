@@ -1,3 +1,4 @@
+
 import * as React from "react"
 import { Slot } from "@radix-ui/react-slot"
 import { ChevronRight, MoreHorizontal } from "lucide-react"
@@ -22,6 +23,8 @@ const BreadcrumbList = React.forwardRef<
       "flex flex-wrap items-center gap-1.5 break-words text-sm text-muted-foreground sm:gap-2.5",
       className
     )}
+    itemScope
+    itemType="https://schema.org/BreadcrumbList"
     {...props}
   />
 ))
@@ -29,13 +32,20 @@ BreadcrumbList.displayName = "BreadcrumbList"
 
 const BreadcrumbItem = React.forwardRef<
   HTMLLIElement,
-  React.ComponentPropsWithoutRef<"li">
->(({ className, ...props }, ref) => (
+  React.ComponentPropsWithoutRef<"li"> & {
+    position?: number;
+  }
+>(({ className, position = 1, ...props }, ref) => (
   <li
     ref={ref}
     className={cn("inline-flex items-center gap-1.5", className)}
+    itemScope
+    itemProp="itemListElement"
+    itemType="https://schema.org/ListItem"
     {...props}
-  />
+  >
+    <meta itemProp="position" content={position.toString()} />
+  </li>
 ))
 BreadcrumbItem.displayName = "BreadcrumbItem"
 
@@ -51,8 +61,11 @@ const BreadcrumbLink = React.forwardRef<
     <Comp
       ref={ref}
       className={cn("transition-colors hover:text-foreground", className)}
+      itemProp="item"
       {...props}
-    />
+    >
+      <span itemProp="name">{props.children}</span>
+    </Comp>
   )
 })
 BreadcrumbLink.displayName = "BreadcrumbLink"
@@ -67,6 +80,7 @@ const BreadcrumbPage = React.forwardRef<
     aria-disabled="true"
     aria-current="page"
     className={cn("font-normal text-foreground", className)}
+    itemProp="name"
     {...props}
   />
 ))
@@ -102,7 +116,7 @@ const BreadcrumbEllipsis = ({
     <span className="sr-only">More</span>
   </span>
 )
-BreadcrumbEllipsis.displayName = "BreadcrumbElipssis"
+BreadcrumbEllipsis.displayName = "BreadcrumbEllipsis"
 
 export {
   Breadcrumb,

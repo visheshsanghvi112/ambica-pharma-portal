@@ -55,7 +55,7 @@ const ProductsSection = () => {
           className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-primary to-secondary text-white rounded-full shadow-md hover:shadow-lg transition-all"
         >
           <CheckCircle className="h-5 w-5" />
-          <span>View All Products</span>
+          <span>Learn More About Our Products</span>
         </motion.button>
       </div>
     </div>

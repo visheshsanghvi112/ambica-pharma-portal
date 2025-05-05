@@ -21,7 +21,7 @@ const Products = () => {
         </div>
       </section>
       
-      {/* Product Categories */}
+      {/* Product Categories - Informational Only */}
       <section className="py-16">
         <div className="container">
           <Tabs defaultValue="tablets" className="w-full">
@@ -35,56 +35,53 @@ const Products = () => {
             <TabsContent value="tablets" className="space-y-8">
               <h2 className="text-2xl font-display font-semibold text-primary">Tablets</h2>
               <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-                {/* Product 1 */}
+                {/* Product Information Card */}
                 <div className="border border-gray-200 rounded-lg p-6 hover:shadow-md transition-shadow">
                   <div className="bg-gray-100 rounded-lg p-4 mb-4 flex items-center justify-center h-48">
-                    <img src="https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?ixlib=rb-1.2.1&auto=format&fit=crop&w=300&q=80" alt="Ambipress Tablet" className="max-h-full" />
+                    <img src="https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?ixlib=rb-1.2.1&auto=format&fit=crop&w=300&q=80" alt="Antihypertensive Tablet" className="max-h-full" />
                   </div>
-                  <h3 className="text-xl font-semibold text-primary mb-2">Ambipress Tablet</h3>
-                  <p className="text-sm text-gray-500 mb-3">Antihypertensive</p>
+                  <h3 className="text-xl font-semibold text-primary mb-2">Antihypertensive Tablets</h3>
+                  <p className="text-sm text-gray-500 mb-3">Category: Cardiovascular</p>
                   <p className="text-gray-600 mb-4">
                     Used for the treatment of high blood pressure and certain types of heart failure.
                   </p>
-                  <div className="flex justify-between items-center">
-                    <span className="text-primary font-semibold">₹120.00 / strip</span>
+                  <div className="flex justify-end items-center">
                     <button className="bg-secondary text-white px-4 py-2 rounded-md hover:bg-secondary-light transition-colors">
-                      Details
+                      Information
                     </button>
                   </div>
                 </div>
                 
-                {/* Product 2 */}
+                {/* Product Information Card */}
                 <div className="border border-gray-200 rounded-lg p-6 hover:shadow-md transition-shadow">
                   <div className="bg-gray-100 rounded-lg p-4 mb-4 flex items-center justify-center h-48">
-                    <img src="https://images.unsplash.com/photo-1550572017-9a5dca9c6f6b?ixlib=rb-1.2.1&auto=format&fit=crop&w=300&q=80" alt="Ambigesic Tablet" className="max-h-full" />
+                    <img src="https://images.unsplash.com/photo-1550572017-9a5dca9c6f6b?ixlib=rb-1.2.1&auto=format&fit=crop&w=300&q=80" alt="Analgesic Tablet" className="max-h-full" />
                   </div>
-                  <h3 className="text-xl font-semibold text-primary mb-2">Ambigesic Tablet</h3>
-                  <p className="text-sm text-gray-500 mb-3">Analgesic</p>
+                  <h3 className="text-xl font-semibold text-primary mb-2">Analgesic Tablets</h3>
+                  <p className="text-sm text-gray-500 mb-3">Category: Pain Management</p>
                   <p className="text-gray-600 mb-4">
                     Provides relief from mild to moderate pain, including headache and muscular pain.
                   </p>
-                  <div className="flex justify-between items-center">
-                    <span className="text-primary font-semibold">₹85.00 / strip</span>
+                  <div className="flex justify-end items-center">
                     <button className="bg-secondary text-white px-4 py-2 rounded-md hover:bg-secondary-light transition-colors">
-                      Details
+                      Information
                     </button>
                   </div>
                 </div>
                 
-                {/* Product 3 */}
+                {/* Product Information Card */}
                 <div className="border border-gray-200 rounded-lg p-6 hover:shadow-md transition-shadow">
                   <div className="bg-gray-100 rounded-lg p-4 mb-4 flex items-center justify-center h-48">
-                    <img src="https://images.unsplash.com/photo-1587854692152-cbe660dbde88?ixlib=rb-1.2.1&auto=format&fit=crop&w=300&q=80" alt="Ambibiotic Tablet" className="max-h-full" />
+                    <img src="https://images.unsplash.com/photo-1587854692152-cbe660dbde88?ixlib=rb-1.2.1&auto=format&fit=crop&w=300&q=80" alt="Antibiotic Tablet" className="max-h-full" />
                   </div>
-                  <h3 className="text-xl font-semibold text-primary mb-2">Ambibiotic Tablet</h3>
-                  <p className="text-sm text-gray-500 mb-3">Antibiotic</p>
+                  <h3 className="text-xl font-semibold text-primary mb-2">Antibiotic Tablets</h3>
+                  <p className="text-sm text-gray-500 mb-3">Category: Anti-infection</p>
                   <p className="text-gray-600 mb-4">
-                    Broad-spectrum antibiotic for the treatment of various bacterial infections.
+                    Broad-spectrum antibiotics for the treatment of various bacterial infections.
                   </p>
-                  <div className="flex justify-between items-center">
-                    <span className="text-primary font-semibold">₹150.00 / strip</span>
+                  <div className="flex justify-end items-center">
                     <button className="bg-secondary text-white px-4 py-2 rounded-md hover:bg-secondary-light transition-colors">
-                      Details
+                      Information
                     </button>
                   </div>
                 </div>
@@ -94,75 +91,66 @@ const Products = () => {
             <TabsContent value="capsules" className="space-y-8">
               <h2 className="text-2xl font-display font-semibold text-primary">Capsules</h2>
               <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-                {/* Capsule Products */}
+                {/* Capsule Information Card */}
                 <div className="border border-gray-200 rounded-lg p-6 hover:shadow-md transition-shadow">
                   <div className="bg-gray-100 rounded-lg p-4 mb-4 flex items-center justify-center h-48">
-                    <img src="https://images.unsplash.com/photo-1626716826766-a4288949ec78?ixlib=rb-1.2.1&auto=format&fit=crop&w=300&q=80" alt="Ambizyme Capsule" className="max-h-full" />
+                    <img src="https://images.unsplash.com/photo-1626716826766-a4288949ec78?ixlib=rb-1.2.1&auto=format&fit=crop&w=300&q=80" alt="Digestive Enzyme Capsule" className="max-h-full" />
                   </div>
-                  <h3 className="text-xl font-semibold text-primary mb-2">Ambizyme Capsule</h3>
-                  <p className="text-sm text-gray-500 mb-3">Digestive Enzyme</p>
+                  <h3 className="text-xl font-semibold text-primary mb-2">Digestive Enzyme Capsules</h3>
+                  <p className="text-sm text-gray-500 mb-3">Category: Digestive Health</p>
                   <p className="text-gray-600 mb-4">
                     Helps in digestion and relieves symptoms of indigestion and bloating.
                   </p>
-                  <div className="flex justify-between items-center">
-                    <span className="text-primary font-semibold">₹130.00 / strip</span>
+                  <div className="flex justify-end items-center">
                     <button className="bg-secondary text-white px-4 py-2 rounded-md hover:bg-secondary-light transition-colors">
-                      Details
+                      Information
                     </button>
                   </div>
                 </div>
-                
-                {/* Add more capsule products as needed */}
               </div>
             </TabsContent>
             
             <TabsContent value="syrups" className="space-y-8">
               <h2 className="text-2xl font-display font-semibold text-primary">Syrups</h2>
               <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-                {/* Syrup Products */}
+                {/* Syrup Information Card */}
                 <div className="border border-gray-200 rounded-lg p-6 hover:shadow-md transition-shadow">
                   <div className="bg-gray-100 rounded-lg p-4 mb-4 flex items-center justify-center h-48">
-                    <img src="https://images.unsplash.com/photo-1587854692152-cbe660dbde88?ixlib=rb-1.2.1&auto=format&fit=crop&w=300&q=80" alt="Ambicough Syrup" className="max-h-full" />
+                    <img src="https://images.unsplash.com/photo-1587854692152-cbe660dbde88?ixlib=rb-1.2.1&auto=format&fit=crop&w=300&q=80" alt="Cough Syrup" className="max-h-full" />
                   </div>
-                  <h3 className="text-xl font-semibold text-primary mb-2">Ambicough Syrup</h3>
-                  <p className="text-sm text-gray-500 mb-3">Cough Suppressant</p>
+                  <h3 className="text-xl font-semibold text-primary mb-2">Cough Suppressant Syrup</h3>
+                  <p className="text-sm text-gray-500 mb-3">Category: Respiratory</p>
                   <p className="text-gray-600 mb-4">
                     Provides relief from cough and cold symptoms with a soothing formula.
                   </p>
-                  <div className="flex justify-between items-center">
-                    <span className="text-primary font-semibold">₹110.00 / bottle</span>
+                  <div className="flex justify-end items-center">
                     <button className="bg-secondary text-white px-4 py-2 rounded-md hover:bg-secondary-light transition-colors">
-                      Details
+                      Information
                     </button>
                   </div>
                 </div>
-                
-                {/* Add more syrup products as needed */}
               </div>
             </TabsContent>
             
             <TabsContent value="injections" className="space-y-8">
               <h2 className="text-2xl font-display font-semibold text-primary">Injections</h2>
               <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-                {/* Injection Products */}
+                {/* Injection Information Card */}
                 <div className="border border-gray-200 rounded-lg p-6 hover:shadow-md transition-shadow">
                   <div className="bg-gray-100 rounded-lg p-4 mb-4 flex items-center justify-center h-48">
-                    <img src="https://images.unsplash.com/photo-1583912267550-d779fd2b7876?ixlib=rb-1.2.1&auto=format&fit=crop&w=300&q=80" alt="Ambiject" className="max-h-full" />
+                    <img src="https://images.unsplash.com/photo-1583912267550-d779fd2b7876?ixlib=rb-1.2.1&auto=format&fit=crop&w=300&q=80" alt="Injectable Antibiotic" className="max-h-full" />
                   </div>
-                  <h3 className="text-xl font-semibold text-primary mb-2">Ambiject</h3>
-                  <p className="text-sm text-gray-500 mb-3">Injectable Antibiotic</p>
+                  <h3 className="text-xl font-semibold text-primary mb-2">Injectable Antibiotics</h3>
+                  <p className="text-sm text-gray-500 mb-3">Category: Anti-infection</p>
                   <p className="text-gray-600 mb-4">
-                    Fast-acting injectable antibiotic for severe bacterial infections.
+                    Fast-acting injectable antibiotics for severe bacterial infections.
                   </p>
-                  <div className="flex justify-between items-center">
-                    <span className="text-primary font-semibold">₹220.00 / vial</span>
+                  <div className="flex justify-end items-center">
                     <button className="bg-secondary text-white px-4 py-2 rounded-md hover:bg-secondary-light transition-colors">
-                      Details
+                      Information
                     </button>
                   </div>
                 </div>
-                
-                {/* Add more injection products as needed */}
               </div>
             </TabsContent>
           </Tabs>

@@ -14,6 +14,8 @@ interface SEOHeadProps {
   author?: string;
   publishedDate?: string;
   modifiedDate?: string;
+  breadcrumbs?: Array<{name: string, url: string}>;
+  pageName?: string;
 }
 
 /**
@@ -32,6 +34,8 @@ const SEOHead: React.FC<SEOHeadProps> = ({
   author = "Ambica Pharma",
   publishedDate,
   modifiedDate = new Date().toISOString().split('T')[0],
+  breadcrumbs = [],
+  pageName,
 }) => {
   // Ensure title format includes brand name for recognition and consistent branding
   const formattedTitle = title.includes("Ambica Pharma") 
@@ -61,6 +65,32 @@ const SEOHead: React.FC<SEOHeadProps> = ({
   
   // Ensure canonical URL is absolute
   const absoluteCanonicalUrl = absoluteUrl(canonicalUrl);
+  
+  // Create breadcrumb structure data
+  const breadcrumbsData = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://ambicapharma.net/"
+      },
+      ...breadcrumbs.map((crumb, index) => ({
+        "@type": "ListItem",
+        "position": index + 2,
+        "name": crumb.name,
+        "item": absoluteUrl(crumb.url)
+      })),
+      ...(pageName ? [{
+        "@type": "ListItem",
+        "position": breadcrumbs.length + 2,
+        "name": pageName,
+        "item": absoluteCanonicalUrl
+      }] : [])
+    ]
+  };
 
   return (
     <Helmet>
@@ -117,6 +147,13 @@ const SEOHead: React.FC<SEOHeadProps> = ({
       
       {/* Link Relations for SEO */}
       <link rel="shortlink" href={`https://ambicapharma.net/${canonicalUrl.split('/').pop() || ''}`} />
+      
+      {/* Breadcrumbs Structured Data */}
+      {(breadcrumbs.length > 0 || pageName) && (
+        <script type="application/ld+json">
+          {JSON.stringify(breadcrumbsData)}
+        </script>
+      )}
       
       {/* Structured Data - Enhanced */}
       {structuredData && (
