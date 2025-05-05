@@ -1,7 +1,7 @@
 
 import React from 'react';
 import { cn } from '@/lib/utils';
-import { WhatsApp } from 'lucide-react';
+import { MessageCircle } from 'lucide-react';
 
 const WhatsAppButton: React.FC = () => {
   // Ambica Pharma contact information
@@ -25,7 +25,7 @@ const WhatsAppButton: React.FC = () => {
       aria-label="Contact Ambica Pharma on WhatsApp"
     >
       <div className="relative">
-        <WhatsApp className="w-7 h-7 text-white group-hover:scale-110 transition-transform" />
+        <MessageCircle className="w-7 h-7 text-white group-hover:scale-110 transition-transform" />
       </div>
       <span className="absolute right-16 bg-white text-primary font-medium px-3 py-1.5 rounded-full shadow-md 
         opacity-0 group-hover:opacity-100 transition-opacity duration-300 whitespace-nowrap text-sm">
