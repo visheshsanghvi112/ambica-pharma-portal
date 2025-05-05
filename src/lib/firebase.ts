@@ -2,7 +2,7 @@
 // Import the functions you need from the SDKs
 import { initializeApp } from "firebase/app";
 import { getAnalytics, logEvent } from "firebase/analytics";
-import { getFirestore, collection, addDoc, serverTimestamp } from "firebase/firestore";
+import { getFirestore, collection, addDoc, serverTimestamp, doc, setDoc } from "firebase/firestore";
 import { initializeAppCheck, ReCaptchaV3Provider } from "firebase/app-check";
 
 // Your web app's Firebase configuration
@@ -169,6 +169,37 @@ const getCookiesForStorage = () => {
     referrer: document.referrer,
     visitTimestamp: new Date().toISOString(),
   };
+};
+
+// Helper function to store cookie consent in Firestore
+export const saveCookieConsent = async (consentData: any): Promise<FormSubmissionResponse> => {
+  try {
+    const consentId = `consent_${Date.now()}_${Math.random().toString(36).substring(2, 9)}`;
+    
+    await setDoc(doc(db, "cookieConsents", consentId), {
+      ...consentData,
+      timestamp: serverTimestamp(),
+      userAgent: navigator.userAgent,
+      language: navigator.language,
+      screenSize: {
+        width: window.screen.width,
+        height: window.screen.height
+      }
+    });
+    
+    return {
+      success: true,
+      id: consentId,
+      message: "Cookie consent saved successfully"
+    };
+  } catch (error) {
+    console.error("Error saving cookie consent:", error);
+    return {
+      success: false,
+      error,
+      message: "Failed to save cookie consent"
+    };
+  }
 };
 
 // Make the app instance available for app check verification in console
