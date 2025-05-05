@@ -11,6 +11,7 @@ import Header from "./components/Header";
 import Footer from "./components/Footer";
 import CookieConsent from "./components/CookieConsent";
 import WhatsAppButton from "./components/WhatsAppButton";
+import ChatBot from "./components/ChatBot";
 import Index from "./pages/Index";
 import About from "./pages/About";
 import Contact from "./pages/Contact";
@@ -59,6 +60,7 @@ const App: React.FC = () => {
               </main>
               <Footer />
               <WhatsAppButton />
+              <ChatBot />
               <CookieConsent />
               <Toaster />
               <Sonner />
