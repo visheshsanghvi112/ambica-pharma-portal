@@ -457,7 +457,7 @@ const Index = () => {
         </div>
       </section>
       
-      {/* Why Choose Us - Enhanced with better styling and 3D icons with black/white colors */}
+      {/* Why Choose Us - Updated with smaller icons and text */}
       <section className="py-16 bg-gradient-to-r from-blue-50 to-indigo-50 dark:from-blue-900/10 dark:to-indigo-900/10 relative overflow-hidden">
         {/* Decorative elements */}
         <div className="absolute inset-0">
@@ -501,14 +501,14 @@ const Index = () => {
               whileHover={{ scale: 1.05 }}
               transition={{ type: "spring", stiffness: 400, damping: 10 }}
             >
-              <CheckCircle className="h-4 w-4 inline mr-1" />
+              <CheckCircle className="h-3 w-3 inline mr-1" />
               Our Commitment
             </motion.span>
-            <h2 className="text-3xl md:text-4xl font-display font-bold bg-clip-text text-transparent bg-gradient-to-r from-blue-600 via-indigo-600 to-violet-600 mb-4">
+            <h2 className="text-2xl md:text-3xl font-display font-bold bg-clip-text text-transparent bg-gradient-to-r from-blue-600 via-indigo-600 to-violet-600 mb-4">
               Why Choose Ambica Pharma?
             </h2>
-            <div className="w-24 h-1 bg-gradient-to-r from-blue-600 to-violet-600 mx-auto mt-2 mb-4 rounded-full"></div>
-            <p className="text-foreground/80 text-lg">
+            <div className="w-20 h-1 bg-gradient-to-r from-blue-600 to-violet-600 mx-auto mt-2 mb-4 rounded-full"></div>
+            <p className="text-foreground/80 text-base">
               We uphold the highest standards of quality and service in all our pharmaceutical products and business operations.
             </p>
           </motion.div>
@@ -518,7 +518,7 @@ const Index = () => {
               {
                 title: "Quality Assurance",
                 description: "All products meet rigorous quality standards and are sourced from certified manufacturers.",
-                icon: <Star className="h-10 w-10 text-white" />,
+                icon: <Star className="h-7 w-7 text-white" />,
                 delay: 0.1,
                 gradient: "from-yellow-500 to-amber-500",
                 iconBgClass: "bg-gradient-to-br from-yellow-500 to-amber-500"
@@ -526,7 +526,7 @@ const Index = () => {
               {
                 title: "Competitive Pricing",
                 description: "We offer the best market rates through efficient supply chain management and strong manufacturer relationships.",
-                icon: <CheckCircle className="h-10 w-10 text-white" />,
+                icon: <CheckCircle className="h-7 w-7 text-white" />,
                 delay: 0.2,
                 gradient: "from-green-500 to-emerald-500",
                 iconBgClass: "bg-gradient-to-br from-green-500 to-emerald-500"
@@ -534,7 +534,7 @@ const Index = () => {
               {
                 title: "Extensive Distribution",
                 description: "Our robust network ensures timely delivery of pharmaceuticals across India and international markets.",
-                icon: <Globe className="h-10 w-10 text-white" />,
+                icon: <Globe className="h-7 w-7 text-white" />,
                 delay: 0.3,
                 gradient: "from-blue-500 to-sky-500",
                 iconBgClass: "bg-gradient-to-br from-blue-500 to-sky-500"
@@ -542,7 +542,7 @@ const Index = () => {
               {
                 title: "Expert Consultation",
                 description: "Our pharmaceutical experts provide comprehensive guidance on product selection and regulatory compliance.",
-                icon: <UserCheck className="h-10 w-10 text-white" />,
+                icon: <UserCheck className="h-7 w-7 text-white" />,
                 delay: 0.4,
                 gradient: "from-purple-500 to-indigo-500",
                 iconBgClass: "bg-gradient-to-br from-purple-500 to-indigo-500"
@@ -554,28 +554,28 @@ const Index = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: item.delay }}
                 viewport={{ once: true }}
-                whileHover={{ y: -10, transition: { duration: 0.3 } }}
-                className="flex flex-col items-center text-center p-5 md:p-6 rounded-lg bg-gradient-to-br from-white/90 to-blue-50/80 dark:from-gray-800 dark:to-blue-900/30 backdrop-blur-sm shadow-lg hover:shadow-xl transition-all border border-blue-100 dark:border-blue-900/50 group"
+                whileHover={{ y: -5, transition: { duration: 0.3 } }}
+                className="flex flex-col items-center text-center p-4 md:p-5 rounded-lg bg-gradient-to-br from-white/90 to-blue-50/80 dark:from-gray-800 dark:to-blue-900/30 backdrop-blur-sm shadow-lg hover:shadow-xl transition-all border border-blue-100 dark:border-blue-900/50 group"
               >
                 <motion.div 
-                  className={`w-20 h-20 ${item.iconBgClass} rounded-2xl flex items-center justify-center mb-4 shadow-lg transform transition-all duration-300 relative overflow-hidden group-hover:scale-110`}
-                  whileHover={{ rotate: 5, scale: 1.1 }}
+                  className={`w-14 h-14 ${item.iconBgClass} rounded-xl flex items-center justify-center mb-3 shadow-lg transform transition-all duration-300 relative overflow-hidden group-hover:scale-110`}
+                  whileHover={{ rotate: 5, scale: 1.05 }}
                   transition={{ type: "spring", stiffness: 300, damping: 10 }}
                   style={{ 
-                    boxShadow: `0 10px 15px -3px rgba(var(--${item.gradient.split('-')[1].split(' ')[0]}-rgb), 0.3)`,
+                    boxShadow: `0 8px 12px -3px rgba(var(--${item.gradient.split('-')[1].split(' ')[0]}-rgb), 0.3)`,
                   }}
                 >
                   {/* Add shiny effect on hover */}
                   <div className="absolute inset-0 bg-white/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 transform -translate-x-full group-hover:translate-x-full"></div>
                   {/* 3D-like shadow under the icon */}
-                  <div className="absolute inset-0 bg-black/10 filter blur-sm transform translate-y-1 scale-90 rounded-2xl"></div>
+                  <div className="absolute inset-0 bg-black/10 filter blur-sm transform translate-y-1 scale-90 rounded-xl"></div>
                   {/* Icon with white color for better contrast */}
                   <div className="relative z-10">
                     {item.icon}
                   </div>
                 </motion.div>
-                <h3 className="text-xl font-bold mb-2 text-gray-800 dark:text-gray-100">{item.title}</h3>
-                <p className="text-sm md:text-base text-gray-600 dark:text-gray-300">{item.description}</p>
+                <h3 className="text-lg font-bold mb-1 text-gray-800 dark:text-gray-100">{item.title}</h3>
+                <p className="text-xs md:text-sm text-gray-600 dark:text-gray-300">{item.description}</p>
               </motion.div>
             ))}
           </div>
