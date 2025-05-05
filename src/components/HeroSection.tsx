@@ -44,7 +44,7 @@ const HeroSection: React.FC = () => {
           <div className="space-y-6 z-10">
             <div>
               <span className="inline-flex items-center px-3 py-1 text-sm font-medium bg-secondary/10 text-secondary rounded-full mb-4 animate-pulse">
-                <Award className="h-4 w-4 mr-1" /> Trusted Since 2005
+                <Award className="h-4 w-4 mr-1 drop-shadow-[0_1px_1px_rgba(34,197,94,0.4)]" /> Trusted Since 2005
               </span>
             </div>
             
@@ -74,20 +74,38 @@ const HeroSection: React.FC = () => {
               </div>
             </div>
 
-            {/* Key benefits */}
+            {/* Key benefits with enhanced 3D icons */}
             <div className="flex flex-wrap gap-4 pt-4">
               {[
-                { icon: <Shield className="h-5 w-5 text-green-500" />, text: "ISO-9001:2008 Certified" },
-                { icon: <Heart className="h-5 w-5 text-red-500" />, text: "WHO-GMP Standards" },
-                { icon: <Award className="h-5 w-5 text-amber-500" />, text: "Quality Assured" }
+                { 
+                  icon: <Shield className="h-5 w-5 text-green-500 drop-shadow-[0_1px_2px_rgba(34,197,94,0.6)]" />, 
+                  text: "ISO-9001:2008 Certified",
+                  color: "green" 
+                },
+                { 
+                  icon: <Heart className="h-5 w-5 text-red-500 drop-shadow-[0_1px_2px_rgba(239,68,68,0.6)]" />, 
+                  text: "WHO-GMP Standards",
+                  color: "red" 
+                },
+                { 
+                  icon: <Award className="h-5 w-5 text-amber-500 drop-shadow-[0_1px_2px_rgba(245,158,11,0.6)]" />, 
+                  text: "Quality Assured",
+                  color: "amber" 
+                }
               ].map((item, idx) => (
-                <div 
+                <motion.div 
                   key={idx} 
-                  className="flex items-center gap-2 text-sm text-foreground/70 bg-white/50 px-3 py-1.5 rounded-full backdrop-blur-sm hover:scale-105 hover:bg-white/80 hover:shadow-md transition-all duration-300"
+                  className={`flex items-center gap-2 text-sm text-foreground/70 bg-white/50 px-3 py-1.5 rounded-full backdrop-blur-sm hover:scale-105 hover:bg-white/80 hover:shadow-md transition-all duration-300 border border-${item.color}-100/30`}
+                  whileHover={{ 
+                    scale: 1.05,
+                    boxShadow: "0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06)"
+                  }}
                 >
-                  {item.icon}
+                  <div className={`p-1 bg-${item.color}-100/50 rounded-full`}>
+                    {item.icon}
+                  </div>
                   <span>{item.text}</span>
-                </div>
+                </motion.div>
               ))}
             </div>
           </div>
