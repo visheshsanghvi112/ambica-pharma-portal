@@ -5,7 +5,7 @@ import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
-import { HelmetProvider } from "react-helmet-async";
+import { HelmetProvider, Helmet } from "react-helmet-async";
 import { ThemeProvider } from "./components/ThemeProvider";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
@@ -26,9 +26,15 @@ import NotFound from "./pages/NotFound";
 import Achievements from "./pages/Achievements";
 import SEOHead from "./components/SEOHead";
 import Breadcrumbs from "./components/Breadcrumbs";
+import Products from "./pages/Products";
 
 // Create a new QueryClient instance
 const queryClient = new QueryClient();
+
+// Define the gtag interface for TypeScript
+interface Window {
+  gtag: (command: string, action: string, params?: any) => void;
+}
 
 // Performance optimization head component
 const PerformanceHead = () => {
@@ -45,7 +51,7 @@ const PerformanceHead = () => {
       <link rel="preload" as="image" href="/lovable-uploads/e75f626d-a490-496b-8817-294d7128b441.png" />
       
       {/* Critical resource hints */}
-      <meta http-equiv="x-dns-prefetch-control" content="on" />
+      <meta httpEquiv="x-dns-prefetch-control" content="on" />
     </Helmet>
   );
 };
@@ -100,6 +106,7 @@ const App: React.FC = () => {
                   <Route path="/csr" element={<CSR />} />
                   <Route path="/careers" element={<Careers />} />
                   <Route path="/achievements" element={<Achievements />} />
+                  <Route path="/products" element={<Products />} />
                   <Route path="*" element={<NotFound />} />
                 </Routes>
               </main>
