@@ -1,58 +1,42 @@
 
 import React from "react";
 import { motion } from "framer-motion";
-import { Card, CardContent } from "@/components/ui/card";
 
 interface KeyFeatureProps {
   icon: React.ReactNode;
   title: string;
   description: string;
   colorClass: string;
-  image?: string;
 }
 
-const KeyFeature = ({ icon, title, description, colorClass, image }: KeyFeatureProps) => {
+const KeyFeature = ({ icon, title, description, colorClass }: KeyFeatureProps) => {
   // Extract the color name from the colorClass (e.g., "text-primary" -> "primary")
-  const colorName = colorClass.replace("text-", "");
+  const colorName = colorClass.split('-')[1];
   
   return (
     <motion.div 
       whileHover={{ y: -5 }}
       transition={{ duration: 0.2 }}
+      className="flex items-start p-4 bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm rounded-lg shadow-sm hover:shadow-md transition-all duration-300"
     >
-      <Card className="h-full border-t-4 hover:shadow-lg transition-all duration-300" 
-            style={{ borderTopColor: `var(--${colorName})` }}>
-        <CardContent className="p-5">
-          <div className="flex items-start">
-            <div className="relative mr-4 mt-1">
-              {/* Create a glowing effect around the icon */}
-              <div className={`absolute inset-0 rounded-full bg-${colorName}/20 blur-sm`}></div>
-              
-              {/* Icon container */}
-              <div className={`p-2 relative z-10 bg-${colorName} rounded-full text-white`}>
-                {icon}
-              </div>
-            </div>
-            
-            <div>
-              <h3 className={`font-semibold ${colorClass} text-lg mb-1`}>{title}</h3>
-              <p className="text-foreground/70 text-sm">{description}</p>
-              
-              {image && (
-                <div className="mt-3 rounded-md overflow-hidden">
-                  <img 
-                    src={image} 
-                    alt={title} 
-                    className="w-full h-auto object-cover rounded-md"
-                    loading="lazy"
-                    style={{ maxHeight: '120px' }}
-                  />
-                </div>
-              )}
-            </div>
+      <div className={`p-3 bg-${colorName}-500 rounded-lg mr-4 shadow-sm relative group`}>
+        {/* Add a 3D shadow effect */}
+        <div className="absolute inset-0 rounded-lg bg-black/5 blur-sm -bottom-1 left-1 group-hover:scale-105 transition-all"></div>
+        
+        {/* Add a subtle glow effect */}
+        <div className={`absolute inset-0 bg-${colorName}-400/50 rounded-lg blur-md opacity-0 group-hover:opacity-100 transition-all`}></div>
+        
+        {/* The icon with white color for better contrast */}
+        <div className="relative">
+          <div className="text-white">
+            {icon}
           </div>
-        </CardContent>
-      </Card>
+        </div>
+      </div>
+      <div>
+        <h3 className={`font-semibold ${colorClass} text-lg`}>{title}</h3>
+        <p className="text-foreground/70">{description}</p>
+      </div>
     </motion.div>
   );
 };
