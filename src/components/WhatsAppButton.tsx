@@ -18,7 +18,6 @@ const WhatsAppButton: React.FC = () => {
         "w-14 h-14 bg-gradient-to-br from-primary to-secondary rounded-full shadow-lg",
         "flex items-center justify-center",
         "transition-all duration-300 hover:scale-110",
-        "animate-pulse hover:animate-none",
         "group"
       )}
       aria-label="Contact Ambica Pharma on WhatsApp"
