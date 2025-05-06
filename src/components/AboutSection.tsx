@@ -7,7 +7,6 @@ import BackgroundBlobs from "./about/BackgroundBlobs";
 import CompanyIntroduction from "./about/CompanyIntroduction";
 import KeyFeature from "./about/KeyFeature";
 import PartnerBadge from "./about/PartnerBadge";
-import ProductsSection from "./about/ProductsSection";
 import { Badge } from "./ui/badge";
 
 const AboutSection = () => {
@@ -110,9 +109,6 @@ const AboutSection = () => {
             <PartnerBadge />
           </motion.div>
         </div>
-        
-        {/* Products Section */}
-        <ProductsSection />
       </div>
     </section>
   );
