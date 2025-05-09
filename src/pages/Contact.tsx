@@ -429,9 +429,36 @@ const Contact = () => {
                         </div>
                       </div>
                     </div>
-                    <a href="https://www.google.com/maps/search/?api=1&query=18.947730664175882,72.83078549942304" target="_blank" rel="noopener noreferrer">
-  Open in Google Maps
+                    <a href="https://www.google.com/maps/search/?api=1&query=18.947730664175882,72.83078549942304" target="_blank" rel="noopener noreferrer" style="
+  display: inline-block;
+  padding: 12px 24px;
+  background-color: #4285F4;
+  color: white;
+  text-decoration: none;
+  border-radius: 6px;
+  font-family: Arial, sans-serif;
+  font-size: 16px;
+  font-weight: 500;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+">
+  📍 Open in Google Maps
 </a>
+
+<script>
+// Optional: Add hover effect (pure CSS inlined doesn’t support :hover easily)
+// So here's a simple JS-based hover effect if you want it fancier
+const link = document.querySelector('a[href*="google.com/maps"]');
+link.addEventListener('mouseenter', () => {
+  link.style.backgroundColor = '#3367D6';
+  link.style.boxShadow = '0 6px 12px rgba(0,0,0,0.15)';
+});
+link.addEventListener('mouseleave', () => {
+  link.style.backgroundColor = '#4285F4';
+  link.style.boxShadow = '0 4px 6px rgba(0,0,0,0.1)';
+});
+</script>
+
 
                     <MapComponent 
   lat={18.947730664175882} 
