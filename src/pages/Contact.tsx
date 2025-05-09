@@ -1,4 +1,3 @@
-
 import React, { useState } from "react";
 import { Helmet } from "react-helmet-async";
 import { Button } from "@/components/ui/button";
@@ -429,16 +428,13 @@ const Contact = () => {
                         </div>
                       </div>
                     </div>
-                    <a href="https://www.google.com/maps/search/?api=1&query=18.947723655912238,72.82820321114292" target="_blank" rel="noopener noreferrer">
-  <img 
-    src="https://maps.googleapis.com/maps/api/staticmap?center=18.947723655912238,72.82820321114292&zoom=15&size=600x300&maptype=roadmap&markers=color:red%7Clabel:A%7C18.947723655912238,72.82820321114292&key=YOUR_GOOGLE_MAPS_API_KEY" 
-    alt="Ambica Pharma Location" 
-    style="width: 100%; max-width: 600px; border-radius: 8px;"
-  />
-</a>
-
-
-
+                    <a href="https://www.google.com/maps/search/?api=1&query=18.947723655912238,72.82820321114292" target="_blank" rel="noopener noreferrer" className="block">
+                      <img 
+                        src="https://maps.googleapis.com/maps/api/staticmap?center=18.947723655912238,72.82820321114292&zoom=15&size=600x300&maptype=roadmap&markers=color:red%7Clabel:A%7C18.947723655912238,72.82820321114292&key=YOUR_GOOGLE_MAPS_API_KEY" 
+                        alt="Ambica Pharma Location" 
+                        className="w-full max-w-[600px] rounded-b-lg"
+                      />
+                    </a>
                   </CardContent>
                 </Card>
               </div>
