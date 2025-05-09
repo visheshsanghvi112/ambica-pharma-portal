@@ -429,7 +429,13 @@ const Contact = () => {
                         </div>
                       </div>
                     </div>
-                    <MapComponent lat={18.9537611} lng={72.8254747} zoom={15} title="Ambica Pharma Registered Office" />
+                    <MapComponent 
+  lat={18.947723655912238} 
+  lng={72.82820321114292} 
+  zoom={15} 
+  title="Ambica Pharma Registered Office" 
+/>
+
                   </CardContent>
                 </Card>
               </div>
