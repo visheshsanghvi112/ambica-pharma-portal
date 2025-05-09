@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from "react";
 import { Helmet } from "react-helmet-async";
 import { Button } from "@/components/ui/button";
@@ -429,22 +428,14 @@ const Contact = () => {
                         </div>
                       </div>
                     </div>
-                    <a href="https://www.google.com/maps/place/Ambica+Pharma/@18.9477199,72.8301398,19z/data=!3m1!4b1!4m6!3m5!1s0x3be7ce218e526151:0xa51fb31983d44ce0!8m2!3d18.9477186!4d72.8307835!16s%2Fg%2F1ptwh86n5?entry=ttu&g_ep=EgoyMDI1MDUwNi4wIKXMDSoASAFQAw%3D%3D" target="_blank" rel="noopener noreferrer" style="
-  display: inline-block;
-  padding: 12px 24px;
-  background-color: #4285F4;
-  color: white;
-  text-decoration: none;
-  border-radius: 6px;
-  font-family: Arial, sans-serif;
-  font-size: 16px;
-  font-weight: 500;
-  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-  transition: background-color 0.3s ease, box-shadow 0.3s ease;
-">
-  📍 Open in Google Maps
-</a>
-
+                    <a 
+                      href="https://www.google.com/maps/place/Ambica+Pharma/@18.9477199,72.8301398,19z/data=!3m1!4b1!4m6!3m5!1s0x3be7ce218e526151:0xa51fb31983d44ce0!8m2!3d18.9477186!4d72.8307835!16s%2Fg%2F1ptwh86n5?entry=ttu&g_ep=EgoyMDI1MDUwNi4wIKXMDSoASAFQAw%3D%3D" 
+                      target="_blank" 
+                      rel="noopener noreferrer" 
+                      className="inline-block px-6 py-3 bg-[#4285F4] text-white rounded-md font-medium shadow-md hover:bg-[#3367D6] hover:shadow-lg transition-all duration-300 mx-4 my-3"
+                    >
+                      📍 Open in Google Maps
+                    </a>
 
                     <MapComponent 
                       lat={18.947730664175882} 
