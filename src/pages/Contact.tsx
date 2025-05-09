@@ -429,12 +429,10 @@ const Contact = () => {
                         </div>
                       </div>
                     </div>
-                    <MapComponent 
-  lat={18.947723655912238} 
-  lng={72.82820321114292} 
-  zoom={15} 
-  title="Ambica Pharma Registered Office" 
-/>
+                    <a href="https://www.google.com/maps/search/?api=1&query=18.947723655912238,72.82820321114292" target="_blank" rel="noopener noreferrer">
+  Open in Google Maps
+</a>
+
 
                   </CardContent>
                 </Card>
