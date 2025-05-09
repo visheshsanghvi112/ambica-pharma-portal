@@ -1,5 +1,5 @@
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Helmet } from "react-helmet-async";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -9,7 +9,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import * as z from "zod";
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
 import { useToast } from "@/components/ui/use-toast";
-import { Phone, Mail, Clock, MapPin, CheckCircle2, AlertCircle, Send, Building, Users } from "lucide-react";
+import { Phone, Mail, Clock, MapPin, CheckCircle2, AlertCircle, Send, Building } from "lucide-react";
 import MapComponent from "@/components/MapComponent";
 import { submitContactForm, logAnalyticsEvent } from "@/lib/firebase";
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
@@ -429,45 +429,23 @@ const Contact = () => {
                         </div>
                       </div>
                     </div>
-                    <a href="https://www.google.com/maps/search/?api=1&query=18.947730664175882,72.83078549942304" target="_blank" rel="noopener noreferrer" style="
-  display: inline-block;
-  padding: 12px 24px;
-  background-color: #4285F4;
-  color: white;
-  text-decoration: none;
-  border-radius: 6px;
-  font-family: Arial, sans-serif;
-  font-size: 16px;
-  font-weight: 500;
-  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-  transition: background-color 0.3s ease, box-shadow 0.3s ease;
-">
-  📍 Open in Google Maps
-</a>
-
-<script>
-// Optional: Add hover effect (pure CSS inlined doesn’t support :hover easily)
-// So here's a simple JS-based hover effect if you want it fancier
-const link = document.querySelector('a[href*="google.com/maps"]');
-link.addEventListener('mouseenter', () => {
-  link.style.backgroundColor = '#3367D6';
-  link.style.boxShadow = '0 6px 12px rgba(0,0,0,0.15)';
-});
-link.addEventListener('mouseleave', () => {
-  link.style.backgroundColor = '#4285F4';
-  link.style.boxShadow = '0 4px 6px rgba(0,0,0,0.1)';
-});
-</script>
-
+                    <div className="p-4">
+                      <a 
+                        href="https://www.google.com/maps/search/?api=1&query=18.947730664175882,72.83078549942304" 
+                        target="_blank" 
+                        rel="noopener noreferrer" 
+                        className="inline-block px-6 py-3 bg-blue-600 text-white rounded-lg font-medium shadow-md hover:bg-blue-700 transition-colors duration-300"
+                      >
+                        📍 Open in Google Maps
+                      </a>
+                    </div>
 
                     <MapComponent 
-  lat={18.947730664175882} 
-  lng={72.83078549942304} 
-  zoom={15} 
-  title="Ambica Pharma Registered Office" 
-/>
-
-
+                      lat={18.947730664175882} 
+                      lng={72.83078549942304} 
+                      zoom={15} 
+                      title="Ambica Pharma Registered Office" 
+                    />
                   </CardContent>
                 </Card>
               </div>
