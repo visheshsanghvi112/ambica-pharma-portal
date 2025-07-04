@@ -114,6 +114,29 @@
   ::-webkit-scrollbar-thumb {
     @apply bg-primary/40 rounded-full hover:bg-primary/60 transition-colors dark:bg-primary/60 dark:hover:bg-primary/80;
   }
+
+  /* Custom scrollbar for chat */
+  .custom-scrollbar::-webkit-scrollbar {
+    width: 4px;
+  }
+  
+  .custom-scrollbar::-webkit-scrollbar-track {
+    @apply bg-transparent;
+  }
+  
+  .custom-scrollbar::-webkit-scrollbar-thumb {
+    @apply bg-primary/30 rounded-full hover:bg-primary/50 transition-colors;
+  }
+
+  /* Hide scrollbar for category tabs */
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
 }
 
 @layer utilities {
