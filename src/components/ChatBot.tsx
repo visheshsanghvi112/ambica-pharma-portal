@@ -1,4 +1,3 @@
-
 import React, { useState, useRef, useEffect, useCallback } from 'react';
 import { 
   MessageCircle, X, Send, Sparkles, Copy, ThumbsUp, Heart, Smile, 
@@ -75,7 +74,6 @@ const ChatBot: React.FC = () => {
   const buttonAnimation = useAnimation();
   const { toast } = useToast();
 
-  // Load chat history on mount
   useEffect(() => {
     const savedMessages = localStorage.getItem(STORAGE_KEY);
     if (savedMessages) {
@@ -89,7 +87,6 @@ const ChatBot: React.FC = () => {
         console.log('Failed to load chat history');
       }
     } else {
-      // Set welcome message if no history
       setMessages([
         { 
           text: "👋 Hello! I'm Ambica Pharma's AI assistant. I'm here to help you with pharmaceutical inquiries, partnerships, and product information. How can I assist you today?", 
@@ -104,9 +101,8 @@ const ChatBot: React.FC = () => {
     }
   }, []);
 
-  // Save messages to localStorage whenever messages change
   useEffect(() => {
-    if (messages.length > 1) { // Don't save just the welcome message
+    if (messages.length > 1) {
       localStorage.setItem(STORAGE_KEY, JSON.stringify(messages));
     }
   }, [messages]);
@@ -217,14 +213,12 @@ const ChatBot: React.FC = () => {
       setUnreadCount(prev => prev + 1);
     }
 
-    // Update message status to sent
     setTimeout(() => {
       setMessages(prev => prev.map(msg => 
         msg.id === userMessage.id ? { ...msg, status: 'sent' } : msg
       ));
     }, 500);
     
-    // Simulate realistic typing delay
     const typingDelay = Math.min(text.length * 50 + 1000, 3000);
     
     setTimeout(() => {
@@ -232,7 +226,6 @@ const ChatBot: React.FC = () => {
       let botResponse = "";
       const userInput = text.toLowerCase();
       
-      // Enhanced response logic with more context awareness
       if (userInput.includes("partner") || userInput.includes("partnership") || userInput.includes("collaborate")) {
         botResponse = "🤝 **Partnership Opportunities**\n\nTo partner with Ambica Pharma, please email our partnership team at **partners@ambicapharma.com** with:\n\n• Your company profile\n• Partnership proposal\n• Business credentials\n\nWe collaborate with distributors, healthcare providers, and pharmaceutical manufacturers worldwide. Our team will review your application within 2-3 business days.";
       } 
@@ -307,7 +300,6 @@ const ChatBot: React.FC = () => {
   };
 
   const formatMessageText = (text: string) => {
-    // Simple markdown-like formatting
     return text
       .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
       .replace(/\*(.*?)\*/g, '<em>$1</em>')
@@ -317,13 +309,19 @@ const ChatBot: React.FC = () => {
   const lastUserMessage = messages.filter(m => m.isUser).pop();
   const smartSuggestions = lastUserMessage ? getSmartSuggestions(lastUserMessage.text) : [];
 
+  useEffect(() => {
+    console.log('ChatBot component mounted');
+    return () => console.log('ChatBot component unmounted');
+  }, []);
+
   return (
-    <div className="fixed bottom-4 right-6 z-50">
-      {/* Enhanced Floating Action Button */}
+    <div className="fixed bottom-4 right-4 z-[9999]" style={{ zIndex: 9999 }}>
+      <div className="absolute -top-2 -left-2 w-2 h-2 bg-red-500 rounded-full animate-pulse opacity-50"></div>
+      
       <AnimatePresence>
         <motion.div
           initial={{ scale: 0.8, opacity: 0 }}
-          animate={buttonAnimation}
+          animate={{ scale: 1, opacity: 1 }}
           exit={{ scale: 0.8, opacity: 0 }}
           transition={{ type: "spring", stiffness: 300, damping: 20 }}
           className="relative"
@@ -332,18 +330,24 @@ const ChatBot: React.FC = () => {
             onClick={toggleChat}
             className={cn(
               "w-16 h-16 rounded-full shadow-2xl flex items-center justify-center relative overflow-hidden group",
-              "bg-gradient-to-br from-primary via-primary to-secondary hover:from-primary/90 hover:to-secondary/90",
+              "bg-gradient-to-br from-blue-500 via-blue-600 to-purple-600 hover:from-blue-600 hover:to-purple-700",
               "transform transition-all duration-300 hover:scale-110 active:scale-95",
-              isOpen ? "rotate-0" : "animate-pulse-slow"
+              "border-2 border-white/20",
+              !isOpen && "animate-bounce"
             )}
+            style={{ 
+              position: 'fixed',
+              bottom: '1rem',
+              right: '1rem',
+              zIndex: 9999
+            }}
             aria-label="Chat with Ambica Pharma Assistant"
           >
-            {/* Enhanced Notification Badge */}
             {(hasNewMessage || unreadCount > 0) && !isOpen && (
               <motion.div
                 initial={{ scale: 0 }}
                 animate={{ scale: 1 }}
-                className="absolute -top-2 -right-2 bg-red-500 text-white text-xs rounded-full min-w-[24px] h-6 flex items-center justify-center font-bold shadow-lg"
+                className="absolute -top-2 -right-2 bg-red-500 text-white text-xs rounded-full min-w-[24px] h-6 flex items-center justify-center font-bold shadow-lg z-10"
               >
                 {unreadCount > 0 ? unreadCount : '!'}
               </motion.div>
@@ -352,18 +356,17 @@ const ChatBot: React.FC = () => {
             <motion.div
               animate={{ rotate: isOpen ? 180 : 0 }}
               transition={{ duration: 0.3 }}
+              className="relative z-10"
             >
               {isOpen ? <X size={28} className="text-white" /> : <MessageCircle size={28} className="text-white" />}
             </motion.div>
             
-            {/* Enhanced Ripple Effect */}
             <div className="absolute inset-0 rounded-full bg-white/20 animate-ping opacity-20 group-hover:opacity-30"></div>
-            <div className="absolute inset-0 rounded-full bg-gradient-to-r from-primary/30 to-secondary/30 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+            <div className="absolute inset-0 rounded-full bg-gradient-to-r from-blue-500/30 to-purple-600/30 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
           </Button>
         </motion.div>
       </AnimatePresence>
 
-      {/* Enhanced Chat Window */}
       <AnimatePresence>
         {isOpen && (
           <motion.div 
@@ -372,18 +375,19 @@ const ChatBot: React.FC = () => {
             exit={{ y: 20, opacity: 0, scale: 0.95 }}
             transition={{ type: "spring", stiffness: 300, damping: 25 }}
             className={cn(
-              "absolute bottom-20 right-0 glass-effect rounded-3xl shadow-2xl overflow-hidden",
-              "flex flex-col border border-white/20 dark:border-gray-700/30",
+              "absolute bottom-20 right-0 bg-white dark:bg-gray-900 rounded-3xl shadow-2xl overflow-hidden",
+              "flex flex-col border border-gray-200 dark:border-gray-700",
+              "backdrop-blur-lg bg-white/95 dark:bg-gray-900/95",
               isMinimized 
                 ? "w-80 h-16" 
                 : isFullScreen 
                   ? "w-[95vw] h-[85vh] fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2" 
                   : "w-96 max-w-[calc(100vw-2rem)] h-[600px]"
             )}
+            style={{ zIndex: 9998 }}
             ref={chatContainerRef}
           >
-            {/* Premium Header */}
-            <div className="bg-gradient-to-r from-primary via-primary to-secondary p-4 text-white relative overflow-hidden">
+            <div className="bg-gradient-to-r from-blue-500 via-blue-600 to-purple-600 p-4 text-white relative overflow-hidden">
               <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent animate-pulse-slow"></div>
               <div className="flex items-center justify-between relative z-10">
                 <div className="flex items-center gap-3">
@@ -414,46 +418,6 @@ const ChatBot: React.FC = () => {
                   </div>
                 </div>
                 <div className="flex items-center gap-1">
-                  {showSearch && (
-                    <motion.div
-                      initial={{ width: 0, opacity: 0 }}
-                      animate={{ width: 'auto', opacity: 1 }}
-                      exit={{ width: 0, opacity: 0 }}
-                      className="mr-2"
-                    >
-                      <input
-                        type="text"
-                        placeholder="Search messages..."
-                        value={searchQuery}
-                        onChange={(e) => setSearchQuery(e.target.value)}
-                        className="bg-white/20 text-white placeholder-white/70 px-3 py-1 rounded-lg text-sm w-32 focus:outline-none focus:ring-2 focus:ring-white/30"
-                      />
-                    </motion.div>
-                  )}
-                  <Button
-                    onClick={() => setShowSearch(!showSearch)}
-                    variant="ghost"
-                    size="sm"
-                    className="text-white hover:bg-white/20 p-2"
-                  >
-                    <Search size={16} />
-                  </Button>
-                  <Button
-                    onClick={toggleFullScreen}
-                    variant="ghost"
-                    size="sm"
-                    className="text-white hover:bg-white/20 p-2"
-                  >
-                    {isFullScreen ? <Minimize2 size={16} /> : <Maximize2 size={16} />}
-                  </Button>
-                  <Button
-                    onClick={toggleMinimize}
-                    variant="ghost"
-                    size="sm"
-                    className="text-white hover:bg-white/20 p-2"
-                  >
-                    <Minimize2 size={16} />
-                  </Button>
                   <Button
                     onClick={toggleChat}
                     variant="ghost"
@@ -468,10 +432,33 @@ const ChatBot: React.FC = () => {
             
             {!isMinimized && (
               <>
-                {/* Enhanced Messages Container */}
-                <div className="flex-1 p-4 overflow-y-auto space-y-4 custom-scrollbar bg-gradient-to-b from-white/50 to-white/30 dark:from-gray-900/50 dark:to-gray-900/30">
-                  <AnimatePresence mode="popLayout">
-                    {filteredMessages.map((message, index) => (
+                <div className="flex-1 p-4 overflow-y-auto space-y-4 bg-gray-50 dark:bg-gray-800">
+                  {messages.length === 0 && (
+                    <div className="text-center py-8">
+                      <Sparkles className="mx-auto h-12 w-12 text-gray-400 mb-4" />
+                      <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-2">
+                        Welcome to Ambica Pharma!
+                      </h3>
+                      <p className="text-gray-600 dark:text-gray-300 mb-4">
+                        I'm here to help you with pharmaceutical inquiries, partnerships, and product information.
+                      </p>
+                      <div className="flex flex-wrap gap-2 justify-center">
+                        {predefinedQuestions.slice(0, 3).map((question) => (
+                          <Button
+                            key={question.id}
+                            onClick={() => handleSend(question.text)}
+                            variant="outline"
+                            size="sm"
+                            className="text-xs"
+                          >
+                            {question.emoji} {question.text}
+                          </Button>
+                        ))}
+                      </div>
+                    </div>
+                  )}
+                  
+                  {filteredMessages.map((message, index) => (
                       <motion.div 
                         key={message.id}
                         initial={{ opacity: 0, y: 20, scale: 0.8 }}
@@ -499,7 +486,6 @@ const ChatBot: React.FC = () => {
                         )}
                         
                         <div className="flex flex-col space-y-1 max-w-[85%]">
-                          {/* Reply indicator */}
                           {message.replyTo && (
                             <div className="text-xs text-gray-500 dark:text-gray-400 italic">
                               Replying to previous message
@@ -520,7 +506,6 @@ const ChatBot: React.FC = () => {
                               dangerouslySetInnerHTML={{ __html: formatMessageText(message.text) }}
                             />
                             
-                            {/* Message status */}
                             {message.status && message.isUser && (
                               <div className="flex items-center gap-1 mt-2 text-xs opacity-70">
                                 {message.status === 'sending' && <div className="w-2 h-2 bg-white/60 rounded-full animate-pulse" />}
@@ -536,7 +521,6 @@ const ChatBot: React.FC = () => {
                                 {formatTime(message.timestamp)}
                               </span>
                               
-                              {/* Enhanced Message Actions */}
                               <div className="flex items-center gap-1 opacity-0 group-hover:opacity-100 transition-opacity">
                                 {!message.isUser && (
                                   <>
@@ -572,7 +556,6 @@ const ChatBot: React.FC = () => {
                             </div>
                           </motion.div>
                           
-                          {/* Reactions */}
                           {message.reactions && message.reactions.length > 0 && (
                             <div className="flex flex-wrap gap-1 mt-1">
                               {message.reactions.map((reaction, idx) => (
@@ -595,7 +578,6 @@ const ChatBot: React.FC = () => {
                             </div>
                           )}
                           
-                          {/* Quick Reactions for bot messages */}
                           {!message.isUser && (
                             <div className="flex gap-1 mt-1 opacity-0 group-hover:opacity-100 transition-opacity">
                               {reactionEmojis.slice(0, 3).map((emoji) => (
@@ -614,145 +596,11 @@ const ChatBot: React.FC = () => {
                         </div>
                       </motion.div>
                     ))}
-                    
-                    {isTyping && (
-                      <motion.div 
-                        initial={{ opacity: 0, y: 10 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        exit={{ opacity: 0, y: -10 }}
-                        className="flex gap-3 items-end"
-                      >
-                        <div className="w-10 h-10 bg-gradient-to-br from-primary/20 to-secondary/20 rounded-full flex items-center justify-center flex-shrink-0 shadow-lg border border-white/20">
-                          <span className="text-lg">🤖</span>
-                        </div>
-                        <div className="bg-white/90 dark:bg-gray-800/90 rounded-2xl rounded-bl-md px-4 py-3 max-w-[85%] shadow-lg backdrop-blur-sm border border-gray-200/50 dark:border-gray-700/50">
-                          <div className="flex space-x-2">
-                            <motion.div 
-                              animate={{ scale: [1, 1.2, 1] }}
-                              transition={{ duration: 0.8, repeat: Infinity, delay: 0 }}
-                              className="w-2 h-2 bg-primary/60 rounded-full"
-                            />
-                            <motion.div 
-                              animate={{ scale: [1, 1.2, 1] }}
-                              transition={{ duration: 0.8, repeat: Infinity, delay: 0.2 }}
-                              className="w-2 h-2 bg-primary/60 rounded-full"
-                            />
-                            <motion.div 
-                              animate={{ scale: [1, 1.2, 1] }}
-                              transition={{ duration: 0.8, repeat: Infinity, delay: 0.4 }}
-                              className="w-2 h-2 bg-primary/60 rounded-full"
-                            />
-                          </div>
-                        </div>
-                      </motion.div>
-                    )}
-                    <div ref={messagesEndRef} />
-                  </AnimatePresence>
+                  
+                  <div ref={messagesEndRef} />
                 </div>
 
-                {/* Smart Suggestions */}
-                {smartSuggestions.length > 0 && (
-                  <motion.div 
-                    initial={{ opacity: 0, height: 0 }}
-                    animate={{ opacity: 1, height: 'auto' }}
-                    className="px-4 py-2 border-t border-white/20 bg-gradient-to-r from-white/30 to-white/10 dark:from-gray-900/30 dark:to-gray-900/10"
-                  >
-                    <p className="text-xs text-gray-600 dark:text-gray-400 mb-2 font-medium">💡 Smart suggestions:</p>
-                    <div className="flex gap-2 overflow-x-auto scrollbar-hide">
-                      {smartSuggestions.map((suggestion) => (
-                        <motion.button
-                          key={suggestion.id}
-                          whileHover={{ scale: 1.05, y: -2 }}
-                          whileTap={{ scale: 0.95 }}
-                          onClick={() => handlePredefinedQuestion(suggestion.text)}
-                          className="flex items-center gap-2 px-3 py-2 bg-gradient-to-r from-primary/10 to-secondary/10 hover:from-primary/20 hover:to-secondary/20 rounded-xl border border-primary/20 text-sm font-medium text-primary transition-all duration-200 shadow-sm hover:shadow-md whitespace-nowrap"
-                        >
-                          <span>{suggestion.emoji}</span>
-                          <span>{suggestion.text}</span>
-                        </motion.button>
-                      ))}
-                    </div>
-                  </motion.div>
-                )}
-
-                {/* Category Tabs */}
-                <div className="px-4 py-2 border-t border-white/20 bg-gradient-to-r from-white/50 to-white/30 dark:from-gray-900/50 dark:to-gray-900/30">
-                  <div className="flex gap-1 overflow-x-auto scrollbar-hide">
-                    {categories.map((category) => (
-                      <Button
-                        key={category}
-                        onClick={() => setSelectedCategory(category)}
-                        variant={selectedCategory === category ? "default" : "ghost"}
-                        size="sm"
-                        className={cn(
-                          "text-xs whitespace-nowrap transition-all duration-200 backdrop-blur-sm",
-                          selectedCategory === category 
-                            ? "bg-gradient-to-r from-primary to-secondary text-white shadow-lg border-0" 
-                            : "hover:bg-white/20 dark:hover:bg-gray-800/20 border border-white/20"
-                        )}
-                      >
-                        {category}
-                      </Button>
-                    ))}
-                  </div>
-                </div>
-
-                {/* Enhanced Predefined Questions */}
-                <div className="p-3 bg-gradient-to-br from-white/60 to-white/40 dark:from-gray-900/60 dark:to-gray-900/40 border-t border-white/20 backdrop-blur-sm">
-                  <p className="text-xs text-gray-600 dark:text-gray-400 mb-3 font-medium flex items-center gap-2">
-                    <Sparkles size={14} />
-                    Quick questions:
-                  </p>
-                  <div className="grid grid-cols-1 gap-2 max-h-32 overflow-y-auto custom-scrollbar">
-                    {filteredQuestions.map((question) => (
-                      <motion.button
-                        key={question.id}
-                        whileHover={{ scale: 1.02, x: 4 }}
-                        whileTap={{ scale: 0.98 }}
-                        onClick={() => handlePredefinedQuestion(question.text)}
-                        className="text-left p-3 bg-white/80 dark:bg-gray-800/80 rounded-xl border border-white/30 dark:border-gray-700/30 hover:border-primary/40 hover:bg-gradient-to-r hover:from-primary/10 hover:to-secondary/10 transition-all duration-200 shadow-sm hover:shadow-md group backdrop-blur-sm"
-                      >
-                        <div className="flex items-center gap-3">
-                          <motion.span 
-                            whileHover={{ scale: 1.2, rotate: 10 }}
-                            className="text-lg"
-                          >
-                            {question.emoji}
-                          </motion.span>
-                          <span className="text-sm font-medium text-gray-700 dark:text-gray-300 group-hover:text-primary transition-colors">
-                            {question.text}
-                          </span>
-                          {question.priority === 1 && (
-                            <Star size={12} className="text-yellow-500 ml-auto opacity-60" />
-                          )}
-                        </div>
-                      </motion.button>
-                    ))}
-                  </div>
-                </div>
-                
-                {/* Reply indicator */}
-                {replyingTo && (
-                  <motion.div 
-                    initial={{ opacity: 0, height: 0 }}
-                    animate={{ opacity: 1, height: 'auto' }}
-                    className="px-4 py-2 bg-blue-50 dark:bg-blue-900/20 border-t border-blue-200 dark:border-blue-800 flex items-center gap-2 text-sm text-blue-700 dark:text-blue-300"
-                  >
-                    <Reply size={14} />
-                    <span>Replying to message</span>
-                    <Button
-                      onClick={() => setReplyingTo(null)}
-                      variant="ghost"
-                      size="sm"
-                      className="ml-auto h-6 w-6 p-0 text-blue-700 dark:text-blue-300"
-                    >
-                      <X size={12} />
-                    </Button>
-                  </motion.div>
-                )}
-                
-                {/* Enhanced Input Section */}
-                <div className="p-4 border-t border-white/20 bg-gradient-to-r from-white/70 to-white/50 dark:from-gray-800/70 dark:to-gray-800/50 backdrop-blur-sm">
+                <div className="p-4 border-t border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900">
                   <div className="flex items-end gap-3">
                     <div className="flex-1 relative">
                       <input
@@ -760,57 +608,21 @@ const ChatBot: React.FC = () => {
                         type="text"
                         value={input}
                         onChange={(e) => setInput(e.target.value)}
-                        onKeyDown={handleKeyDown}
+                        onKeyDown={(e) => e.key === 'Enter' && !e.shiftKey && (e.preventDefault(), handleSend())}
                         placeholder="Type your message..."
-                        className="w-full px-4 py-3 pr-24 border border-white/30 dark:border-gray-700/50 rounded-2xl focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary dark:bg-gray-700/50 dark:text-white resize-none transition-all duration-200 bg-white/80 backdrop-blur-sm shadow-sm"
+                        className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-2xl focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-800 dark:text-white resize-none transition-all duration-200"
                         maxLength={500}
                         disabled={isTyping}
                       />
-                      
-                      {/* Input Actions */}
-                      <div className="absolute right-3 bottom-3 flex items-center gap-1">
-                        <motion.button
-                          whileHover={{ scale: 1.1 }}
-                          whileTap={{ scale: 0.9 }}
-                          onClick={() => setIsRecording(!isRecording)}
-                          className={cn(
-                            "p-1.5 rounded-full transition-colors",
-                            isRecording ? "bg-red-500 text-white" : "hover:bg-gray-100 dark:hover:bg-gray-700"
-                          )}
-                        >
-                          {isRecording ? <Volume2 size={14} /> : <Mic size={14} />}
-                        </motion.button>
-                        
-                        <div className="text-xs text-gray-400 ml-1">
-                          {input.length}/500
-                        </div>
-                      </div>
                     </div>
                     
-                    <motion.div whileTap={{ scale: 0.95 }}>
-                      <Button 
-                        onClick={() => handleSend()}
-                        disabled={input.trim() === '' || isTyping}
-                        className={cn(
-                          "w-12 h-12 rounded-2xl shadow-lg transition-all duration-200 relative overflow-hidden",
-                          "bg-gradient-to-br from-primary to-secondary hover:from-primary/90 hover:to-secondary/90",
-                          "disabled:opacity-50 disabled:cursor-not-allowed",
-                          input.trim() !== '' && !isTyping && "animate-pulse shadow-primary/30"
-                        )}
-                      >
-                        <motion.div
-                          animate={input.trim() !== '' && !isTyping ? { rotate: [0, 10, -10, 0] } : {}}
-                          transition={{ repeat: Infinity, duration: 1 }}
-                        >
-                          <Send size={18} className="text-white" />
-                        </motion.div>
-                        
-                        {/* Send button glow effect */}
-                        {input.trim() !== '' && !isTyping && (
-                          <div className="absolute inset-0 bg-gradient-to-r from-primary/20 to-secondary/20 animate-pulse rounded-2xl" />
-                        )}
-                      </Button>
-                    </motion.div>
+                    <Button 
+                      onClick={() => handleSend()}
+                      disabled={input.trim() === '' || isTyping}
+                      className="w-12 h-12 rounded-2xl bg-gradient-to-br from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 disabled:opacity-50 disabled:cursor-not-allowed"
+                    >
+                      <Send size={18} className="text-white" />
+                    </Button>
                   </div>
                 </div>
               </>
