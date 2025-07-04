@@ -101,23 +101,24 @@
     scroll-behavior: smooth;
   }
   
-  /* Custom scrollbar for webkit browsers */
+  /* Enhanced Custom scrollbar */
   ::-webkit-scrollbar {
     width: 8px;
     height: 8px;
   }
   
   ::-webkit-scrollbar-track {
-    @apply bg-muted dark:bg-background;
+    @apply bg-transparent;
   }
   
   ::-webkit-scrollbar-thumb {
-    @apply bg-primary/40 rounded-full hover:bg-primary/60 transition-colors dark:bg-primary/60 dark:hover:bg-primary/80;
+    @apply bg-gradient-to-b from-primary/40 to-secondary/40 rounded-full hover:from-primary/60 hover:to-secondary/60 transition-all duration-200;
+    border: 1px solid rgba(255, 255, 255, 0.1);
   }
 
-  /* Custom scrollbar for chat */
+  /* Enhanced Custom scrollbar for chat */
   .custom-scrollbar::-webkit-scrollbar {
-    width: 4px;
+    width: 6px;
   }
   
   .custom-scrollbar::-webkit-scrollbar-track {
@@ -125,7 +126,8 @@
   }
   
   .custom-scrollbar::-webkit-scrollbar-thumb {
-    @apply bg-primary/30 rounded-full hover:bg-primary/50 transition-colors;
+    @apply bg-gradient-to-b from-primary/30 to-secondary/30 rounded-full hover:from-primary/50 hover:to-secondary/50 transition-all duration-200;
+    border: 1px solid rgba(255, 255, 255, 0.1);
   }
 
   /* Hide scrollbar for category tabs */
@@ -154,8 +156,13 @@
     @apply bg-gradient-to-r from-secondary to-secondary-light dark:from-secondary/90 dark:to-secondary-light/90;
   }
   
+  /* Enhanced Glass effect */
   .glass-effect {
-    @apply backdrop-blur-md bg-white/70 dark:bg-black/30 border border-white/20 dark:border-white/10;
+    @apply backdrop-blur-xl bg-white/80 dark:bg-black/40 border border-white/30 dark:border-white/10;
+    box-shadow: 
+      0 8px 32px rgba(0, 0, 0, 0.1),
+      inset 0 1px 0 rgba(255, 255, 255, 0.2),
+      inset 0 -1px 0 rgba(255, 255, 255, 0.1);
   }
   
   .dark-card {
@@ -166,7 +173,7 @@
     @apply dark:bg-gradient-to-b dark:from-transparent dark:to-background/80;
   }
   
-  /* Animation classes */
+  /* Enhanced Animation classes */
   .animate-fade-in {
     opacity: 0;
     animation: fadeIn 0.8s ease-out forwards;
@@ -185,24 +192,52 @@
   }
   
   .hover-scale {
-    @apply transition-transform duration-300 hover:scale-105;
+    @apply transition-transform duration-300 hover:scale-105 active:scale-95;
   }
   
   .hover-lift {
-    @apply transition-all duration-300 hover:-translate-y-1 hover:shadow-lg;
+    @apply transition-all duration-300 hover:-translate-y-1 hover:shadow-lg hover:shadow-primary/10;
   }
   
+  /* Enhanced pulse animation */
   .animate-pulse-slow {
-    animation: pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+    animation: pulseSlow 3s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  }
+  
+  /* Floating animation */
+  .animate-float {
+    animation: float 3s ease-in-out infinite;
+  }
+  
+  /* Glow effect */
+  .glow-effect {
+    box-shadow: 
+      0 0 20px rgba(var(--primary), 0.3),
+      0 0 40px rgba(var(--primary), 0.2),
+      0 0 60px rgba(var(--primary), 0.1);
+  }
+  
+  /* Shimmer effect */
+  .shimmer {
+    background: linear-gradient(
+      90deg,
+      transparent,
+      rgba(255, 255, 255, 0.4),
+      transparent
+    );
+    animation: shimmer 2s infinite;
   }
 }
 
+/* Enhanced Keyframes */
 @keyframes fadeIn {
   from {
     opacity: 0;
+    transform: translateY(10px);
   }
   to {
     opacity: 1;
+    transform: translateY(0);
   }
 }
 
@@ -228,11 +263,42 @@
   }
 }
 
-@keyframes pulse {
+@keyframes pulseSlow {
   0%, 100% {
     opacity: 1;
+    transform: scale(1);
   }
   50% {
-    opacity: 0.7;
+    opacity: 0.8;
+    transform: scale(1.05);
+  }
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+/* Enhanced media queries for mobile */
+@media (max-width: 768px) {
+  .custom-scrollbar::-webkit-scrollbar {
+    width: 4px;
+  }
+  
+  .glass-effect {
+    @apply backdrop-blur-md bg-white/90 dark:bg-black/50;
   }
 }
