@@ -38,7 +38,7 @@ const HeroSection: React.FC = () => {
   }, [controls]);
 
   return (
-    <div ref={ref} className="relative bg-gradient-to-br from-primary/5 via-background to-secondary/5 pt-32 pb-20 md:py-36 overflow-hidden">
+    <div ref={ref} className="relative bg-gradient-to-br from-primary/5 via-background to-secondary/5 pt-8 pb-12 md:pt-16 md:pb-20 lg:pt-20 overflow-hidden">
       <div className="container relative z-10">
         <div className="grid md:grid-cols-2 gap-8 items-center">
           <div className="space-y-6 z-10">
@@ -139,7 +139,7 @@ const HeroSection: React.FC = () => {
       <div className="absolute bottom-0 left-0 w-full overflow-hidden z-0 opacity-20">
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320" className="w-full h-auto">
           <path fill="currentColor" fillOpacity="1" className="text-primary"
-            d="M0,96L48,112C96,128,192,160,288,160C384,160,480,128,576,122.7C672,117,768,139,864,154.7C960,171,1056,181,1152,154.7C1248,128,1344,64,1392,32L1440,0L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z">
+            d="M0,160L48,170.7C96,181,192,203,288,197.3C384,192,480,160,576,154.7C672,149,768,171,864,181.3C960,192,1056,192,1152,181.3C1248,171,1344,149,1392,138.7L1440,128L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z">
           </path>
         </svg>
       </div>

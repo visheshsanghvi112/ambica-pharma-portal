@@ -11,6 +11,7 @@ import {
   DropdownMenuTrigger,
 } from "./ui/dropdown-menu";
 import { motion } from "framer-motion";
+import { ThemeToggle } from "./ThemeToggle";
 
 const Header: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -83,6 +84,8 @@ const Header: React.FC = () => {
               </DropdownMenuContent>
             </DropdownMenu>
 
+            <ThemeToggle />
+
             <motion.div
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
@@ -97,6 +100,7 @@ const Header: React.FC = () => {
 
           {/* Mobile menu button */}
           <div className="md:hidden flex items-center space-x-2">
+            <ThemeToggle />
             <button onClick={toggleMenu} className="text-primary">
               {isOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
             </button>

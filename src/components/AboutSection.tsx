@@ -14,28 +14,32 @@ const AboutSection = () => {
   
   const keyFeatures = [
     {
-      icon: <Award className="h-6 w-6" />,
+      icon: <Award className="h-8 w-8" />,
       title: "WHO-GMP Certified",
       description: "Highest quality standards",
-      colorClass: "text-primary"
+      colorClass: "text-primary",
+      iconBgClass: "bg-gradient-to-br from-green-500 to-emerald-600"
     },
     {
-      icon: <Star className="h-6 w-6" />,
+      icon: <Star className="h-8 w-8" />,
       title: "ISO 9001:2015",
       description: "Certified quality processes",
-      colorClass: "text-secondary"
+      colorClass: "text-secondary",
+      iconBgClass: "bg-gradient-to-br from-blue-500 to-indigo-600"
     },
     {
-      icon: <Globe className="h-6 w-6" />,
+      icon: <Globe className="h-8 w-8" />,
       title: "Global Presence",
       description: "Exporting to 25+ countries",
-      colorClass: "text-blue-500"
+      colorClass: "text-blue-500",
+      iconBgClass: "bg-gradient-to-br from-purple-500 to-pink-600"
     },
     {
-      icon: <Users className="h-6 w-6" />,
+      icon: <Users className="h-8 w-8" />,
       title: "Expert Team",
       description: "Pharmaceutical specialists",
-      colorClass: "text-purple-500"
+      colorClass: "text-purple-500",
+      iconBgClass: "bg-gradient-to-br from-orange-500 to-amber-600"
     }
   ];
   
@@ -71,6 +75,7 @@ const AboutSection = () => {
                   title={feature.title}
                   description={feature.description}
                   colorClass={feature.colorClass}
+                  iconBgClass={feature.iconBgClass}
                 />
               ))}
             </div>

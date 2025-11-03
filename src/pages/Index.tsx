@@ -212,7 +212,7 @@ const Index = () => {
       <HeroSection />
       
       {/* Quick Overview */}
-      <section className="py-16 bg-gradient-to-r from-indigo-50 to-blue-50 dark:from-indigo-900/20 dark:to-blue-900/20 relative overflow-hidden">
+      <section className="py-16 bg-gradient-to-br from-primary/10 via-secondary/5 to-primary/5 dark:from-primary/20 dark:via-secondary/10 dark:to-primary/10 relative overflow-hidden">
         {/* Animated background elements */}
         <div className="absolute top-0 left-0 w-full h-full opacity-30 overflow-hidden pointer-events-none">
           <div className="absolute top-10 left-10 w-40 h-40 rounded-full bg-gradient-to-r from-blue-300 to-blue-400 blur-3xl animate-blob"></div>
