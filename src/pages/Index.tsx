@@ -10,6 +10,7 @@ import Testimonials from "../components/Testimonials";
 import { Card, CardContent } from "@/components/ui/card";
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
 import SEOHead from "../components/SEOHead";
+// import ShopByConcern from "../components/ShopByConcern"; // Commented out - not in use currently
 
 // CounterAnimation component for number counting
 const CounterAnimation = ({ targetValue }) => {
@@ -581,6 +582,12 @@ const Index = () => {
           </div>
         </div>
       </section>
+
+      {/* Shop By Concern Section - Commented out for now */}
+      {/* <ShopByConcern /> */}
+
+      {/* Testimonials Section */}
+      <Testimonials />
     </div>
   );
 };

@@ -26,7 +26,6 @@ import NotFound from "./pages/NotFound";
 import Achievements from "./pages/Achievements";
 import SEOHead from "./components/SEOHead";
 import Breadcrumbs from "./components/Breadcrumbs";
-import Products from "./pages/Products";
 
 // Create a new QueryClient instance
 const queryClient = new QueryClient();
@@ -106,7 +105,6 @@ const App: React.FC = () => {
                   <Route path="/csr" element={<CSR />} />
                   <Route path="/careers" element={<Careers />} />
                   <Route path="/achievements" element={<Achievements />} />
-                  <Route path="/products" element={<Products />} />
                   <Route path="*" element={<NotFound />} />
                 </Routes>
               </main>

@@ -15,12 +15,7 @@ const routeNameMap: Record<string, string> = {
   'privacy': 'Privacy Policy',
   'csr': 'Corporate Social Responsibility',
   'careers': 'Careers',
-  'achievements': 'Achievements',
-  'products': 'Products',
-  'tablets': 'Tablets',
-  'capsules': 'Capsules',
-  'injectables': 'Injectables',
-  'drops': 'Drops'
+  'achievements': 'Achievements'
 };
 
 // Breadcrumb JSON-LD schema generator
