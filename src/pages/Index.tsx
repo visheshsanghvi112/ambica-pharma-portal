@@ -1,132 +1,154 @@
-import React, { useEffect } from "react";
+import React from "react";
 import HeroSection from "../components/HeroSection";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
-import { motion, useAnimation } from "framer-motion";
-import { useInView } from "framer-motion";
-import { CheckCircle, Heart, Tablet, Brain, Shield, Pill, Baby, Eye, MessageCircle, ArrowRight, Award, Star, TrendingUp, Globe, UserCheck, Sparkles } from "lucide-react";
+import { motion } from "framer-motion";
+import {
+  ArrowRight,
+  Award,
+  BadgeCheck,
+  Building2,
+  CalendarCheck,
+  ClipboardCheck,
+  CheckCircle,
+  Factory,
+  Globe,
+  Handshake,
+  Layers,
+  PhoneCall,
+  ShieldCheck,
+  Sparkles,
+  Star,
+  TrendingUp,
+  Truck,
+  UserCheck
+} from "lucide-react";
 import Statistics from "../components/Statistics";
 import Testimonials from "../components/Testimonials";
-import { Card, CardContent } from "@/components/ui/card";
-import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
 import SEOHead from "../components/SEOHead";
-// import ShopByConcern from "../components/ShopByConcern"; // Commented out - not in use currently
 
-// CounterAnimation component for number counting
-const CounterAnimation = ({ targetValue }) => {
-  // Remove any non-numeric characters for counting
-  const numericValue = parseInt(targetValue.replace(/\D/g, ""));
-  
-  return (
-    <span>
-      {targetValue}
-    </span>
-  );
-};
+const trustSignals = [
+  { title: "WHO–GMP Units", description: "Audited multi-therapeutic lines" },
+  { title: "ISO 9001:2015", description: "Documented QMS + GDP SOPs" },
+  { title: "Cold-Chain Ready", description: "2–8°C monitored fulfillment" },
+  { title: "Global Export Desk", description: "45+ regulated & semi-regulated markets" }
+];
 
-// Product categories data
-const productCategories = [
+const highlightMetrics = [
+  { title: "Countries Served", value: "45+", icon: <Globe className="h-5 w-5 text-primary" /> },
+  { title: "Healthcare Partners", value: "300k+", icon: <UserCheck className="h-5 w-5 text-secondary" /> },
+  { title: "Formulations", value: "5k+", icon: <TrendingUp className="h-5 w-5 text-primary" /> },
+  { title: "Awards & Citations", value: "35+", icon: <Award className="h-5 w-5 text-secondary" /> }
+];
+
+const flagshipSegments = [
   {
-    title: "Cardiovascular",
-    description: "Quality medicines for heart health and blood pressure management",
-    icon: <Heart className="h-12 w-12 text-red-500" />
+    title: "Advanced Anti-Aging",
+    description: "Nutraceutical and dermatology-ready actives for aesthetic clinics and premium pharmacies.",
+    image: "/lovable-uploads/Anti%20Aging.png",
+    tags: ["Collagen Boosters", "Dermaceutical Drops"]
   },
   {
-    title: "Diabetic Care",
-    description: "Affordable options for diabetes management and blood sugar control",
-    icon: <Tablet className="h-12 w-12 text-blue-500" />
+    title: "Immunity & Wellness",
+    description: "High-volume SKUs for preventive care programs with WHO-prequalified ingredients.",
+    image: "/lovable-uploads/Immunity.png",
+    tags: ["Gummies & Sachets", "OTC Friendly Packs"]
   },
   {
-    title: "Neurological",
-    description: "Treatments for neurological conditions and pain management",
-    icon: <Brain className="h-12 w-12 text-purple-500" />
+    title: "Pain & Mobility",
+    description: "Acute and chronic pain portfolio spanning tablets, gels, and topical sprays.",
+    image: "/lovable-uploads/Pain%20Management.png",
+    tags: ["Dual API Combos", "Hospital Bidding"]
   },
   {
-    title: "Antibiotics",
-    description: "Broad spectrum antibiotics for various infections at lower costs",
-    icon: <Shield className="h-12 w-12 text-green-500" />
-  },
-  {
-    title: "Respiratory",
-    description: "Medicines for asthma, COPD, and other respiratory conditions",
-    icon: <Shield className="h-12 w-12 text-cyan-500" />
-  },
-  {
-    title: "Gastrointestinal",
-    description: "Treatments for digestive disorders and gastrointestinal health",
-    icon: <Pill className="h-12 w-12 text-amber-500" />
-  },
-  {
-    title: "Pediatric Care",
-    description: "Safe and affordable medicines formulated for children",
-    icon: <Baby className="h-12 w-12 text-pink-500" />
-  },
-  {
-    title: "Ophthalmics",
-    description: "Eye care medicines and treatments at significant savings",
-    icon: <Eye className="h-12 w-12 text-indigo-500" />
+    title: "Sleep & Stress Relief",
+    description: "Evidence-backed adaptogens aligned with wellness chains and digital health brands.",
+    image: "/lovable-uploads/Sleep%20Management.png",
+    tags: ["Melatonin Range", "Subscription Ready"]
   }
 ];
 
-// Customer testimonials data
-const customerTestimonials = [
+const supplyPrograms = [
   {
-    quote: "Ambica Pharma has been our reliable supplier for diabetes medications. Their quality products and timely delivery make them our preferred partner.",
-    author: "Gaurav Mishra",
-    position: "Regular Customer, Delhi"
+    title: "Hospital & Institutional Supply",
+    description: "Aggregator model for tertiary care hospitals, group purchasing organizations, and state tenders.",
+    icon: <Building2 className="h-6 w-6 text-blue-600" />,
+    bullets: ["Therapeutic bundling by specialty", "On-site pharmacovigilance kits", "Quarterly demand forecasting"]
   },
   {
-    quote: "As a small clinic owner, I've been sourcing medicines from Ambica for years. Their prompt service and competitive pricing keep my patients happy.",
-    author: "Dr. Priya Patel",
-    position: "General Physician, Mumbai"
+    title: "International Private Label",
+    description: "Concept-to-market support for distributors expanding their house brand portfolio.",
+    icon: <Handshake className="h-6 w-6 text-indigo-600" />,
+    bullets: ["Artwork + dossier support", "Flexible MOQ & blistering", "Regulatory document library"]
   },
   {
-    quote: "Finding affordable cardiovascular medications was challenging until I discovered Ambica Pharma. Now my patients can afford their treatment plans.",
-    author: "Dr. Kumar Singh",
-    position: "Cardiologist, Hyderabad"
+    title: "Digital & Retail Pharmacies",
+    description: "Rapid replenishment for omnichannel pharmacies and telehealth platforms.",
+    icon: <Truck className="h-6 w-6 text-emerald-600" />,
+    bullets: ["Same-week dispatch for 200+ SKUs", "Smart lot traceability", "Cold-chain add-ons"]
   },
   {
-    quote: "The pediatric antibiotics from Ambica Pharma are trusted by our hospital for efficacy and safety. We appreciate their commitment to quality.",
-    author: "Dr. Anita Desai",
-    position: "Pediatrician, Mumbai"
+    title: "Specialty Clinics & Wellness Chains",
+    description: "Curated therapy bundles for aesthetic, fertility, and wellness group practices.",
+    icon: <Sparkles className="h-6 w-6 text-pink-500" />,
+    bullets: ["Cross-therapy starter kits", "White-glove shelf readiness", "Dedicated clinical educator desk"]
   }
 ];
 
-// Global achievements data
-const globalAchievements = [
-  { 
-    title: "Countries Served", 
-    value: "45+", 
-    icon: <Globe className="h-6 w-6 text-blue-500" />
+const supplyStats = [
+  { label: "Hospital partners", value: "600+", helper: "Aggregator & tender-ready" },
+  { label: "Private label launches", value: "120+", helper: "Concept-to-commercialization" },
+  { label: "SKUs with cold chain", value: "80+", helper: "Validated insulated shipping" }
+];
+
+const qualityStack = [
+  {
+    title: "Regulatory Confidence",
+    description: "WHO–GMP, ISO 9001, and GDP aligned operations audited every 6 months.",
+    icon: <ShieldCheck className="h-6 w-6 text-sky-600" />
   },
-  { 
-    title: "Trusted Partners", 
-    value: "300000+", 
-    icon: <UserCheck className="h-6 w-6 text-green-500" />
+  {
+    title: "Manufacturing Depth",
+    description: "Dedicated beta-lactam, hormonal, and general formulation blocks with HEPA controls.",
+    icon: <Factory className="h-6 w-6 text-amber-600" />
   },
-  { 
-    title: "Product Range", 
-    value: "5000+", 
-    icon: <TrendingUp className="h-6 w-6 text-purple-500" />
+  {
+    title: "Secure Logistics",
+    description: "Validated 2–8°C boxes, GPS-enabled fleet, and serialized cartons for exports.",
+    icon: <Layers className="h-6 w-6 text-purple-600" />
   },
-  { 
-    title: "Awards Won", 
-    value: "35+", 
-    icon: <Award className="h-6 w-6 text-amber-500" />
+  {
+    title: "Documentation Desk",
+    description: "Dossier compilation, COA sharing, and CTD-ready paperwork for quick filings.",
+    icon: <CalendarCheck className="h-6 w-6 text-emerald-600" />
+  }
+];
+
+const partnershipSteps = [
+  {
+    title: "Discovery Call",
+    description: "Share therapeutic focus, volume expectations, and target markets.",
+    icon: <PhoneCall className="h-5 w-5" />
+  },
+  {
+    title: "Portfolio Mapping",
+    description: "Receive curated SKU matrix, pricing, and regulatory documentation.",
+    icon: <ClipboardCheck className="h-5 w-5" />
+  },
+  {
+    title: "Quality Alignment",
+    description: "Run technical audits, stability reports, and pilot orders.",
+    icon: <BadgeCheck className="h-5 w-5" />
+  },
+  {
+    title: "Fulfillment & Scale",
+    description: "Locked-in production windows plus digital visibility on every shipment.",
+    icon: <Truck className="h-5 w-5" />
   }
 ];
 
 const Index = () => {
-  // Setup animation controls for scroll animations
-  const controls = useAnimation();
-  const ref = React.useRef(null);
-  const inView = useInView(ref, { once: false, amount: 0.3 });
 
-  useEffect(() => {
-    if (inView) {
-      controls.start("visible");
-    }
-  }, [controls, inView]);
 
   // Enhanced SEO structured data for the homepage
   const homePageStructuredData = {
@@ -142,8 +164,8 @@ const Index = () => {
       "@id": "https://ambicapharma.net/lovable-uploads/e75f626d-a490-496b-8817-294d7128b441.png"
     },
     "datePublished": "2005-01-01T00:00:00+00:00",
-    "dateModified": "2025-05-03T00:00:00+00:00",
-    "description": "Ambica Pharma is a top pharmaceutical wholesaler, trader and exporter offering high-quality medicines, tablets, capsules, injectables, and drops with WHO-GMP and ISO 9001 certification. Serving global markets in 25+ countries since 2005.",
+    "dateModified": "2025-11-25T00:00:00+00:00",
+    "description": "Ambica Pharma is a top pharmaceutical wholesaler, trader and exporter offering high-quality medicines, tablets, capsules, injectables, and drops with WHO-GMP and ISO 9001 certification. Serving global markets in 45+ countries since 2005.",
     "breadcrumb": {
       "@id": "https://ambicapharma.net/#breadcrumb"
     },
@@ -197,396 +219,411 @@ const Index = () => {
     }
   };
 
+  const handleAccordImageError = React.useCallback(() => {
+    console.error("Failed to load accord map image at /lovable-uploads/accord-healthier-worlds_0.png")
+  }, [])
+
   return (
     <div className="min-h-screen">
-      {/* Enhanced SEO Optimization */}
-      <SEOHead 
+      <SEOHead
         title="Ambica Pharma - Leading Pharmaceutical Wholesaler, Trader & Exporter in India"
-        description="Ambica Pharma is a top pharmaceutical wholesaler, trader and exporter offering high-quality medicines, tablets, capsules, injectables, and drops with WHO-GMP and ISO 9001 certification. Serving global markets in 25+ countries since 2005."
+        description="Ambica Pharma is a top pharmaceutical wholesaler, trader and exporter offering high-quality medicines, tablets, capsules, injectables, and drops with WHO-GMP and ISO 9001 certification. Serving global markets in 45+ countries since 2005."
         keywords="pharmaceutical wholesaler, pharmaceutical trader, medicine exporter, Ambica Pharma, AmbicaPharma, Ambica, Ambicapharma, Mumbai pharmaceutical company, pharmaceutical tablets, pharmaceutical capsules, pharmaceutical injectables, medicine manufacturer, drug distributor, pharmaceutical drops, WHO-GMP certified, ISO 9001 pharma, healthcare products, generic medicine exporter, pharmaceutical suppliers India, bulk medicine distributor, pharmaceutical business, pharma franchise, pharmaceutical company Mumbai, affordable medicines, quality medicines, global pharma exporter"
         structuredData={homePageStructuredData}
         publishedDate="2005-01-01"
-        modifiedDate="2025-05-03"
+        modifiedDate="2025-11-25"
       />
-      
-      {/* Hero Section */}
+
       <HeroSection />
-      
-      {/* Quick Overview */}
-      <section className="py-16 bg-gradient-to-br from-primary/10 via-secondary/5 to-primary/5 dark:from-primary/20 dark:via-secondary/10 dark:to-primary/10 relative overflow-hidden">
-        {/* Animated background elements */}
-        <div className="absolute top-0 left-0 w-full h-full opacity-30 overflow-hidden pointer-events-none">
-          <div className="absolute top-10 left-10 w-40 h-40 rounded-full bg-gradient-to-r from-blue-300 to-blue-400 blur-3xl animate-blob"></div>
-          <div className="absolute bottom-20 right-10 w-60 h-60 rounded-full bg-gradient-to-r from-purple-300 to-indigo-400 blur-3xl animate-blob" style={{ animationDelay: "2s" }}></div>
-          <div className="absolute top-1/3 right-1/4 w-32 h-32 rounded-full bg-gradient-to-r from-pink-300 to-purple-400 blur-3xl animate-blob" style={{ animationDelay: "4s" }}></div>
-        </div>
-        
+
+      {/* Immediate trust strip - gradient aligned with Global Access */}
+      <section className="relative hidden md:block py-8 bg-gradient-to-r from-primary via-primary/90 to-secondary text-white overflow-hidden border-b border-white/10">
+        <div className="absolute inset-0 opacity-20 bg-[radial-gradient(circle_at_top,_rgba(255,255,255,0.6),_transparent_60%)]" />
         <div className="container relative z-10">
-          <motion.div 
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            viewport={{ once: true }}
-            className="text-center mb-12"
-          >
-            <motion.span 
-              className="px-3 py-1 text-sm font-medium bg-secondary/10 text-secondary rounded-full mb-4 inline-block"
-              whileHover={{ scale: 1.05, backgroundColor: "rgba(var(--secondary), 0.2)" }}
-              transition={{ type: "spring", stiffness: 400, damping: 10 }}
-            >
-              <Sparkles className="h-4 w-4 inline mr-1" />
-              Trusted Pharmaceutical Partner
-            </motion.span>
-            <h2 className="text-3xl md:text-4xl font-display font-bold mb-4 bg-clip-text text-transparent bg-gradient-to-r from-blue-600 via-indigo-600 to-violet-600">
-              Established Excellence Since 2005
-            </h2>
-            <div className="w-24 h-1 bg-gradient-to-r from-blue-600 to-violet-600 mx-auto mt-2 mb-4 rounded-full"></div>
-            <p className="text-foreground/80 max-w-3xl mx-auto text-lg">
-              Ambica Pharma is a trusted name in pharmaceutical distribution, known for quality products and exceptional service across India and international markets.
-            </p>
-          </motion.div>
-          
-          <div className="grid md:grid-cols-3 gap-8">
-            {/* Card 1 */}
-            <motion.div 
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.2 }}
-              viewport={{ once: true }}
-              whileHover={{ y: -10, boxShadow: "0px 10px 30px rgba(0, 0, 0, 0.1)" }}
-              className="bg-gradient-to-br from-white to-blue-50 dark:from-gray-800 dark:to-blue-900/30 p-8 rounded-xl shadow-md hover:shadow-xl transition-all border border-blue-100 dark:border-blue-900/50 relative overflow-hidden"
-            >
-              <div className="absolute top-0 right-0 w-24 h-24 bg-gradient-to-bl from-blue-100 to-transparent rounded-bl-full"></div>
-              <motion.div 
-                className="w-14 h-14 bg-gradient-to-br from-blue-100 to-blue-200 dark:from-blue-800 dark:to-blue-700 rounded-full flex items-center justify-center mb-6 text-blue-600 dark:text-blue-300 relative z-10"
-                whileHover={{ rotate: 5, scale: 1.1 }}
-                transition={{ type: "spring", stiffness: 300, damping: 10 }}
+          <div className="grid grid-cols-4 gap-5">
+            {trustSignals.map((signal, index) => (
+              <motion.div
+                key={signal.title}
+                initial={{ opacity: 0, y: 10 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.3, delay: index * 0.1 }}
+                viewport={{ once: true }}
+                className="flex flex-col items-center text-center px-5 py-6 rounded-[24px] bg-white/10 border border-white/20 backdrop-blur-md shadow-[0_15px_35px_rgba(15,23,42,0.2)] transition-all duration-300 hover:-translate-y-2 hover:shadow-[0_24px_48px_rgba(30,64,175,0.18)] hover:border-white/40"
               >
-                <svg xmlns="http://www.w3.org/2000/svg" className="h-7 w-7" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
-                </svg>
+                <div className="h-11 w-11 rounded-xl flex items-center justify-center mb-4 bg-white/20 border border-white/30">
+                  <BadgeCheck className="h-5 w-5 text-white" />
+                </div>
+                <h3 className="font-semibold text-white text-lg mb-1">{signal.title}</h3>
+                <p className="text-sm text-white/85 font-medium">{signal.description}</p>
               </motion.div>
-              <h3 className="text-xl font-bold text-blue-700 dark:text-blue-300 mb-3">Business Type</h3>
-              <p className="text-foreground/80 mb-4">Wholesaler, Trader & Merchant Exporter</p>
-            </motion.div>
-            
-            {/* Card 2 */}
-            <motion.div 
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.3 }}
-              viewport={{ once: true }}
-              whileHover={{ y: -10, boxShadow: "0px 10px 30px rgba(0, 0, 0, 0.1)" }}
-              className="bg-gradient-to-br from-white to-indigo-50 dark:from-gray-800 dark:to-indigo-900/30 p-8 rounded-xl shadow-md hover:shadow-xl transition-all border border-indigo-100 dark:border-indigo-900/50 relative overflow-hidden"
-            >
-              <div className="absolute top-0 right-0 w-24 h-24 bg-gradient-to-bl from-indigo-100 to-transparent rounded-bl-full"></div>
-              <motion.div 
-                className="w-14 h-14 bg-gradient-to-br from-indigo-100 to-indigo-200 dark:from-indigo-800 dark:to-indigo-700 rounded-full flex items-center justify-center mb-6 text-indigo-600 dark:text-indigo-300 relative z-10"
-                whileHover={{ rotate: -5, scale: 1.1 }}
-                transition={{ type: "spring", stiffness: 300, damping: 10 }}
-              >
-                <svg xmlns="http://www.w3.org/2000/svg" className="h-7 w-7" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-                </svg>
-              </motion.div>
-              <h3 className="text-xl font-bold text-indigo-700 dark:text-indigo-300 mb-3">Year of Establishment</h3>
-              <p className="text-foreground/80 mb-4">2005</p>
-            </motion.div>
-            
-            {/* Card 3 */}
-            <motion.div 
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.4 }}
-              viewport={{ once: true }}
-              whileHover={{ y: -10, boxShadow: "0px 10px 30px rgba(0, 0, 0, 0.1)" }}
-              className="bg-gradient-to-br from-white to-violet-50 dark:from-gray-800 dark:to-violet-900/30 p-8 rounded-xl shadow-md hover:shadow-xl transition-all border border-violet-100 dark:border-violet-900/50 relative overflow-hidden"
-            >
-              <div className="absolute top-0 right-0 w-24 h-24 bg-gradient-to-bl from-violet-100 to-transparent rounded-bl-full"></div>
-              <motion.div 
-                className="w-14 h-14 bg-gradient-to-br from-violet-100 to-violet-200 dark:from-violet-800 dark:to-violet-700 rounded-full flex items-center justify-center mb-6 text-violet-600 dark:text-violet-300 relative z-10"
-                whileHover={{ rotate: 5, scale: 1.1 }}
-                transition={{ type: "spring", stiffness: 300, damping: 10 }}
-              >
-                <svg xmlns="http://www.w3.org/2000/svg" className="h-7 w-7" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
-                </svg>
-              </motion.div>
-              <h3 className="text-xl font-bold text-violet-700 dark:text-violet-300 mb-3">Experience</h3>
-              <p className="text-foreground/80 mb-4">19+ Years in the Pharmaceutical Industry</p>
-            </motion.div>
+            ))}
           </div>
         </div>
       </section>
-      
-      {/* Global Presence Banner with enhanced visual effects and number counter */}
-      <section ref={ref} className="py-12 bg-gradient-to-r from-blue-50 via-transparent to-indigo-50 dark:from-blue-900/10 dark:via-transparent dark:to-indigo-900/10 relative overflow-hidden">
-        <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80')] opacity-5 mix-blend-overlay"></div>
-        
-        {/* Animated pattern overlay */}
-        <div className="absolute inset-0 bg-grid-pattern opacity-10"></div>
-        
+
+      {/* Ambica snapshot - Redesigned with Official Gradient & Micro-details */}
+      <section className="py-24 bg-gradient-to-br from-primary/5 via-white to-secondary/5 dark:from-slate-950 dark:via-slate-900 dark:to-slate-950 overflow-hidden relative">
+        {/* Decorative Blobs - Refined */}
+        <div className="absolute top-0 left-0 w-full h-full opacity-40 overflow-hidden pointer-events-none">
+          <div className="absolute top-10 left-10 w-64 h-64 rounded-full bg-gradient-to-r from-primary/10 to-secondary/10 blur-[80px] animate-blob"></div>
+          <div className="absolute bottom-20 right-10 w-80 h-80 rounded-full bg-gradient-to-r from-secondary/10 to-primary/10 blur-[80px] animate-blob" style={{ animationDelay: "2s" }}></div>
+        </div>
+
         <div className="container relative z-10">
-          <motion.div
-            variants={{
-              hidden: { opacity: 0 },
-              visible: {
-                opacity: 1,
-                transition: {
-                  staggerChildren: 0.1
-                }
-              }
-            }}
-            initial="hidden"
-            animate={controls}
-            className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-8"
-          >
-            {globalAchievements.map((item, index) => (
+          <div className="grid lg:grid-cols-2 gap-16 items-center">
+            <div className="space-y-8">
               <motion.div
-                key={index}
-                variants={{
-                  hidden: { opacity: 0, y: 20 },
-                  visible: { opacity: 1, y: 0, transition: { duration: 0.5 } }
-                }}
-                whileHover={{ 
-                  scale: 1.05, 
-                  boxShadow: "0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)" 
-                }}
-                className="bg-gradient-to-br from-white/90 to-blue-50/90 dark:from-gray-800/90 dark:to-blue-900/30 backdrop-blur-sm p-4 md:p-6 rounded-lg shadow-lg border border-blue-100 dark:border-blue-900/50 text-center transform transition-transform"
+                initial={{ opacity: 0, x: -20 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/80 dark:bg-slate-800/80 text-primary dark:text-primary-light text-sm font-medium border border-primary/10 dark:border-primary/20 backdrop-blur-xl shadow-[0_8px_30px_rgb(0,0,0,0.06)] hover:shadow-[0_8px_30px_rgb(0,0,0,0.12)] transition-all duration-300 ring-1 ring-white/60"
               >
-                <motion.div 
-                  className="flex justify-center mb-3"
-                  whileHover={{ rotate: 5, scale: 1.1 }}
-                  transition={{ type: "spring", stiffness: 300, damping: 10 }}
+                <Sparkles className="h-4 w-4 animate-pulse" />
+                <span>19+ years of excellence</span>
+              </motion.div>
+
+              <h2 className="text-4xl md:text-6xl font-display font-bold leading-tight text-slate-900 dark:text-white tracking-tight">
+                Global Pharma <br />
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-secondary">Supply Chain</span>
+              </h2>
+
+              <p className="text-lg text-slate-600 dark:text-slate-300 leading-relaxed max-w-xl text-balance">
+                We bridge the gap between premium Indian manufacturing and global healthcare demands. Your trusted partner for hospital tenders, distribution networks, and private label expansion.
+              </p>
+
+              <div className="flex flex-col sm:flex-row gap-4 pt-4">
+                <Button asChild size="lg" className="bg-gradient-to-r from-primary to-secondary hover:from-primary/90 hover:to-secondary/90 text-white shadow-[0_10px_40px_-10px_rgba(37,99,235,0.5)] hover:shadow-[0_20px_40px_-10px_rgba(37,99,235,0.6)] rounded-full px-8 border-0 hover:scale-105 transition-all duration-300 ring-1 ring-white/20">
+                  <Link to="/contact" className="flex items-center gap-2">
+                    Start Partnership
+                    <ArrowRight className="h-4 w-4" />
+                  </Link>
+                </Button>
+                <Button asChild variant="outline" size="lg" className="rounded-full px-8 border-slate-200/60 hover:bg-slate-50/50 dark:border-slate-700 dark:hover:bg-slate-800/50 backdrop-blur-sm shadow-lg shadow-slate-200/20 hover:shadow-xl transition-all duration-300">
+                  <Link to="/about">Our Story</Link>
+                </Button>
+              </div>
+
+              <div className="grid grid-cols-2 gap-6 pt-8 border-t border-slate-200/60 dark:border-slate-800">
+                <div className="flex items-start gap-3 group">
+                  <div className="p-2 rounded-lg bg-primary/5 dark:bg-primary/20 text-primary dark:text-primary-light group-hover:bg-primary/10 transition-colors duration-300 shadow-sm">
+                    <ShieldCheck className="h-5 w-5" />
+                  </div>
+                  <div>
+                    <h4 className="font-semibold text-slate-900 dark:text-white tracking-tight">Regulatory Ready</h4>
+                    <p className="text-sm text-slate-500 mt-1">WHO-GMP & ISO certified operations</p>
+                  </div>
+                </div>
+                <div className="flex items-start gap-3 group">
+                  <div className="p-2 rounded-lg bg-secondary/5 dark:bg-secondary/20 text-secondary dark:text-secondary-light group-hover:bg-secondary/10 transition-colors duration-300 shadow-sm">
+                    <Globe className="h-5 w-5" />
+                  </div>
+                  <div>
+                    <h4 className="font-semibold text-slate-900 dark:text-white tracking-tight">Global Reach</h4>
+                    <p className="text-sm text-slate-500 mt-1">Exporting to 45+ countries</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div className="grid grid-cols-2 gap-4">
+              {highlightMetrics.map((metric, index) => (
+                <motion.div
+                  key={metric.title}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.4, delay: index * 0.1 }}
+                  viewport={{ once: true }}
+                  className={`group p-6 rounded-3xl bg-white/30 dark:bg-slate-900/30 shadow-[0_8px_32px_0_rgba(31,38,135,0.07)] dark:shadow-none border border-white/50 dark:border-slate-800 flex flex-col gap-4 backdrop-blur-md hover:-translate-y-2 transition-all duration-500 ${index === 1 || index === 2 ? 'md:translate-y-12' : ''} ${index === 0
+                      ? 'hover:bg-primary/10 hover:shadow-[0_20px_60px_-10px_rgba(37,99,235,0.5)] hover:border-primary/30'
+                      : index === 1
+                        ? 'hover:bg-emerald-50/50 dark:hover:bg-emerald-500/10 hover:shadow-[0_20px_60px_-10px_rgba(16,185,129,0.5)] hover:border-emerald-500/30'
+                        : index === 2
+                          ? 'hover:bg-sky-50/50 dark:hover:bg-sky-500/10 hover:shadow-[0_20px_60px_-10px_rgba(56,189,248,0.5)] hover:border-sky-500/30'
+                          : 'hover:bg-amber-50/50 dark:hover:bg-amber-500/10 hover:shadow-[0_20px_60px_-10px_rgba(251,191,36,0.5)] hover:border-amber-500/30'
+                    }`}
                 >
-                  <div className="p-2 rounded-full bg-gradient-to-br from-primary/10 to-primary/20">
-                    {item.icon}
+                  <div className="h-12 w-12 rounded-2xl bg-gradient-to-br from-primary/10 to-secondary/10 flex items-center justify-center group-hover:scale-110 transition-transform duration-500 shadow-inner shadow-white/50 ring-1 ring-white/50">
+                    {metric.icon}
+                  </div>
+                  <div>
+                    <h3 className="text-3xl font-bold text-slate-900 dark:text-white tracking-tight">{metric.value}</h3>
+                    <p className="text-sm font-medium text-slate-500 dark:text-slate-400 mt-1">{metric.title}</p>
                   </div>
                 </motion.div>
-                <motion.div 
-                  className="text-2xl md:text-3xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-indigo-600"
-                >
-                  <CounterAnimation targetValue={item.value} />
-                </motion.div>
-                <p className="text-sm font-medium text-foreground/70">{item.title}</p>
-              </motion.div>
-            ))}
-          </motion.div>
+              ))}
+            </div>
+          </div>
         </div>
       </section>
-      
-      {/* Our Impact in Numbers */}
-      <Statistics />
-      
-      {/* Product Categories with enhanced cards */}
-      <section className="py-16 bg-gradient-to-b from-white to-blue-50 dark:from-background dark:to-indigo-900/10 relative overflow-hidden">
-        {/* Background decorative elements */}
-        <div className="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none">
-          <div className="absolute top-40 left-20 w-64 h-64 bg-gradient-to-br from-blue-200/40 to-blue-300/20 dark:from-blue-500/10 dark:to-blue-700/5 rounded-full filter blur-3xl"></div>
-          <div className="absolute bottom-20 right-20 w-80 h-80 bg-gradient-to-br from-indigo-200/40 to-purple-300/20 dark:from-indigo-500/10 dark:to-purple-700/5 rounded-full filter blur-3xl"></div>
-        </div>
-        
+
+      {/* Therapeutic focus - Modern Cards with Gradient Background */}
+      <section className="py-16 bg-slate-50 dark:bg-slate-950 relative overflow-hidden">
+        {/* Background elements */}
+        <div className="absolute top-0 right-0 w-1/3 h-1/3 bg-primary/5 rounded-full blur-3xl pointer-events-none" />
+        <div className="absolute bottom-0 left-0 w-1/3 h-1/3 bg-secondary/5 rounded-full blur-3xl pointer-events-none" />
+
         <div className="container relative z-10">
-          <motion.div 
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7 }}
-            viewport={{ once: true }}
-            className="text-center mb-12"
-          >
-            <motion.span 
-              className="inline-block px-3 py-1 text-sm font-medium bg-gradient-to-r from-blue-100 to-indigo-100 dark:from-blue-900/60 dark:to-indigo-900/60 text-blue-700 dark:text-blue-300 rounded-full mb-4"
-              whileHover={{ scale: 1.05 }}
-              transition={{ type: "spring", stiffness: 400, damping: 10 }}
-            >
-              <TrendingUp className="h-4 w-4 inline mr-1" />
-              Extensive Range
-            </motion.span>
-            <h2 className="text-3xl md:text-4xl font-display font-bold bg-clip-text text-transparent bg-gradient-to-r from-blue-600 via-indigo-600 to-violet-600 mb-4">Our Product Categories</h2>
-            <div className="w-24 h-1 bg-gradient-to-r from-blue-600 to-violet-600 mx-auto mt-2 mb-4 rounded-full"></div>
-            <p className="text-foreground/80 max-w-3xl mx-auto text-lg">
-              Explore our extensive range of high-quality pharmaceutical products across therapeutic categories.
+          <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-8 mb-10">
+            <div className="space-y-2">
+              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 text-primary text-xs font-bold tracking-wider uppercase">
+                <span className="w-2 h-2 rounded-full bg-primary animate-pulse" />
+                Our Expertise
+              </div>
+              <h2 className="text-3xl md:text-4xl font-display font-bold text-slate-900 dark:text-white tracking-tight">
+                Therapeutic <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-secondary">Focus</span>
+              </h2>
+            </div>
+            <p className="text-slate-600 dark:text-slate-400 max-w-xl text-base leading-relaxed text-balance">
+              Comprehensive portfolio aligned with modern healthcare needs, featuring high-demand categories and specialized formulations.
             </p>
-          </motion.div>
-          
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-6">
-            {productCategories.map((category, index) => (
+          </div>
+
+          <div className="grid gap-5 md:grid-cols-2">
+            {flagshipSegments.map((segment, index) => (
               <motion.div
-                key={index}
-                initial={{ opacity: 0, scale: 0.95 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
-                viewport={{ once: true }}
-                whileHover={{ 
-                  y: -10, 
-                  boxShadow: "0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)",
-                  transition: { duration: 0.3 } 
-                }}
-              >
-                <Card className="bg-gradient-to-br from-white to-slate-50 dark:from-gray-800 dark:to-slate-900 border border-blue-100 dark:border-blue-900/50 shadow-lg h-full overflow-hidden relative">
-                  <div className="h-2 bg-gradient-to-r from-blue-500 to-indigo-500"></div>
-                  <CardContent className="p-4 md:p-6 h-full flex flex-col">
-                    <motion.div 
-                      className="bg-gradient-to-br from-blue-50 to-indigo-50 dark:from-blue-900/30 dark:to-indigo-900/30 p-3 md:p-4 rounded-full w-16 h-16 md:w-20 md:h-20 flex items-center justify-center mx-auto mb-3 md:mb-4"
-                      whileHover={{ rotate: 5, scale: 1.1 }}
-                      transition={{ type: "spring", stiffness: 300, damping: 10 }}
-                    >
-                      {category.icon}
-                    </motion.div>
-                    <h3 className="text-lg md:text-xl font-bold text-blue-700 dark:text-blue-300 text-center mb-2">{category.title}</h3>
-                    <p className="text-foreground/70 text-center text-sm md:text-base">{category.description}</p>
-                  </CardContent>
-                </Card>
-              </motion.div>
-            ))}
-          </div>
-          
-          <div className="text-center mt-8">
-            <p className="text-foreground/70 italic mb-4">Looking for a specific medicine? Contact us for information on our complete product range.</p>
-            <motion.div
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              transition={{ type: "spring", stiffness: 400, damping: 17 }}
-            >
-              <Button asChild className="bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white shadow-md hover:shadow-lg transition-all">
-                <Link to="/contact" className="flex items-center gap-2">
-                  Contact Us <ArrowRight className="h-4 w-4 animate-pulse" />
-                </Link>
-              </Button>
-            </motion.div>
-          </div>
-        </div>
-      </section>
-      
-      {/* Why Choose Us - Updated with smaller icons and text */}
-      <section className="py-16 bg-gradient-to-r from-blue-50 to-indigo-50 dark:from-blue-900/10 dark:to-indigo-900/10 relative overflow-hidden">
-        {/* Decorative elements */}
-        <div className="absolute inset-0">
-          <div className="absolute top-0 left-0 w-full h-20 bg-gradient-to-b from-background to-transparent"></div>
-          <div className="absolute bottom-0 left-0 w-full h-20 bg-gradient-to-t from-background to-transparent"></div>
-          
-          {/* Animated floating particles */}
-          {[...Array(10)].map((_, i) => (
-            <motion.div
-              key={i}
-              className="absolute rounded-full bg-primary/10 dark:bg-primary/20"
-              style={{
-                width: Math.random() * 50 + 10,
-                height: Math.random() * 50 + 10,
-                left: `${Math.random() * 100}%`,
-                top: `${Math.random() * 100}%`,
-              }}
-              animate={{
-                y: [Math.random() * 10, Math.random() * -10, Math.random() * 10],
-                opacity: [0.3, 0.8, 0.3],
-              }}
-              transition={{
-                duration: Math.random() * 5 + 5,
-                repeat: Infinity,
-                ease: "easeInOut",
-              }}
-            />
-          ))}
-        </div>
-        
-        <div className="container relative z-10">
-          <motion.div 
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            viewport={{ once: true }}
-            className="max-w-3xl mx-auto text-center mb-12"
-          >
-            <motion.span 
-              className="inline-block px-3 py-1 text-sm font-medium bg-gradient-to-r from-indigo-100 to-purple-100 dark:from-indigo-900/60 dark:to-purple-900/60 text-indigo-700 dark:text-indigo-300 rounded-full mb-4"
-              whileHover={{ scale: 1.05 }}
-              transition={{ type: "spring", stiffness: 400, damping: 10 }}
-            >
-              <CheckCircle className="h-3 w-3 inline mr-1" />
-              Our Commitment
-            </motion.span>
-            <h2 className="text-2xl md:text-3xl font-display font-bold bg-clip-text text-transparent bg-gradient-to-r from-blue-600 via-indigo-600 to-violet-600 mb-4">
-              Why Choose Ambica Pharma?
-            </h2>
-            <div className="w-20 h-1 bg-gradient-to-r from-blue-600 to-violet-600 mx-auto mt-2 mb-4 rounded-full"></div>
-            <p className="text-foreground/80 text-base">
-              We uphold the highest standards of quality and service in all our pharmaceutical products and business operations.
-            </p>
-          </motion.div>
-          
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">
-            {[
-              {
-                title: "Quality Assurance",
-                description: "All products meet rigorous quality standards and are sourced from certified manufacturers.",
-                icon: <Star className="h-7 w-7 text-white" />,
-                delay: 0.1,
-                gradient: "from-yellow-500 to-amber-500",
-                iconBgClass: "bg-gradient-to-br from-yellow-500 to-amber-500"
-              },
-              {
-                title: "Competitive Pricing",
-                description: "We offer the best market rates through efficient supply chain management and strong manufacturer relationships.",
-                icon: <CheckCircle className="h-7 w-7 text-white" />,
-                delay: 0.2,
-                gradient: "from-green-500 to-emerald-500",
-                iconBgClass: "bg-gradient-to-br from-green-500 to-emerald-500"
-              },
-              {
-                title: "Extensive Distribution",
-                description: "Our robust network ensures timely delivery of pharmaceuticals across India and international markets.",
-                icon: <Globe className="h-7 w-7 text-white" />,
-                delay: 0.3,
-                gradient: "from-blue-500 to-sky-500",
-                iconBgClass: "bg-gradient-to-br from-blue-500 to-sky-500"
-              },
-              {
-                title: "Expert Consultation",
-                description: "Our pharmaceutical experts provide comprehensive guidance on product selection and regulatory compliance.",
-                icon: <UserCheck className="h-7 w-7 text-white" />,
-                delay: 0.4,
-                gradient: "from-purple-500 to-indigo-500",
-                iconBgClass: "bg-gradient-to-br from-purple-500 to-indigo-500"
-              }
-            ].map((item, index) => (
-              <motion.div 
-                key={index}
+                key={segment.title}
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: item.delay }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
                 viewport={{ once: true }}
-                whileHover={{ y: -5, transition: { duration: 0.3 } }}
-                className="flex flex-col items-center text-center p-4 md:p-5 rounded-lg bg-gradient-to-br from-white/90 to-blue-50/80 dark:from-gray-800 dark:to-blue-900/30 backdrop-blur-sm shadow-lg hover:shadow-xl transition-all border border-blue-100 dark:border-blue-900/50 group"
+                className="group relative h-[300px] rounded-[1.5rem] overflow-hidden cursor-pointer shadow-lg shadow-slate-200/50 dark:shadow-none ring-1 ring-slate-200 dark:ring-slate-800"
               >
-                <motion.div 
-                  className={`w-14 h-14 ${item.iconBgClass} rounded-xl flex items-center justify-center mb-3 shadow-lg transform transition-all duration-300 relative overflow-hidden group-hover:scale-110`}
-                  whileHover={{ rotate: 5, scale: 1.05 }}
-                  transition={{ type: "spring", stiffness: 300, damping: 10 }}
-                  style={{ 
-                    boxShadow: `0 8px 12px -3px rgba(var(--${item.gradient.split('-')[1].split(' ')[0]}-rgb), 0.3)`,
-                  }}
-                >
-                  {/* Add shiny effect on hover */}
-                  <div className="absolute inset-0 bg-white/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 transform -translate-x-full group-hover:translate-x-full"></div>
-                  {/* 3D-like shadow under the icon */}
-                  <div className="absolute inset-0 bg-black/10 filter blur-sm transform translate-y-1 scale-90 rounded-xl"></div>
-                  {/* Icon with white color for better contrast */}
-                  <div className="relative z-10">
-                    {item.icon}
+                {/* Image Background */}
+                <div className="absolute inset-0 overflow-hidden">
+                  <img
+                    src={segment.image}
+                    alt={segment.title}
+                    className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-110 group-hover:rotate-1"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-primary/80 via-slate-900/40 to-transparent opacity-80 transition-opacity duration-500" />
+                </div>
+
+                {/* Content Overlay */}
+                <div className="absolute inset-0 p-6 flex flex-col justify-end">
+                  <div className="transform transition-all duration-500 translate-y-4 group-hover:translate-y-0">
+                    {/* Tags */}
+                    <div className="flex flex-wrap gap-2 mb-2 opacity-0 group-hover:opacity-100 transition-all duration-500 delay-100 -translate-y-2 group-hover:translate-y-0">
+                      {segment.tags.map((tag) => (
+                        <span key={tag} className="text-[10px] font-bold px-2 py-0.5 rounded-full bg-white text-slate-900 shadow-sm">
+                          {tag}
+                        </span>
+                      ))}
+                    </div>
+
+                    {/* Title & Desc */}
+                    <h3 className="text-xl md:text-2xl font-bold text-white mb-1.5 tracking-tight leading-tight">
+                      {segment.title}
+                    </h3>
+                    <p className="text-slate-300 text-sm line-clamp-2 group-hover:line-clamp-none group-hover:text-white transition-colors duration-300 mb-3">
+                      {segment.description}
+                    </p>
+
+                    {/* Action */}
+                    <div className="flex items-center gap-2 text-white text-xs font-semibold opacity-0 group-hover:opacity-100 transition-all duration-500 delay-200 translate-y-2 group-hover:translate-y-0">
+                      <span className="border-b border-primary pb-px">Explore Category</span>
+                      <ArrowRight className="h-3.5 w-3.5 text-primary" />
+                    </div>
                   </div>
-                </motion.div>
-                <h3 className="text-lg font-bold mb-1 text-gray-800 dark:text-gray-100">{item.title}</h3>
-                <p className="text-xs md:text-sm text-gray-600 dark:text-gray-300">{item.description}</p>
+                </div>
               </motion.div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Shop By Concern Section - Commented out for now */}
-      {/* <ShopByConcern /> */}
+      {/* Supply programs - split layout with detailed stats */}
+      <section className="py-24 bg-gradient-to-br from-primary/5 via-white to-secondary/5 dark:from-slate-950 dark:via-slate-900 dark:to-slate-950">
+        <div className="container">
+          <div className="grid lg:grid-cols-[0.85fr_1.15fr] gap-12 items-start">
+            <motion.div
+              initial={{ opacity: 0, x: -30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.5 }}
+              viewport={{ once: true }}
+              className="p-8 rounded-[32px] bg-gradient-to-br from-primary/90 via-primary/80 to-secondary/80 text-white relative overflow-hidden shadow-[0_35px_70px_rgba(2,6,23,0.45)] border border-white/10"
+            >
+              <div className="absolute inset-0 opacity-20 bg-[radial-gradient(circle_at_top,_rgba(59,130,246,0.8),_transparent_60%)] pointer-events-none" />
+              <div className="relative z-10">
+                <span className="text-white/80 tracking-[0.2em] uppercase text-xs font-semibold">Supply Chain</span>
+                <h2 className="text-3xl md:text-4xl font-display font-bold mt-4 mb-4 leading-tight">
+                  Tailored Supply Solutions
+                </h2>
+                <p className="text-white/70 text-lg leading-relaxed mb-8">
+                  Whether you're a hospital network, a global distributor, or a digital pharmacy, our supply chain is optimized for your specific needs.
+                </p>
 
-      {/* Testimonials Section */}
+                <div className="space-y-5 mb-8">
+                  {supplyStats.map((stat) => (
+                    <div key={stat.label} className="flex items-start gap-4">
+                      <div className="h-12 w-12 rounded-2xl bg-white/10 text-white flex items-center justify-center font-bold text-xl shadow-inner shadow-black/40 border border-white/10">
+                        {stat.value}
+                      </div>
+                      <div>
+                        <p className="text-base font-semibold">{stat.label}</p>
+                        <p className="text-sm text-white/60">{stat.helper}</p>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+
+                <Button
+                  asChild
+                  size="lg"
+                  className="bg-white text-slate-900 hover:bg-white/90 hover:scale-105 transition-all duration-300 px-8 rounded-full"
+                >
+                  <Link to="/contact" className="flex items-center gap-2">
+                    Design Your Supply Plan
+                    <ArrowRight className="h-4 w-4" />
+                  </Link>
+                </Button>
+              </div>
+            </motion.div>
+
+            <div className="grid gap-6 md:grid-cols-2">
+              {supplyPrograms.map((program, index) => (
+                <motion.div
+                  key={program.title}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.4, delay: index * 0.1 }}
+                  viewport={{ once: true }}
+                  className="group relative p-8 rounded-[28px] bg-white/85 dark:bg-slate-800/70 border border-slate-100 dark:border-slate-700 backdrop-blur-md shadow-[0_18px_45px_rgba(15,23,42,0.08)] hover:-translate-y-2 hover:shadow-[0_30px_60px_rgba(15,23,42,0.16)] transition-all duration-300 ring-1 ring-transparent hover:ring-primary/20"
+                >
+                  <div className="h-14 w-14 rounded-2xl bg-gradient-to-br from-primary/10 to-secondary/10 shadow-inner shadow-white/50 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300 border border-white/60 dark:border-white/10">
+                    {program.icon}
+                  </div>
+                  <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-3 tracking-tight">{program.title}</h3>
+                  <p className="text-slate-600 dark:text-slate-300 mb-6 leading-relaxed">{program.description}</p>
+                  <ul className="space-y-3">
+                    {program.bullets.map((bullet) => (
+                      <li key={bullet} className="flex items-start gap-3 text-sm text-slate-600 dark:text-slate-300">
+                        <CheckCircle className="h-5 w-5 text-secondary shrink-0" />
+                        <span>{bullet}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </motion.div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Quality and compliance - Feature Grid with Micro-details */}
+      <section className="py-24 bg-gradient-to-br from-primary/5 via-white to-secondary/5 dark:from-slate-950 dark:via-slate-900 dark:to-slate-950 overflow-hidden relative">
+        {/* Background pattern - Refined */}
+        <div className="absolute inset-0 opacity-[0.03] bg-[radial-gradient(#4f46e5_1px,transparent_1px)] [background-size:20px_20px]" />
+
+        <div className="container relative z-10">
+          <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-12 mb-16">
+            <div className="max-w-2xl">
+              <span className="text-primary font-semibold tracking-wider uppercase text-sm">Quality Assurance</span>
+              <h2 className="text-3xl md:text-5xl font-display font-bold mt-3 mb-6 text-slate-900 dark:text-white tracking-tight">Uncompromising Quality Standards</h2>
+              <p className="text-slate-600 dark:text-slate-400 text-lg text-balance">
+                Our commitment to quality is validated by international certifications and rigorous internal audits. We ensure every product meets global safety standards.
+              </p>
+            </div>
+            <Button asChild size="lg" className="bg-gradient-to-r from-primary to-secondary hover:from-primary/90 hover:to-secondary/90 text-white shadow-[0_4px_14px_0_rgba(0,0,0,0.1)] hover:shadow-[0_6px_20px_rgba(0,0,0,0.15)] rounded-full px-8 border-0 hover:scale-105 transition-all duration-300 ring-1 ring-white/20">
+              <Link to="/about">View Certifications</Link>
+            </Button>
+          </div>
+
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+            {qualityStack.map((item, index) => (
+              <motion.div
+                key={item.title}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.4, delay: index * 0.1 }}
+                viewport={{ once: true }}
+                className={`group p-6 rounded-2xl bg-white/40 dark:bg-slate-800/40 border border-white/60 dark:border-slate-700 backdrop-blur-sm ring-1 ring-white/40 dark:ring-slate-800/40 hover:-translate-y-2 transition-all duration-500 ${
+                  index === 0
+                    ? 'hover:bg-sky-50/50 dark:hover:bg-sky-500/10 hover:shadow-[0_20px_60px_-10px_rgba(56,189,248,0.5)] hover:border-sky-500/30 hover:ring-sky-500/20'
+                    : index === 1
+                      ? 'hover:bg-amber-50/50 dark:hover:bg-amber-500/10 hover:shadow-[0_20px_60px_-10px_rgba(251,191,36,0.5)] hover:border-amber-500/30 hover:ring-amber-500/20'
+                      : index === 2
+                        ? 'hover:bg-purple-50/50 dark:hover:bg-purple-500/10 hover:shadow-[0_20px_60px_-10px_rgba(168,85,247,0.5)] hover:border-purple-500/30 hover:ring-purple-500/20'
+                        : 'hover:bg-emerald-50/50 dark:hover:bg-emerald-500/10 hover:shadow-[0_20px_60px_-10px_rgba(16,185,129,0.5)] hover:border-emerald-500/30 hover:ring-emerald-500/20'
+                }`}
+              >
+                <div className={`h-12 w-12 rounded-xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-500 shadow-inner shadow-white/50 ${
+                  index === 0
+                    ? 'bg-gradient-to-br from-sky-100 to-sky-50 dark:from-sky-900/30 dark:to-sky-800/20'
+                    : index === 1
+                      ? 'bg-gradient-to-br from-amber-100 to-amber-50 dark:from-amber-900/30 dark:to-amber-800/20'
+                      : index === 2
+                        ? 'bg-gradient-to-br from-purple-100 to-purple-50 dark:from-purple-900/30 dark:to-purple-800/20'
+                        : 'bg-gradient-to-br from-emerald-100 to-emerald-50 dark:from-emerald-900/30 dark:to-emerald-800/20'
+                }`}>
+                  {item.icon}
+                </div>
+                <h3 className="text-lg font-bold mb-2 text-slate-900 dark:text-white tracking-tight">{item.title}</h3>
+                <p className="text-sm text-slate-600 dark:text-slate-400 leading-relaxed">{item.description}</p>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Global health accord style CTA */}
+      <section className="relative overflow-hidden bg-gradient-to-br from-primary via-primary/90 to-secondary text-white py-10 md:py-16">
+        <div className="absolute inset-0 opacity-20 bg-[radial-gradient(circle_at_top,_rgba(255,255,255,0.45),_transparent_50%)]" />
+        <div className="container relative z-10 grid gap-8 lg:grid-cols-2 items-center">
+          <motion.div
+            initial={{ opacity: 0, x: -20 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.5 }}
+            viewport={{ once: true }}
+            className="space-y-6"
+          >
+            <span className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/15 text-sm font-semibold tracking-widest uppercase">
+              <span className="h-2 w-2 rounded-full bg-white animate-ping" />
+              Global Access
+            </span>
+            <h2 className="text-3xl md:text-4xl font-display font-bold leading-tight">
+              An Accord for a Healthier World
+            </h2>
+            <p className="text-lg text-white/90 leading-relaxed max-w-xl">
+              Where people live shouldn’t impact the quality of their healthcare and income shouldn’t determine health outcomes. We partner with governments, NGOs, and distributors to expand equitable access everywhere.
+            </p>
+            <Button
+              asChild
+              size="lg"
+              className="bg-white text-[#251cb5] hover:bg-white/90 px-8 rounded-full shadow-lg shadow-blue-900/30"
+            >
+              <Link to="/contact" className="font-semibold">
+                Learn More About The Accord
+              </Link>
+            </Button>
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, x: 30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.5 }}
+            viewport={{ once: true }}
+            className="relative flex justify-center"
+          >
+            <div className="relative w-full max-w-lg aspect-square">
+              <div className="absolute inset-0 rounded-full bg-gradient-to-br from-white/50 to-white/10 blur-3xl opacity-70" />
+              <div className="absolute inset-6 rounded-full bg-white/10 border border-white/40 backdrop-blur-[2px]" />
+              <div className="absolute inset-10 rounded-full bg-gradient-to-br from-white/40 via-transparent to-primary/30 opacity-70 mix-blend-soft-light pointer-events-none" />
+              <div className="absolute -bottom-8 left-1/2 -translate-x-1/2 h-20 w-48 bg-primary/30 blur-3xl opacity-60" />
+              <img
+                src="/lovable-uploads/accord-healthier-worlds_0.png.webp"
+                alt="Global accord map"
+                loading="lazy"
+                onError={handleAccordImageError}
+                className="relative z-10 w-full h-full object-contain drop-shadow-[0_25px_60px_rgba(15,23,42,0.35)] md:scale-110 scale-100 origin-center saturate-[1.05] contrast-[1.05]"
+              />
+              <div className="absolute inset-6 rounded-full border border-white/30 opacity-60 pointer-events-none" />
+            </div>
+          </motion.div>
+        </div>
+      </section>
+
+      <Statistics />
+
       <Testimonials />
     </div>
   );

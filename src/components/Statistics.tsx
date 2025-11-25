@@ -1,35 +1,50 @@
-
 import React from "react";
-import { Clock, Users, Award, Activity } from "lucide-react";
-import { useIsMobile } from "../hooks/use-mobile";
+import { Clock, Users, Award, Activity, Sparkles, CheckCircle } from "lucide-react";
 import { motion } from "framer-motion";
 
 const statistics = [
   {
     title: "Years of Marketing & Distribution",
     value: "19",
-    icon: <Clock className="h-6 w-6 md:h-7 md:w-7 text-primary" />
+    icon: Clock,
+    gradient: "from-secondary/70 via-primary/80 to-primary/90"
   },
   {
     title: "Happy Customers",
     value: "9242+",
-    icon: <Users className="h-6 w-6 md:h-7 md:w-7 text-primary" />
+    icon: Users,
+    gradient: "from-secondary/70 via-primary/80 to-primary/90"
   },
   {
     title: "Years of Experience",
     value: "22",
-    icon: <Award className="h-6 w-6 md:h-7 md:w-7 text-primary" />
+    icon: Award,
+    gradient: "from-secondary/70 via-primary/80 to-primary/90"
   },
   {
     title: "Quality Products",
     value: "1000+",
-    icon: <Activity className="h-6 w-6 md:h-7 md:w-7 text-primary" />
+    icon: Activity,
+    gradient: "from-secondary/70 via-primary/80 to-primary/90"
+  }
+];
+
+const proofPoints = [
+  {
+    title: "WHO-GMP governed supply",
+    description: "Every lot mapped to validated SOPs, stability data, and audit trails."
+  },
+  {
+    title: "Pan-India + export dispatch",
+    description: "Dedicated fulfillment windows for hospitals, tenders, and global partners."
+  },
+  {
+    title: "Clinical-grade responsiveness",
+    description: "Account leads mirror enterprise SLAs so stakeholder queries never stall."
   }
 ];
 
 const Statistics = () => {
-  const isMobile = useIsMobile();
-  
   // HowTo schema for implementing pharmaceutical quality control
   const howToSchema = {
     "@context": "https://schema.org",
@@ -73,112 +88,160 @@ const Statistics = () => {
   };
 
   return (
-    <section className="py-12 md:py-16 bg-white dark:bg-background relative overflow-hidden">
-      {/* Background Elements */}
-      <div className="absolute top-0 left-0 w-full h-full opacity-5 overflow-hidden pointer-events-none">
-        <div className="absolute top-10 left-10 w-40 h-40 rounded-full bg-primary"></div>
-        <div className="absolute bottom-20 right-10 w-60 h-60 rounded-full bg-secondary"></div>
-      </div>
-      
-      <div className="container px-4 md:px-6 relative z-10">
-        <motion.div 
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
-          viewport={{ once: true }}
-          className="text-center mb-10 md:mb-12"
-        >
-          <h2 className="text-2xl md:text-3xl font-display font-bold text-primary">
-            Our Achievements
-          </h2>
-          <div className="w-20 h-1 bg-secondary mx-auto mt-3"></div>
-          <p className="mt-3 text-sm md:text-base text-foreground/70 max-w-2xl mx-auto">
-            We've built a strong reputation for quality and reliability in the pharmaceutical industry
-          </p>
-        </motion.div>
-        
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">
-          {statistics.map((stat, index) => (
-            <motion.div 
-              key={index} 
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: index * 0.1 }}
-              viewport={{ once: true }}
-              className="relative bg-gradient-to-br from-white to-gray-50 dark:from-gray-800 dark:to-gray-700 rounded-lg p-5 shadow-sm hover:shadow-md transition-all duration-300 hover:-translate-y-1 border border-gray-100 dark:border-gray-600 group overflow-hidden" 
-            >
-              {/* Animated Background Element */}
-              <div className="absolute -right-10 -bottom-10 w-32 h-32 rounded-full bg-primary/5 group-hover:bg-primary/10 transition-all duration-500 transform group-hover:scale-150"></div>
-              
-              <div className="flex justify-center mb-3 relative z-10">
-                <div className="p-2 bg-primary/10 dark:bg-primary/20 rounded-lg transform transition-transform group-hover:scale-110 duration-300">
-                  {stat.icon}
-                </div>
-              </div>
-              <div className="text-xl md:text-2xl font-bold text-primary mb-1 md:mb-2 relative z-10">
-                {stat.value}
-              </div>
-              <p className="text-gray-600 dark:text-gray-300 text-xs md:text-sm font-medium relative z-10">
-                {stat.title}
-              </p>
-            </motion.div>
-          ))}
-        </div>
-        
-        <div className="grid md:grid-cols-2 gap-6 md:gap-8 mt-12 md:mt-16 items-center">
-          <motion.div 
+    <section className="relative overflow-hidden py-24 bg-gradient-to-br from-primary/5 via-white to-secondary/5 dark:from-slate-950 dark:via-slate-900 dark:to-slate-950">
+      {/* Decorative background */}
+      <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-slate-200 dark:via-slate-800 to-transparent" />
+      <div className="absolute -left-20 top-40 w-72 h-72 bg-blue-500/5 rounded-full blur-3xl" />
+
+      <div className="container relative z-10 space-y-20">
+        <div className="grid gap-16 lg:grid-cols-[1fr,1.2fr] items-center">
+          <motion.div
             initial={{ opacity: 0, x: -20 }}
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.5 }}
             viewport={{ once: true }}
-            className="order-2 md:order-1"
+            className="space-y-8"
           >
-            <h2 className="text-xl md:text-2xl font-display font-bold text-primary mb-3 md:mb-4">
-              We Provide Different Medicines To Improve Your Health
+            <span className="inline-flex items-center gap-2 rounded-full bg-blue-50 dark:bg-blue-900/20 px-4 py-2 text-sm font-medium text-blue-700 dark:text-blue-300 border border-blue-100 dark:border-blue-800">
+              <Sparkles className="h-4 w-4" />
+              Proven Track Record
+            </span>
+
+            <h2 className="text-4xl md:text-5xl font-display font-bold leading-tight text-slate-900 dark:text-white">
+              Numbers that define our <span className="text-blue-600">excellence</span>
             </h2>
-            <p className="text-gray-600 dark:text-gray-300 mb-5 md:mb-6 text-xs md:text-sm leading-relaxed">
-              We offer a diverse array of products that consistently adhere to globally accredited quality standards. Our dedicated departmental executives oversee operations to guarantee efficient and timely completion of all tasks.
+
+            <p className="text-lg text-slate-600 dark:text-slate-400 leading-relaxed">
+              The scorecard buyers ask for - operational tenure, partner depth, experience, and SKU strength - presented with transparency and pride.
             </p>
-            <div className="space-y-3 md:space-y-4">
-              {["Fast Delivery", "Quality Products", "All Medicines"].map((item, index) => (
-                <motion.div 
-                  key={index}
-                  initial={{ opacity: 0, x: -20 }}
+
+            <div className="space-y-6">
+              {proofPoints.map((point, index) => (
+                <motion.div
+                  key={point.title}
+                  initial={{ opacity: 0, x: -15 }}
                   whileInView={{ opacity: 1, x: 0 }}
-                  transition={{ duration: 0.3, delay: 0.1 * (index + 1) }}
+                  transition={{ duration: 0.4, delay: index * 0.1 }}
                   viewport={{ once: true }}
-                  className="flex items-center"
+                  className="flex gap-4 p-4 rounded-2xl hover:bg-slate-50 dark:hover:bg-slate-900/50 transition-colors duration-300"
                 >
-                  <div className="flex items-center justify-center h-6 w-6 rounded-full bg-primary/10 mr-3">
-                    <div className="h-1.5 w-1.5 bg-secondary rounded-full"></div>
+                  <div className="mt-1 h-10 w-10 rounded-full bg-green-100 dark:bg-green-900/30 flex items-center justify-center text-green-600 dark:text-green-400 shrink-0">
+                    <CheckCircle className="h-5 w-5" />
                   </div>
-                  <p className="text-gray-700 dark:text-gray-300 text-xs md:text-sm font-medium">{item}</p>
+                  <div>
+                    <h4 className="text-lg font-bold text-slate-900 dark:text-white">
+                      {point.title}
+                    </h4>
+                    <p className="text-slate-600 dark:text-slate-400 mt-1">{point.description}</p>
+                  </div>
                 </motion.div>
               ))}
             </div>
           </motion.div>
-          
-          <motion.div 
-            initial={{ opacity: 0, x: 20 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.5, delay: 0.2 }}
+
+          <div className="grid grid-cols-2 gap-6">
+            {statistics.map((stat, index) => {
+              const Icon = stat.icon;
+              return (
+                <motion.div
+                  key={stat.title}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.4, delay: index * 0.1 }}
+                  viewport={{ once: true }}
+                  className={`group relative overflow-hidden rounded-[2rem] bg-white/40 dark:bg-slate-900/40 p-8 shadow-[0_10px_32px_rgba(15,23,42,0.10)] dark:shadow-none border border-white/60 dark:border-slate-800 backdrop-blur-sm ring-1 ring-white/40 dark:ring-slate-800/40 hover:-translate-y-2 transition-all duration-500 ${index === 1 || index === 3 ? 'lg:translate-y-12' : ''} ${
+                    index === 0
+                      ? 'hover:bg-violet-50/50 dark:hover:bg-violet-500/10 hover:shadow-[0_20px_60px_-10px_rgba(139,92,246,0.5)] hover:border-violet-500/30 hover:ring-violet-500/20'
+                      : index === 1
+                        ? 'hover:bg-rose-50/50 dark:hover:bg-rose-500/10 hover:shadow-[0_20px_60px_-10px_rgba(244,63,94,0.5)] hover:border-rose-500/30 hover:ring-rose-500/20'
+                        : index === 2
+                          ? 'hover:bg-amber-50/50 dark:hover:bg-amber-500/10 hover:shadow-[0_20px_60px_-10px_rgba(251,191,36,0.5)] hover:border-amber-500/30 hover:ring-amber-500/20'
+                          : 'hover:bg-teal-50/50 dark:hover:bg-teal-500/10 hover:shadow-[0_20px_60px_-10px_rgba(20,184,166,0.5)] hover:border-teal-500/30 hover:ring-teal-500/20'
+                  }`}
+                >
+                  <div className={`absolute top-0 right-0 p-4 opacity-5 group-hover:opacity-15 transition-opacity duration-500 ${
+                    index === 0 ? 'text-violet-500' : index === 1 ? 'text-rose-500' : index === 2 ? 'text-amber-500' : 'text-teal-500'
+                  }`}>
+                    <Icon className="h-24 w-24" />
+                  </div>
+
+                  <div className="relative z-10 flex flex-col gap-4">
+                    <div className={`h-12 w-12 rounded-2xl flex items-center justify-center group-hover:scale-110 transition-transform duration-500 shadow-inner shadow-white/50 ${
+                      index === 0
+                        ? 'bg-gradient-to-br from-violet-100 to-violet-50 dark:from-violet-900/30 dark:to-violet-800/20 text-violet-600 dark:text-violet-400'
+                        : index === 1
+                          ? 'bg-gradient-to-br from-rose-100 to-rose-50 dark:from-rose-900/30 dark:to-rose-800/20 text-rose-600 dark:text-rose-400'
+                          : index === 2
+                            ? 'bg-gradient-to-br from-amber-100 to-amber-50 dark:from-amber-900/30 dark:to-amber-800/20 text-amber-600 dark:text-amber-400'
+                            : 'bg-gradient-to-br from-teal-100 to-teal-50 dark:from-teal-900/30 dark:to-teal-800/20 text-teal-600 dark:text-teal-400'
+                    }`}>
+                      <Icon className="h-6 w-6" />
+                    </div>
+                    <div>
+                      <p className="text-4xl font-bold text-slate-900 dark:text-white tracking-tight">{stat.value}</p>
+                      <p className="text-sm font-medium text-slate-500 dark:text-slate-400 mt-2">{stat.title}</p>
+                    </div>
+                  </div>
+                </motion.div>
+              );
+            })}
+          </div>
+        </div>
+
+        <div className="grid items-center gap-12 md:grid-cols-2 rounded-[2.5rem] p-8 md:p-12 border border-white/30 dark:border-slate-800 bg-gradient-to-br from-primary via-primary/90 to-secondary text-white relative overflow-hidden">
+          <div className="absolute inset-0 opacity-10 bg-[radial-gradient(circle_at_top,_rgba(255,255,255,0.6),_transparent_50%)] pointer-events-none" />
+          <div className="absolute -right-16 -bottom-16 w-72 h-72 rounded-full bg-white/10 blur-3xl opacity-30 pointer-events-none" />
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.4 }}
             viewport={{ once: true }}
-            className="order-1 md:order-2"
+            className="space-y-6"
           >
-            <div className="relative rounded-xl overflow-hidden shadow-lg">
-              <img
-                src="https://images.unsplash.com/photo-1576602976047-174e57a47881?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80"
-                alt="Pharmaceutical Products by Ambica Pharma - WHO-GMP certified tablets, capsules and injectables"
-                className="w-full h-auto rounded-lg hover:scale-[1.02] transition-transform duration-500"
-                width="800"
-                height="600"
-                loading="lazy"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-primary/20 to-transparent opacity-50 pointer-events-none"></div>
+            <h3 className="text-3xl font-bold text-white">Built for healthcare operators</h3>
+            <p className="text-white/80 text-lg leading-relaxed">
+              From rapid fulfillment to multi-format formulations, every workflow is tuned for clinicians, pharmacists, procurement leads, and global distributors who demand consistency without the visual noise.
+            </p>
+            <div className="space-y-4 pt-4">
+              {["Fast-tracked dispatch across India & exports", "GMP-documented QC snapshots on demand", "Extensive SKU mix across therapies"].map((item, index) => (
+                <motion.div
+                  key={item}
+                  initial={{ opacity: 0, x: -10 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  transition={{ duration: 0.3, delay: index * 0.1 }}
+                  viewport={{ once: true }}
+                  className="flex items-center gap-3 text-white/90"
+                >
+                  <div className="h-2 w-2 rounded-full bg-white shadow-[0_0_12px_rgba(255,255,255,0.6)]" />
+                  <p className="font-medium">{item}</p>
+                </motion.div>
+              ))}
+            </div>
+          </motion.div>
+
+        <motion.div
+            initial={{ opacity: 0, scale: 0.95 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.5 }}
+            viewport={{ once: true }}
+          className="relative overflow-hidden rounded-3xl shadow-2xl shadow-blue-900/20 ring-1 ring-white/30"
+          >
+            <img
+              src="https://images.unsplash.com/photo-1576602976047-174e57a47881?ixlib=rb-1.2.1&auto=format&fit=crop&w=900&q=80"
+              alt="Ambica Pharma quality operations"
+              className="h-full w-full object-cover hover:scale-105 transition-transform duration-700"
+              loading="lazy"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-slate-900/80 via-slate-900/20 to-transparent"></div>
+            <div className="absolute bottom-8 left-8 right-8 text-white">
+              <div className="inline-block px-3 py-1 rounded-lg bg-white/20 backdrop-blur-md border border-white/10 text-xs font-medium mb-3">
+                QUALITY DESK
+              </div>
+              <p className="text-xl font-bold">Live oversight on packaging, serialization, and cold-chain prep.</p>
             </div>
           </motion.div>
         </div>
-        
+
         {/* Add HowTo Schema */}
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(howToSchema) }} />
       </div>

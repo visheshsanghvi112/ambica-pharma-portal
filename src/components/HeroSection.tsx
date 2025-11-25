@@ -48,9 +48,12 @@ const HeroSection: React.FC = () => {
               </span>
             </div>
             
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-display font-bold text-foreground leading-tight bg-clip-text text-transparent bg-gradient-to-r from-primary via-primary/90 to-secondary">
-              Advancing Healthcare<br /> With Excellence
-            </h1>
+            <div className="relative inline-block">
+              <div className="pointer-events-none absolute -inset-x-8 -bottom-4 h-10 bg-gradient-to-r from-primary/25 via-primary/10 to-secondary/25 blur-3xl opacity-60"></div>
+              <h1 className="relative text-4xl md:text-5xl lg:text-6xl font-display font-bold text-foreground leading-tight bg-clip-text text-transparent bg-gradient-to-r from-primary via-primary/90 to-secondary">
+                Advancing Healthcare<br /> With Excellence
+              </h1>
+            </div>
             
             <p className="text-lg text-foreground/80 max-w-md">
               Ambica Pharma has evolved from a humble startup into a leading force in pharmaceutical 

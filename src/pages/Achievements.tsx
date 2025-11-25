@@ -407,7 +407,7 @@ const Achievements = () => {
       <section className="py-16 md:py-20 bg-gradient-to-r from-primary to-secondary text-white relative overflow-hidden">
         <div className="absolute inset-0 opacity-20">
           <div className="absolute top-0 left-0 w-full h-64 bg-white/10 transform -skew-y-6"></div>
-          <div className="absolute bottom-0 right-0 w-full h-64 bg-black/10 transform skew-y-6"></div>
+          <div className="absolute bottom-0 right-0 w-full h-64 bg-gradient-to-r from-primary/25 to-secondary/25 transform skew-y-6"></div>
         </div>
         
         <div className="container text-center relative z-10">
