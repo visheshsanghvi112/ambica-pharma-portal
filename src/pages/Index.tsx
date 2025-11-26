@@ -9,16 +9,13 @@ import {
   BadgeCheck,
   Building2,
   CalendarCheck,
-  ClipboardCheck,
   CheckCircle,
   Factory,
   Globe,
   Handshake,
   Layers,
-  PhoneCall,
   ShieldCheck,
   Sparkles,
-  Star,
   TrendingUp,
   Truck,
   UserCheck
@@ -121,29 +118,6 @@ const qualityStack = [
     title: "Documentation Desk",
     description: "Dossier compilation, COA sharing, and CTD-ready paperwork for quick filings.",
     icon: <CalendarCheck className="h-6 w-6 text-emerald-600" />
-  }
-];
-
-const partnershipSteps = [
-  {
-    title: "Discovery Call",
-    description: "Share therapeutic focus, volume expectations, and target markets.",
-    icon: <PhoneCall className="h-5 w-5" />
-  },
-  {
-    title: "Portfolio Mapping",
-    description: "Receive curated SKU matrix, pricing, and regulatory documentation.",
-    icon: <ClipboardCheck className="h-5 w-5" />
-  },
-  {
-    title: "Quality Alignment",
-    description: "Run technical audits, stability reports, and pilot orders.",
-    icon: <BadgeCheck className="h-5 w-5" />
-  },
-  {
-    title: "Fulfillment & Scale",
-    description: "Locked-in production windows plus digital visibility on every shipment.",
-    icon: <Truck className="h-5 w-5" />
   }
 ];
 
@@ -392,7 +366,10 @@ const Index = () => {
                 <div className="absolute inset-0 overflow-hidden">
                   <img
                     src={segment.image}
-                    alt={segment.title}
+                    alt={`${segment.title} - Ambica Pharma therapeutic category`}
+                    loading="lazy"
+                    width={600}
+                    height={300}
                     className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-110 group-hover:rotate-1"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-primary/80 via-slate-900/40 to-transparent opacity-80 transition-opacity duration-500" />
@@ -611,8 +588,10 @@ const Index = () => {
               <div className="absolute -bottom-8 left-1/2 -translate-x-1/2 h-20 w-48 bg-primary/30 blur-3xl opacity-60" />
               <img
                 src="/lovable-uploads/accord-healthier-worlds_0.png.webp"
-                alt="Global accord map"
+                alt="Ambica Pharma global healthcare access map - exporting to 45+ countries"
                 loading="lazy"
+                width={500}
+                height={500}
                 onError={handleAccordImageError}
                 className="relative z-10 w-full h-full object-contain drop-shadow-[0_25px_60px_rgba(15,23,42,0.35)] md:scale-110 scale-100 origin-center saturate-[1.05] contrast-[1.05]"
               />
