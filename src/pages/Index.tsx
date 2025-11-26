@@ -42,25 +42,25 @@ const flagshipSegments = [
   {
     title: "Tablets & Capsules",
     description: "From common generics to specialty formulations — antibiotics, analgesics, vitamins, cardiac care, and more. Bulk or retail, we source it all.",
-    image: "/lovable-uploads/Pain%20Management.png",
+    image: "/lovable-uploads/capsules.jpg",
     tags: ["Generics", "Branded", "Bulk Supply"]
   },
   {
     title: "Injectables & Vials",
     description: "Hospital-grade injectables, ampoules, and lyophilized products. Cold-chain ready with complete documentation for tenders.",
-    image: "/lovable-uploads/Immunity.png",
+    image: "/lovable-uploads/injectables.jpg",
     tags: ["IV Solutions", "Ampoules", "Tender Ready"]
   },
   {
     title: "Syrups & Suspensions",
     description: "Pediatric formulations, cough syrups, antacids, and nutraceutical liquids. Available in multiple pack sizes for retail and wholesale.",
-    image: "/lovable-uploads/Sleep%20Management.png",
+    image: "/lovable-uploads/cough.jpg",
     tags: ["Pediatric", "OTC Range", "Multi-Pack"]
   },
   {
     title: "Specialty & Nutraceuticals",
     description: "Derma care, wellness supplements, ayurvedic products, and cosmeceuticals. If you need it, we can arrange manufacturing or sourcing.",
-    image: "/lovable-uploads/Anti%20Aging.png",
+    image: "/lovable-uploads/derma.jpg",
     tags: ["Derma", "Wellness", "Custom Sourcing"]
   }
 ];
