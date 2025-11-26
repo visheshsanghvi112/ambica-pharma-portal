@@ -102,17 +102,18 @@ const Statistics = () => {
             viewport={{ once: true }}
             className="space-y-8"
           >
-            <span className="inline-flex items-center gap-2 rounded-full bg-blue-50 dark:bg-blue-900/20 px-4 py-2 text-sm font-medium text-blue-700 dark:text-blue-300 border border-blue-100 dark:border-blue-800">
-              <Sparkles className="h-4 w-4" />
-              Proven Track Record
-            </span>
+            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-gradient-to-r from-primary/10 to-secondary/10 text-primary text-xs font-bold tracking-wider uppercase mb-2 border border-primary/20">
+              <Sparkles className="h-3.5 w-3.5" />
+              19+ Years • 9000+ Partners • 1000+ SKUs
+            </div>
 
-            <h2 className="text-4xl md:text-5xl font-display font-bold leading-tight text-slate-900 dark:text-white">
-              Numbers that define our <span className="text-blue-600">excellence</span>
+            <h2 className="text-3xl md:text-5xl font-display font-bold leading-tight text-slate-900 dark:text-white">
+              Numbers That <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-secondary">Speak.</span>
             </h2>
 
             <p className="text-lg text-slate-600 dark:text-slate-400 leading-relaxed">
-              The scorecard buyers ask for - operational tenure, partner depth, experience, and SKU strength - presented with transparency and pride.
+              The scorecard buyers ask for — operational tenure, partner depth, and SKU strength. <br className="hidden md:block" />
+              <span className="font-semibold text-slate-700 dark:text-slate-300">Presented with transparency and pride.</span>
             </p>
 
             <div className="space-y-6">
