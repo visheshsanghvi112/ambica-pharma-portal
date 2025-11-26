@@ -226,7 +226,11 @@ const ChatBot: React.FC = () => {
       let botResponse = "";
       const userInput = text.toLowerCase();
       
-      if (userInput.includes("partner") || userInput.includes("partnership") || userInput.includes("collaborate")) {
+      // Certificate/COA/Documentation queries (check FIRST before product)
+      if (userInput.includes("certificate") || userInput.includes("coa") || userInput.includes("document") || userInput.includes("dossier") || userInput.includes("paperwork")) {
+        botResponse = "📄 **Documentation & Certificates**\n\n**Yes!** We provide complete documentation with every order:\n\n• **Certificate of Analysis (COA)** - Batch-wise quality reports\n• **Certificate of Origin** - Country of manufacture\n• **GMP Certificates** - WHO-GMP compliance\n• **Product Dossiers** - CTD-ready documentation\n• **Stability Data** - Shelf-life studies\n• **MSDS** - Material Safety Data Sheets\n\n**For exports**, we also provide:\n• Free Sale Certificate\n• Health Certificate\n• Legalized documents (on request)\n\nContact our Documentation Desk at **docs@ambicapharma.com** for specific requirements.";
+      }
+      else if (userInput.includes("partner") || userInput.includes("partnership") || userInput.includes("collaborate")) {
         botResponse = "🤝 **Partnership Opportunities**\n\nTo partner with Ambica Pharma, please email our partnership team at **partners@ambicapharma.com** with:\n\n• Your company profile\n• Partnership proposal\n• Business credentials\n\nWe collaborate with distributors, healthcare providers, and pharmaceutical manufacturers worldwide. Our team will review your application within 2-3 business days.";
       } 
       else if (userInput.includes("contact") || userInput.includes("reach") || userInput.includes("call")) {
@@ -235,26 +239,29 @@ const ChatBot: React.FC = () => {
       else if (userInput.includes("warehouse") || userInput.includes("location") || userInput.includes("facility")) {
         botResponse = "🏢 **Our Facilities**\n\n**Main Headquarters**: Mumbai, India\n**Regional Centers**:\n• Delhi (North India)\n• Hyderabad (South India)\n• Ahmedabad (West India)\n\nAll facilities are **WHO-GMP certified** with temperature-controlled storage, advanced security systems, and real-time inventory tracking.";
       }
-      else if (userInput.includes("price") || userInput.includes("cost") || userInput.includes("rate")) {
+      else if (userInput.includes("price") || userInput.includes("cost") || userInput.includes("rate") || userInput.includes("quote")) {
         botResponse = "💰 **Pricing Information**\n\nOur pharmaceutical products are competitively priced with excellent quality standards. Pricing varies based on:\n\n• Product category\n• Order quantity\n• Delivery location\n• Partnership level\n\n**Volume Discounts Available!** Contact our sales team for personalized quotes and bulk order benefits.";
       }
-      else if (userInput.includes("product") || userInput.includes("medicine") || userInput.includes("drug")) {
-        botResponse = "🔬 **Our Product Portfolio**\n\n**Therapeutic Categories**:\n• Cardiovascular medicines\n• Anti-diabetic formulations\n• Anti-infective drugs\n• Respiratory medications\n• Neurological treatments\n\n**Product Types**: Tablets, Capsules, Injectables, Syrups\n\nAll products meet **WHO-GMP standards** and international quality requirements. Which specific category interests you?";
+      else if (userInput.includes("order") || userInput.includes("buy") || userInput.includes("purchase") || userInput.includes("take") || userInput.includes("get")) {
+        botResponse = "🛒 **How to Order**\n\n**Ordering with Ambica Pharma is simple:**\n\n1. **Share your requirements** - Product list, quantities\n2. **Get a quote** - We'll send pricing within 24 hours\n3. **Confirm order** - Review and approve\n4. **Documentation** - COA, invoices, certificates provided\n5. **Dispatch** - Track your shipment in real-time\n\n**Minimum Order**: Flexible based on product\n**Payment**: Multiple options available\n\nEmail us at **orders@ambicapharma.com** or call **+91-22-4123-5678** to place your order!";
       }
-      else if (userInput.includes("certification") || userInput.includes("quality") || userInput.includes("standard")) {
-        botResponse = "✅ **Quality Certifications**\n\n• **WHO-GMP Certified** manufacturing\n• **ISO 9001:2015** quality management\n• **ISO 14001** environmental standards\n• **OHSAS 18001** safety management\n• **FDA registered** facilities\n\nOur quality assurance includes rigorous testing at every stage, from raw materials to finished products. Regular audits ensure continuous compliance.";
+      else if (userInput.includes("product") || userInput.includes("medicine") || userInput.includes("drug") || userInput.includes("tablet") || userInput.includes("capsule")) {
+        botResponse = "🔬 **Our Product Portfolio**\n\n**5,000+ Formulations** across:\n• Cardiovascular medicines\n• Anti-diabetic formulations\n• Anti-infective drugs\n• Respiratory medications\n• Neurological treatments\n• Nutraceuticals & Wellness\n\n**Product Types**: Tablets, Capsules, Injectables, Syrups, Topicals\n\nAll products meet **WHO-GMP standards**. We can source any medicine - wholesale, retail, or custom manufacturing.\n\nWhat specific product are you looking for?";
       }
-      else if (userInput.includes("shipping") || userInput.includes("delivery") || userInput.includes("transport")) {
-        botResponse = "🚢 **Global Shipping Services**\n\n**Shipping Options**:\n• Express courier (2-5 days)\n• Air freight (5-10 days)\n• Sea freight (15-30 days)\n\n**Coverage**: 25+ countries worldwide\n**Insurance**: All shipments fully insured\n**Compliance**: GDP guidelines followed\n**Tracking**: Real-time shipment monitoring\n\nSpecial handling for temperature-sensitive products with cold chain logistics.";
+      else if (userInput.includes("certification") || userInput.includes("quality") || userInput.includes("standard") || userInput.includes("gmp") || userInput.includes("iso")) {
+        botResponse = "✅ **Quality Certifications**\n\n• **WHO-GMP Certified** manufacturing\n• **ISO 9001:2015** quality management\n• **ISO 14001** environmental standards\n• **GDP Certified** distribution\n• **FDA registered** facilities\n\nOur quality assurance includes rigorous testing at every stage. Regular audits every 6 months ensure continuous compliance.";
       }
-      else if (userInput.includes("hello") || userInput.includes("hi") || userInput.includes("hey")) {
-        botResponse = "👋 **Welcome to Ambica Pharma!**\n\nI'm here to help you with:\n• Product information\n• Partnership opportunities\n• Quality certifications\n• Global shipping\n• Contact details\n\nWhat would you like to know about our pharmaceutical services?";
+      else if (userInput.includes("shipping") || userInput.includes("delivery") || userInput.includes("transport") || userInput.includes("export")) {
+        botResponse = "🚢 **Global Shipping Services**\n\n**We export to 45+ countries!**\n\n**Shipping Options**:\n• Express courier (2-5 days)\n• Air freight (5-10 days)\n• Sea freight (15-30 days)\n\n**Features**:\n• Full insurance coverage\n• GDP-compliant logistics\n• Real-time tracking\n• Cold-chain for temperature-sensitive products\n• Complete export documentation\n\nContact us for shipping rates to your country!";
+      }
+      else if (userInput.includes("hello") || userInput.includes("hi") || userInput.includes("hey") || userInput.includes("hii")) {
+        botResponse = "👋 **Welcome to Ambica Pharma!**\n\nI'm here to help you with:\n• Product information & availability\n• Pricing & bulk orders\n• Documentation (COA, certificates)\n• Global shipping\n• Partnership opportunities\n\nWhat can I help you with today?";
       }
       else if (userInput.includes("thank")) {
-        botResponse = "😊 **You're Welcome!**\n\nAt Ambica Pharma, customer satisfaction is our priority. If you have any more questions about our pharmaceutical products or services, I'm here to help!\n\nFeel free to explore our partnership opportunities or contact our team directly.";
+        botResponse = "😊 **You're Welcome!**\n\nAt Ambica Pharma, customer satisfaction is our priority. If you have any more questions, I'm here to help!\n\nFeel free to explore our partnership opportunities or contact our team directly.";
       }
       else {
-        botResponse = "🌟 **How Can I Help You?**\n\nI can provide information about:\n• **Products**: Our pharmaceutical portfolio\n• **Quality**: Certifications and standards\n• **Partnership**: Collaboration opportunities\n• **Logistics**: Global shipping services\n• **Contact**: Get in touch with our team\n\nWhat specific information are you looking for?";
+        botResponse = "🌟 **How Can I Help You?**\n\nI can assist with:\n• **Products** - 5,000+ formulations\n• **Orders** - How to buy from us\n• **Documentation** - COA, certificates\n• **Shipping** - 45+ countries\n• **Quality** - WHO-GMP, ISO certified\n• **Partnership** - Collaboration opportunities\n\nJust ask your question or tap a quick reply below!";
       }
       
       const botMessage: Message = {
