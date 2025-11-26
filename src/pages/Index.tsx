@@ -337,18 +337,17 @@ const Index = () => {
         <div className="absolute bottom-0 left-0 w-1/3 h-1/3 bg-secondary/5 rounded-full blur-3xl pointer-events-none" />
 
         <div className="container relative z-10">
-          <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-8 mb-10">
-            <div className="space-y-2">
-              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 text-primary text-xs font-bold tracking-wider uppercase">
-                <span className="w-2 h-2 rounded-full bg-primary animate-pulse" />
-                Wholesale & Trading
-              </div>
-              <h2 className="text-3xl md:text-4xl font-display font-bold text-slate-900 dark:text-white tracking-tight">
-                Complete Product <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-secondary">Range</span>
-              </h2>
+          <div className="text-center max-w-3xl mx-auto mb-12">
+            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-gradient-to-r from-primary/10 to-secondary/10 text-primary text-xs font-bold tracking-wider uppercase mb-4 border border-primary/20">
+              <span className="w-2 h-2 rounded-full bg-secondary animate-pulse" />
+              Wholesale • Retail • Export
             </div>
-            <p className="text-slate-600 dark:text-slate-400 max-w-xl text-base leading-relaxed text-balance">
-              <strong>If you need it, we can get it.</strong> From single units to bulk orders — wholesale, retail, or custom manufacturing arrangements. 5,000+ formulations across every therapeutic category.
+            <h2 className="text-3xl md:text-5xl font-display font-bold text-slate-900 dark:text-white tracking-tight mb-4">
+              Any Medicine. <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-secondary">Any Quantity.</span>
+            </h2>
+            <p className="text-slate-600 dark:text-slate-400 text-lg leading-relaxed">
+              From a single strip to container loads — we source, supply, and deliver. <br className="hidden md:block" />
+              <span className="font-semibold text-slate-700 dark:text-slate-300">5,000+ formulations</span> across every therapeutic category, ready when you need them.
             </p>
           </div>
 
