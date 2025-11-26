@@ -463,9 +463,25 @@ const Index = () => {
                   whileInView={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.4, delay: index * 0.1 }}
                   viewport={{ once: true }}
-                  className="group relative p-8 rounded-[28px] bg-white/85 dark:bg-slate-800/70 border border-slate-100 dark:border-slate-700 backdrop-blur-md shadow-[0_18px_45px_rgba(15,23,42,0.08)] hover:-translate-y-2 hover:shadow-[0_30px_60px_rgba(15,23,42,0.16)] transition-all duration-300 ring-1 ring-transparent hover:ring-primary/20"
+                  className={`group relative p-8 rounded-[28px] bg-white/85 dark:bg-slate-800/70 border border-slate-100 dark:border-slate-700 backdrop-blur-md shadow-[0_18px_45px_rgba(15,23,42,0.08)] hover:-translate-y-2 transition-all duration-500 ring-1 ring-transparent ${
+                    index === 0
+                      ? 'hover:bg-blue-50/50 dark:hover:bg-blue-500/10 hover:shadow-[0_20px_60px_-10px_rgba(59,130,246,0.5)] hover:border-blue-500/30 hover:ring-blue-500/20'
+                      : index === 1
+                        ? 'hover:bg-indigo-50/50 dark:hover:bg-indigo-500/10 hover:shadow-[0_20px_60px_-10px_rgba(99,102,241,0.5)] hover:border-indigo-500/30 hover:ring-indigo-500/20'
+                        : index === 2
+                          ? 'hover:bg-emerald-50/50 dark:hover:bg-emerald-500/10 hover:shadow-[0_20px_60px_-10px_rgba(16,185,129,0.5)] hover:border-emerald-500/30 hover:ring-emerald-500/20'
+                          : 'hover:bg-pink-50/50 dark:hover:bg-pink-500/10 hover:shadow-[0_20px_60px_-10px_rgba(236,72,153,0.5)] hover:border-pink-500/30 hover:ring-pink-500/20'
+                  }`}
                 >
-                  <div className="h-14 w-14 rounded-2xl bg-gradient-to-br from-primary/10 to-secondary/10 shadow-inner shadow-white/50 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300 border border-white/60 dark:border-white/10">
+                  <div className={`h-14 w-14 rounded-2xl shadow-inner shadow-white/50 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-500 border border-white/60 dark:border-white/10 ${
+                    index === 0
+                      ? 'bg-gradient-to-br from-blue-100 to-blue-50 dark:from-blue-900/30 dark:to-blue-800/20'
+                      : index === 1
+                        ? 'bg-gradient-to-br from-indigo-100 to-indigo-50 dark:from-indigo-900/30 dark:to-indigo-800/20'
+                        : index === 2
+                          ? 'bg-gradient-to-br from-emerald-100 to-emerald-50 dark:from-emerald-900/30 dark:to-emerald-800/20'
+                          : 'bg-gradient-to-br from-pink-100 to-pink-50 dark:from-pink-900/30 dark:to-pink-800/20'
+                  }`}>
                     {program.icon}
                   </div>
                   <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-3 tracking-tight">{program.title}</h3>
