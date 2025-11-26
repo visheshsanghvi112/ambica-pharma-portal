@@ -408,35 +408,35 @@ const Index = () => {
       </section>
 
       {/* Supply programs - split layout with detailed stats */}
-      <section className="py-24 bg-gradient-to-br from-primary/5 via-white to-secondary/5 dark:from-slate-950 dark:via-slate-900 dark:to-slate-950">
+      <section className="py-12 md:py-24 bg-gradient-to-br from-primary/5 via-white to-secondary/5 dark:from-slate-950 dark:via-slate-900 dark:to-slate-950">
         <div className="container">
-          <div className="grid lg:grid-cols-[0.85fr_1.15fr] gap-12 items-start">
+          <div className="grid lg:grid-cols-[0.85fr_1.15fr] gap-6 md:gap-12 items-start">
             <motion.div
               initial={{ opacity: 0, x: -30 }}
               whileInView={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.5 }}
               viewport={{ once: true }}
-              className="p-8 rounded-[32px] bg-gradient-to-br from-primary/90 via-primary/80 to-secondary/80 text-white relative overflow-hidden shadow-[0_35px_70px_rgba(2,6,23,0.45)] border border-white/10"
+              className="p-5 md:p-8 rounded-2xl md:rounded-[32px] bg-gradient-to-br from-primary/90 via-primary/80 to-secondary/80 text-white relative overflow-hidden shadow-[0_20px_50px_rgba(2,6,23,0.35)] md:shadow-[0_35px_70px_rgba(2,6,23,0.45)] border border-white/10"
             >
               <div className="absolute inset-0 opacity-20 bg-[radial-gradient(circle_at_top,_rgba(59,130,246,0.8),_transparent_60%)] pointer-events-none" />
               <div className="relative z-10">
-                <span className="text-white/80 tracking-[0.2em] uppercase text-xs font-semibold">Supply Chain</span>
-                <h2 className="text-3xl md:text-4xl font-display font-bold mt-4 mb-4 leading-tight">
+                <span className="text-white/80 tracking-[0.15em] md:tracking-[0.2em] uppercase text-[10px] md:text-xs font-semibold">Supply Chain</span>
+                <h2 className="text-2xl md:text-4xl font-display font-bold mt-2 md:mt-4 mb-2 md:mb-4 leading-tight">
                   Tailored Supply Solutions
                 </h2>
-                <p className="text-white/70 text-lg leading-relaxed mb-8">
+                <p className="text-white/70 text-sm md:text-lg leading-relaxed mb-4 md:mb-8">
                   Whether you're a hospital network, a global distributor, or a digital pharmacy, our supply chain is optimized for your specific needs.
                 </p>
 
-                <div className="space-y-4 mb-8">
+                <div className="space-y-2 md:space-y-4 mb-4 md:mb-8">
                   {supplyStats.map((stat, index) => (
-                    <div key={stat.label} className="flex items-center gap-4 p-3 rounded-2xl bg-white/5 backdrop-blur-sm border border-white/10 hover:bg-white/10 transition-all duration-300">
-                      <div className="min-w-[70px] h-14 px-3 rounded-xl bg-gradient-to-br from-white/20 to-white/5 text-white flex items-center justify-center font-bold text-2xl border border-white/20 shadow-lg shadow-black/20">
+                    <div key={stat.label} className="flex items-center gap-3 md:gap-4 p-2 md:p-3 rounded-xl md:rounded-2xl bg-white/5 backdrop-blur-sm border border-white/10 hover:bg-white/10 transition-all duration-300">
+                      <div className="min-w-[55px] md:min-w-[70px] h-10 md:h-14 px-2 md:px-3 rounded-lg md:rounded-xl bg-gradient-to-br from-white/20 to-white/5 text-white flex items-center justify-center font-bold text-lg md:text-2xl border border-white/20 shadow-lg shadow-black/20">
                         {stat.value}
                       </div>
                       <div className="flex-1">
-                        <p className="text-base font-semibold text-white">{stat.label}</p>
-                        <p className="text-sm text-white/60">{stat.helper}</p>
+                        <p className="text-sm md:text-base font-semibold text-white">{stat.label}</p>
+                        <p className="text-xs md:text-sm text-white/60 hidden md:block">{stat.helper}</p>
                       </div>
                     </div>
                   ))}
@@ -444,12 +444,12 @@ const Index = () => {
 
                 <Button
                   asChild
-                  size="lg"
-                  className="bg-white text-slate-900 hover:bg-white/90 hover:scale-105 transition-all duration-300 px-8 rounded-full"
+                  size="default"
+                  className="bg-white text-slate-900 hover:bg-white/90 hover:scale-105 transition-all duration-300 px-5 md:px-8 rounded-full text-sm md:text-base"
                 >
                   <Link to="/contact" className="flex items-center gap-2">
                     Design Your Supply Plan
-                    <ArrowRight className="h-4 w-4" />
+                    <ArrowRight className="h-3.5 w-3.5 md:h-4 md:w-4" />
                   </Link>
                 </Button>
               </div>
