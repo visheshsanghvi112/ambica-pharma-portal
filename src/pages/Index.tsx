@@ -467,7 +467,7 @@ const Index = () => {
                     index === 0
                       ? 'hover:bg-blue-50/50 dark:hover:bg-blue-500/10 hover:shadow-[0_20px_60px_-10px_rgba(59,130,246,0.5)] hover:border-blue-500/30 hover:ring-blue-500/20'
                       : index === 1
-                        ? 'hover:bg-indigo-50/50 dark:hover:bg-indigo-500/10 hover:shadow-[0_20px_60px_-10px_rgba(99,102,241,0.5)] hover:border-indigo-500/30 hover:ring-indigo-500/20'
+                        ? 'hover:bg-yellow-50/50 dark:hover:bg-yellow-500/10 hover:shadow-[0_20px_60px_-10px_rgba(234,179,8,0.5)] hover:border-yellow-500/30 hover:ring-yellow-500/20'
                         : index === 2
                           ? 'hover:bg-emerald-50/50 dark:hover:bg-emerald-500/10 hover:shadow-[0_20px_60px_-10px_rgba(16,185,129,0.5)] hover:border-emerald-500/30 hover:ring-emerald-500/20'
                           : 'hover:bg-pink-50/50 dark:hover:bg-pink-500/10 hover:shadow-[0_20px_60px_-10px_rgba(236,72,153,0.5)] hover:border-pink-500/30 hover:ring-pink-500/20'
@@ -477,7 +477,7 @@ const Index = () => {
                     index === 0
                       ? 'bg-gradient-to-br from-blue-100 to-blue-50 dark:from-blue-900/30 dark:to-blue-800/20'
                       : index === 1
-                        ? 'bg-gradient-to-br from-indigo-100 to-indigo-50 dark:from-indigo-900/30 dark:to-indigo-800/20'
+                        ? 'bg-gradient-to-br from-yellow-100 to-yellow-50 dark:from-yellow-900/30 dark:to-yellow-800/20'
                         : index === 2
                           ? 'bg-gradient-to-br from-emerald-100 to-emerald-50 dark:from-emerald-900/30 dark:to-emerald-800/20'
                           : 'bg-gradient-to-br from-pink-100 to-pink-50 dark:from-pink-900/30 dark:to-pink-800/20'
