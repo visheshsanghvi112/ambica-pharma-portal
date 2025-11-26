@@ -428,14 +428,14 @@ const Index = () => {
                   Whether you're a hospital network, a global distributor, or a digital pharmacy, our supply chain is optimized for your specific needs.
                 </p>
 
-                <div className="space-y-5 mb-8">
-                  {supplyStats.map((stat) => (
-                    <div key={stat.label} className="flex items-start gap-4">
-                      <div className="h-12 w-12 rounded-2xl bg-white/10 text-white flex items-center justify-center font-bold text-xl shadow-inner shadow-black/40 border border-white/10">
+                <div className="space-y-4 mb-8">
+                  {supplyStats.map((stat, index) => (
+                    <div key={stat.label} className="flex items-center gap-4 p-3 rounded-2xl bg-white/5 backdrop-blur-sm border border-white/10 hover:bg-white/10 transition-all duration-300">
+                      <div className="min-w-[70px] h-14 px-3 rounded-xl bg-gradient-to-br from-white/20 to-white/5 text-white flex items-center justify-center font-bold text-2xl border border-white/20 shadow-lg shadow-black/20">
                         {stat.value}
                       </div>
-                      <div>
-                        <p className="text-base font-semibold">{stat.label}</p>
+                      <div className="flex-1">
+                        <p className="text-base font-semibold text-white">{stat.label}</p>
                         <p className="text-sm text-white/60">{stat.helper}</p>
                       </div>
                     </div>
