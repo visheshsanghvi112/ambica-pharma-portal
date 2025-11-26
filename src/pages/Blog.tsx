@@ -153,12 +153,8 @@ const Blog = () => {
         </script>
       </Helmet>
       
-      {/* Hero Section - Enhanced with gradient and animations */}
+      {/* Hero Section - Enhanced with gradient */}
       <section className="py-16 md:py-24 bg-gradient-to-br from-primary/10 via-secondary/5 to-primary/5 dark:from-primary/20 dark:via-secondary/10 dark:to-primary/10 relative overflow-hidden">
-        <div className="absolute top-0 left-0 w-full h-full opacity-40 overflow-hidden pointer-events-none">
-          <div className="absolute top-10 left-10 w-40 h-40 rounded-full bg-gradient-to-r from-blue-300 to-blue-400 blur-3xl animate-blob"></div>
-          <div className="absolute bottom-20 right-10 w-60 h-60 rounded-full bg-gradient-to-r from-purple-300 to-indigo-400 blur-3xl animate-blob" style={{ animationDelay: "2s" }}></div>
-        </div>
         
         <div className="container relative z-10">
           <div className="max-w-4xl mx-auto text-center">
