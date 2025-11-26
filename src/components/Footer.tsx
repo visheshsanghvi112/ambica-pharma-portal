@@ -3,7 +3,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { Button } from "./ui/button";
 import { Input } from "./ui/input";
-import { Phone, Mail, MapPin, Send, Facebook, Twitter, Linkedin, Instagram, Clock } from "lucide-react";
+import { Phone, Mail, MapPin, Send, Facebook, Twitter, Linkedin, Instagram, Clock, Store } from "lucide-react";
 import { motion } from "framer-motion";
 import { ThemeToggle } from "./ThemeToggle";
 
@@ -20,17 +20,20 @@ const Footer = () => {
               where quality meets commitment since 2005.
             </p>
             <div className="flex items-center space-x-3">
-              <a href="https://facebook.com" className="p-2 rounded-full bg-white/10 hover:bg-white/20 transition-colors transform transition-transform hover:scale-110" aria-label="Facebook">
+              <a href="https://www.facebook.com/ambicapharma" target="_blank" rel="noopener noreferrer" className="p-2 rounded-full bg-white/10 hover:bg-white/20 transition-colors transform transition-transform hover:scale-110" aria-label="Facebook">
                 <Facebook className="h-4 w-4" />
               </a>
-              <a href="https://twitter.com" className="p-2 rounded-full bg-white/10 hover:bg-white/20 transition-colors transform transition-transform hover:scale-110" aria-label="Twitter">
+              <a href="https://twitter.com/ambicapharma" target="_blank" rel="noopener noreferrer" className="p-2 rounded-full bg-white/10 hover:bg-white/20 transition-colors transform transition-transform hover:scale-110" aria-label="Twitter">
                 <Twitter className="h-4 w-4" />
               </a>
-              <a href="https://linkedin.com" className="p-2 rounded-full bg-white/10 hover:bg-white/20 transition-colors transform transition-transform hover:scale-110" aria-label="LinkedIn">
+              <a href="https://www.linkedin.com/company/ambica-pharma" target="_blank" rel="noopener noreferrer" className="p-2 rounded-full bg-white/10 hover:bg-white/20 transition-colors transform transition-transform hover:scale-110" aria-label="LinkedIn">
                 <Linkedin className="h-4 w-4" />
               </a>
-              <a href="https://instagram.com" className="p-2 rounded-full bg-white/10 hover:bg-white/20 transition-colors transform transition-transform hover:scale-110" aria-label="Instagram">
+              <a href="https://www.instagram.com/ambicapharma/" target="_blank" rel="noopener noreferrer" className="p-2 rounded-full bg-white/10 hover:bg-white/20 transition-colors transform transition-transform hover:scale-110" aria-label="Instagram">
                 <Instagram className="h-4 w-4" />
+              </a>
+              <a href="https://www.ambica-pharma.com/" target="_blank" rel="noopener noreferrer" className="p-2 rounded-full bg-secondary/80 hover:bg-secondary transition-colors transform transition-transform hover:scale-110" aria-label="IndiaMart" title="View on IndiaMart">
+                <Store className="h-4 w-4" />
               </a>
             </div>
           </div>
