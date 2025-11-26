@@ -315,8 +315,7 @@ const ChatBot: React.FC = () => {
   }, []);
 
   return (
-    <div className="fixed bottom-4 right-4 z-[9999]" style={{ zIndex: 9999 }}>
-      <div className="absolute -top-2 -left-2 w-2 h-2 bg-red-500 rounded-full animate-pulse opacity-50"></div>
+    <div className="fixed bottom-6 right-6 z-[9999]" style={{ zIndex: 9999 }}>
       
       <AnimatePresence>
         <motion.div
@@ -329,16 +328,15 @@ const ChatBot: React.FC = () => {
           <Button
             onClick={toggleChat}
             className={cn(
-              "w-16 h-16 rounded-full shadow-2xl flex items-center justify-center relative overflow-hidden group",
+              "w-14 h-14 rounded-full shadow-2xl flex items-center justify-center relative overflow-hidden group",
               "bg-gradient-to-br from-blue-500 via-blue-600 to-purple-600 hover:from-blue-600 hover:to-purple-700",
               "transform transition-all duration-300 hover:scale-110 active:scale-95",
-              "border-2 border-white/20",
-              !isOpen && "animate-bounce"
+              "border-2 border-white/20"
             )}
             style={{ 
               position: 'fixed',
-              bottom: '1rem',
-              right: '1rem',
+              bottom: '1.5rem',
+              right: '1.5rem',
               zIndex: 9999
             }}
             aria-label="Chat with Ambica Pharma Assistant"
@@ -361,7 +359,6 @@ const ChatBot: React.FC = () => {
               {isOpen ? <X size={28} className="text-white" /> : <MessageCircle size={28} className="text-white" />}
             </motion.div>
             
-            <div className="absolute inset-0 rounded-full bg-white/20 animate-ping opacity-20 group-hover:opacity-30"></div>
             <div className="absolute inset-0 rounded-full bg-gradient-to-r from-blue-500/30 to-purple-600/30 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
           </Button>
         </motion.div>
