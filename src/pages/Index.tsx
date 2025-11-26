@@ -371,7 +371,7 @@ const Index = () => {
                     height={300}
                     className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-110 group-hover:rotate-1"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-primary/80 via-slate-900/40 to-transparent opacity-80 transition-opacity duration-500" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-slate-900/70 via-slate-900/20 to-transparent transition-opacity duration-500" />
                 </div>
 
                 {/* Content Overlay */}
