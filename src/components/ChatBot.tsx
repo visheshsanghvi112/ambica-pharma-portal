@@ -322,54 +322,26 @@ const ChatBot: React.FC = () => {
   }, []);
 
   return (
-    <div className="fixed bottom-6 right-6 z-[9999]" style={{ zIndex: 9999 }}>
-      
-      <AnimatePresence>
-        <motion.div
-          initial={{ scale: 0.8, opacity: 0 }}
-          animate={{ scale: 1, opacity: 1 }}
-          exit={{ scale: 0.8, opacity: 0 }}
-          transition={{ type: "spring", stiffness: 300, damping: 20 }}
-          className="relative"
-        >
-          <Button
-            onClick={toggleChat}
-            className={cn(
-              "w-14 h-14 rounded-full shadow-2xl flex items-center justify-center relative overflow-hidden group",
-              "bg-gradient-to-br from-blue-500 via-blue-600 to-purple-600 hover:from-blue-600 hover:to-purple-700",
-              "transform transition-all duration-300 hover:scale-110 active:scale-95",
-              "border-2 border-white/20"
-            )}
-            style={{ 
-              position: 'fixed',
-              bottom: '1.5rem',
-              right: '1.5rem',
-              zIndex: 9999
-            }}
-            aria-label="Chat with Ambica Pharma Assistant"
-          >
-            {(hasNewMessage || unreadCount > 0) && !isOpen && (
-              <motion.div
-                initial={{ scale: 0 }}
-                animate={{ scale: 1 }}
-                className="absolute -top-2 -right-2 bg-red-500 text-white text-xs rounded-full min-w-[24px] h-6 flex items-center justify-center font-bold shadow-lg z-10"
-              >
-                {unreadCount > 0 ? unreadCount : '!'}
-              </motion.div>
-            )}
-            
-            <motion.div
-              animate={{ rotate: isOpen ? 180 : 0 }}
-              transition={{ duration: 0.3 }}
-              className="relative z-10"
-            >
-              {isOpen ? <X size={28} className="text-white" /> : <MessageCircle size={28} className="text-white" />}
-            </motion.div>
-            
-            <div className="absolute inset-0 rounded-full bg-gradient-to-r from-blue-500/30 to-purple-600/30 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-          </Button>
-        </motion.div>
-      </AnimatePresence>
+    <>
+      {/* Chat Toggle Button */}
+      <Button
+        onClick={toggleChat}
+        className={cn(
+          "fixed bottom-6 right-6 z-50",
+          "w-14 h-14 rounded-full shadow-2xl flex items-center justify-center overflow-hidden group",
+          "bg-gradient-to-br from-blue-500 via-blue-600 to-purple-600 hover:from-blue-600 hover:to-purple-700",
+          "transition-all duration-300 hover:scale-110 active:scale-95",
+          "border-2 border-white/20"
+        )}
+        aria-label="Chat with Ambica Pharma Assistant"
+      >
+        {(hasNewMessage || unreadCount > 0) && !isOpen && (
+          <span className="absolute -top-1 -right-1 bg-red-500 text-white text-xs rounded-full min-w-[20px] h-5 flex items-center justify-center font-bold shadow-lg z-10">
+            {unreadCount > 0 ? unreadCount : '!'}
+          </span>
+        )}
+        {isOpen ? <X size={24} className="text-white" /> : <MessageCircle size={24} className="text-white" />}
+      </Button>
 
       <AnimatePresence>
         {isOpen && (
@@ -379,16 +351,15 @@ const ChatBot: React.FC = () => {
             exit={{ y: 20, opacity: 0, scale: 0.95 }}
             transition={{ type: "spring", stiffness: 300, damping: 25 }}
             className={cn(
-              "absolute bottom-20 right-0 bg-white dark:bg-gray-900 rounded-3xl shadow-2xl overflow-hidden",
+              "fixed bottom-24 right-6 bg-white dark:bg-gray-900 rounded-3xl shadow-2xl overflow-hidden z-50",
               "flex flex-col border border-gray-200 dark:border-gray-700",
               "backdrop-blur-lg bg-white/95 dark:bg-gray-900/95",
               isMinimized 
                 ? "w-80 h-16" 
                 : isFullScreen 
-                  ? "w-[95vw] h-[85vh] fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2" 
-                  : "w-96 max-w-[calc(100vw-2rem)] h-[600px]"
+                  ? "w-[95vw] h-[85vh] !top-1/2 !left-1/2 !bottom-auto !right-auto transform -translate-x-1/2 -translate-y-1/2" 
+                  : "w-96 max-w-[calc(100vw-2rem)] h-[550px]"
             )}
-            style={{ zIndex: 9998 }}
             ref={chatContainerRef}
           >
             <div className="bg-gradient-to-r from-blue-500 via-blue-600 to-purple-600 p-4 text-white relative overflow-hidden">
@@ -653,7 +624,7 @@ const ChatBot: React.FC = () => {
           </motion.div>
         )}
       </AnimatePresence>
-    </div>
+    </>
   );
 };
 
