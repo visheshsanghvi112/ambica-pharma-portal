@@ -597,8 +597,27 @@ const ChatBot: React.FC = () => {
                   <div ref={messagesEndRef} />
                 </div>
 
-                <div className="p-4 border-t border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900">
-                  <div className="flex items-end gap-3">
+                <div className="border-t border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900">
+                  {/* Quick Reply Buttons */}
+                  <div className="px-3 pt-3 pb-2">
+                    <div className="flex gap-2 overflow-x-auto pb-2 scrollbar-hide">
+                      {predefinedQuestions.slice(0, 5).map((question) => (
+                        <motion.button
+                          key={question.id}
+                          whileHover={{ scale: 1.02 }}
+                          whileTap={{ scale: 0.98 }}
+                          onClick={() => handleSend(question.text)}
+                          disabled={isTyping}
+                          className="flex-shrink-0 px-3 py-1.5 text-xs font-medium bg-gradient-to-r from-blue-50 to-purple-50 dark:from-blue-900/30 dark:to-purple-900/30 text-blue-700 dark:text-blue-300 rounded-full border border-blue-200 dark:border-blue-700 hover:border-blue-400 dark:hover:border-blue-500 transition-all disabled:opacity-50"
+                        >
+                          {question.emoji} {question.text.length > 25 ? question.text.slice(0, 25) + '...' : question.text}
+                        </motion.button>
+                      ))}
+                    </div>
+                  </div>
+                  
+                  {/* Input Area */}
+                  <div className="px-3 pb-3 flex items-end gap-2">
                     <div className="flex-1 relative">
                       <input
                         ref={inputRef}
@@ -607,7 +626,7 @@ const ChatBot: React.FC = () => {
                         onChange={(e) => setInput(e.target.value)}
                         onKeyDown={(e) => e.key === 'Enter' && !e.shiftKey && (e.preventDefault(), handleSend())}
                         placeholder="Type your message..."
-                        className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-2xl focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-800 dark:text-white resize-none transition-all duration-200"
+                        className="w-full px-4 py-2.5 border border-gray-300 dark:border-gray-600 rounded-2xl focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-800 dark:text-white resize-none transition-all duration-200 text-sm"
                         maxLength={500}
                         disabled={isTyping}
                       />
@@ -616,9 +635,9 @@ const ChatBot: React.FC = () => {
                     <Button 
                       onClick={() => handleSend()}
                       disabled={input.trim() === '' || isTyping}
-                      className="w-12 h-12 rounded-2xl bg-gradient-to-br from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 disabled:opacity-50 disabled:cursor-not-allowed"
+                      className="w-10 h-10 rounded-xl bg-gradient-to-br from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 disabled:opacity-50 disabled:cursor-not-allowed"
                     >
-                      <Send size={18} className="text-white" />
+                      <Send size={16} className="text-white" />
                     </Button>
                   </div>
                 </div>
