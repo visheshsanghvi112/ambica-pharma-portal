@@ -140,7 +140,7 @@ const Statistics = () => {
             </div>
           </motion.div>
 
-          <div className="grid grid-cols-2 gap-6">
+          <div className="grid grid-cols-2 gap-3 md:gap-6">
             {statistics.map((stat, index) => {
               const Icon = stat.icon;
               return (
@@ -150,7 +150,7 @@ const Statistics = () => {
                   whileInView={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.4, delay: index * 0.1 }}
                   viewport={{ once: true }}
-                  className={`group relative overflow-hidden rounded-[2rem] bg-white/40 dark:bg-slate-900/40 p-8 shadow-[0_10px_32px_rgba(15,23,42,0.10)] dark:shadow-none border border-white/60 dark:border-slate-800 backdrop-blur-sm ring-1 ring-white/40 dark:ring-slate-800/40 hover:-translate-y-2 transition-all duration-500 ${index === 1 || index === 3 ? 'lg:translate-y-12' : ''} ${
+                  className={`group relative overflow-hidden rounded-2xl md:rounded-[2rem] bg-white/40 dark:bg-slate-900/40 p-4 md:p-8 shadow-[0_10px_32px_rgba(15,23,42,0.10)] dark:shadow-none border border-white/60 dark:border-slate-800 backdrop-blur-sm ring-1 ring-white/40 dark:ring-slate-800/40 hover:-translate-y-1 md:hover:-translate-y-2 transition-all duration-500 ${index === 1 || index === 3 ? 'lg:translate-y-12' : ''} ${
                     index === 0
                       ? 'hover:bg-violet-50/50 dark:hover:bg-violet-500/10 hover:shadow-[0_20px_60px_-10px_rgba(139,92,246,0.5)] hover:border-violet-500/30 hover:ring-violet-500/20'
                       : index === 1
@@ -160,14 +160,14 @@ const Statistics = () => {
                           : 'hover:bg-teal-50/50 dark:hover:bg-teal-500/10 hover:shadow-[0_20px_60px_-10px_rgba(20,184,166,0.5)] hover:border-teal-500/30 hover:ring-teal-500/20'
                   }`}
                 >
-                  <div className={`absolute top-0 right-0 p-4 opacity-5 group-hover:opacity-15 transition-opacity duration-500 ${
+                  <div className={`absolute top-0 right-0 p-2 md:p-4 opacity-5 group-hover:opacity-15 transition-opacity duration-500 ${
                     index === 0 ? 'text-violet-500' : index === 1 ? 'text-rose-500' : index === 2 ? 'text-amber-500' : 'text-teal-500'
                   }`}>
-                    <Icon className="h-24 w-24" />
+                    <Icon className="h-16 w-16 md:h-24 md:w-24" />
                   </div>
 
-                  <div className="relative z-10 flex flex-col gap-4">
-                    <div className={`h-12 w-12 rounded-2xl flex items-center justify-center group-hover:scale-110 transition-transform duration-500 shadow-inner shadow-white/50 ${
+                  <div className="relative z-10 flex flex-col gap-2 md:gap-4">
+                    <div className={`h-9 w-9 md:h-12 md:w-12 rounded-xl md:rounded-2xl flex items-center justify-center group-hover:scale-110 transition-transform duration-500 shadow-inner shadow-white/50 ${
                       index === 0
                         ? 'bg-gradient-to-br from-violet-100 to-violet-50 dark:from-violet-900/30 dark:to-violet-800/20 text-violet-600 dark:text-violet-400'
                         : index === 1
@@ -176,11 +176,11 @@ const Statistics = () => {
                             ? 'bg-gradient-to-br from-amber-100 to-amber-50 dark:from-amber-900/30 dark:to-amber-800/20 text-amber-600 dark:text-amber-400'
                             : 'bg-gradient-to-br from-teal-100 to-teal-50 dark:from-teal-900/30 dark:to-teal-800/20 text-teal-600 dark:text-teal-400'
                     }`}>
-                      <Icon className="h-6 w-6" />
+                      <Icon className="h-4 w-4 md:h-6 md:w-6" />
                     </div>
                     <div>
-                      <p className="text-4xl font-bold text-slate-900 dark:text-white tracking-tight">{stat.value}</p>
-                      <p className="text-sm font-medium text-slate-500 dark:text-slate-400 mt-2">{stat.title}</p>
+                      <p className="text-2xl md:text-4xl font-bold text-slate-900 dark:text-white tracking-tight">{stat.value}</p>
+                      <p className="text-xs md:text-sm font-medium text-slate-500 dark:text-slate-400 mt-1 md:mt-2">{stat.title}</p>
                     </div>
                   </div>
                 </motion.div>
