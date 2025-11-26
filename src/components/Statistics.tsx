@@ -94,24 +94,52 @@ const Statistics = () => {
       <div className="absolute -left-20 top-40 w-72 h-72 bg-blue-500/5 rounded-full blur-3xl" />
 
       <div className="container relative z-10 space-y-20">
-        <div className="space-y-12">
-          {/* Centered Header */}
-          <div className="text-center max-w-3xl mx-auto">
-            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-gradient-to-r from-primary/10 to-secondary/10 text-primary text-xs font-bold tracking-wider uppercase mb-4 border border-primary/20">
-              <Sparkles className="h-3.5 w-3.5" />
-              19+ Years • 9000+ Partners • 1000+ Products
-            </div>
-            <h2 className="text-3xl md:text-5xl font-display font-bold text-slate-900 dark:text-white tracking-tight mb-4">
-              Numbers That <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-secondary">Speak.</span>
-            </h2>
-            <p className="text-slate-600 dark:text-slate-400 text-lg leading-relaxed">
-              The scorecard buyers ask for — operational tenure, partner depth, and SKU strength. <br className="hidden md:block" />
-              <span className="font-semibold text-slate-700 dark:text-slate-300">Presented with transparency and pride.</span>
-            </p>
-          </div>
+        <div className="grid gap-16 lg:grid-cols-[1fr,1.2fr] items-center">
+          <motion.div
+            initial={{ opacity: 0, x: -20 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.5 }}
+            viewport={{ once: true }}
+            className="space-y-8"
+          >
+            <span className="inline-flex items-center gap-2 rounded-full bg-blue-50 dark:bg-blue-900/20 px-4 py-2 text-sm font-medium text-blue-700 dark:text-blue-300 border border-blue-100 dark:border-blue-800">
+              <Sparkles className="h-4 w-4" />
+              Proven Track Record
+            </span>
 
-          {/* Stats Grid */}
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">
+            <h2 className="text-4xl md:text-5xl font-display font-bold leading-tight text-slate-900 dark:text-white">
+              Numbers that define our <span className="text-blue-600">excellence</span>
+            </h2>
+
+            <p className="text-lg text-slate-600 dark:text-slate-400 leading-relaxed">
+              The scorecard buyers ask for - operational tenure, partner depth, experience, and SKU strength - presented with transparency and pride.
+            </p>
+
+            <div className="space-y-6">
+              {proofPoints.map((point, index) => (
+                <motion.div
+                  key={point.title}
+                  initial={{ opacity: 0, x: -15 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  transition={{ duration: 0.4, delay: index * 0.1 }}
+                  viewport={{ once: true }}
+                  className="flex gap-4 p-4 rounded-2xl hover:bg-slate-50 dark:hover:bg-slate-900/50 transition-colors duration-300"
+                >
+                  <div className="mt-1 h-10 w-10 rounded-full bg-green-100 dark:bg-green-900/30 flex items-center justify-center text-green-600 dark:text-green-400 shrink-0">
+                    <CheckCircle className="h-5 w-5" />
+                  </div>
+                  <div>
+                    <h4 className="text-lg font-bold text-slate-900 dark:text-white">
+                      {point.title}
+                    </h4>
+                    <p className="text-slate-600 dark:text-slate-400 mt-1">{point.description}</p>
+                  </div>
+                </motion.div>
+              ))}
+            </div>
+          </motion.div>
+
+          <div className="grid grid-cols-2 gap-6">
             {statistics.map((stat, index) => {
               const Icon = stat.icon;
               return (
@@ -121,7 +149,7 @@ const Statistics = () => {
                   whileInView={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.4, delay: index * 0.1 }}
                   viewport={{ once: true }}
-                  className={`group relative overflow-hidden rounded-2xl md:rounded-[2rem] bg-white/40 dark:bg-slate-900/40 p-5 md:p-8 shadow-[0_10px_32px_rgba(15,23,42,0.10)] dark:shadow-none border border-white/60 dark:border-slate-800 backdrop-blur-sm ring-1 ring-white/40 dark:ring-slate-800/40 hover:-translate-y-2 transition-all duration-500 ${
+                  className={`group relative overflow-hidden rounded-[2rem] bg-white/40 dark:bg-slate-900/40 p-8 shadow-[0_10px_32px_rgba(15,23,42,0.10)] dark:shadow-none border border-white/60 dark:border-slate-800 backdrop-blur-sm ring-1 ring-white/40 dark:ring-slate-800/40 hover:-translate-y-2 transition-all duration-500 ${index === 1 || index === 3 ? 'lg:translate-y-12' : ''} ${
                     index === 0
                       ? 'hover:bg-violet-50/50 dark:hover:bg-violet-500/10 hover:shadow-[0_20px_60px_-10px_rgba(139,92,246,0.5)] hover:border-violet-500/30 hover:ring-violet-500/20'
                       : index === 1
@@ -158,30 +186,6 @@ const Statistics = () => {
               );
             })}
           </div>
-        </div>
-
-        {/* Proof Points Section */}
-        <div className="grid md:grid-cols-3 gap-6">
-          {proofPoints.map((point, index) => (
-            <motion.div
-              key={point.title}
-              initial={{ opacity: 0, y: 15 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.4, delay: index * 0.1 }}
-              viewport={{ once: true }}
-              className="flex gap-4 p-5 rounded-2xl bg-white/50 dark:bg-slate-800/50 border border-slate-100 dark:border-slate-700 hover:shadow-lg transition-all duration-300"
-            >
-              <div className="h-10 w-10 rounded-full bg-green-100 dark:bg-green-900/30 flex items-center justify-center text-green-600 dark:text-green-400 shrink-0">
-                <CheckCircle className="h-5 w-5" />
-              </div>
-              <div>
-                <h4 className="text-base font-bold text-slate-900 dark:text-white">
-                  {point.title}
-                </h4>
-                <p className="text-sm text-slate-600 dark:text-slate-400 mt-1">{point.description}</p>
-              </div>
-            </motion.div>
-          ))}
         </div>
 
         <div className="grid items-center gap-12 md:grid-cols-2 rounded-[2.5rem] p-8 md:p-12 border border-white/30 dark:border-slate-800 bg-gradient-to-br from-primary via-primary/90 to-secondary text-white relative overflow-hidden">
