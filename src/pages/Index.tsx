@@ -455,7 +455,7 @@ const Index = () => {
               </div>
             </motion.div>
 
-            <div className="grid gap-6 md:grid-cols-2">
+            <div className="grid grid-cols-2 gap-3 md:gap-6 md:grid-cols-2">
               {supplyPrograms.map((program, index) => (
                 <motion.div
                   key={program.title}
@@ -463,17 +463,17 @@ const Index = () => {
                   whileInView={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.4, delay: index * 0.1 }}
                   viewport={{ once: true }}
-                  className={`group relative p-8 rounded-[28px] bg-white/85 dark:bg-slate-800/70 border border-slate-100 dark:border-slate-700 backdrop-blur-md shadow-[0_18px_45px_rgba(15,23,42,0.08)] hover:-translate-y-2 transition-all duration-500 ring-1 ring-transparent ${
+                  className={`group relative p-4 md:p-8 rounded-2xl md:rounded-[28px] bg-white/85 dark:bg-slate-800/70 border border-slate-100 dark:border-slate-700 backdrop-blur-md shadow-[0_10px_30px_rgba(15,23,42,0.06)] md:shadow-[0_18px_45px_rgba(15,23,42,0.08)] hover:-translate-y-1 md:hover:-translate-y-2 transition-all duration-500 ring-1 ring-transparent ${
                     index === 0
-                      ? 'hover:bg-blue-50/50 dark:hover:bg-blue-500/10 hover:shadow-[0_20px_60px_-10px_rgba(59,130,246,0.5)] hover:border-blue-500/30 hover:ring-blue-500/20'
+                      ? 'hover:bg-blue-50/50 dark:hover:bg-blue-500/10 hover:shadow-[0_15px_40px_-10px_rgba(59,130,246,0.4)] md:hover:shadow-[0_20px_60px_-10px_rgba(59,130,246,0.5)] hover:border-blue-500/30 hover:ring-blue-500/20'
                       : index === 1
-                        ? 'hover:bg-yellow-50/50 dark:hover:bg-yellow-500/10 hover:shadow-[0_20px_60px_-10px_rgba(234,179,8,0.5)] hover:border-yellow-500/30 hover:ring-yellow-500/20'
+                        ? 'hover:bg-yellow-50/50 dark:hover:bg-yellow-500/10 hover:shadow-[0_15px_40px_-10px_rgba(234,179,8,0.4)] md:hover:shadow-[0_20px_60px_-10px_rgba(234,179,8,0.5)] hover:border-yellow-500/30 hover:ring-yellow-500/20'
                         : index === 2
-                          ? 'hover:bg-emerald-50/50 dark:hover:bg-emerald-500/10 hover:shadow-[0_20px_60px_-10px_rgba(16,185,129,0.5)] hover:border-emerald-500/30 hover:ring-emerald-500/20'
-                          : 'hover:bg-pink-50/50 dark:hover:bg-pink-500/10 hover:shadow-[0_20px_60px_-10px_rgba(236,72,153,0.5)] hover:border-pink-500/30 hover:ring-pink-500/20'
+                          ? 'hover:bg-emerald-50/50 dark:hover:bg-emerald-500/10 hover:shadow-[0_15px_40px_-10px_rgba(16,185,129,0.4)] md:hover:shadow-[0_20px_60px_-10px_rgba(16,185,129,0.5)] hover:border-emerald-500/30 hover:ring-emerald-500/20'
+                          : 'hover:bg-pink-50/50 dark:hover:bg-pink-500/10 hover:shadow-[0_15px_40px_-10px_rgba(236,72,153,0.4)] md:hover:shadow-[0_20px_60px_-10px_rgba(236,72,153,0.5)] hover:border-pink-500/30 hover:ring-pink-500/20'
                   }`}
                 >
-                  <div className={`h-14 w-14 rounded-2xl shadow-inner shadow-white/50 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-500 border border-white/60 dark:border-white/10 ${
+                  <div className={`h-10 w-10 md:h-14 md:w-14 rounded-xl md:rounded-2xl shadow-inner shadow-white/50 flex items-center justify-center mb-3 md:mb-6 group-hover:scale-110 transition-transform duration-500 border border-white/60 dark:border-white/10 ${
                     index === 0
                       ? 'bg-gradient-to-br from-blue-100 to-blue-50 dark:from-blue-900/30 dark:to-blue-800/20'
                       : index === 1
@@ -482,18 +482,21 @@ const Index = () => {
                           ? 'bg-gradient-to-br from-emerald-100 to-emerald-50 dark:from-emerald-900/30 dark:to-emerald-800/20'
                           : 'bg-gradient-to-br from-pink-100 to-pink-50 dark:from-pink-900/30 dark:to-pink-800/20'
                   }`}>
-                    {program.icon}
+                    <span className="[&>svg]:h-4 [&>svg]:w-4 md:[&>svg]:h-6 md:[&>svg]:w-6">{program.icon}</span>
                   </div>
-                  <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-3 tracking-tight">{program.title}</h3>
-                  <p className="text-slate-600 dark:text-slate-300 mb-6 leading-relaxed">{program.description}</p>
-                  <ul className="space-y-3">
+                  <h3 className="text-sm md:text-xl font-bold text-slate-900 dark:text-white mb-1 md:mb-3 tracking-tight leading-tight">{program.title}</h3>
+                  <p className="text-xs md:text-base text-slate-600 dark:text-slate-300 mb-3 md:mb-6 leading-relaxed line-clamp-2 md:line-clamp-none">{program.description}</p>
+                  <ul className="space-y-1.5 md:space-y-3 hidden md:block">
                     {program.bullets.map((bullet) => (
-                      <li key={bullet} className="flex items-start gap-3 text-sm text-slate-600 dark:text-slate-300">
-                        <CheckCircle className="h-5 w-5 text-secondary shrink-0" />
+                      <li key={bullet} className="flex items-start gap-2 md:gap-3 text-xs md:text-sm text-slate-600 dark:text-slate-300">
+                        <CheckCircle className="h-4 w-4 md:h-5 md:w-5 text-secondary shrink-0" />
                         <span>{bullet}</span>
                       </li>
                     ))}
                   </ul>
+                  <div className="md:hidden text-xs text-primary font-medium mt-2">
+                    {program.bullets.length} features →
+                  </div>
                 </motion.div>
               ))}
             </div>
