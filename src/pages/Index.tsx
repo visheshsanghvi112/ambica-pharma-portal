@@ -419,7 +419,7 @@ const Index = () => {
               whileInView={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.5 }}
               viewport={{ once: true }}
-              className="p-5 md:p-8 rounded-2xl md:rounded-[32px] bg-gradient-to-br from-primary/90 via-primary/80 to-secondary/80 text-white relative overflow-hidden shadow-[0_0_40px_rgba(59,130,246,0.4),0_0_80px_rgba(16,185,129,0.2),0_20px_50px_rgba(2,6,23,0.35)] md:shadow-[0_0_60px_rgba(59,130,246,0.5),0_0_120px_rgba(16,185,129,0.25),0_35px_70px_rgba(2,6,23,0.45)] border-2 border-white/30 ring-2 ring-white/20"
+              className="p-5 md:p-8 rounded-2xl md:rounded-[32px] bg-gradient-to-br from-primary/90 via-primary/80 to-secondary/80 text-white relative overflow-hidden shadow-[0_20px_50px_rgba(2,6,23,0.35)] md:shadow-[0_35px_70px_rgba(2,6,23,0.45)] border border-white/10"
             >
               <div className="absolute inset-0 opacity-20 bg-[radial-gradient(circle_at_top,_rgba(59,130,246,0.8),_transparent_60%)] pointer-events-none" />
               <div className="relative z-10">
