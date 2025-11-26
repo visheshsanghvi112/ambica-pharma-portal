@@ -189,7 +189,7 @@ const Statistics = () => {
           </div>
         </div>
 
-        <div className="grid items-center gap-12 md:grid-cols-2 rounded-[2.5rem] p-8 md:p-12 border border-white/30 dark:border-slate-800 bg-gradient-to-br from-primary via-primary/90 to-secondary text-white relative overflow-hidden">
+        <div className="grid items-center gap-6 md:gap-12 md:grid-cols-2 rounded-2xl md:rounded-[2.5rem] p-5 md:p-12 border border-white/30 dark:border-slate-800 bg-gradient-to-br from-primary via-primary/90 to-secondary text-white relative overflow-hidden">
           <div className="absolute inset-0 opacity-10 bg-[radial-gradient(circle_at_top,_rgba(255,255,255,0.6),_transparent_50%)] pointer-events-none" />
           <div className="absolute -right-16 -bottom-16 w-72 h-72 rounded-full bg-white/10 blur-3xl opacity-30 pointer-events-none" />
           <motion.div
@@ -197,13 +197,13 @@ const Statistics = () => {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.4 }}
             viewport={{ once: true }}
-            className="space-y-6"
+            className="space-y-3 md:space-y-6"
           >
-            <h3 className="text-3xl font-bold text-white">Built for healthcare operators</h3>
-            <p className="text-white/80 text-lg leading-relaxed">
-              From rapid fulfillment to multi-format formulations, every workflow is tuned for clinicians, pharmacists, procurement leads, and global distributors who demand consistency without the visual noise.
+            <h3 className="text-xl md:text-3xl font-bold text-white">Built for healthcare operators</h3>
+            <p className="text-white/80 text-sm md:text-lg leading-relaxed">
+              From rapid fulfillment to multi-format formulations, every workflow is tuned for clinicians, pharmacists, and global distributors.
             </p>
-            <div className="space-y-4 pt-4">
+            <div className="space-y-2 md:space-y-4 pt-2 md:pt-4">
               {["Fast-tracked dispatch across India & exports", "GMP-documented QC snapshots on demand", "Extensive SKU mix across therapies"].map((item, index) => (
                 <motion.div
                   key={item}
@@ -211,21 +211,21 @@ const Statistics = () => {
                   whileInView={{ opacity: 1, x: 0 }}
                   transition={{ duration: 0.3, delay: index * 0.1 }}
                   viewport={{ once: true }}
-                  className="flex items-center gap-3 text-white/90"
+                  className="flex items-center gap-2 md:gap-3 text-white/90"
                 >
-                  <div className="h-2 w-2 rounded-full bg-white shadow-[0_0_12px_rgba(255,255,255,0.6)]" />
-                  <p className="font-medium">{item}</p>
+                  <div className="h-1.5 w-1.5 md:h-2 md:w-2 rounded-full bg-white shadow-[0_0_12px_rgba(255,255,255,0.6)]" />
+                  <p className="font-medium text-sm md:text-base">{item}</p>
                 </motion.div>
               ))}
             </div>
           </motion.div>
 
-        <motion.div
+          <motion.div
             initial={{ opacity: 0, scale: 0.95 }}
             whileInView={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.5 }}
             viewport={{ once: true }}
-          className="relative overflow-hidden rounded-3xl shadow-2xl shadow-blue-900/20 ring-1 ring-white/30"
+            className="relative overflow-hidden rounded-xl md:rounded-3xl shadow-2xl shadow-blue-900/20 ring-1 ring-white/30 h-48 md:h-auto"
           >
             <img
               src="https://images.unsplash.com/photo-1576602976047-174e57a47881?ixlib=rb-1.2.1&auto=format&fit=crop&w=900&q=80"
@@ -234,11 +234,11 @@ const Statistics = () => {
               loading="lazy"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-slate-900/80 via-slate-900/20 to-transparent"></div>
-            <div className="absolute bottom-8 left-8 right-8 text-white">
-              <div className="inline-block px-3 py-1 rounded-lg bg-white/20 backdrop-blur-md border border-white/10 text-xs font-medium mb-3">
+            <div className="absolute bottom-4 left-4 right-4 md:bottom-8 md:left-8 md:right-8 text-white">
+              <div className="inline-block px-2 py-0.5 md:px-3 md:py-1 rounded-lg bg-white/20 backdrop-blur-md border border-white/10 text-[10px] md:text-xs font-medium mb-2 md:mb-3">
                 QUALITY DESK
               </div>
-              <p className="text-xl font-bold">Live oversight on packaging, serialization, and cold-chain prep.</p>
+              <p className="text-sm md:text-xl font-bold">Live oversight on packaging, serialization, and cold-chain prep.</p>
             </div>
           </motion.div>
         </div>
