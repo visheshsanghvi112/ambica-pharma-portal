@@ -66,7 +66,7 @@ const CSR = () => {
       </section>
 
       {/* CSR Philosophy - NEW */}
-      <section className="py-20 bg-secondary/5">
+      <section className="py-20 bg-white dark:bg-slate-950">
         <div className="container">
           <div className="grid md:grid-cols-2 gap-12 md:gap-20 items-center">
             <motion.div
@@ -137,7 +137,8 @@ const CSR = () => {
                 desc: "We work to improve access to quality healthcare in underserved communities through free medical camps, medicine donations, and health education programs.",
                 list: ["Free medical check-up camps", "Medicine donation drives", "Health awareness programs"],
                 color: "text-rose-500",
-                bg: "bg-rose-500/10"
+                bg: "bg-rose-500/10",
+                glow: "hover:shadow-[0_20px_60px_-10px_rgba(244,63,94,0.5)] hover:border-rose-500/30 hover:ring-rose-500/20"
               },
               {
                 icon: <Leaf className="h-8 w-8" />,
@@ -145,7 +146,8 @@ const CSR = () => {
                 desc: "We are committed to reducing our environmental footprint through sustainable manufacturing practices, waste reduction, and conservation efforts.",
                 list: ["Green manufacturing initiatives", "Tree plantation drives", "Waste management programs"],
                 color: "text-emerald-500",
-                bg: "bg-emerald-500/10"
+                bg: "bg-emerald-500/10",
+                glow: "hover:shadow-[0_20px_60px_-10px_rgba(16,185,129,0.5)] hover:border-emerald-500/30 hover:ring-emerald-500/20"
               },
               {
                 icon: <GraduationCap className="h-8 w-8" />,
@@ -153,7 +155,8 @@ const CSR = () => {
                 desc: "We support education and skill development initiatives to help create a more skilled and empowered workforce for the future.",
                 list: ["Scholarships for deserving students", "School infrastructure development", "Vocational training programs"],
                 color: "text-blue-500",
-                bg: "bg-blue-500/10"
+                bg: "bg-blue-500/10",
+                glow: "hover:shadow-[0_20px_60px_-10px_rgba(59,130,246,0.5)] hover:border-blue-500/30 hover:ring-blue-500/20"
               }
             ].map((item, index) => (
               <motion.div
@@ -163,7 +166,7 @@ const CSR = () => {
                 transition={{ duration: 0.5, delay: index * 0.1 }}
                 viewport={{ once: true }}
                 whileHover={{ y: -10 }}
-                className="group bg-card border border-border/50 rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 relative overflow-hidden"
+                className={`group bg-card border border-border/50 rounded-2xl p-8 shadow-lg transition-all duration-500 relative overflow-hidden ring-1 ring-transparent ${item.glow}`}
               >
                 <div className={`absolute top-0 right-0 w-32 h-32 ${item.bg} rounded-bl-full opacity-50 transition-transform group-hover:scale-110`} />
 
@@ -279,10 +282,10 @@ const CSR = () => {
 
           <div className="grid md:grid-cols-4 gap-6">
             {[
-              { number: "10,000+", label: "People benefited from medical camps" },
-              { number: "15,000+", label: "Trees planted in reforestation efforts" },
-              { number: "500+", label: "Students supported with scholarships" },
-              { number: "30%", label: "Reduction in carbon footprint" }
+              { number: "10,000+", label: "People benefited from medical camps", glow: "hover:bg-rose-50/50 dark:hover:bg-rose-500/10 hover:shadow-[0_20px_60px_-10px_rgba(244,63,94,0.5)] hover:border-rose-500/30 hover:ring-rose-500/20" },
+              { number: "15,000+", label: "Trees planted in reforestation efforts", glow: "hover:bg-emerald-50/50 dark:hover:bg-emerald-500/10 hover:shadow-[0_20px_60px_-10px_rgba(16,185,129,0.5)] hover:border-emerald-500/30 hover:ring-emerald-500/20" },
+              { number: "500+", label: "Students supported with scholarships", glow: "hover:bg-blue-50/50 dark:hover:bg-blue-500/10 hover:shadow-[0_20px_60px_-10px_rgba(59,130,246,0.5)] hover:border-blue-500/30 hover:ring-blue-500/20" },
+              { number: "30%", label: "Reduction in carbon footprint", glow: "hover:bg-amber-50/50 dark:hover:bg-amber-500/10 hover:shadow-[0_20px_60px_-10px_rgba(251,191,36,0.5)] hover:border-amber-500/30 hover:ring-amber-500/20" }
             ].map((stat, index) => (
               <motion.div
                 key={index}
@@ -291,7 +294,7 @@ const CSR = () => {
                 transition={{ duration: 0.4, delay: index * 0.1 }}
                 viewport={{ once: true }}
                 whileHover={{ y: -5 }}
-                className="bg-background/50 backdrop-blur-sm border border-border/50 p-8 rounded-2xl text-center shadow-lg hover:shadow-xl hover:border-primary/30 transition-all duration-300 group"
+                className={`bg-white/80 dark:bg-slate-900/50 backdrop-blur-sm border border-border/50 p-8 rounded-2xl text-center shadow-lg transition-all duration-500 group ring-1 ring-transparent ${stat.glow}`}
               >
                 <h3 className="text-4xl md:text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-primary to-secondary mb-4 group-hover:scale-110 transition-transform duration-300 inline-block">
                   {stat.number}
