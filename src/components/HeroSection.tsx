@@ -123,10 +123,7 @@ const HeroSection: React.FC = () => {
                   loop
                   muted
                   playsInline
-                  preload="metadata"
-                  poster="/lovable-uploads/e75f626d-a490-496b-8817-294d7128b441.png"
-                  width={600}
-                  height={400}
+                  preload="auto"
                   className="rounded-lg shadow-2xl max-w-full h-auto relative"
                 ></video>
               </div>
