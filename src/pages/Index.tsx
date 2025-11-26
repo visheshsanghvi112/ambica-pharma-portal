@@ -615,7 +615,7 @@ const Index = () => {
                 width={500}
                 height={500}
                 onError={handleAccordImageError}
-                className="relative z-10 w-full h-full object-contain drop-shadow-[0_25px_60px_rgba(15,23,42,0.35)] md:scale-110 scale-100 origin-center saturate-[1.05] contrast-[1.05] animate-[spin_30s_linear_infinite]"
+                className="relative z-10 w-full h-full object-contain drop-shadow-[0_25px_60px_rgba(15,23,42,0.35)] md:scale-110 scale-100 origin-center saturate-[1.05] contrast-[1.05] animate-spin-slow"
               />
               <div className="absolute inset-6 rounded-full border border-white/30 opacity-60 pointer-events-none" />
             </div>
