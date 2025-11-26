@@ -1,69 +1,106 @@
-# Welcome to your Lovable project
+# Ambica Pharma Portal
 
-## Project info
+A modern, responsive pharmaceutical company website built for **Ambica Pharma** — a leading wholesaler, trader, exporter, and retailer of pharmaceutical products serving 45+ countries worldwide.
 
-**URL**: https://lovable.dev/projects/34d01455-a4b6-446d-8dd4-5e69e65201bb
+## 🌐 Live Website
 
-## How can I edit this code?
+**[ambicapharma.net](https://ambicapharma.net)**
 
-There are several ways of editing your application.
+## ✨ Features
 
-**Use Lovable**
+- **Modern UI/UX** — Beautiful, responsive design with smooth animations
+- **Product Showcase** — 5,000+ formulations across every therapeutic category
+- **Global Reach** — Serving healthcare partners in 45+ countries
+- **SEO Optimized** — Comprehensive meta tags, structured data, and Open Graph support
+- **Performance Focused** — Lazy loading, optimized assets, and fast load times
+- **AI Chatbot** — Intelligent customer support assistant
+- **Dark Mode** — Full dark/light theme support
+- **Mobile First** — Fully responsive across all devices
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/34d01455-a4b6-446d-8dd4-5e69e65201bb) and start prompting.
+## 🛠️ Tech Stack
 
-Changes made via Lovable will be committed automatically to this repo.
+- **React 18** — Modern React with hooks
+- **TypeScript** — Type-safe development
+- **Vite** — Lightning-fast build tool
+- **Tailwind CSS** — Utility-first CSS framework
+- **Framer Motion** — Smooth animations
+- **shadcn/ui** — Beautiful UI components
+- **React Router** — Client-side routing
+- **React Helmet** — SEO management
 
-**Use your preferred IDE**
+## 🚀 Getting Started
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+### Prerequisites
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
+- Node.js 18+ 
+- npm or yarn
 
-Follow these steps:
+### Installation
 
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
+```bash
+# Clone the repository
+git clone https://github.com/visheshsanghvi/ambica-pharma-portal.git
 
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
+# Navigate to project directory
+cd ambica-pharma-portal
 
-# Step 3: Install the necessary dependencies.
-npm i
+# Install dependencies
+npm install
 
-# Step 4: Start the development server with auto-reloading and an instant preview.
+# Start development server
 npm run dev
 ```
 
-**Edit a file directly in GitHub**
+The app will be running at `http://localhost:5173`
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+### Build for Production
 
-**Use GitHub Codespaces**
+```bash
+npm run build
+```
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+### Preview Production Build
 
-## What technologies are used for this project?
+```bash
+npm run preview
+```
 
-This project is built with .
+## 📁 Project Structure
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
+```
+src/
+├── components/     # Reusable UI components
+├── pages/          # Page components
+├── hooks/          # Custom React hooks
+├── lib/            # Utility functions
+└── index.css       # Global styles
+```
 
-## How can I deploy this project?
+## 📄 Pages
 
-Simply open [Lovable](https://lovable.dev/projects/34d01455-a4b6-446d-8dd4-5e69e65201bb) and click on Share -> Publish.
+- **Home** — Company overview, statistics, quality assurance
+- **Products** — Complete pharmaceutical catalog
+- **About** — Company history and values
+- **Global Reach** — International presence and partnerships
+- **Achievements** — Awards, certifications, milestones
+- **CSR** — Corporate social responsibility initiatives
+- **Blog** — Industry insights and news
+- **Team** — Leadership and experts
+- **Careers** — Job opportunities
+- **Contact** — Get in touch
 
-## I want to use a custom domain - is that possible?
+## 👨‍💻 Developer
 
-We don't support custom domains (yet). If you want to deploy your project under your own domain then we recommend using Netlify. Visit our docs for more details: [Custom domains](https://docs.lovable.dev/tips-tricks/custom-domain/)
+**Vishesh Sanghvi**
+
+- 🌐 Website: [visheshsanghvi.me](https://visheshsanghvi.me)
+- 📧 Email: [visheshsanghvi112@gmail.com](mailto:visheshsanghvi112@gmail.com)
+- 💼 GitHub: [@visheshsanghvi](https://github.com/visheshsanghvi)
+
+## 📝 License
+
+This project is proprietary software developed for Ambica Pharma.
+
+---
+
+Made with ❤️ by [Vishesh Sanghvi](https://visheshsanghvi.me)
