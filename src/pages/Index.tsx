@@ -531,14 +531,14 @@ const Index = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.4, delay: index * 0.1 }}
                 viewport={{ once: true }}
-                className={`group p-6 rounded-2xl bg-white/40 dark:bg-slate-800/40 border border-white/60 dark:border-slate-700 backdrop-blur-sm ring-1 ring-white/40 dark:ring-slate-800/40 hover:-translate-y-2 transition-all duration-500 ${
+                className={`group p-6 rounded-2xl backdrop-blur-sm hover:-translate-y-2 transition-all duration-500 ${
                   index === 0
-                    ? 'hover:bg-sky-50/50 dark:hover:bg-sky-500/10 hover:shadow-[0_20px_60px_-10px_rgba(56,189,248,0.5)] hover:border-sky-500/30 hover:ring-sky-500/20'
+                    ? 'bg-sky-50/50 dark:bg-sky-500/10 shadow-[0_20px_60px_-10px_rgba(56,189,248,0.5)] border border-sky-500/30 ring-1 ring-sky-500/20'
                     : index === 1
-                      ? 'hover:bg-amber-50/50 dark:hover:bg-amber-500/10 hover:shadow-[0_20px_60px_-10px_rgba(251,191,36,0.5)] hover:border-amber-500/30 hover:ring-amber-500/20'
+                      ? 'bg-amber-50/50 dark:bg-amber-500/10 shadow-[0_20px_60px_-10px_rgba(251,191,36,0.5)] border border-amber-500/30 ring-1 ring-amber-500/20'
                       : index === 2
-                        ? 'hover:bg-purple-50/50 dark:hover:bg-purple-500/10 hover:shadow-[0_20px_60px_-10px_rgba(168,85,247,0.5)] hover:border-purple-500/30 hover:ring-purple-500/20'
-                        : 'hover:bg-emerald-50/50 dark:hover:bg-emerald-500/10 hover:shadow-[0_20px_60px_-10px_rgba(16,185,129,0.5)] hover:border-emerald-500/30 hover:ring-emerald-500/20'
+                        ? 'bg-purple-50/50 dark:bg-purple-500/10 shadow-[0_20px_60px_-10px_rgba(168,85,247,0.5)] border border-purple-500/30 ring-1 ring-purple-500/20'
+                        : 'bg-emerald-50/50 dark:bg-emerald-500/10 shadow-[0_20px_60px_-10px_rgba(16,185,129,0.5)] border border-emerald-500/30 ring-1 ring-emerald-500/20'
                 }`}
               >
                 <div className={`h-12 w-12 rounded-xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-500 shadow-inner shadow-white/50 ${
