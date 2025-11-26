@@ -40,28 +40,28 @@ const highlightMetrics = [
 
 const flagshipSegments = [
   {
-    title: "Advanced Anti-Aging",
-    description: "Nutraceutical and dermatology-ready actives for aesthetic clinics and premium pharmacies.",
-    image: "/lovable-uploads/Anti%20Aging.png",
-    tags: ["Collagen Boosters", "Dermaceutical Drops"]
-  },
-  {
-    title: "Immunity & Wellness",
-    description: "High-volume SKUs for preventive care programs with WHO-prequalified ingredients.",
-    image: "/lovable-uploads/Immunity.png",
-    tags: ["Gummies & Sachets", "OTC Friendly Packs"]
-  },
-  {
-    title: "Pain & Mobility",
-    description: "Acute and chronic pain portfolio spanning tablets, gels, and topical sprays.",
+    title: "Tablets & Capsules",
+    description: "From common generics to specialty formulations — antibiotics, analgesics, vitamins, cardiac care, and more. Bulk or retail, we source it all.",
     image: "/lovable-uploads/Pain%20Management.png",
-    tags: ["Dual API Combos", "Hospital Bidding"]
+    tags: ["Generics", "Branded", "Bulk Supply"]
   },
   {
-    title: "Sleep & Stress Relief",
-    description: "Evidence-backed adaptogens aligned with wellness chains and digital health brands.",
+    title: "Injectables & Vials",
+    description: "Hospital-grade injectables, ampoules, and lyophilized products. Cold-chain ready with complete documentation for tenders.",
+    image: "/lovable-uploads/Immunity.png",
+    tags: ["IV Solutions", "Ampoules", "Tender Ready"]
+  },
+  {
+    title: "Syrups & Suspensions",
+    description: "Pediatric formulations, cough syrups, antacids, and nutraceutical liquids. Available in multiple pack sizes for retail and wholesale.",
     image: "/lovable-uploads/Sleep%20Management.png",
-    tags: ["Melatonin Range", "Subscription Ready"]
+    tags: ["Pediatric", "OTC Range", "Multi-Pack"]
+  },
+  {
+    title: "Specialty & Nutraceuticals",
+    description: "Derma care, wellness supplements, ayurvedic products, and cosmeceuticals. If you need it, we can arrange manufacturing or sourcing.",
+    image: "/lovable-uploads/Anti%20Aging.png",
+    tags: ["Derma", "Wellness", "Custom Sourcing"]
   }
 ];
 
@@ -341,14 +341,14 @@ const Index = () => {
             <div className="space-y-2">
               <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 text-primary text-xs font-bold tracking-wider uppercase">
                 <span className="w-2 h-2 rounded-full bg-primary animate-pulse" />
-                Our Expertise
+                Wholesale & Trading
               </div>
               <h2 className="text-3xl md:text-4xl font-display font-bold text-slate-900 dark:text-white tracking-tight">
-                Therapeutic <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-secondary">Focus</span>
+                Complete Product <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-secondary">Range</span>
               </h2>
             </div>
             <p className="text-slate-600 dark:text-slate-400 max-w-xl text-base leading-relaxed text-balance">
-              Comprehensive portfolio aligned with modern healthcare needs, featuring high-demand categories and specialized formulations.
+              <strong>If you need it, we can get it.</strong> From single units to bulk orders — wholesale, retail, or custom manufacturing arrangements. 5,000+ formulations across every therapeutic category.
             </p>
           </div>
 
@@ -397,8 +397,8 @@ const Index = () => {
 
                     {/* Action */}
                     <div className="flex items-center gap-2 text-white text-xs font-semibold opacity-0 group-hover:opacity-100 transition-all duration-500 delay-200 translate-y-2 group-hover:translate-y-0">
-                      <span className="border-b border-primary pb-px">Explore Category</span>
-                      <ArrowRight className="h-3.5 w-3.5 text-primary" />
+                      <span className="border-b border-white/60 pb-px">Request Quote</span>
+                      <ArrowRight className="h-3.5 w-3.5" />
                     </div>
                   </div>
                 </div>
