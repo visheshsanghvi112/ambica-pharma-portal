@@ -395,10 +395,13 @@ const Index = () => {
                     </p>
 
                     {/* Action */}
-                    <div className="flex items-center gap-2 text-white text-xs font-semibold opacity-0 group-hover:opacity-100 transition-all duration-500 delay-200 translate-y-2 group-hover:translate-y-0">
+                    <Link 
+                      to="/contact" 
+                      className="inline-flex items-center gap-2 text-white text-xs font-semibold opacity-0 group-hover:opacity-100 transition-all duration-500 delay-200 translate-y-2 group-hover:translate-y-0 hover:underline"
+                    >
                       <span className="border-b border-white/60 pb-px">Request Quote</span>
                       <ArrowRight className="h-3.5 w-3.5" />
-                    </div>
+                    </Link>
                   </div>
                 </div>
               </motion.div>
