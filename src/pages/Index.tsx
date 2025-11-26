@@ -510,15 +510,19 @@ const Index = () => {
         <div className="absolute inset-0 opacity-[0.03] bg-[radial-gradient(#4f46e5_1px,transparent_1px)] [background-size:20px_20px]" />
 
         <div className="container relative z-10">
-          <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-12 mb-16">
-            <div className="max-w-2xl">
-              <span className="text-primary font-semibold tracking-wider uppercase text-sm">Quality Assurance</span>
-              <h2 className="text-3xl md:text-5xl font-display font-bold mt-3 mb-6 text-slate-900 dark:text-white tracking-tight">Uncompromising Quality Standards</h2>
-              <p className="text-slate-600 dark:text-slate-400 text-lg text-balance">
-                Our commitment to quality is validated by international certifications and rigorous internal audits. We ensure every product meets global safety standards.
-              </p>
+          <div className="text-center max-w-3xl mx-auto mb-12">
+            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-gradient-to-r from-primary/10 to-secondary/10 text-primary text-xs font-bold tracking-wider uppercase mb-4 border border-primary/20">
+              <span className="w-2 h-2 rounded-full bg-primary animate-pulse" />
+              WHO-GMP • ISO 9001 • GDP Certified
             </div>
-            <Button asChild size="lg" className="bg-gradient-to-r from-primary to-secondary hover:from-primary/90 hover:to-secondary/90 text-white shadow-[0_4px_14px_0_rgba(0,0,0,0.1)] hover:shadow-[0_6px_20px_rgba(0,0,0,0.15)] rounded-full px-8 border-0 hover:scale-105 transition-all duration-300 ring-1 ring-white/20">
+            <h2 className="text-3xl md:text-5xl font-display font-bold text-slate-900 dark:text-white tracking-tight mb-4">
+              Quality You Can <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-secondary">Trust.</span>
+            </h2>
+            <p className="text-slate-600 dark:text-slate-400 text-lg leading-relaxed mb-6">
+              International certifications, rigorous audits, and traceable documentation. <br className="hidden md:block" />
+              <span className="font-semibold text-slate-700 dark:text-slate-300">Every product meets global safety standards.</span>
+            </p>
+            <Button asChild size="lg" className="bg-gradient-to-r from-primary to-secondary hover:from-primary/90 hover:to-secondary/90 text-white shadow-[0_10px_40px_-10px_rgba(37,99,235,0.5)] hover:shadow-[0_20px_40px_-10px_rgba(37,99,235,0.6)] rounded-full px-8 border-0 hover:scale-105 transition-all duration-300 ring-1 ring-white/20">
               <Link to="/about">View Certifications</Link>
             </Button>
           </div>
