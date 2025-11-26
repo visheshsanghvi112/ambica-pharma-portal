@@ -575,15 +575,16 @@ const Index = () => {
             viewport={{ once: true }}
             className="space-y-6"
           >
-            <span className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/15 text-sm font-semibold tracking-widest uppercase">
+            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/15 text-white text-xs font-bold tracking-wider uppercase mb-2 border border-white/20">
               <span className="h-2 w-2 rounded-full bg-white animate-ping" />
-              Global Access
-            </span>
-            <h2 className="text-3xl md:text-4xl font-display font-bold leading-tight">
-              An Accord for a Healthier World
+              45+ Countries • Global Reach
+            </div>
+            <h2 className="text-3xl md:text-5xl font-display font-bold leading-tight">
+              An Accord for a <span className="text-transparent bg-clip-text bg-gradient-to-r from-white via-cyan-200 to-emerald-200">Healthier World.</span>
             </h2>
             <p className="text-lg text-white/90 leading-relaxed max-w-xl">
-              Where people live shouldn’t impact the quality of their healthcare and income shouldn’t determine health outcomes. We partner with governments, NGOs, and distributors to expand equitable access everywhere.
+              Where people live shouldn't impact healthcare quality. <br className="hidden md:block" />
+              <span className="font-semibold text-white">We partner with governments, NGOs, and distributors worldwide.</span>
             </p>
             <Button
               asChild

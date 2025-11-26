@@ -11,7 +11,7 @@ const statistics = [
   },
   {
     title: "Happy Customers",
-    value: "9242+",
+    value: "900K+",
     icon: Users,
     gradient: "from-secondary/70 via-primary/80 to-primary/90"
   },
@@ -23,7 +23,7 @@ const statistics = [
   },
   {
     title: "Quality Products",
-    value: "1000+",
+    value: "5000+",
     icon: Activity,
     gradient: "from-secondary/70 via-primary/80 to-primary/90"
   }
@@ -104,7 +104,7 @@ const Statistics = () => {
           >
             <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-gradient-to-r from-primary/10 to-secondary/10 text-primary text-xs font-bold tracking-wider uppercase mb-2 border border-primary/20">
               <Sparkles className="h-3.5 w-3.5" />
-              19+ Years • 9000+ Partners • 1000+ SKUs
+              Proven Track Record
             </div>
 
             <h2 className="text-3xl md:text-5xl font-display font-bold leading-tight text-slate-900 dark:text-white">
@@ -112,7 +112,7 @@ const Statistics = () => {
             </h2>
 
             <p className="text-lg text-slate-600 dark:text-slate-400 leading-relaxed">
-              The scorecard buyers ask for — operational tenure, partner depth, and SKU strength. <br className="hidden md:block" />
+              The scorecard buyers ask for operational tenure, partner depth, and SKU strength. <br className="hidden md:block" />
               <span className="font-semibold text-slate-700 dark:text-slate-300">Presented with transparency and pride.</span>
             </p>
 
