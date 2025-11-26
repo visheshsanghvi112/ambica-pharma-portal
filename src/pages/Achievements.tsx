@@ -190,44 +190,64 @@ const Achievements = () => {
   return (
     <div className="min-h-screen bg-background">
       <Helmet>
-        <title>Achievements | Ambica Pharma</title>
-        <meta name="description" content="Celebrating the milestones, achievements and journey of Ambica Pharma." />
+        <title>Achievements & Milestones | Ambica Pharma - Our Journey of Excellence</title>
+        <meta name="description" content="Explore Ambica Pharma's achievements, awards, and milestones. From ISO certification to global expansion, discover our journey of excellence in pharmaceutical distribution." />
+        <meta name="keywords" content="Ambica Pharma achievements, pharmaceutical awards, company milestones, ISO certification, WHO-GMP, export excellence, pharmaceutical industry awards, company history" />
+        <link rel="canonical" href="https://ambicapharma.net/achievements" />
+        <meta property="og:title" content="Achievements & Milestones | Ambica Pharma" />
+        <meta property="og:description" content="Explore Ambica Pharma's journey of excellence - awards, certifications, and milestones since 2005." />
+        <meta property="og:url" content="https://ambicapharma.net/achievements" />
+        <meta property="og:type" content="website" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Achievements & Milestones | Ambica Pharma" />
+        <meta name="twitter:description" content="Explore Ambica Pharma's journey of excellence in pharmaceutical distribution." />
       </Helmet>
       
-      {/* Enhanced Hero Section with parallax effect */}
-      <section className="py-20 bg-gradient-to-br from-primary/10 to-secondary/10 relative overflow-hidden">
-        <div className="absolute inset-0 opacity-20">
-          <div className="absolute -top-10 -left-10 w-40 h-40 rounded-full bg-secondary blur-3xl"></div>
-          <div className="absolute top-1/3 right-0 w-60 h-60 rounded-full bg-primary blur-3xl"></div>
-          <div className="absolute bottom-0 left-1/4 w-80 h-80 rounded-full bg-secondary/50 blur-3xl"></div>
+      {/* Hero Section - Enhanced with gradient and animations */}
+      <section className="py-16 md:py-24 bg-gradient-to-br from-primary/10 via-secondary/5 to-primary/5 dark:from-primary/20 dark:via-secondary/10 dark:to-primary/10 relative overflow-hidden">
+        <div className="absolute top-0 left-0 w-full h-full opacity-40 overflow-hidden pointer-events-none">
+          <div className="absolute top-10 left-10 w-40 h-40 rounded-full bg-gradient-to-r from-blue-300 to-blue-400 blur-3xl animate-blob"></div>
+          <div className="absolute bottom-20 right-10 w-60 h-60 rounded-full bg-gradient-to-r from-purple-300 to-indigo-400 blur-3xl animate-blob" style={{ animationDelay: "2s" }}></div>
+          <div className="absolute top-1/3 right-1/4 w-32 h-32 rounded-full bg-gradient-to-r from-pink-300 to-purple-400 blur-3xl animate-blob" style={{ animationDelay: "4s" }}></div>
         </div>
         
         <div className="container relative z-10">
-          <motion.h1 
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, ease: "easeOut" }}
-            className="text-4xl md:text-6xl font-display font-bold text-primary mb-8 text-center"
-          >
-            Our Achievements
-          </motion.h1>
-          
-          <motion.div
-            initial={{ opacity: 0, scale: 0.9 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.5, delay: 0.3 }}
-            className="w-32 h-1 bg-secondary mx-auto mb-8"
-          />
-          
-          <motion.p 
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.5 }}
-            className="text-lg md:text-xl text-foreground/80 max-w-3xl mx-auto text-center leading-relaxed"
-          >
-            Explore our journey of excellence, celebrations, and growth throughout the years. 
-            At Ambica Pharma, we take pride in our achievements and the milestones that have shaped our success story.
-          </motion.p>
+          <div className="max-w-4xl mx-auto text-center">
+            <motion.span 
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5 }}
+              className="inline-block px-4 py-1.5 text-sm font-medium bg-primary/10 text-primary rounded-full mb-4"
+            >
+              <Trophy className="h-4 w-4 inline mr-2" />
+              19+ Years of Excellence
+            </motion.span>
+            
+            <motion.h1 
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.1 }}
+              className="text-4xl md:text-6xl font-display font-bold bg-clip-text text-transparent bg-gradient-to-r from-primary via-secondary to-primary mb-6"
+            >
+              Our Achievements
+            </motion.h1>
+            
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.2 }}
+              className="w-32 h-1 bg-gradient-to-r from-primary to-secondary mx-auto mb-6 rounded-full"
+            ></motion.div>
+            
+            <motion.p 
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.3 }}
+              className="text-lg md:text-xl text-foreground/80"
+            >
+              Explore our journey of excellence, celebrations, and growth throughout the years. We take pride in the milestones that have shaped our success story.
+            </motion.p>
+          </div>
         </div>
       </section>
       

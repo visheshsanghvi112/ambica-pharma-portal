@@ -2,9 +2,10 @@
 import React from "react";
 import { Helmet } from "react-helmet-async";
 import { Link } from "react-router-dom";
-import { Calendar, User, ArrowRight, Tag, Clock, Eye } from "lucide-react";
+import { Calendar, User, ArrowRight, Tag, Clock, Eye, BookOpen } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
+import { motion } from "framer-motion";
 
 // Blog post type
 interface BlogPost {
@@ -152,13 +153,50 @@ const Blog = () => {
         </script>
       </Helmet>
       
-      {/* Hero Section */}
-      <section className="py-16 bg-primary/10">
-        <div className="container">
-          <h1 className="text-4xl md:text-5xl font-display font-bold text-primary mb-6">Pharmaceutical Industry Insights</h1>
-          <p className="text-lg text-gray-600 max-w-3xl">
-            Expert articles, research highlights, and industry trends from Ambica Pharma's team of pharmaceutical specialists. Gain insights on manufacturing, trading, exporting, and healthcare innovations.
-          </p>
+      {/* Hero Section - Enhanced with gradient and animations */}
+      <section className="py-16 md:py-24 bg-gradient-to-br from-primary/10 via-secondary/5 to-primary/5 dark:from-primary/20 dark:via-secondary/10 dark:to-primary/10 relative overflow-hidden">
+        <div className="absolute top-0 left-0 w-full h-full opacity-40 overflow-hidden pointer-events-none">
+          <div className="absolute top-10 left-10 w-40 h-40 rounded-full bg-gradient-to-r from-blue-300 to-blue-400 blur-3xl animate-blob"></div>
+          <div className="absolute bottom-20 right-10 w-60 h-60 rounded-full bg-gradient-to-r from-purple-300 to-indigo-400 blur-3xl animate-blob" style={{ animationDelay: "2s" }}></div>
+        </div>
+        
+        <div className="container relative z-10">
+          <div className="max-w-4xl mx-auto text-center">
+            <motion.span 
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5 }}
+              className="inline-block px-4 py-1.5 text-sm font-medium bg-primary/10 text-primary rounded-full mb-4"
+            >
+              <BookOpen className="h-4 w-4 inline mr-2" />
+              Industry Insights
+            </motion.span>
+            
+            <motion.h1 
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.1 }}
+              className="text-4xl md:text-6xl font-display font-bold bg-clip-text text-transparent bg-gradient-to-r from-primary via-secondary to-primary mb-6"
+            >
+              Pharmaceutical Industry Insights
+            </motion.h1>
+            
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.2 }}
+              className="w-32 h-1 bg-gradient-to-r from-primary to-secondary mx-auto mb-6 rounded-full"
+            ></motion.div>
+            
+            <motion.p 
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.3 }}
+              className="text-lg md:text-xl text-foreground/80"
+            >
+              Expert articles, research highlights, and industry trends from Ambica Pharma's team of pharmaceutical specialists.
+            </motion.p>
+          </div>
         </div>
       </section>
       

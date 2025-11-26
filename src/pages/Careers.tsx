@@ -102,26 +102,65 @@ const Careers = () => {
         <meta property="og:title" content="Careers at Ambica Pharma | Join Our Team" />
         <meta property="og:description" content="Explore career opportunities at Ambica Pharma. Join our innovative team in pharmaceutical distribution and exports." />
         <meta property="og:type" content="website" />
-        <meta property="og:url" content="https://www.ambicapharma.com/careers" />
+        <meta property="og:url" content="https://ambicapharma.net/careers" />
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content="Careers at Ambica Pharma | Join Our Team" />
         <meta name="twitter:description" content="Explore career opportunities at Ambica Pharma. Join our innovative team in pharmaceutical distribution and global exports." />
-        <link rel="canonical" href="https://www.ambicapharma.com/careers" />
+        <link rel="canonical" href="https://ambicapharma.net/careers" />
       </Helmet>
 
-      <section className="py-12 md:py-20 bg-gradient-to-b from-background to-secondary/5">
+      {/* Hero Section - Enhanced with gradient and animations */}
+      <section className="py-16 md:py-24 bg-gradient-to-br from-primary/10 via-secondary/5 to-primary/5 dark:from-primary/20 dark:via-secondary/10 dark:to-primary/10 relative overflow-hidden">
+        <div className="absolute top-0 left-0 w-full h-full opacity-40 overflow-hidden pointer-events-none">
+          <div className="absolute top-10 left-10 w-40 h-40 rounded-full bg-gradient-to-r from-blue-300 to-blue-400 blur-3xl animate-blob"></div>
+          <div className="absolute bottom-20 right-10 w-60 h-60 rounded-full bg-gradient-to-r from-purple-300 to-indigo-400 blur-3xl animate-blob" style={{ animationDelay: "2s" }}></div>
+          <div className="absolute top-1/3 right-1/4 w-32 h-32 rounded-full bg-gradient-to-r from-pink-300 to-purple-400 blur-3xl animate-blob" style={{ animationDelay: "4s" }}></div>
+        </div>
+        
+        <div className="container relative z-10">
+          <div className="max-w-4xl mx-auto text-center">
+            <motion.span 
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5 }}
+              className="inline-block px-4 py-1.5 text-sm font-medium bg-primary/10 text-primary rounded-full mb-4"
+            >
+              <BriefcaseBusiness className="h-4 w-4 inline mr-2" />
+              Join Our Team
+            </motion.span>
+            
+            <motion.h1 
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.1 }}
+              className="text-4xl md:text-6xl font-display font-bold bg-clip-text text-transparent bg-gradient-to-r from-primary via-secondary to-primary mb-6"
+            >
+              Careers at Ambica Pharma
+            </motion.h1>
+            
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.2 }}
+              className="w-32 h-1 bg-gradient-to-r from-primary to-secondary mx-auto mb-6 rounded-full"
+            ></motion.div>
+            
+            <motion.p 
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.3 }}
+              className="text-lg md:text-xl text-foreground/80"
+            >
+              Join our team of dedicated professionals in pharmaceutical distribution and global exports. Build your career with us.
+            </motion.p>
+          </div>
+        </div>
+      </section>
+
+      <section className="py-12 md:py-20">
         <div className="container px-4 md:px-6">
           {!selectedJob && !showApplication ? (
             <>
-              <motion.div
-                initial={{ opacity: 0, y: -20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6 }}
-                className="max-w-3xl mx-auto text-center mb-16"
-              >
-                <h1 className="text-3xl md:text-5xl font-bold mb-4 font-display bg-clip-text text-transparent bg-gradient-to-r from-primary to-primary/80">Careers at Ambica Pharma</h1>
-                <p className="text-muted-foreground text-lg">Join our team of dedicated professionals in pharmaceutical distribution and global exports.</p>
-              </motion.div>
 
               {/* Culture Section */}
               <motion.div

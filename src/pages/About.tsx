@@ -17,8 +17,8 @@ const About = () => {
     "@context": "https://schema.org",
     "@type": "Organization",
     "name": "Ambica Pharma",
-    "url": "https://ambicapharma.com",
-    "logo": "https://ambicapharma.com/lovable-uploads/a5979ffb-180b-4225-a1e8-15425f28d262.png",
+    "url": "https://ambicapharma.net",
+    "logo": "https://ambicapharma.net/lovable-uploads/a5979ffb-180b-4225-a1e8-15425f28d262.png",
     "foundingDate": "2005",
     "founders": [
       {
@@ -53,12 +53,12 @@ const About = () => {
         <title>About Ambica Pharma | Leading Pharmaceutical Wholesaler, Trader & Exporter in India</title>
         <meta name="description" content="Learn about Ambica Pharma, a WHO-GMP certified pharmaceutical distributer established in 2005 with a global footprint in 25+ countries. Known for quality pharmaceuticals including tablets, capsules, injectables & more." />
         <meta name="keywords" content="pharmaceutical distributor india, ambica pharma history, who-gmp certified, pharmaceutical exporter, iso 9001 certified, pharmaceutical company mission vision, pharmaceutical tablets wholesaler, capsules trader, global pharmaceutical company" />
-        <link rel="canonical" href="https://ambicapharma.com/about" />
+        <link rel="canonical" href="https://ambicapharma.net/about" />
         <meta property="og:title" content="About Ambica Pharma | Leading Pharmaceutical Wholesaler, Trader & Exporter in India" />
         <meta property="og:description" content="Learn about Ambica Pharma, a WHO-GMP certified pharmaceutical distributor established in 2005 with a global footprint in 25+ countries. Known for high-quality pharmaceuticals." />
-        <meta property="og:url" content="https://ambicapharma.com/about" />
+        <meta property="og:url" content="https://ambicapharma.net/about" />
         <meta property="og:type" content="website" />
-        <meta property="og:image" content="https://ambicapharma.com/lovable-uploads/c0f96c3b-a789-4906-be6d-0cae782624b8.png" />
+        <meta property="og:image" content="https://ambicapharma.net/lovable-uploads/c0f96c3b-a789-4906-be6d-0cae782624b8.png" />
         <meta name="twitter:title" content="About Ambica Pharma | Leading Pharmaceutical Wholesaler, Trader & Exporter in India" />
         <meta name="twitter:description" content="Learn about Ambica Pharma, a WHO-GMP certified pharmaceutical distributor established in 2005 with a global footprint in 25+ countries." />
         <script type="application/ld+json">

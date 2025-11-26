@@ -1,5 +1,7 @@
 import React from "react";
 import { Badge } from "@/components/ui/badge";
+import { Globe } from "lucide-react";
+import { motion } from "framer-motion";
 import SEOHead from "@/components/SEOHead";
 
 const GlobalReach = () => {
@@ -99,20 +101,51 @@ const GlobalReach = () => {
         structuredData={globalReachSchema}
       />
       
-      {/* Hero Section */}
-      <section className="py-16 bg-primary/10 relative overflow-hidden">
-        <div className="absolute inset-0 opacity-10">
-          <img 
-            src="https://images.unsplash.com/photo-1589519160732-57fc6aa1df9e?ixlib=rb-1.2.1&auto=format&fit=crop&w=1920&q=80" 
-            alt="World Map" 
-            className="w-full h-full object-cover"
-          />
+      {/* Hero Section - Enhanced with gradient and animations */}
+      <section className="py-16 md:py-24 bg-gradient-to-br from-primary/10 via-secondary/5 to-primary/5 dark:from-primary/20 dark:via-secondary/10 dark:to-primary/10 relative overflow-hidden">
+        <div className="absolute top-0 left-0 w-full h-full opacity-40 overflow-hidden pointer-events-none">
+          <div className="absolute top-10 left-10 w-40 h-40 rounded-full bg-gradient-to-r from-blue-300 to-blue-400 blur-3xl animate-blob"></div>
+          <div className="absolute bottom-20 right-10 w-60 h-60 rounded-full bg-gradient-to-r from-purple-300 to-indigo-400 blur-3xl animate-blob" style={{ animationDelay: "2s" }}></div>
+          <div className="absolute top-1/3 right-1/4 w-32 h-32 rounded-full bg-gradient-to-r from-pink-300 to-purple-400 blur-3xl animate-blob" style={{ animationDelay: "4s" }}></div>
         </div>
-        <div className="container relative">
-          <h1 className="text-4xl md:text-5xl font-display font-bold text-primary mb-6">Our Global Reach</h1>
-          <p className="text-lg text-gray-600 max-w-3xl">
-            From our roots in India to a growing international presence, Ambica Pharma delivers quality healthcare solutions worldwide.
-          </p>
+        
+        <div className="container relative z-10">
+          <div className="max-w-4xl mx-auto text-center">
+            <motion.span 
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5 }}
+              className="inline-block px-4 py-1.5 text-sm font-medium bg-primary/10 text-primary rounded-full mb-4"
+            >
+              <Globe className="h-4 w-4 inline mr-2" />
+              45+ Countries Worldwide
+            </motion.span>
+            
+            <motion.h1 
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.1 }}
+              className="text-4xl md:text-6xl font-display font-bold bg-clip-text text-transparent bg-gradient-to-r from-primary via-secondary to-primary mb-6"
+            >
+              Our Global Reach
+            </motion.h1>
+            
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.2 }}
+              className="w-32 h-1 bg-gradient-to-r from-primary to-secondary mx-auto mb-6 rounded-full"
+            ></motion.div>
+            
+            <motion.p 
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.3 }}
+              className="text-lg md:text-xl text-foreground/80 mb-8"
+            >
+              From our roots in India to a growing international presence, Ambica Pharma delivers quality healthcare solutions worldwide with excellence and reliability.
+            </motion.p>
+          </div>
         </div>
       </section>
       
