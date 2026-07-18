@@ -140,9 +140,6 @@ const Index = () => {
     "datePublished": "2005-01-01T00:00:00+00:00",
     "dateModified": "2025-11-25T00:00:00+00:00",
     "description": "Ambica Pharma is a top pharmaceutical wholesaler, trader and exporter offering high-quality medicines, tablets, capsules, injectables, and drops with WHO-GMP and ISO 9001 certification. Serving global markets in 45+ countries since 2005.",
-    "breadcrumb": {
-      "@id": "https://ambicapharma.net/#breadcrumb"
-    },
     "inLanguage": "en-US",
     "potentialAction": [
       {
