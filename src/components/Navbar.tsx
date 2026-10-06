@@ -1,7 +1,7 @@
 
 import React from "react";
 import { Link, useLocation } from "react-router-dom";
-import { Menu, X, ChevronDown } from "lucide-react";
+import { Menu, X } from "lucide-react";
 import { cn } from "@/lib/utils";
 import {
   NavigationMenu,
@@ -61,34 +61,6 @@ const Navbar = () => {
                   >
                     About Us
                   </Link>
-                </NavigationMenuItem>
-                
-                <NavigationMenuItem>
-                  <NavigationMenuTrigger 
-                    className={cn(
-                      "text-gray-700 hover:text-primary font-medium transition-colors",
-                      (isActive("/team")) && "text-primary font-semibold"
-                    )}
-                  >
-                    Our Team
-                  </NavigationMenuTrigger>
-                  <NavigationMenuContent>
-                    <ul className="grid w-[200px] gap-1 p-2 bg-white shadow-lg rounded-md">
-                      <li className="row-span-1">
-                        <NavigationMenuLink asChild>
-                          <Link
-                            to="/team"
-                            className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground"
-                          >
-                            <div className="text-sm font-medium">Our Teams</div>
-                            <p className="text-xs text-muted-foreground">
-                              Meet the experts behind our success
-                            </p>
-                          </Link>
-                        </NavigationMenuLink>
-                      </li>
-                    </ul>
-                  </NavigationMenuContent>
                 </NavigationMenuItem>
                 
                 <NavigationMenuItem>
@@ -195,16 +167,6 @@ const Navbar = () => {
               onClick={() => setIsOpen(false)}
             >
               About Us
-            </Link>
-            <Link 
-              to="/team" 
-              className={cn(
-                "text-gray-700 hover:text-primary font-medium px-2 py-2 rounded-md",
-                isActive("/team") && "bg-primary/5 text-primary"
-              )}
-              onClick={() => setIsOpen(false)}
-            >
-              Our Teams
             </Link>
             <Link 
               to="/products" 
