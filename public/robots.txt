@@ -26,7 +26,6 @@ Crawl-delay: 10
 User-agent: Googlebot-Image
 Allow: /images/
 Allow: /products/
-Allow: /team/
 Allow: /facilities/
 Allow: /achievements/
 Allow: /lovable-uploads/

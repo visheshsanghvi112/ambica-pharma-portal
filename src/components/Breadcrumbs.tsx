@@ -7,7 +7,6 @@ import { ChevronRight, Home } from 'lucide-react';
 const routeNameMap: Record<string, string> = {
   '': 'Home',
   'about': 'About Us',
-  'team': 'Our Team',
   'contact': 'Contact Us',
   'blog': 'Blog',
   'global-reach': 'Global Reach',

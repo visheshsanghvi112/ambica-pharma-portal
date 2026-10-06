@@ -21,7 +21,6 @@ import FAQ from "./pages/FAQ";
 import PrivacyPolicy from "./pages/PrivacyPolicy";
 import CSR from "./pages/CSR";
 import Careers from "./pages/Careers";
-import Team from "./pages/Team";
 import NotFound from "./pages/NotFound";
 import Achievements from "./pages/Achievements";
 import SEOHead from "./components/SEOHead";
@@ -96,7 +95,6 @@ const App: React.FC = () => {
                 <Routes>
                   <Route path="/" element={<Index />} />
                   <Route path="/about" element={<About />} />
-                  <Route path="/team" element={<Team />} />
                   <Route path="/contact" element={<Contact />} />
                   <Route path="/blog" element={<Blog />} />
                   <Route path="/global-reach" element={<GlobalReach />} />
